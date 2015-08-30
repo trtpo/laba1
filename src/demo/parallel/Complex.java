@@ -45,10 +45,22 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
+
+        public double getIm() {
+            return im;
+        }
+
+        public double getRe() {
+            return re;
+        }
+
+
+    //}
     /** 
      * create a new object with the given real and imaginary parts
      * 
