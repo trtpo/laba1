@@ -60,6 +60,9 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() { return re; }
+    public double getIm() { return im; }
+
     /**
      * Add operation.
      * @param b summand
@@ -82,6 +85,19 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * de Moivre's formula.
+     * @param  n exponent
+     * @return this Complex object whose value is this ^ n
+     */
+    public Complex deMoivres(long n) {
+        double rn = Math.pow(Math.sqrt(lengthSQ()), n);
+        double phi = Math.atan2(this.im, this.re);
+        this.re = rn * Math.cos(n * phi);
+        this.im = rn * Math.sin(n * phi);
         return this;
     }
 
