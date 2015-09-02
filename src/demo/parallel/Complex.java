@@ -44,6 +44,7 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 public class Complex {
     
     private double re;   // the real part
@@ -68,6 +69,21 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+   public boolean compare( Complex b){
+        if(re==b.re&&im==b.im)
+            return true;
+            else return false;
+    }
+
+
+    public Complex div (Complex b) {
+        Complex a = this;
+        double real = ((a.re*b.re)+(a.im*b.im))/(b.im*b.im+b.re*b.re);
+        double imag = ((b.re*a.im-a.re*b.im))/(b.im*b.im+b.re*b.re);
+        re = real;
+        im = imag;
         return this;
     }
 
