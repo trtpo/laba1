@@ -70,6 +70,12 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -83,6 +89,14 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+    
+    static public Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.cos(a.re)*Math.cosh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
     }
 
     /**
