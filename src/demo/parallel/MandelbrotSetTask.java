@@ -271,9 +271,9 @@ class MandelbrotSetTask extends Task<Long> {
         Complex c = new Complex(0, 0);
         // (edb) here is formula
         do {
-            // was c = c*c + comp
-            // become c = (c + comp)*c + 2 * comp
-            c = c.plus(comp).times(c).plus(comp).plus(comp);
+            // was [c = (c + comp)*c + 2 * comp] [z = (z+c)z+2c]
+            // become [c = ((c^2 - comp)*c + comp)] [z = (z*z-c)z+c]
+            c = c.power(2).sub(comp).mul(c).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;

@@ -60,6 +60,10 @@ public class Complex {
         im = imag;
     }
 
+    public Complex(Complex src) {
+        this(src.re, src.im);
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -74,9 +78,9 @@ public class Complex {
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
-    public Complex times(Complex b) {
+    public Complex mul(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
@@ -92,5 +96,29 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Subtract operation
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Power operation
+     * @param power is required power
+     * @return this Complex object whose value is (this^power)
+     */
+    public Complex power(int power) {
+        Complex c = new Complex(this);
+        for (;--power > 0;) {
+            this.mul(c);
+        }
+        return this;
     }
 }
