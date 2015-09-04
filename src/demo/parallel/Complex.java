@@ -48,7 +48,13 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
+    public double GetReal() {
+        return re;
+    }
 
+    public double GetImaginary() {
+        return im;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -72,6 +78,29 @@ public class Complex {
     }
 
     /**
+     *
+     * @param b
+     * @return
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     *
+     * @param a
+     * @return
+     */
+     public Complex sin_cos(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.cos(a.re)*Math.cosh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -93,4 +122,6 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
 }
