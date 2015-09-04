@@ -269,8 +269,11 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+        // (edb) here is formula
         do {
-            c = c.times(c).plus(comp);
+            // was c = c*c + comp
+            // become c = (c + comp)*c + 2 * comp
+            c = c.plus(comp).times(c).plus(comp).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -284,8 +287,6 @@ class MandelbrotSetTask extends Task<Long> {
      * @return calculated color of the pixel
      */
     private Color calcPixel(double x, double y) {
-        // (edb) wtf is minR & minI
-        // check: maybe it's formula
         double re = (minR * (width - x) + x * maxR) / width;
         double im = (minI * (height - y) + y * maxI) / height;
         Complex calPixel = new Complex(re, im);
@@ -334,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
     private Color getColor(int count) {
         if (count >= colors.length) {
             // (edb) inner space color
-            return Color.LIGHTGREY;
+            return Color.YELLOW;
         }
         return colors[count];
     }
