@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import static java.lang.Math.sin;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -71,6 +73,29 @@ public class Complex {
         return this;
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     *
+     * @param a
+     * @return
+     */
+     public Complex sin_cos(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.cos(a.re)*Math.cosh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
