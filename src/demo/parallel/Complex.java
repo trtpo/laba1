@@ -70,8 +70,21 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+            }
 
-    /**
+    static public Complex cos(Complex a) {
+        double real = Math.cos(a.re)*Math.cosh(a.im);
+        double imag = Math.sin(a.re)*Math.sinh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
+
+        /*
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
