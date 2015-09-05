@@ -80,12 +80,8 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
-        double real1 = real * b.re - imag * b.im;
-        double imag1 = real * b.im + imag * b.re;
-        double real2 = (real1 - b.re);
-        double imag2 = (imag1 - b.im);
-        re = real2;
-        im = imag2;
+        re = real;
+        im = imag;
         return this;
     }
 
