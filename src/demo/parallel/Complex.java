@@ -90,6 +90,14 @@ public class Complex {
      *
      */
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImage() {
+        return im;
+    }
+
     static public Complex cos(Complex b) {
         double real = Math.cos(b.re) - Math.cos(b.im);
         double imag = Math.sin(b.re) - Math.sin(b.im);
