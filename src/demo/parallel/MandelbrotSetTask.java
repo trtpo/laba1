@@ -91,8 +91,8 @@ class MandelbrotSetTask extends Task<Long> {
     private final int width, height;
     
     /**
-     * Rectangle range to exclude from calculations. Used to skip calculations
      * for parts of MandelbrotSet that are already calculated.
+     * Rectangle range to exclude from calculations. Used to skip calculations
      */
     private final double minX, minY, maxX, maxY;
     
@@ -275,7 +275,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).times(c).times(c).times(c).times(c).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
