@@ -49,6 +49,14 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double GetReal() {
+        return re;
+    }
+
+    public double GetImaginary() {
+        return im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -86,7 +94,7 @@ public class Complex {
         return this;
     }
 
-    public Complex sin(Complex a) {
+    public static Complex sin(Complex a) {
         double real = Math.sin(a.re)*Math.sinh(a.im);
         double imag = Math.cos(a.re)*Math.cosh(a.im);
         a.re = real;
@@ -94,7 +102,7 @@ public class Complex {
         return a;
     }
 
-    public Complex cos(Complex a) {
+    public static Complex cos(Complex a) {
         double real = Math.cos(a.re)*Math.cosh(a.im);
         double imag = Math.sin(a.re)*Math.sinh(a.im);
         a.re = real;
@@ -124,4 +132,7 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+
 }
