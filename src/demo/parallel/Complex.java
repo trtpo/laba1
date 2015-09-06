@@ -28,7 +28,6 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
 
 
 /**
@@ -71,6 +70,20 @@ public class Complex {
         return this;
     }
 
+
+    public Complex min(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.sin(a.re)*Math.sinh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
