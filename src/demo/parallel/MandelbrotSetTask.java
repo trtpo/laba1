@@ -333,9 +333,9 @@ class MandelbrotSetTask extends Task<Long> {
      * {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
-    private Color getColor(int count) {
+    private Color getColor(int count) {                     //изменение внутреннего цвета
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.ALICEBLUE;
         }
         return colors[count];
     }
@@ -352,11 +352,11 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.AQUA,
             Color.WHITE,
-            Color.RED,
+            Color.AZURE,
             Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.GREEN,
             Color.rgb(50, 0, 0)
         };
         
