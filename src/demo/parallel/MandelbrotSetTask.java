@@ -64,7 +64,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
-     * disk of radius 2 around the origin plus some area around, so 
+     * disk of radius 2 around the origin plus some area around, so
      * LENGTH_BOUNDARY is 6.
      */
     private static final double LENGTH_BOUNDARY = 6d;
@@ -352,11 +352,11 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
+            Color.BLUE,
             Color.RED,
-            Color.WHITE,
-            Color.RED,
+            Color.YELLOW,
             Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.WHITE,
             Color.rgb(50, 0, 0)
         };
         
