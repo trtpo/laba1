@@ -275,14 +275,14 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).plus(comp).times(c.plus(comp.times(c).minus(c))).divide(c);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
     /**
-     * Calculates a color of a given pixel on the image using 
+     * Calculates a color of a given pixel on the image using ololo
      * {@link #calc(demo.parallel.Complex) } method.
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.DARKGOLDENROD;
         }
         return colors[count];
     }
@@ -352,11 +352,11 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.GREENYELLOW,
             Color.WHITE,
-            Color.RED,
+            Color.AQUA,
             Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.DEEPSKYBLUE,
             Color.rgb(50, 0, 0)
         };
         
