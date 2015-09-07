@@ -70,6 +70,14 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * b.im + a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
 
     /**
      * Multiply operation.
