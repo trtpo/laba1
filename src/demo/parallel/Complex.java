@@ -86,6 +86,23 @@ public class Complex {
     }
 
     /**
+     * Inversion operation.
+     * @return new Complex object whose value is {this.im, this.re}
+     */
+    public Complex inversion() {
+        return new Complex(im, re);
+    }
+
+    /**
+     * Subjugation operation.
+     * @param b subjugant
+     * @return new Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        return plus(new Complex(-b.re, -b.im));
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length

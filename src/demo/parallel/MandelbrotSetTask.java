@@ -277,11 +277,10 @@ class MandelbrotSetTask extends Task<Long> {
      * @return number of iterations a value stayed within a given disk.
      */
     private int calc(Complex comp) {
-
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = COEFF_A.times(c.times(c)).plus(c.times(COEFF_B)).plus(comp);
+            c = COEFF_A.times(c.times(c)).minus(c.times(COEFF_B).inversion()).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
