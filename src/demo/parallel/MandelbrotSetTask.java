@@ -262,6 +262,11 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
+     * Coefficients for quadratic equation
+     */
+    private static final Complex COEFF_A= new Complex(2, 0);
+    private static final Complex COEFF_B = new Complex(5, 5);
+    /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
      * 
@@ -272,10 +277,11 @@ class MandelbrotSetTask extends Task<Long> {
      * @return number of iterations a value stayed within a given disk.
      */
     private int calc(Complex comp) {
+
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = COEFF_A.times(c.times(c)).plus(c.times(COEFF_B)).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
