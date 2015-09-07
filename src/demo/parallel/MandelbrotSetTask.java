@@ -274,8 +274,9 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+        FractalFunction fractalFunction = new FractalFunction();
         do {
-            c = c.plus(comp).plus(c.involution(2));
+            c = fractalFunction.countFractalFunction(c, comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;

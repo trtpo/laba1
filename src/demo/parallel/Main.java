@@ -80,6 +80,7 @@ import javafx.scene.control.ProgressIndicator;
  */
 public class Main extends Application {
 
+    private UnitTests unitTests = new UnitTests();
     /**
      * Current position in fractal
      */
@@ -700,6 +701,9 @@ public class Main extends Application {
      * @param primaryStage
      */
     @Override public void start(Stage primaryStage) {
+
+        unitTests.runUnitTests();
+
         stageTitle = primaryStage.titleProperty();
 
         double minR = -2.4451320039285465;

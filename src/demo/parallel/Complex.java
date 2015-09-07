@@ -96,6 +96,14 @@ public class Complex {
         return this;
     }
 
+    public double returnImaginaryPart() {
+        return im;
+    }
+
+    public double returnRealPart() {
+        return re;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
