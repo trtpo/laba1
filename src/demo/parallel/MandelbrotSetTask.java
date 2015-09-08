@@ -31,11 +31,12 @@
 package demo.parallel;
 
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
+
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 
 /**
@@ -270,12 +271,16 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         // (edb) here is formula
-        do {
-            // was [c = (c + comp)*c + 2 * comp] [z = (z+c)z+2c]
-            // become [c = ((c^2 - comp)*c + comp)] [z = (z*z-c)z+c]
-            c = c.power(2).sub(comp).mul(c).plus(comp);
-            count++;
-        } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
+            do {
+                // was [c = (c + comp)*c + 2 * comp] [z = (z+c)z+2c]
+                // become [c = ((c^2 - comp)*c + comp)] [z = (z*z-c)z+c]
+                try {
+                    c = c.power(2).sub(comp).mul(c).plus(comp);
+                } catch (Exception e) {
+                    System.out.print("");
+                }
+                count++;
+            } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
