@@ -31,25 +31,18 @@
 package demo.parallel;
 
 
-import java.util.List;
-import java.util.Locale;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.concurrent.Worker;
 import javafx.geometry.HPos;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -60,10 +53,12 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
-import static java.lang.Math.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.concurrent.Worker;
-import javafx.scene.control.ProgressIndicator;
+
+import java.util.List;
+import java.util.Locale;
+
+import static java.lang.Math.log;
+import static java.lang.Math.sqrt;
 
 
 /**
@@ -286,7 +281,7 @@ public class Main extends Application {
         colIndex = colNonSpan;
         grid.add(parallelLabel, colIndex++, rowIndex);
         grid.add(parallelProgressBar, colIndex++, rowIndex);
-        grid.add(parallelTime, colIndex++, rowIndex);
+        grid.add(parallelTime, colIndex, rowIndex);
         rowIndex++;
         colIndex = 0;
         grid.add(region, colIndex, rowIndex);
@@ -313,7 +308,7 @@ public class Main extends Application {
     /**
      * Creates content of the scene.
      */
-    private Parent createContent(double minR, double minI, double maxR, double maxI) {
+    private Parent createContent(Position pos) {
 
         Parent controlPane = createControlPane();
 
@@ -323,7 +318,7 @@ public class Main extends Application {
         render(() -> {
             wiGlobalSnapshot = new WritableImage(wiOffscreen.getPixelReader(), (int) winWidth, (int) winHeight);
             ivGlobalSnapshot.setImage(wiGlobalSnapshot);
-            flyToPosition(minR, minI, maxR, maxI);
+            flyToPosition(pos);
         });
         global = new Position(position);
 
@@ -407,16 +402,16 @@ public class Main extends Application {
         clearComparisonValues();
         switch (loc) {
             case 0:
-                flyToPosition(-2.4451320039285465, -1.3061943784663503, 0.9425352568739851, 1.2879652356695286);
+                flyToPosition(new Position(-0.2713788449121427, -0.01019547123763409, 0.0021617996784465657));
                 break;
             case 1:
-                flyToPosition(-1.4831212866723549, -0.026946715467747517, -1.4831211655199326, -0.026946649881416845);
+                flyToPosition(new Position(0.06864859982351847, -0.39535048426086794, 1.688905998786387E-5));
                 break;
             case 2:
-                flyToPosition(-0.6512456310112382, -0.4797642161720457, -0.651219785161165, -0.4797444243048724);
+                flyToPosition(new Position(-0.3611895471372317, -0.5043144000066001, 9.503638266477876E-5));
                 break;
             case 3:
-                flyToPosition(0.38835929484388515, -0.23577130937499838, 0.39102329484388804, -0.2337313093749984);
+                flyToPosition(new Position(-0.47563094994061417, -0.5381196458984463, 1.3194578115542497E-7));
                 break;
         }
     }
@@ -742,7 +737,7 @@ public class Main extends Application {
             }
         }
         
-        Scene scene = new Scene(createContent(minR, minI, maxR, maxI), MandelbrotSetTask.colors[1]);
+        Scene scene = new Scene(createContent((new Position(-0.2713788449121427, -0.01019547123763409, 0.0021617996784465657))), MandelbrotSetTask.colors[1]);
         scene.setOnKeyPressed(t -> {
             if (t.getCode() == KeyCode.I) {
                 printInfo();
@@ -824,6 +819,15 @@ public class Main extends Application {
     private void flyToPosition(double minR, double minI, double maxR, double maxI) {
         Position from = new Position(position);
         Position to = new Position(minR, minI, maxR, maxI);
+        if (!from.equals(to)) {
+            flyingAnimation = new FlyingAnimation(from, to);
+            flyingAnimation.start();
+        }
+    }
+
+    private void flyToPosition(Position toPosition) {
+        Position from = new Position(this.position);
+        Position to = new Position(toPosition);
         if (!from.equals(to)) {
             flyingAnimation = new FlyingAnimation(from, to);
             flyingAnimation.start();

@@ -31,20 +31,15 @@
 package demo.parallel;
 
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
- * its calculated value.
- * 
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
@@ -70,7 +65,7 @@ class MandelbrotSetTask extends Task<Long> {
     private static final double LENGTH_BOUNDARY = 6d;
 
     /**
-     * For antialiasing we break each pixel into 3x3 grid and interpolate 
+     * For antialiasing we break each pixel into 3x3 grid and interpolate
      * between values calculated on those grid positions
      */
     private static final int ANTIALIASING_BASE = 3;
@@ -218,6 +213,7 @@ class MandelbrotSetTask extends Task<Long> {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
+                    // (edb) this color used while window is updating
                     pixelWriter.setColor(x, y, Color.TRANSPARENT);
                 }
             }
@@ -274,10 +270,17 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
-        do {
-            c = c.times(c).plus(comp);
-            count++;
-        } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
+        // (edb) here is formula
+            do {
+                // was [c = (c + comp)*c + 2 * comp] [z = (z+c)z+2c]
+                // become [c = ((c^2 - comp)*c + comp)] [z = (z*z-c)z+c]
+                try {
+                    c = c.power(2).sub(comp).mul(c).plus(comp);
+                } catch (Exception e) {
+                    System.out.print("");
+                }
+                count++;
+            } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
@@ -305,6 +308,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color calcAntialiasedPixel(int x, int y) {
         double step = 1d / ANTIALIASING_BASE;
+        // (edb) look at this
         double N = ANTIALIASING_BASE * ANTIALIASING_BASE;
         double r = 0, g = 0, b = 0;
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
@@ -335,7 +339,8 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            // (edb) inner space color
+            return Color.YELLOW;
         }
         return colors[count];
     }
@@ -351,13 +356,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(30, 10, 40),
+            Color.BLUEVIOLET,
+            Color.DODGERBLUE,
+            Color.LIGHTBLUE,
+            Color.rgb(75, 25, 100),
+            Color.YELLOWGREEN,
+            Color.rgb(37, 12, 50)
         };
         
         /**

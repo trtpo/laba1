@@ -30,7 +30,6 @@
  */
 package demo.parallel;
 
-
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -60,6 +59,10 @@ public class Complex {
         im = imag;
     }
 
+    public Complex(Complex src) {
+        this(src.re, src.im);
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -68,20 +71,22 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        if (!Double.isFinite(re) && !Double.isFinite(im)) throw new ArithmeticException("Invalid complexes addition result");
         return this;
     }
 
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
-    public Complex times(Complex b) {
+    public Complex mul(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        if (!Double.isFinite(re) && !Double.isFinite(im)) throw new ArithmeticException("Invalid complexes multiply result");
         return this;
     }
 
@@ -92,5 +97,73 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Subtract operation
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        if (!Double.isFinite(re) && !Double.isFinite(im)) throw new ArithmeticException("Invalid complexes subtraction result");
+        return this;
+    }
+
+    /**
+     * Power operation
+     * @param power is required power
+     * @return this Complex object whose value is (this^power)
+     */
+    public Complex power(int power) {
+        Complex c = new Complex(this);
+        for (;--power > 0;) {
+            this.mul(c);
+        }
+        return this;
+    }
+
+    public Complex div(Complex b) {
+        Complex a = this;
+        double divider = b.lengthSQ();
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (a.im * b.re - a.re * b.im) / divider;
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
+
+    public double real() {
+        return this.re;
+    }
+
+    public double imag() {
+        return this.im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Complex complex = (Complex) o;
+        return complex.re == re && complex.im == im;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(re);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(im);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return ('(' + Double.toString(re) + ',' + Double.toString(im) + ')');
     }
 }
