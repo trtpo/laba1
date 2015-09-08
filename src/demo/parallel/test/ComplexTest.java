@@ -1,3 +1,5 @@
+package demo.parallel.test;
+
 import demo.parallel.Complex;
 
 import static org.junit.Assert.*;
@@ -6,38 +8,32 @@ import static org.junit.Assert.*;
  * Created by Anton Tsarikovich on 07.09.2015.
  */
 public class ComplexTest {
+    private final double delta = 1E-7;
 
-    @org.junit.Test
-    public void testPlus() throws Exception {
-        Complex complex = new Complex(1,1);
-        Complex a = complex.plus(complex);
-
-        assertEquals(complex,a);
-    }
 
     @org.junit.Test
     public void testDiv() throws Exception {
         Complex complex = new Complex(1,123);
-        Complex a = complex.div(complex);
+        Complex copyComplex = new Complex(1,123);
+        Complex someComplex = new Complex(2,4);
 
-        assertEquals(complex,a);
+        complex.times(someComplex).div(someComplex);
 
+        assertEquals(complex.getRe(), copyComplex.getRe(), delta);
+        assertEquals(complex.getIm(), copyComplex.getIm(), delta);
 
     }
 
     @org.junit.Test
     public void testSub() throws Exception {
         Complex complex = new Complex(1,1);
-        Complex a = complex.sub(complex);
+        Complex someComplex = new Complex(1,1);
+        Complex copyComplex = new Complex(1,7);
 
-        assertEquals(complex,a);
+        complex.sub(copyComplex).plus(copyComplex);
+        assertEquals(complex.getRe(), someComplex.getRe(), delta);
+        assertEquals(complex.getIm(),someComplex.getIm(),delta);
     }
 
-    @org.junit.Test
-    public void testTimes() throws Exception {
-        Complex complex = new Complex(1,4);
-        Complex a = complex.times(complex);
 
-        assertEquals(complex,a);
-    }
 }
