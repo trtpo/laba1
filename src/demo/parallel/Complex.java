@@ -28,7 +28,6 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
 
 
 /**
@@ -61,6 +60,19 @@ public class Complex {
     }
 
     /**
+     *
+     * @param a
+     * @return
+     */
+    public Complex sin_cos(Complex a) {
+                double real = Math.sin(a.re)*Math.sinh(a.im);
+                double imag = Math.cos(a.re)*Math.cosh(a.im);
+                a.re = real;
+                a.im = imag;
+                return a;
+            }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -68,6 +80,17 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     *
+     * @param b
+     * @return
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
