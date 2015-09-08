@@ -71,6 +71,9 @@ public class Complex {
         return this;
     }
 
+    public double getRe() { return this.re; }
+    public double getIm() { return this.im; }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +87,20 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+                Complex a = this;
+                double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+                double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+                re = real;
+                im = imag;
+                return this;
+            }
 
     /**
      * Square of Complex object's length, we're using square of length to 
