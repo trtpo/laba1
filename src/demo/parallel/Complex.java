@@ -60,6 +60,16 @@ public class Complex {
         im = imag;
     }
 
+    public double get_real()
+    {
+        return this.re;
+    }
+
+    public double get_imagine()
+    {
+        return this.im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -76,6 +86,8 @@ public class Complex {
         im -= b.im;
         return this;
     }
+
+
 
     public Complex division(Complex b) {
         Complex a = this;
