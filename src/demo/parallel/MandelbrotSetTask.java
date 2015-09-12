@@ -276,6 +276,7 @@ class MandelbrotSetTask extends Task<Long> {
         Complex c = new Complex(0, 0);
         do {
             c = c.times(c).plus(comp);
+	    c = c.times(c).div(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -310,7 +311,6 @@ class MandelbrotSetTask extends Task<Long> {
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
                 Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
-                r += c.getRed() / N;
                 g += c.getGreen() / N;
                 b += c.getBlue() / N;
             }
@@ -352,11 +352,11 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.GREEN,
             Color.WHITE,
-            Color.RED,
+            Color.GREEN,
             Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.GREEN,
             Color.rgb(50, 0, 0)
         };
         
