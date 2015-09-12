@@ -90,6 +90,16 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+
+	public Complex div(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(a.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(a.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
     public double lengthSQ() {
         return re * re + im * im;
     }
