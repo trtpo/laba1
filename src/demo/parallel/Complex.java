@@ -66,9 +66,16 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
-        return this;
+        Complex comp = new Complex(0,0);
+        comp.re = this.re + b.re;
+        comp.im = this.im + b.im;
+        return comp;
+    }
+    public Complex minus(Complex b) {
+        Complex comp = new Complex(0,0);
+        comp.re = this.re - b.re;
+        comp.im = this.im - b.im;
+        return comp;
     }
 
     /**
@@ -77,12 +84,10 @@ public class Complex {
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
-        return this;
+        Complex a = new Complex(0,0);
+        a.re = this.re * b.re - this.im * b.im;
+        a.im = this.re * b.im + this.im * b.re;
+        return a;
     }
 
     /**
