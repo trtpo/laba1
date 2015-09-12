@@ -71,6 +71,12 @@ public class Complex {
         comp.im = this.im + b.im;
         return comp;
     }
+    public Complex minus(Complex b) {
+        Complex comp = new Complex(0,0);
+        comp.re = this.re - b.re;
+        comp.im = this.im - b.im;
+        return comp;
+    }
 
     /**
      * Multiply operation.
