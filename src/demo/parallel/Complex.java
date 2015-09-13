@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    public double re;   // the real part
-    public double im;   // the imaginary part
+    private double re;   // the real part
+    private double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -65,12 +65,12 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
-    protected Complex plus(Complex b) {
+    public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
         return this;
     }
-    
+
     public Complex sub(Complex b) {
         re -= b.re;
         im -= b.im;
