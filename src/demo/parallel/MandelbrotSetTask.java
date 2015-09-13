@@ -146,7 +146,8 @@ class MandelbrotSetTask extends Task<Long> {
      * @param maxY max y value of the rectangular area to skip
      * @param fast fast mode disables antialiasing
      */
-    public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
+    public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI,
+                             double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
         this.parallel = parallel;
         this.pixelWriter = pixelWriter;
         this.width = width;
@@ -275,7 +276,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).times(c.times(comp)).plus(c.times(c)).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -310,9 +311,9 @@ class MandelbrotSetTask extends Task<Long> {
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
                 Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
-                r += c.getRed() / N;
+                r += c.getBlue() / N;
                 g += c.getGreen() / N;
-                b += c.getBlue() / N;
+                b += c.getRed() / N;
             }
         }
         return new Color(clamp(r), clamp(g), clamp(b), 1);
@@ -335,7 +336,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.DARKVIOLET;
         }
         return colors[count];
     }
@@ -351,13 +352,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(40, 60, 90),
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.GREEN,
+            Color.AQUA,
+            Color.rgb(100, 70, 40),
+            Color.YELLOW,
+            Color.rgb(50, 60, 70)
         };
         
         /**
