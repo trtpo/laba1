@@ -71,6 +71,11 @@ public class Complex {
         return this;
     }
 
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
