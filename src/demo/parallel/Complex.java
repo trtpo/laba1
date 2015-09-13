@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Operation of getting image part
+     * @return image part of this complex object
+     */
+    public double getImage(){
+        return im;
+    }
+
+    /**
+     * Operation of getting real part
+     * @return real part of this complex object
+     */
+    public double getReal(){
+        return re;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -84,7 +100,19 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    /**
+     * Division operation.
+     * @param  second divider
+     * @return this Complex object whose value is this / second
+     */
+     public Complex div(Complex second) {
+               Complex first = this;
+               double real = (first.re * second.re + first.im * second.im) / (second.re * second.re + second.im * second.im);
+               double imaginary = (first.im * second.re - first.re * second.im) / (second.re * second.re + second.im * second.im);
+               re = real;
+               im = imaginary;
+               return this;
+          }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
