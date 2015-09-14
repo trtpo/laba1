@@ -71,6 +71,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        double real = re - b.re;
+        double imag = im - b.im;
+        return new Complex(real, imag);
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -83,6 +89,12 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public Complex div(Complex b) {
+        double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * im - b.im * re) / (b.re * b.re + b.im * b.im);
+        return new Complex(real, imag);
     }
 
     /**
