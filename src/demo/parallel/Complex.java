@@ -45,20 +45,23 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
     }
+
+    public double getRe() { return re; }
+    public double getIm() { return im; }
 
     /**
      * Add operation.
@@ -86,10 +89,23 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * de Moivre's formula.
+     * @param  n exponent
+     * @return this Complex object whose value is this ^ n
+     */
+    public Complex deMoivres(long n) {
+        double rn = Math.pow(Math.sqrt(lengthSQ()), n);
+        double phi = Math.atan2(this.im, this.re);
+        this.re = rn * Math.cos(n * phi);
+        this.im = rn * Math.sin(n * phi);
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
