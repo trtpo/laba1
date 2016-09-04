@@ -4,10 +4,12 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by Vladimir on 04.09.2016.
  */
-public class ComplexTest extends TestCase {
+public class ComplexTest  {
     private Complex number;
     @Before
     public void setUp() throws Exception {
