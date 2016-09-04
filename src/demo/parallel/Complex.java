@@ -49,6 +49,11 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    @Override
+    public String toString(){
+        return re +  " + " + im + "i";
+    }
+
     /**
      * create a new object with the given real and imaginary parts
      *
