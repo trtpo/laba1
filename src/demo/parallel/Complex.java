@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -103,6 +105,15 @@ public class Complex {
     public Complex conjugate() {
         im = -im;
         return this;
+    }
+
+    public boolean equals(Object other){
+        Complex b = (Complex) other;
+        boolean status = false;
+        if ((re - b.re) < 0.0000001 && (im - b.im) < 0.0000001) {
+            status = true;
+        }
+        return status;
     }
 
     /**
