@@ -118,6 +118,7 @@ public class Main extends Application {
     /**
      * Calculation task
      */
+
     private MandelbrotSetTask task;
     
     /**
