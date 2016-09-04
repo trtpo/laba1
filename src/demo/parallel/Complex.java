@@ -74,7 +74,7 @@ public class Complex {
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this - b)
      */
     public Complex times(Complex b) {
         Complex a = this;
@@ -82,6 +82,17 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Substract operation.
+     * @param  b substracted
+     * @return this Complex object whose value is (this * b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
