@@ -93,6 +93,13 @@ public class Complex {
         return b;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
