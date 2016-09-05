@@ -85,6 +85,21 @@ public class Complex {
         return this;
     }
 
+    public Complex cos(Complex b) {
+        double real = Math.cos(b.re) * Math.cosh(b.im);
+        double imag = -(Math.sin(b.re) * Math.sinh(b.im));
+        b.re = real;
+        b.im = imag;
+        return b;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
