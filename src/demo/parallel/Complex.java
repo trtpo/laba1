@@ -44,6 +44,7 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 public class Complex {
 
     private double re;   // the real part
