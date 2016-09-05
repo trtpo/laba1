@@ -60,6 +60,8 @@ public class Complex {
         im = imag;
     }
 
+
+
     /**
      * Add operation.
      * @param b summand
@@ -69,6 +71,14 @@ public class Complex {
         re += b.re;
         im += b.im;
         return this;
+    }
+
+    public double getReal() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
     }
 
     /**
@@ -84,6 +94,20 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    public Complex sin(Complex b) {
+        double re = Math.sin(b.re) * Math.cosh(b.im);
+        double im = Math.cos(b.re) * Math.sinh(b.im);
+        b.re = re;
+        b.im = im;
+        return b;
+    }
+
+    public Complex reDiv(Complex b, double value) {
+        b.re /= value ;
+        return b;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
