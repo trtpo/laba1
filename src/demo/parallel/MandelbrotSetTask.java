@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.DARKGRAY;
         }
         return colors[count];
     }
@@ -351,13 +351,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(216, 198, 59),
+            Color.rgb(59, 195, 216),
+            Color.rgb(216, 119, 59),
+            Color.rgb(59, 195, 216),
+            Color.rgb(117, 216, 59),
+            Color.rgb(59, 195, 216),
+            Color.rgb(216, 59, 117)
         };
         
         /**
