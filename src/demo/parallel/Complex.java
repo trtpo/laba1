@@ -71,6 +71,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.re;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
