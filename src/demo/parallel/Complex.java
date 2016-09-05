@@ -61,13 +61,24 @@ public class Complex {
     }
 
     /**
-     * Add operation.
+     * Minus operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -80,6 +91,20 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param b divider
+     * @return this Complex object whoese value is this / b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+        double imag = (b.re * a.im - b.im * a.re) / b.lengthSQ();
         re = real;
         im = imag;
         return this;
