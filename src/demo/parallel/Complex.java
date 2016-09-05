@@ -93,6 +93,11 @@ public class Complex {
         return b;
     }
 
+    public Complex reDiv(Complex b, double value) {
+        b.re /= value ;
+        return b;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
