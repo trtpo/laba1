@@ -83,6 +83,22 @@ public class Complex {
     }
 
     /**
+     * Get the real part
+     * @return double
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Get the im part
+     * @return double
+     */
+    public double getIm(){
+        return im;
+    }
+
+    /**
      * Sinus operation.
      * @param b
      * @return this Complex object
