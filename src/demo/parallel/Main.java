@@ -33,6 +33,7 @@ package demo.parallel;
 
 import java.util.List;
 import java.util.Locale;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
@@ -60,7 +61,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+
 import static java.lang.Math.*;
+
 import javafx.beans.property.BooleanProperty;
 import javafx.concurrent.Worker;
 import javafx.scene.control.ProgressIndicator;
@@ -68,14 +71,14 @@ import javafx.scene.control.ProgressIndicator;
 
 /**
  * UI main class for MandelbrotSet demo.
- * 
+ *
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
- * 
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Main extends Application {
@@ -84,7 +87,7 @@ public class Main extends Application {
      * Current position in fractal
      */
     private Position position;
-    
+
     /**
      * Position that shows the whole fractal
      */
@@ -119,12 +122,12 @@ public class Main extends Application {
      * Calculation task
      */
     private MandelbrotSetTask task;
-    
+
     /**
      * Sequential calculation task
      */
     private MandelbrotSetTask sequentialTask;
-    
+
     /**
      * Parallel calculation task
      */
@@ -134,17 +137,17 @@ public class Main extends Application {
      * Image to draw fractal offscreen
      */
     private WritableImage wiOffscreen;
-    
+
     /**
      * Snapshot of the last fractal image
      */
     private WritableImage wiSnapshot;
-    
+
     /**
      * Snapshot of the whole fractal
      */
     private WritableImage wiGlobalSnapshot;
-    
+
     /**
      * Parameters used to make fractal snapshots
      */
@@ -154,12 +157,12 @@ public class Main extends Application {
      * Canvas to present fractal on screen
      */
     private Canvas canvas;
-    
+
     /**
      * Image view to present canvas snapshot on screen
      */
     private ImageView ivCanvasSnapshot = new ImageView();
-    
+
     /**
      * Image view to present whole fractal snapshot during fly animation
      */
@@ -169,7 +172,7 @@ public class Main extends Application {
      * Old rootPane origin coordinates
      */
     private double oldX, oldY;
-    
+
     /**
      * New rootPane origin coordinates
      */
@@ -179,42 +182,42 @@ public class Main extends Application {
      * Property to disable all app controls during fly animation
      */
     private BooleanProperty disable;
-    
+
     /**
      * Property to update stage title
      */
-    private StringProperty stageTitle;    
-    
+    private StringProperty stageTitle;
+
     /**
      * Time bar relative length for parallel calculation
      */
     private DoubleProperty parallelTimeBar;
-    
+
     /**
      * Time bar relative length for sequential calculation
      */
     private DoubleProperty sequentialTimeBar;
-    
+
     /**
      * Progress of the current task
      */
     private DoubleProperty progress;
-    
+
     /**
      * Time in milliseconds of parallel calculation
      */
     private final LongProperty parallelTimeValue = new SimpleLongProperty();
-    
+
     /**
      * Time in milliseconds of sequential calculation
      */
     private final LongProperty sequentialTimeValue = new SimpleLongProperty();
-    
+
     /**
      * Total time of sequential calculation (for comparison)
      */
     private double sequentialTotalTime;
-    
+
     /**
      * Instance of current flying animation
      */
@@ -422,9 +425,9 @@ public class Main extends Application {
     }
 
     /**
-     * The following method is invoked each JavaFX frame to update current image 
+     * The following method is invoked each JavaFX frame to update current image
      * with what was done on other threads.
-     * 
+     *
      * It also reacts on window resize
      */
     private void handleFrame() {
@@ -545,7 +548,7 @@ public class Main extends Application {
 
         double minR = position.getMinReal() + position.scale * moveX;
         double minI = position.getMinImg() + position.scale * moveY;
-        
+
         double oldWidth = winWidth;
         double oldHeight = winHeight;
         winWidth = rootPane.getWidth();
@@ -599,6 +602,7 @@ public class Main extends Application {
 
     /**
      * Stops (cancels) the current task.
+     *
      * @return true if there was unfinished task running
      */
     private boolean stopTask() {
@@ -613,6 +617,7 @@ public class Main extends Application {
 
     /**
      * Renders the whole image for the current position in parallel mode.
+     *
      * @param onDone Runnable to execute when task finishes
      */
     private void render(Runnable onDone) {
@@ -621,17 +626,19 @@ public class Main extends Application {
 
     /**
      * Renders the whole image for the current position with given parameters.
+     *
      * @param compareMode comparison mode
-     * @param parallel parallel mode vs. sequential
-     * @param onDone Runnable to execute when task is finished
+     * @param parallel    parallel mode vs. sequential
+     * @param onDone      Runnable to execute when task is finished
      */
     private void render(boolean compareMode, boolean parallel, Runnable onDone) {
         render(compareMode, parallel, onDone, 0, 0, 0, 0, false);
     }
 
     /**
-     * Renders the whole image for the current position in fast mode (not 
+     * Renders the whole image for the current position in fast mode (not
      * antialiased)
+     *
      * @param onDone Runnable to execute when task is finished
      */
     private void renderFast(Runnable onDone) {
@@ -639,31 +646,31 @@ public class Main extends Application {
     }
 
     /**
-     * Renders the whole image except for a rectangular area 
+     * Renders the whole image except for a rectangular area
      * for the current position in parallel mode
-     * 
+     *
      * @param onDone Runnable to execute when task is finished
-     * @param minX min x coordinate of a rectangular area to be skipped
-     * @param minY min y coordinate of a rectangular area to be skipped
-     * @param maxX max x coordinate of a rectangular area to be skipped
-     * @param maxY max y coordinate of a rectangular area to be skipped
+     * @param minX   min x coordinate of a rectangular area to be skipped
+     * @param minY   min y coordinate of a rectangular area to be skipped
+     * @param maxX   max x coordinate of a rectangular area to be skipped
+     * @param maxY   max y coordinate of a rectangular area to be skipped
      */
     private void render(Runnable onDone, double minX, double minY, double maxX, double maxY) {
         render(false, true, onDone, minX, minY, maxX, maxY, false);
     }
-    
+
     /**
-     * Renders a MandelbrotSet image using provided parameters. See {@link 
+     * Renders a MandelbrotSet image using provided parameters. See {@link
      * MandelbrotSetTask} for more information.
-     * 
+     *
      * @param compareMode true if in comparison mode
-     * @param parallel true for parallel, false for sequential
-     * @param onDone Runnable to execute when task is finished
-     * @param minX min x coordinate of a rectangular area to be skipped
-     * @param minY min y coordinate of a rectangular area to be skipped
-     * @param maxX max x coordinate of a rectangular area to be skipped
-     * @param maxY max y coordinate of a rectangular area to be skipped
-     * @param fast true to disable antialiasing
+     * @param parallel    true for parallel, false for sequential
+     * @param onDone      Runnable to execute when task is finished
+     * @param minX        min x coordinate of a rectangular area to be skipped
+     * @param minY        min y coordinate of a rectangular area to be skipped
+     * @param maxX        max x coordinate of a rectangular area to be skipped
+     * @param maxY        max y coordinate of a rectangular area to be skipped
+     * @param fast        true to disable antialiasing
      */
     private void render(boolean compareMode, boolean parallel, Runnable onDone, double minX, double minY, double maxX, double maxY, boolean fast) {
         // double checking
@@ -697,9 +704,9 @@ public class Main extends Application {
 
     /**
      * {@inheritDoc}
-     * @param primaryStage
      */
-    @Override public void start(Stage primaryStage) {
+    @Override
+    public void start(Stage primaryStage) {
         stageTitle = primaryStage.titleProperty();
 
         double minR = -2.4451320039285465;
@@ -741,7 +748,7 @@ public class Main extends Application {
                 return;
             }
         }
-        
+
         Scene scene = new Scene(createContent(minR, minI, maxR, maxI), MandelbrotSetTask.colors[1]);
         scene.setOnKeyPressed(t -> {
             if (t.getCode() == KeyCode.I) {
@@ -786,7 +793,7 @@ public class Main extends Application {
     private void rerender() {
         rerender(false, true, null);
     }
-    
+
     private void rerender(boolean compareMode, boolean parallel, Runnable onDone) {
         stopTask();
         canvas.getGraphicsContext2D().setFill(Color.rgb(0, 0, 0, 0.5));
@@ -803,9 +810,9 @@ public class Main extends Application {
 
     /**
      * {@inheritDoc }
-     * @throws java.lang.Exception
      */
-    @Override public void stop() throws Exception {
+    @Override
+    public void stop() throws Exception {
         super.stop();
         if (task != null) {
             task.cancel(true);
@@ -851,11 +858,6 @@ public class Main extends Application {
 
         /**
          * Fits the given real and imaginary intervals into the current viewport
-         *
-         * @param minR
-         * @param minI
-         * @param maxR
-         * @param maxI
          */
         public Position(double minR, double minI, double maxR, double maxI) {
             real = (minR + maxR) / 2;
@@ -906,8 +908,7 @@ public class Main extends Application {
         }
 
         /**
-         * @return imaginary value corresponding to the bottom side of the
-         * viewport
+         * @return imaginary value corresponding to the bottom side of the viewport
          */
         private double getMaxImg() {
             return img + scale * winHeight / 2;
@@ -1168,7 +1169,7 @@ public class Main extends Application {
                 canvas.setTranslateX(0);
                 canvas.setTranslateY(0);
                 canvas.setScaleX(1);
-                canvas.setScaleY(1);   
+                canvas.setScaleY(1);
                 reset();
             }
         }
@@ -1177,13 +1178,13 @@ public class Main extends Application {
         public void stop() {
             super.stop();
         }
-        
+
         private void reset() {
             running = false;
             flyingAnimation = null;
             disable.set(false);
         }
-               
+
         private void finish() {
             stopTask();
             ivCanvasSnapshot.setTranslateX(canvas.getTranslateX());
