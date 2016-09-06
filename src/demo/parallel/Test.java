@@ -17,4 +17,9 @@ public class Test {
         assertEquals(-11,complex.minus(new Complex(10,2)).getIm(), 0);
     }
 
+    @org.junit.Test
+    public void testFailMinus() throws Exception {
+        assertEquals(-13,complex.minus(new Complex(10,2)).getIm(), 0);
+    }
+
 }
