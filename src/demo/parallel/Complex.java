@@ -61,8 +61,8 @@ public class Complex {
     }
 
     /**
-     * Minus operation.
-     * @param b summand
+     * Add operation.
+     * @param  b summand
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
@@ -73,7 +73,7 @@ public class Complex {
 
     /**
      * Subtraction operation.
-     * @param b subtrahend
+     * @param  b subtrahend
      * @return this Complex object whose value is (this - b)
      */
     public Complex minus(Complex b) {
@@ -98,8 +98,8 @@ public class Complex {
 
     /**
      * Divide operation.
-     * @param b divider
-     * @return this Complex object whoese value is this / b
+     * @param  b divider
+     * @return this Complex object whose value is this / b
      */
     public Complex div(Complex b) {
         Complex a = this;
@@ -108,6 +108,13 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public boolean equals(Object other) {
+        Complex b = (Complex) other;
+        boolean approachZeroAbove = (re - b.re) < 0.0000001 && (im - b.im) < 0.0000001;
+        boolean approachZeroBelow = (re - b.re) > -0.0000001 && (im - b.im) > -0.0000001;
+        return (approachZeroAbove && approachZeroBelow);
     }
 
     /**
