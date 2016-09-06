@@ -64,7 +64,11 @@ public class Complex {
         im = imag;
     }
 
-    public Complex sin(Complex a) {
+    public double GetReal() {
+        return re;
+    }
+
+    public static Complex sin(Complex a) {
         double real = Math.sin(a.re)*Math.sinh(a.im);
         double imag = Math.cos(a.re)*Math.cosh(a.im);
         a.re = real;
