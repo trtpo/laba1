@@ -1,16 +1,20 @@
-public class ComplexTest {
+package demo.parallel;
 
-	private Complex complex;
+import static org.junit.Assert.*;
 
-	@org.junit.Before
-	public void setUp() {
-		complex = new Complex(0,0);
-	}
+public class Test {
 
-	@org.junit.Test
-	public void testMinus() throws Exception {
-		assertEquals(-1,complex.minus(new Complex(1,1)).getRe(), 0);
-		assertEquals(-3,complex.cos(new Complex(10,2)).getIm(), 0);
-	}
+    private Complex complex;
+
+    @org.junit.Before
+    public void setUp() {
+        complex = new Complex(0,0);
+    }
+
+    @org.junit.Test
+    public void testMinus() throws Exception {
+        assertEquals(-1,complex.minus(new Complex(1,1)).getRe(), 0);
+        assertEquals(-11,complex.minus(new Complex(10,2)).getIm(), 0);
+    }
 
 }
