@@ -48,7 +48,7 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
-
+    
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -82,6 +82,13 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
