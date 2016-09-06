@@ -30,6 +30,10 @@
  */
 package demo.parallel;
 
+import static java.lang.Math.sin;
+import static java.lang.Math.sinh;
+import static java.lang.Math.cos;
+import static java.lang.Math.cosh;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -58,6 +62,18 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    public double GetReal() {
+        return re;
+    }
+
+    public static Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.cos(a.re)*Math.cosh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
     }
 
     /**
