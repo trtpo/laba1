@@ -23,7 +23,7 @@ public class ComplexTest {
 
     @Test
     public void divide() throws Exception {
-        assertEquals(0.75,number.divide(new Complex(2,6)).getRe(),0.00001);
+        assertEquals(0.9,number.divide(new Complex(2,6)).getRe(),0.00001);
         assertEquals(-0.25,number.getIm(),0.00001);
     }
 
