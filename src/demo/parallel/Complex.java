@@ -72,6 +72,26 @@ public class Complex {
     }
 
     /**
+     * Add operation. Returns new object
+     * @param b summand
+     * @return new Complex object whose value is (this + b)
+     */
+    public Complex plusUnmod(Complex b) {
+        Complex c = new Complex(0, 0);
+        c.re = re + b.re;
+        c.im = im + b.im;
+        return c;
+    }
+
+    public double getRe(){
+        return re;
+    }
+
+    public double getImag(){
+        return im;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,7 +106,15 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square operation.
+     * @return this Complex object whose value is this * this
+     */
+    public Complex sqr() {
+        return this.times(this);
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
