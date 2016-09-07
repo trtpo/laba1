@@ -74,7 +74,7 @@ public class Complex {
     /**
      * Add operation. Returns new object
      * @param b summand
-     * @return this Complex object whose value is (this + b)
+     * @return new Complex object whose value is (this + b)
      */
     public Complex plusUnmod(Complex b) {
         Complex c = new Complex(0, 0);
@@ -92,6 +92,20 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this * b
+     */
+    public Complex sqr() {
+        Complex a = this;
+        double real = a.re * this.re - a.im * this.im;
+        double imag = a.re * this.im + a.im * this.re;
         re = real;
         im = imag;
         return this;
