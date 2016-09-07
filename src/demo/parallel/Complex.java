@@ -81,6 +81,7 @@ public class Complex {
         double image = Math.sin(this.re)*sh;
 
         return new Complex(real, image);
+
     }
 
     /**
@@ -116,4 +117,7 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getIm(){return im;}
+    public double getRe(){return re;}
 }
