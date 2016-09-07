@@ -83,6 +83,14 @@ public class Complex {
         return c;
     }
 
+    public double getRe(){
+        return re;
+    }
+
+    public double getImag(){
+        return im;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -98,21 +106,15 @@ public class Complex {
     }
 
     /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * Square operation.
+     * @return this Complex object whose value is this * this
      */
     public Complex sqr() {
-        Complex a = this;
-        double real = a.re * this.re - a.im * this.im;
-        double imag = a.re * this.im + a.im * this.re;
-        re = real;
-        im = imag;
-        return this;
+        return this.times(this);
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
