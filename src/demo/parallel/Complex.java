@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * minusimag operation.
+     * @param b minus imag param
+     * @return this Complex object whose value is (this +b)
+     */
+    public Complex minusimag(Complex b) {
+        re += b.re;
+        im -= b.im/5;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -92,5 +103,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getReal() {
+        return re;
     }
 }
