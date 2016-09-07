@@ -72,6 +72,18 @@ public class Complex {
     }
 
     /**
+     * Add operation. Returns new object
+     * @param b summand
+     * @return this Complex object whose value is (this + b)
+     */
+    public Complex plusUnmod(Complex b) {
+        Complex c = new Complex(0, 0);
+        c.re = re + b.re;
+        c.im = im + b.im;
+        return c;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
