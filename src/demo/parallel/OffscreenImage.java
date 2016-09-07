@@ -56,7 +56,4 @@ public class OffscreenImage {
     public int getHeight() {
         return height;
     }
-    
-    
-    
 }
