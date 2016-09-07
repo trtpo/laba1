@@ -119,4 +119,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /*
+    Get data.
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
+    }
 }
