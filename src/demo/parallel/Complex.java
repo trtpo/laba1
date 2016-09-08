@@ -84,12 +84,26 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex cos(Complex b) {
+        double real =  Math.sin(b.re) * Math.sinh(b.im);
+        double imag =  Math.sin(b.re) * Math.sinh(b.im);
+        b.re = real;
+        b.im = imag;
+        return b;
 
-    /**
-     * Square of Complex object's length, we're using square of length to 
-     * eliminate the computation of square root
-     * @return square of length
-    */
+    }
+    public Complex min(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+
+        /**
+         * Square of Complex object's length, we're using square of length to
+         * eliminate the computation of square root
+         * @return square of length
+        */
     public double lengthSQ() {
         return re * re + im * im;
     }
