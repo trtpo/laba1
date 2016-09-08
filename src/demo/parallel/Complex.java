@@ -71,6 +71,14 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
