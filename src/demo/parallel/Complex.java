@@ -85,6 +85,27 @@ public class Complex {
         return this;
     }
 
+    public Complex func(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public double getReal(){
+        return re;
+    }
+
+    public double getImage(){
+        return im;
+    }
+
+    public Complex cos(Complex b) {
+        double real = Math.cos(b.re)*Math.cosh(b.im);
+        double imag = Math.cos(b.re)*Math.cosh(b.im);
+        b.re = real;
+        b.im = imag;
+        return b;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
