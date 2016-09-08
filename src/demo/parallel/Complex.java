@@ -72,7 +72,7 @@ public class Complex {
     }
 
     /**
-     * Add operation.
+     * Subtraction operation.
      * @param b summand
      * @return this Complex object whose value is (this - b)
      */
@@ -97,16 +97,19 @@ public class Complex {
     }
 
     /**
-     * Multiply operation.
+     * Division operation.
      * @param  b multiplier
      * @return this Complex object whose value is this / b
      */
     public Complex division(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / b.lengthSQ();
-        double imag = (a.im * b.re - a.re * b.im) / b.lengthSQ();
-        re = real;
-        im = imag;
+        double div = b.lengthSQ();
+        if (div != 0.0) {
+            double real = (a.re * b.re + a.im * b.im) / div;
+            double imag = (a.im * b.re - a.re * b.im) / div;
+            re = real;
+            im = imag;
+        }
         return this;
     }
 
@@ -117,5 +120,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Get real part.
+     */
+    public double getRe(){
+        return this.re;
+    }
+
+    /**
+     * Get imaginary part/
+     */
+    public double getIm(){
+        return this.im;
     }
 }
