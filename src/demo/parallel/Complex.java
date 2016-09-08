@@ -93,4 +93,28 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Sine operation.
+     * @return Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    /**
+     * Cosine operation.
+     * @return Complex object whose value is the complex cosine of this
+     */
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    /**
+     * Scale operation.
+     * @return Object whose value is (this * alpha)
+     */
+    public Complex scale(double alpha) {
+        return new Complex(alpha * re, alpha * im);
+    }
 }
