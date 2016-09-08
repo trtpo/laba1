@@ -72,6 +72,21 @@ public class Complex {
     }
 
     /**
+     * Get the real part
+     * @return double
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Get the imaginary unit
+     * @return double
+     */
+    public double getIm(){
+        return im;
+    }
+    /**
      * Sinus operation
      * @param a calculated
      * @return this Complex object
