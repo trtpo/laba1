@@ -104,4 +104,19 @@ public class Complex {
         im -= b.im;
         return this;
     }
+    /**
+     * Method, which return the real part
+     * of comlex number
+     */
+    public double getRe() {
+      return this.re;
+    }
+    
+    /**
+     * Method, which return the imaginary part
+     * of comlex number
+     */
+    public double getIm() {
+      return this.im; 
+    }
 }
