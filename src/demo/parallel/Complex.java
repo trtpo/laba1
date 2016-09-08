@@ -84,12 +84,11 @@ public class Complex {
         im = imag;
         return this;
     }
-    public Complex cos(Complex b) {
-        double real =  Math.sin(b.re) * Math.sinh(b.im);
-        double imag =  Math.sin(b.re) * Math.sinh(b.im);
-        b.re = real;
-        b.im = imag;
-        return b;
+    public Complex cos() {
+        double real =  Math.cos(this.re) * Math.cosh(this.im);
+        double imag =  -Math.sin(this.re) * Math.sinh(this.im);
+
+        return this;
 
     }
     public Complex min(Complex b) {
@@ -107,4 +106,8 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getIm(){return im;}
+    public double getRe(){return re;}
+
 }
