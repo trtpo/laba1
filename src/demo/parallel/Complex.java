@@ -93,4 +93,30 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    
+    /**
+     * Minus operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    /**
+     * Method, which return the real part
+     * of comlex number
+     */
+    public double getRe() {
+      return this.re;
+    }
+    
+    /**
+     * Method, which return the imaginary part
+     * of comlex number
+     */
+    public double getIm() {
+      return this.im; 
+    }
 }
