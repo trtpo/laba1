@@ -1,0 +1,10 @@
+<application>
+  <component name="GeneralSettings">
+    <option name="autoSaveIfInactive" value="true" />
+    <option name="inactiveTimeout" value="30" />
+  </component>
+  <component name="Registry">
+    <entry key="SBT.system.in.process" value="true" />
+    <entry key="ide.firstStartup" value="false" />
+  </component>
+</application>
