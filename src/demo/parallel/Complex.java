@@ -61,6 +61,45 @@ public class Complex {
     }
 
     /**
+     * Minus operation
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Get the real part
+     * @return double
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Get the imaginary unit
+     * @return double
+     */
+    public double getIm(){
+        return im;
+    }
+    /**
+     * Sinus operation
+     * @param a calculated
+     * @return this Complex object
+     */
+    public Complex sin(Complex a) {
+         double real = Math.sin(a.re)*Math.sinh(a.im);
+         double imag = Math.sin(a.re)*Math.sinh(a.im);
+         a.re = real;
+         a.im = imag;
+         return a;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
