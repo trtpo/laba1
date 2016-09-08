@@ -59,6 +59,30 @@ public class Complex {
         re = real;
         im = imag;
     }
+    /**
+     * sin complex number
+     * @return new Complex number
+     */
+    public Complex sin() {
+        double ch = (Math.exp(this.im) + Math.exp(-this.im))/2;
+        double sh = (Math.exp(this.im) - Math.exp(-this.im))/2;
+
+        double real = Math.sin(this.re)*ch;
+        double image = Math.cos(this.re)*sh;
+
+        return new Complex(real, image);
+    }
+
+    public Complex cos() {
+        double ch = (Math.exp(this.im) + Math.exp(-this.im))/2;
+        double sh = (Math.exp(this.im) - Math.exp(-this.im))/2;
+
+        double real = Math.cos(this.re)*ch;
+        double image = Math.sin(this.re)*sh;
+
+        return new Complex(real, image);
+
+    }
 
     /**
      * Add operation.
@@ -93,4 +117,7 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getIm(){return im;}
+    public double getRe(){return re;}
 }
