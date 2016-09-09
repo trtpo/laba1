@@ -31,11 +31,13 @@
 package demo.parallel;
 
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
+
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 
 /**
@@ -126,6 +128,16 @@ class MandelbrotSetTask extends Task<Long> {
      * Progress of the task
      */
     private final AtomicInteger progress = new AtomicInteger(0);
+
+    /**
+     * Random numbers generator, used for new colors every launch! :)
+     */
+    private static Random gener = new Random();
+
+    /**
+     * Color of non-fractal image
+     */
+    private static Color backColor = Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255));
 
     /**
      * Creates a task to render a MandelBrot set into an image using given
@@ -275,7 +287,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.power(3).plus(comp).divideBy(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -334,8 +346,9 @@ class MandelbrotSetTask extends Task<Long> {
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {
+
         if (count >= colors.length) {
-            return Color.BLACK;
+            return backColor;
         }
         return colors[count];
     }
@@ -351,13 +364,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255))
         };
         
         /**
