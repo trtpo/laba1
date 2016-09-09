@@ -60,6 +60,11 @@ public class Complex {
         im = imag;
     }
 
+    public boolean equals(Complex c) {
+        if (this.im == c.im && this.re == c.re) return true;
+        else return false;
+    }
+
     /**
      * Add operation.
      * @param b summand
