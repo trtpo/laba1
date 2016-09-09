@@ -60,7 +60,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
      */
-    private static final int CAL_MAX_COUNT = 256;
+    private static final int CAL_MAX_COUNT = 56;
 
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
