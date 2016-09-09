@@ -45,9 +45,17 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -117,4 +125,5 @@ public class Complex {
     public Complex scale(double alpha) {
         return new Complex(alpha * re, alpha * im);
     }
+
 }
