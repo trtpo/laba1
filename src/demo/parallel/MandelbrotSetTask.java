@@ -137,7 +137,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Color of non-fractal image
      */
-    private static Color backColor = Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100));
+    private static Color backColor = Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255));
 
     /**
      * Creates a task to render a MandelBrot set into an image using given
@@ -287,7 +287,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.power(3).plus(comp).divideBy(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -364,13 +364,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
-                Color.rgb(gener.nextInt(100), gener.nextInt(100), gener.nextInt(100)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255)),
+            Color.rgb(gener.nextInt(255), gener.nextInt(255), gener.nextInt(255))
         };
         
         /**

@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Subtraction
+     * @param b subtrahend
+     * @return difference
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -82,6 +93,33 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divideBy(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Exponentiation operation
+     * @param exp exponent of the procedure
+     * @return this Complex object whose value is this ^ exp
+     */
+    public Complex power(int exp) {
+        while(exp > 1) {
+            this.times(this);
+            exp --;
+        }
         return this;
     }
 
