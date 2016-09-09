@@ -60,7 +60,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
      */
-    private static final int CAL_MAX_COUNT = 56;
+    private static final int CAL_MAX_COUNT = 256;
 
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.rgb(10,100,140);
         }
         return colors[count];
     }
@@ -351,10 +351,10 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(0, 100, 0),
             Color.WHITE,
-            Color.RED,
+            Color.GREEN,
+            Color.rgb(10,10,10),
             Color.rgb(100, 0, 0),
             Color.RED,
             Color.rgb(50, 0, 0)
