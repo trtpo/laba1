@@ -425,6 +425,7 @@ public class Main extends Application {
      * The following method is invoked each JavaFX frame to update current image 
      * with what was done on other threads.
      * 
+     *
      * It also reacts on window resize
      */
     private void handleFrame() {
