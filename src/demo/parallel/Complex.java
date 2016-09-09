@@ -86,6 +86,14 @@ public class Complex {
     }
 
     /**
+     * Cosine operation.
+     * @return Complex object whose value is the complex cosine of this
+     */
+     public Complex cos() {
+         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+     }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
