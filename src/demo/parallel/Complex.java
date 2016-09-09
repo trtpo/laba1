@@ -60,6 +60,11 @@ public class Complex {
         im = imag;
     }
 
+    public boolean equals(Complex c) {
+        if (this.im == c.im && this.re == c.re) return true;
+        else return false;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -85,6 +90,14 @@ public class Complex {
         return this;
     }
 
+    public Complex div(Complex b){
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
