@@ -84,8 +84,8 @@ public class Complex {
         im = imag;
         return this;
     }
-    
-     // return a new Complex object whose value is the reciprocal of this
+
+    // return a new Complex object whose value is the reciprocal of this
     public Complex reciprocal() {
         double scale = re*re + im*im;
         return new Complex(re / scale, -im / scale);
@@ -99,7 +99,6 @@ public class Complex {
 
     public double getIm() { return im; }
     public double getRe() { return re; }
-
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
