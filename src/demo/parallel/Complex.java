@@ -31,6 +31,7 @@
 package demo.parallel;
 
 
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -108,6 +109,15 @@ public class Complex {
     }
 
     /**
+     * Corporation operation
+     * @return true if equal
+     */
+    public boolean equal(Complex b) {
+        if (re == b.re) if (im == b.im) return true;
+        return false;
+    }
+
+     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
