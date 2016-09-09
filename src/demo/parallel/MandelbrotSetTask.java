@@ -328,7 +328,7 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * Returns a color for a given iteration count.
+     * Returns color for a given iteration count.
      * @param count number of iterations return by 
      * {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
