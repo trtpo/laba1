@@ -60,6 +60,13 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -82,6 +89,25 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * @return a new Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        this.re = (double)1/this.re;
+        this.im = (double)1/this.im;
+        return this;
+    }
+
+    /**
+     * @param b divider
+     * @return a/b
+     */
+    public Complex divides(Complex b) {
+        this.re = this.re/b.re;
+        this.im = this.im/b.im;
         return this;
     }
 
