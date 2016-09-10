@@ -27,7 +27,7 @@ public class ComplexTest {
     @org.junit.Test
     public void testReciprocal(){
         testObjA.reciprocal();
-        assertEquals(1/20,testObjA.getRe(),0.001);
-        assertEquals(1/20,testObjB.getIm(),0.001);
+        assertEquals((double)1/20,testObjA.getRe(),0.001);
+        assertEquals((double)1/20,testObjA.getIm(),0.001);
     }
 }
