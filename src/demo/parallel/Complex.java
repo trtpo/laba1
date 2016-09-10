@@ -49,6 +49,14 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -84,6 +92,14 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Cosine operation.
+     * @return Complex object whose value is the complex cosine of this
+     */
+     public Complex cos() {
+         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+     }
 
     /**
      * Square of Complex object's length, we're using square of length to 
