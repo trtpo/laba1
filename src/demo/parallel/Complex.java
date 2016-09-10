@@ -85,6 +85,22 @@ public class Complex {
         return this;
     }
 
+    // return a new Complex object whose value is the reciprocal of this
+    public Complex reciprocal() {
+        this.re = (double)1/this.re;
+        this.im = (double)1/this.im;
+        return this;
+    }
+
+    // return a / b
+    public Complex divides(Complex b) {
+        this.re = this.re/b.re;
+        this.im = this.im/b.im;
+        return this;
+    }
+
+    public double getIm() { return im; }
+    public double getRe() { return re; }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
