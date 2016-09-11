@@ -93,4 +93,31 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Division of two Complex objects
+     * @param b the divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = ((a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im));
+        double imag = ((a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * @param c the divider
+     * @return true if this == b
+     */
+    public boolean isEqual(Complex c) {
+        if (this.re == c.re && this.im == c.im) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
