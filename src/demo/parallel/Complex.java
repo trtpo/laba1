@@ -72,6 +72,27 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b Subtract
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    /**
+     * Tangent operation.
+     * @param b Subtract
+     * @return this Complex object whose value is Tangent(this)
+     */
+    public Complex Tangent(Complex b) {
+        re = Math.sin(b.re)*Math.sinh(b.im)/Math.cos(b.re);
+        im = Math.cos(b.re)*Math.cosh(b.im)/Math.cos(b.re);
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
