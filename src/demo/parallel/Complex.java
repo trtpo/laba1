@@ -93,4 +93,5 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
 }
