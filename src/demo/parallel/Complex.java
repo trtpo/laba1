@@ -45,19 +45,30 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     * get real and imag
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
     }
 
     /**
@@ -69,6 +80,14 @@ public class Complex {
         re += b.re;
         im += b.im;
         return this;
+    }
+
+    public static Complex cos(Complex a) {
+        double real = Math.cos(a.re) * Math.cosh(a.im);
+        double imag = -Math.sin(a.re) * Math.sinh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
     }
 
     /**
@@ -86,7 +105,7 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
