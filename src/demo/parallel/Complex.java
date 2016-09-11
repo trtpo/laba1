@@ -85,6 +85,26 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex reciprocal() {
+        double modulusSquared = re * re + im * im;
+        return new Complex(re / modulusSquared, -im / modulusSquared);
+    }
+
+    public Complex conjugate() {
+        return new Complex(re, -im);
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
