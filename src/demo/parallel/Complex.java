@@ -118,4 +118,18 @@ public class Complex {
         return a;
     }
 
+    /**
+     * @return real part
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * @return imag part
+     */
+    public double getIm() {
+        return this.im;
+    }
+
 }
