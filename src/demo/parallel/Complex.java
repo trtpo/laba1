@@ -72,6 +72,18 @@ public class Complex {
     }
 
     /**
+     *
+     *Subtracting operation.
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -92,6 +104,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Sinus operation.
+     * @return this Complex object = sinus of value
+     */
+    public static Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.cos(a.re)*Math.cosh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
     }
 
 }
