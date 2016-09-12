@@ -90,6 +90,33 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+
+
+    public Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.sin(a.re)*Math.sinh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
+
+
+    public Complex min(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public double getRe(){
+        return re;
+    }
+
+
+    public double getIm(){
+        return im;
+    }
+
+
     public double lengthSQ() {
         return re * re + im * im;
     }
