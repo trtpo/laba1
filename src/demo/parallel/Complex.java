@@ -71,6 +71,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +90,37 @@ public class Complex {
         im = imag;
         return this;
     }
+
+
+    /**
+     * Get the real part
+     * @return double
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Get the im part
+     * @return double
+     */
+    public double getIm(){
+        return im;
+    }
+
+    /**
+     * Sinus operation.
+     * @param b
+     * @return this Complex object
+     */
+    public Complex sin(Complex a) {
+        double real = Math.sin(a.re)*Math.sinh(a.im);
+        double imag = Math.sin(a.re)*Math.sinh(a.im);
+        a.re = real;
+        a.im = imag;
+        return a;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
