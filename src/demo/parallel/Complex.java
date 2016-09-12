@@ -113,7 +113,7 @@ public class Complex {
      * @param b
      * @return this Complex object
      */
-    public Complex sin(Complex a) {
+    public static Complex sin(Complex a) {
         double real = Math.sin(a.re)*Math.sinh(a.im);
         double imag = Math.sin(a.re)*Math.sinh(a.im);
         a.re = real;
