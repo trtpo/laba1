@@ -45,7 +45,23 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -68,6 +84,11 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
