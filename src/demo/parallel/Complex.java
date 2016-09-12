@@ -111,7 +111,7 @@ public class Complex {
         Complex a = this;
         return a.re == b.re && a.im == b.im;
     }
-    
+
 
     /**
      * Multiply operation.
