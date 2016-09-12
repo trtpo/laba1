@@ -104,8 +104,8 @@ public class Complex {
      */
     public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (Math.pow(2, b.re) + Math.pow(2, b.im));
-        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(2, b.re) + Math.pow(2, b.im));
+        double real = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+        double imag = (b.re * a.im - b.im * a.re) / b.lengthSQ();
         re = real;
         im = imag;
         return this;
@@ -118,5 +118,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImaginary() {
+        return im;
+    }
+
+    public boolean equals(Complex b) {
+        Complex a = this;
+        return a.re == b.re && a.im == b.im;
     }
 }
