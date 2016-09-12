@@ -45,6 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
+
     
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -60,6 +61,15 @@ public class Complex {
         im = imag;
     }
 
+    public double GetReal()
+    {
+        return re;
+    }
+
+    public double GetImaginary()
+    {
+        return im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +78,12 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
