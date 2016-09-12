@@ -101,4 +101,20 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * @return real part
+     */
+
+    double getRe(){
+        return this.re;
+    }
+
+    /**
+     * @return image part
+     */
+
+    double getIm(){
+        return this.im;
+    }
 }
