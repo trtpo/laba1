@@ -93,4 +93,23 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    public Complex minus(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        return new Complex(real, imag);
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
 }
