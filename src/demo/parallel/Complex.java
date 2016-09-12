@@ -71,6 +71,14 @@ public class Complex {
         return this;
     }
 
+    public Complex cos() {
+        double ch = (Math.exp(this.im) + Math.exp(-this.im))/2;
+        double sh = (Math.exp(this.im) - Math.exp(-this.im))/2;
+        double real = Math.cos(this.re)*ch;
+        double image = Math.sin(this.re)*sh;
+        return new Complex(real, image);
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
