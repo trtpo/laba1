@@ -104,4 +104,12 @@ public class Complex {
         double imag = a.im - b.im;
         return new Complex(real, imag);
     }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
 }
