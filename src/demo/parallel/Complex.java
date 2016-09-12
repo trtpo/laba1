@@ -78,12 +78,35 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double real = (a.re * b.re - a.im * b.im);
+        double imag = (a.re * b.im + a.im * b.re);
         re = real;
         im = imag;
         return this;
     }
+
+    /**
+     * Divide operation.
+     * @param  d divider
+     * @return this Complex object whose value is this / d
+     */
+    public Complex divide(Complex d) {
+        Complex a = this;
+        double real = (a.re * d.re + a.im * d.im)/(d.re*d.re+d.im*d.im);
+        double imag = (d.re * a.im - d.im * a.re)/(d.re*d.re+d.im*d.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
