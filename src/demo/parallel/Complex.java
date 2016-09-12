@@ -96,6 +96,26 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+    public  double getIm() {
+        return im;
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Complex))return false;
+        Complex otherComplex = (Complex)other;
+        if(otherComplex.re == re && otherComplex.im == im) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
