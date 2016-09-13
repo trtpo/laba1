@@ -107,4 +107,17 @@ public class Complex {
         im = imaginary;
         return this;
     }
+
+    /**
+     * @param c the divider
+     * @return true if this == b
+     */
+    public boolean isEqual(Complex c) {
+        if (this.re == c.re && this.im == c.im) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
