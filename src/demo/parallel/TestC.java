@@ -8,16 +8,17 @@ import static org.junit.Assert.*;
 public class TestC {
     @org.junit.Test
     public void minus() throws Exception {
-        try {
-            Complex a = new Complex(32.0, 0.23);
-            Complex b = new Complex(7.87, -21.24);
-            b.setReal(b.getReal() - a.getReal());
-            b.setImaginary(b.getImaginary() - a.getImaginary());
-        } catch(Exception e) {
-            System.out.println("Error in minus() in Complex (line 74).\n");
-        } finally {
-            System.out.println("TestC successfully run.\n");
-        }
+        Complex a = new Complex(4, 4);
+        Complex b = new Complex(8, 0);
+
+        b = b.minus(a);
+
+        Complex expected = new Complex(4, -4);
+
+        assertEquals(expected.getReal(), b.getReal(), 0);
+        assertEquals(expected.getImaginary(), b.getImaginary(), 0);
+
+        System.out.println("TestC successfully run.\n");
     }
 
 }

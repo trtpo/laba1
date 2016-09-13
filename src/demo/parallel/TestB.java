@@ -8,14 +8,17 @@ import static org.junit.Assert.*;
 public class TestB {
     @org.junit.Test
     public void times() throws Exception {
-        try {
-            Complex a = new Complex(1.0, 0.0);
-            Complex b = new Complex(7.87, -21.24);
-        } catch(Exception e) {
-            System.out.println("Error in calc() in Complex (line 85).\n");
-        } finally {
-            System.out.println("TestB successfully run.\n");
-        }
+        Complex a = new Complex(3, 4);
+        Complex b = new Complex(-2, 1);
+
+        a = a.times(b);
+
+        Complex expected = new Complex(-2, 1);
+
+        assertEquals(expected.getReal(), b.getReal(), 0);
+        assertEquals(expected.getImaginary(), b.getImaginary(), 0);
+
+        System.out.println("TestB successfully run.\n");
     }
 
 }
