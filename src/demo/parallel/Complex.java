@@ -49,6 +49,22 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImaginary() {
+        return im;
+    }
+
+    public void setReal(double re) {
+        this.re = re;
+    }
+
+    public void setImaginary(double im) {
+        this.im = im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -71,6 +87,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -78,7 +100,7 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
+        double real = (a.re * b.re - a.im * b.im) * 0.8;
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
