@@ -49,6 +49,22 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImaginary() {
+        return im;
+    }
+
+    public void setReal(double re) {
+        this.re = re;
+    }
+
+    public void setImaginary(double im) {
+        this.im = im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -68,6 +84,12 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
