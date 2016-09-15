@@ -85,12 +85,22 @@ public class Complex {
         return this;
     }
 
+    public Complex sinus(Complex b) {
+        re = Math.sin(b.re) * Math.cosh(b.im);
+        im = Math.cos(b.re) * Math.sinh(b.im);
+        return this;
+    }
+
+    public Complex cosinus(Complex b) {
+        re = Math.cos(b.re) * Math.cosh(b.im);
+        im = -Math.sin(b.re) * Math.sinh(b.im);
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
-    public double lengthSQ() {
-        return re * re + im * im;
-    }
+    public double lengthSQ() { return re * re + im * im; }
 }
