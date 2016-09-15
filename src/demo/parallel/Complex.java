@@ -71,10 +71,22 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Add operation.
+     * @param b summand
+     * @return this Complex object whose value is (this - b)
+     */
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
+    }
+
+    public boolean equals(Object object) {
+        Complex actuals = (Complex) object;
+        boolean approachZeroAbove = (re - actuals.re) < 0.0000001 && (im - actuals.im) < 0.0000001;
+        boolean approachZeroBelow = (re - actuals.re) > -0.0000001 && (im - actuals.im) > -0.0000001;
+        return (approachZeroAbove && approachZeroBelow);
     }
 
     /**
