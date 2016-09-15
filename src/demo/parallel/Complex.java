@@ -49,6 +49,14 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getRe() {
+    return re;
+    }
+
+    public double getIm() {
+    return im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -70,6 +78,16 @@ public class Complex {
         im += b.im;
         return this;
     }
+
+
+    public Complex sin(Complex b) {
+         double re = Math.sin(b.re) * Math.cosh(b.im);
+         double im = Math.cos(b.re) * Math.sinh(b.im);
+         b.re = re;
+         b.im = im;
+         return b;
+     }
+
 
     /**
      * Multiply operation.
