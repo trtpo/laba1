@@ -45,37 +45,30 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
-    private double re;   // the real part
-    private double im;   // the imaginary part
 
-    /** 
-     * create a new object with the given real and imaginary parts
-     * 
-     * @param real a complex number real part
-     * @param imag a complex number imaginary part 
-     */
+    private double re;
+    private double im;
+
     public Complex(double real, double imag) {
         re = real;
         im = imag;
     }
 
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
-     */
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
         return this;
     }
 
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
+    public double lengthSqure() {
+        return re * re + im * im;
+    }
+
+    public boolean equals(Complex b) {
+        Complex a = this;
+        return a.re == b.re && a.im == b.im;
+    }
+
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
@@ -85,12 +78,23 @@ public class Complex {
         return this;
     }
 
-    /**
-     * Square of Complex object's length, we're using square of length to 
-     * eliminate the computation of square root
-     * @return square of length
-    */
-    public double lengthSQ() {
-        return re * re + im * im;
+    public Complex cos() {
+        double ch = (Math.exp(this.im) + Math.exp(-this.im))/2;
+        double sh = (Math.exp(this.im) - Math.exp(-this.im))/2;
+        double real = Math.cos(this.re)*ch;
+        double image = Math.sin(this.re)*sh;
+        return new Complex(real, image);
     }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / b.lengthSqure();
+        double imag = (b.re * a.im - b.im * a.re) / b.lengthSqure();
+        re = real;
+        im = imag;
+        return this;
+    }
+
+
+
 }
