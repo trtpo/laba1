@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Mix operation. I don't know how it works!!!
+     * @param b some operand
+     * @return this Complex object whose value is...
+     */
+    public Complex mix(Complex b) {
+        re = re * b.re;
+        im += b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
