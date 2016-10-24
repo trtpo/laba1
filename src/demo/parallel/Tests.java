@@ -16,10 +16,10 @@ public class Tests {
     }
 
     @Test
-    public void minus() throws Exception {
-        number.minus(new Complex(3, 5));
-        assertEquals(1, number.getRe(), 1e-15);
-        assertEquals(-2, number.getIm(), 1e-15);
+    public void multiply() throws Exception {
+        number.multiply(new Complex(3, 5));
+        assertEquals(12, number.getRe(), 1e-15);
+        assertEquals(15, number.getIm(), 1e-15);
     }
 
 }

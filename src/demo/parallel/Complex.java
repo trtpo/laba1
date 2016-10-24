@@ -79,9 +79,9 @@ public class Complex {
         return this;
     }
 
-    public Complex minus(Complex b) {
-        re -= b.re;
-        im -= b.im;
+    public Complex multiply(Complex b) {
+        re *= b.re;
+        im *= b.im;
         return this;
     }
 
