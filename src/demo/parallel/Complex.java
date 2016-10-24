@@ -59,7 +59,12 @@ public class Complex {
         re = real;
         im = imag;
     }
-
+    public  double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +73,12 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex multiply(Complex b) {
+        re *= b.re;
+        im *= b.im;
         return this;
     }
 
