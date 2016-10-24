@@ -13,8 +13,8 @@ public class Test1 {
     }
  @Test
     public void minus() throws Exception {
-     number.minus(new Complex(4, 2));
-     assertEquals(-2, number.getRe(), 1e-15);
-     assertEquals(2, number.getIm(), 1e-15);
+     number.multiply(new Complex(5, 2));
+     assertEquals(8, number.getRe(), 1e-15);
+     assertEquals(10, number.getIm(), 1e-15);
  }
 }
