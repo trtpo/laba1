@@ -93,4 +93,31 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+/*
+*Complex minus
+*Return this complex object whose value is this - b
+*/
+public Complex minus(Complex b)
+{
+
+	re -= b.re;
+	im -= b.im;
+	return this;
+}
+
+/*
+*Complex divide 
+*return Complex object whose value is this / b
+*/
+public Complex divide (Complex b)
+{
+	Complex a = this;
+	a.re = (a.re * b.re + a.im * b.im) / b.lengthQS();
+	a.im = (a.im * b.re - a.re * b.im) / b.lengthQS();
+	re = a.re;
+	im = a.im;
+	return this;
+}
+
 }
