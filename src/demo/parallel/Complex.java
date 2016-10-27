@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+         return this.re;
+     }
+
+     public double getIm() {
+         return this.im;
+     }
+
     /**
      * Add operation.
      * @param b summand
@@ -70,6 +78,7 @@ public class Complex {
         im += b.im;
         return this;
     }
+
 
     /**
      * Multiply operation.
@@ -83,6 +92,15 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public Complex div(Complex b) {
+            Complex a = this;
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+            double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+            re = real;
+            im = imag;
+            return this;
     }
 
     /**
