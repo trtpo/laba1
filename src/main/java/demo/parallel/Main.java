@@ -803,7 +803,7 @@ public class Main extends Application {
 
     /**
      * {@inheritDoc }
-     * @throws java.lang.Exception
+     * @throws Exception
      */
     @Override public void stop() throws Exception {
         super.stop();

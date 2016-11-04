@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +76,22 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    public Complex multiply(Complex b) {
+        re *= b.re;
+        im *= b.im;
+        return this;
+    }
+    public Complex modulus(Complex b) {
+        re = Math.round(Math.sqrt(Math.pow(re, 2) + Math.pow(b.re, 2)));
+        im = Math.round(Math.sqrt(Math.pow(im, 2) + Math.pow(b.im, 2)));;
         return this;
     }
 
