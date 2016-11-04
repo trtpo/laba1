@@ -113,8 +113,8 @@ public Complex minus(Complex b)
 public Complex divide (Complex b)
 {
 	Complex a = this;
-	a.re = (a.re * b.re + a.im * b.im) / b.lengthQS();
-	a.im = (a.im * b.re - a.re * b.im) / b.lengthQS();
+	a.re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+	a.im = (a.im * b.re - a.re * b.im) / b.lengthSQ();
 	re = a.re;
 	im = a.im;
 	return this;
