@@ -120,4 +120,21 @@ public Complex divide (Complex b)
 	return this;
 }
 
+/*
+bool Conjugation 
+return bool object whose 'true' value only when 
+a.re =  b.re 
+a.im = -b.im
+*/
+public bool Conjugation (Complex a, Complex b)
+{
+	if(( a.re == b.re )&&( a.im == b.im*(-1) ))
+	{
+		return true;
+	}else 
+	{
+		return false;
+	}
+}
+
 }
