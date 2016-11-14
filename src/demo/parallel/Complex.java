@@ -76,17 +76,6 @@ public class Complex {
         return this;
     }
 
-    public Complex multiply(Complex b) {
-        re *= b.re;
-        im *= b.im;
-        return this;
-    }
-
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
