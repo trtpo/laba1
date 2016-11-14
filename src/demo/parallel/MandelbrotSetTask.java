@@ -276,10 +276,17 @@ class MandelbrotSetTask extends Task<Long> {
         Complex c = new Complex(0, 0);
         do {
 
-            double real = c.Re();
-            double image = c.Im();
-            c.setRe(real * real - image * image + comp.Re());
-            c.setIm(real * image + image * real + comp.Im());
+            //double real = c.Re();
+            //double image = c.Im();
+            //c.setRe(real * real - image * image + comp.Re());
+            //c.setIm(real * image + image * real + comp.Im());
+
+            //c = c.times(c).plus(comp);
+            //c = c.times(c).sub(comp);
+            //c = c.times(c).times(c).times(c).sub(comp);
+            //c = c.times(c).division(new Complex(1,0)).times(c).times(c).sub(comp);
+            //c = c.times(c).division(new Complex(-1,0)).sub(comp);
+            c = c.times(c).times(c).sub(comp);
 
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
