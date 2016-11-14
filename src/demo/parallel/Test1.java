@@ -11,10 +11,11 @@ public class Test1 {
 
         number = new Complex(2, 4);
     }
- @Test
-    public void minus() throws Exception {
-     number.multiply(new Complex(5, 2));
-     assertEquals(8, number.getRe(), 1e-15);
-     assertEquals(10, number.getIm(), 1e-15);
- }
+    
+    @Test
+    public void times() throws Exception {
+        number.times(new Complex(2, 3));
+        assertEquals("Should return -8", -8, number.getRe(), 1e-15);
+        assertEquals("Should return 16", 16, number.getIm(), 1e-15);
+    }
 }
