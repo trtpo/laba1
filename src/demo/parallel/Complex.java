@@ -70,6 +70,19 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    /**
+     * Divide operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex div(Complex b) {
+    	double re_tmp = (re * b.re + im * b.im) / b.lengthSQ();
+    	double im_tmp = (b.re * im - re * b.im) / b.lengthSQ();
+    	re = re_tmp;
+    	im = im_tmp;
+    	return this;
+    }
 
     /**
      * Multiply operation.
