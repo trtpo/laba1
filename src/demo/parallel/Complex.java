@@ -98,9 +98,7 @@ public class Complex {
 *Complex minus
 *Return this complex object whose value is this - b
 */
-public Complex minus(Complex b)
-{
-
+public Complex minus(Complex b){
 	re -= b.re;
 	im -= b.im;
 	return this;
@@ -110,8 +108,7 @@ public Complex minus(Complex b)
 *Complex divide 
 *return Complex object whose value is this / b
 */
-public Complex divide (Complex b)
-{
+public Complex divide (Complex b){
 	Complex a = this;
 	a.re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
 	a.im = (a.im * b.re - a.re * b.im) / b.lengthSQ();
@@ -126,15 +123,20 @@ return bool object whose 'true' value only when
 a.re =  b.re 
 a.im = -b.im
 */
-public bool Conjugation (Complex a, Complex b)
-{
-	if(( a.re == b.re )&&( a.im == b.im*(-1) ))
-	{
+public boolean  conjugation (Complex b){
+	if(( this.re == b.re )&&( this.im == b.im*(-1) ))	{
 		return true;
-	}else 
-	{
+	}else{
 		return false;
 	}
+}
+
+public double getReal(){
+    return this.re;
+}
+
+public double getImagine(){
+    return this.im;
 }
 
 }
