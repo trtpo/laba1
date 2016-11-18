@@ -1,6 +1,8 @@
 .DS_Store
+bin/
 out/
 *.iml
 .idea/
 *.swp
 nbproject/
+src/demo/parallel/*.save*

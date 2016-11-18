@@ -93,4 +93,50 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+/*
+*Complex minus
+*Return this complex object whose value is this - b
+*/
+public Complex minus(Complex b){
+	re -= b.re;
+	im -= b.im;
+	return this;
+}
+
+/*
+*Complex divide 
+*return Complex object whose value is this / b
+*/
+public Complex divide (Complex b){
+	Complex a = this;
+	a.re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+	a.im = (a.im * b.re - a.re * b.im) / b.lengthSQ();
+	re = a.re;
+	im = a.im;
+	return this;
+}
+
+/*
+bool Conjugation 
+return bool object whose 'true' value only when 
+a.re =  b.re 
+a.im = -b.im
+*/
+public boolean  conjugation (Complex b){
+	if(( this.re == b.re )&&( this.im == b.im*(-1) ))	{
+		return true;
+	}else{
+		return false;
+	}
+}
+
+public double getReal(){
+    return this.re;
+}
+
+public double getImagine(){
+    return this.im;
+}
+
 }
