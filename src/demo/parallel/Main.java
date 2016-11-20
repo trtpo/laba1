@@ -225,6 +225,7 @@ public class Main extends Application {
      */
     private Parent createControlPane() {
         ProgressIndicator progressIndicator = new ProgressIndicator(0);
+        Object rerender = null;
         progressIndicator.setOnMouseClicked(t -> rerender());
         progress = progressIndicator.progressProperty();
 
