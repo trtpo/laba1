@@ -135,4 +135,13 @@ public class Complex {
         im -= b.im;
         return this;
     }
+
+
+    /**
+     * Subtraction operation.
+     * @return this Complex object conjucted to current Complex
+     */
+    public Complex findConjuction() {
+        return new Complex(this.re, this.im * (-1));
+    }
 }
