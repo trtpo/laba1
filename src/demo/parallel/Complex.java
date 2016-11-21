@@ -72,8 +72,8 @@ public class Complex {
     }
 
     public Complex trying(Complex b){
-        double re_tmp = (re * b.re - im * b.im);
-        double im_tmp = (b.re * im + re * b.im);
+        double re_tmp = (re * b.re + im * b.im) / b.lengthSQ();
+        double im_tmp = (b.re * im - re * b.im) / b.lengthSQ();
         re = re_tmp;
         im = im_tmp;
         return this;
