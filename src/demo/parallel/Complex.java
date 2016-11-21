@@ -72,6 +72,19 @@ public class Complex {
     }
 
     /**
+    *my function for compareing
+     */
+
+    public Boolean trying(Complex b){
+
+        Complex a = this;
+        boolean s = false;
+        if (a.re ==  b.re && a.im == -b.im)
+            s = true;
+        return s;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +97,9 @@ public class Complex {
         im = imag;
         return this;
     }
+
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
