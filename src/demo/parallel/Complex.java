@@ -104,6 +104,20 @@ public class Complex {
         im = imag;
         return this;
     }
+    
+    /**
+     * @return real axis of this Complex object
+     */
+    public double getRe() {
+    	return re;
+    }
+
+    /**
+     * @return imaginary axis of this Complex object
+     */
+    public double getIm() {
+    	return re;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
