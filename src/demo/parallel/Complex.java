@@ -45,9 +45,25 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
+
+    /**
+     * Get Real part
+     * @return Real part of the Complex
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Get Imaginary part
+     * @return Real imaginary of the Complex
+     */
+    public double getIm() {
+        return im;
+    }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -92,5 +108,40 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Division operation.
+     * @param  b Complex divider
+     * @return this Complex object after division
+    */
+     public Complex division(Complex b) {
+         Complex a = this;
+         double denominator = (b.re * b.re + b.im * b.im);
+         double real = (a.re * b.re + a.im * b.im) / denominator;
+         double imag = (a.im * b.re - a.re * b.im) / denominator;
+         re = real;
+         im = imag;
+         return this;
+     }
+
+    /**
+     * Subtraction operation.
+     * @param b Complex subtrahend
+     * @return this Complex object after subtraction
+     */
+    public Complex substr(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+
+    /**
+     * Subtraction operation.
+     * @return this Complex object conjucted to current Complex
+     */
+    public Complex findConjuction() {
+        return new Complex(this.re, this.im * (-1));
     }
 }
