@@ -127,4 +127,20 @@ public class Complex {
     public Complex findConjuction() {
         return new Complex(this.re, this.im * (-1));
     }
+
+    /**
+     * Get Real part
+     * @return Real part of the Complex
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Get Imaginary part
+     * @return Real imaginary of the Complex
+     */
+    public double getIm() {
+        return im;
+    }
 }
