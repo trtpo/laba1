@@ -71,11 +71,9 @@ public class Complex {
         return this;
     }
 
-    public Complex trying(Complex b){
-        double re_tmp = (re * b.re - im * b.im);
-        double im_tmp = (b.re * im + re * b.im);
-        re = re_tmp;
-        im = im_tmp;
+    public Complex sub(Complex b){
+        re = re - b.re;
+        im = im - b.im;
         return this;
     }
     /**
