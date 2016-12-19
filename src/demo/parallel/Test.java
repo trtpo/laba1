@@ -7,15 +7,13 @@ import org.junit.Test;
 public class Test {
 
      @Test
-     public void testDiv() {
-         Complex a = new Complex(2, 3);
+     public void testSub() {
+         Complex a = new Complex(5, 5);
          Complex b = new Complex(3, 2);
 
-         a.times(b);
+         a.sub(b);
 
-         double c = a.lengthSQ();
-
-         assertTrue("Divide assert Failed! Expected 1.0, Got " + c, c >= 1.0 && c <= 1.000000000000001);
+         assertTrue("Substraction fails ", a.im != 2.0 && a.im != 3.0);
         }
 
     }
