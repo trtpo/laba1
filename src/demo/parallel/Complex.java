@@ -93,4 +93,54 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+/*
+*Complex minus
+*Return this complex object whose value is this - b
+*/
+public Complex minus(Complex b){
+	re -= b.re;
+	im -= b.im;
+	return this;
+}
+
+/*
+*Complex divide 
+*return Complex object whose value is this / b
+*/
+public Complex divide (Complex b){
+	Complex a = this;
+	a.re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+	a.im = (a.im * b.re - a.re * b.im) / b.lengthSQ();
+	re = a.re;
+	im = a.im;
+	return this;
+}
+
+public Complex conjugation (Complex x){
+	Complex y = new Complex(x.getReal(),(x.getImagine()*-1));
+    this.setReal(y.getReal());
+    this.setImagine(y.getImagine());
+    return this;
+}
+
+public double getReal(){
+
+    return this.re;
+}
+
+public double getImagine(){
+
+    return this.im;
+}
+
+public void setReal(double real) {
+
+    this.re = real;
+}
+
+public void setImagine(double imagine){
+
+    this.im = imagine;
+}
 }
