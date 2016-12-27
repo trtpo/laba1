@@ -12,7 +12,7 @@ public class ComplexTest {
     private Complex number;
     @Before
     public void setUp() throws Exception {
-    number=new Complex(3,4);
+    number=new Complex(3,5);
     }
 
     @Test
