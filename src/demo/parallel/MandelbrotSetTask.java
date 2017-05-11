@@ -276,6 +276,8 @@ class MandelbrotSetTask extends Task<Long> {
         Complex c = new Complex(0, 0);
         do {
             c = c.times(c).plus(comp);
+           // c = c.times(c).times(c).plus(comp);// fc(z)=z^4+c
+           // c = c.times(c).times(c).times(c).minus(comp);//fc(z)= z^8-c
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -335,7 +337,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.WHITE;
         }
         return colors[count];
     }
@@ -351,13 +353,19 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            //Color.rgb(40, 0, 0),
+            //Color.RED,
+            Color.rgb(0, 100, 100),
+            Color.YELLOW,
             Color.WHITE,
+            //Color.RED,
+            Color.BLUE,
+            //Color.rgb(100, 0, 0),
+            Color.rgb(0, 0, 100),
+            //Color.RED,
+            //Color.rgb(50, 0, 0)
             Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(20, 0, 0),
         };
         
         /**
