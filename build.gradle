@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+version = '0.1b'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'by.bsuir.hryhoryeu.parallel.Main'
+    }
+}
+
+repositories{
+
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+dependencies{
+
+    compile group: 'junit', name: 'junit', version: '4.12'
+
+}

@@ -28,7 +28,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
+package by.bsuir.hryhoryeu.parallel;
 
 
 /**
@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -71,6 +71,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -92,5 +98,27 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Complex complex = (Complex) o;
+
+        if (Double.compare(complex.re, re) != 0) return false;
+        return Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(re);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(im);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }
