@@ -1,6 +1,13 @@
 .DS_Store
+.gradle/
+gradle/
+build/
 out/
 *.iml
 .idea/
 *.swp
+*.bat
+*.iws
+*.ipr
+gradlew
 nbproject/
