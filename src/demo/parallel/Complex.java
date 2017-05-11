@@ -70,6 +70,13 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex minus(Complex b){
+                re -= b.re;
+                im -= b.im;
+                return this;
+            }
+
+
 
     /**
      * Multiply operation.
@@ -84,7 +91,14 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    public Complex times(double b) {
+                Complex a = this;
+                double real = a.re * b;
+                double imag = a.im * b;
+                re = real;
+                im = imag;
+                return this;
+            }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -93,4 +107,45 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex conj() {
+                return new Complex(re, -im);
+            }
+
+     /**
+     * Division operation
+     * @param b is divider
+     * @param b divider
+     * @return this Complex object whos value is this/b
+     */
+            public Complex div(Complex b) {
+                Complex a = this;
+                       double t_re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+                       double t_im = (b.re * a.im - a.re * b.im) / b.lengthSQ();
+                re = t_re;
+                im = t_im;
+                return this;
+            }
+
+@Override
+    public boolean equals(Object o) {
+                if (this == o) return true;
+                if (!(o instanceof Complex)) return false;
+
+                Complex complex = (Complex) o;
+
+                if (Double.compare(complex.re, re) != 0) return false;
+                return Double.compare(complex.im, im) == 0;
+            }
+
+            @Override
+    public int hashCode() {
+                int result;
+                long temp;
+                temp = Double.doubleToLongBits(re);
+                result = (int) (temp ^ (temp >>> 32));
+                temp = Double.doubleToLongBits(im);
+                result = 31 * result + (int) (temp ^ (temp >>> 32));
+                return result;
+            }
 }
