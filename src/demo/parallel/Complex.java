@@ -70,7 +70,11 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex minus(Complex b){
+                re -= b.re;
+                im -= b.im;
+                return this;
+            }
 
 
 
@@ -87,7 +91,14 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    public Complex times(double b) {
+                Complex a = this;
+                double real = a.re * b;
+                double imag = a.im * b;
+                re = real;
+                im = imag;
+                return this;
+            }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -96,4 +107,21 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex conj() {
+                return new Complex(re, -im);
+            }
+
+      /**
+      * Division operation
+      * @param b is divider
+      * @return this Complex object whos value is this/b
+      */
+            public Complex div(Complex b) {
+                double t_re = (re * b.re + im * b.im) / b.lengthSQ();
+                double t_im = (b.re * im - re * b.im) / b.lengthSQ();
+                re = t_re;
+                im = t_im;
+                return this;
+            }
 }
