@@ -364,7 +364,7 @@ public class Main extends Application {
         antiTranslate.xProperty().bind(canvas.translateXProperty().negate());
         antiTranslate.yProperty().bind(canvas.translateYProperty().negate());
         snapshotParameters.setTransform(antiTranslate);
-        snapshotParameters.setFill(Color.BLACK);
+        snapshotParameters.setFill(Color.RED);
 
         //Fetch position when Mouse released
         canvas.setOnMouseReleased(e -> {
