@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -75,6 +77,10 @@ public class Complex {
         re -= b.re;
         im -= b.im;
         return this;
+    }
+
+    public Boolean equals(Complex b){
+        return im == b.im && re ==b.re;
     }
 
     /**
