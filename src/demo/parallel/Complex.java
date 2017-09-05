@@ -107,7 +107,7 @@ public class Complex {
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
     public Complex times(Complex b) {
         Complex a = this;
@@ -116,6 +116,15 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Comparison operation.
+     * @param b
+     * @return true or false
+     */
+    public Boolean equals(Complex b) {
+        return b!=null && re==b.re && im==b.im;
     }
 
     /**
