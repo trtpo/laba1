@@ -72,9 +72,42 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b subtrahend.
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        return new Complex(real, imag);
+    }
+
+    // return a new Complex object whose value is the reciprocal of this
+
+    /**
+     * Reciprocal operation.
+     * @return a new Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    /**
+     * Divide operation.
+     * @param b
+     * @return a new Complex object whose value is (this/b)
+     */
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
     public Complex times(Complex b) {
         Complex a = this;
@@ -83,6 +116,15 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Comparison operation.
+     * @param b
+     * @return true or false
+     */
+    public Boolean equals(Complex b) {
+        return b!=null && re==b.re && im==b.im;
     }
 
     /**
