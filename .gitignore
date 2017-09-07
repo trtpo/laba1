@@ -1,5 +1,6 @@
 .DS_Store
 out/
+lib/
 *.iml
 .idea/
 *.swp
