@@ -120,4 +120,20 @@ public class Complex {
         im -= b.im;
         return this;
     }
+
+    /**
+     * Get imaginary part
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * Get real part
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
 }
