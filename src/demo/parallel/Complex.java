@@ -72,6 +72,26 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Сomparison operation.
+     * @param b compare variable
+     * @return this Boolean object whose value is true if this == b and false if this != b
+     */
+    public Boolean equals(Complex b) {
+        return im == b.im && re == b.re;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
