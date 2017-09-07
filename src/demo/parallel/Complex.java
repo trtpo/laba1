@@ -106,6 +106,22 @@ public class Complex {
     }
 
     /**
+     * Add getter for real part of number
+     * @return real part of number
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Add getter for image part of number
+     * @return image part of number
+     */
+    public double getIm(){
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
