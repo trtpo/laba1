@@ -72,6 +72,30 @@ public class Complex {
     }
 
     /**
+     * Add operation
+     * @param b minusand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Divide operation
+     * @param b dividand
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex div(Complex b) {
+        double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = realPart;
+        im = imagePart;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
