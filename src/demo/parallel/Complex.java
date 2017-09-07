@@ -59,6 +59,21 @@ public class Complex {
         re = real;
         im = imag;
     }
+    /**
+     * Add getter for real part of number
+     * @return real part of number
+     */
+    public double getRealPart(){
+        return re;
+    }
+
+    /**
+     * Add getter for image part of number
+     * @return image part of number
+     */
+    public double getImagePart(){
+        return im;
+    }
 
     /**
      * Add operation.
@@ -88,6 +103,11 @@ public class Complex {
      * @return this Complex object whose value is sin(this)
      */
     public Complex div(Complex b) {
+        if(b.re == 0 || b.im == 0){
+            re = 0;
+            im = 0;
+            return this;
+        }
         double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
         double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
         re = realPart;
