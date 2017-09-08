@@ -93,4 +93,16 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Sine function
+     * @return the Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double re = Math.sin(this.re) * Math.cosh(this.im);
+        double im = Math.cos(this.re) * Math.sinh(this.im);
+        this.re = re;
+        this.im = im;
+        return this;
+    }
 }
