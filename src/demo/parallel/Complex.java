@@ -96,11 +96,23 @@ public class Complex {
 
     /**
      * Sine function
-     * @return the Complex object whose value is sin(this)
+     * @return this Complex object whose value is sin(this)
      */
     public Complex sin() {
         double re = Math.sin(this.re) * Math.cosh(this.im);
         double im = Math.cos(this.re) * Math.sinh(this.im);
+        this.re = re;
+        this.im = im;
+        return this;
+    }
+
+    /**
+     * Cosine function
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double re = Math.cos(this.re) * Math.cosh(this.im);
+        double im = -Math.sin(this.re) * Math.sinh(this.im);
         this.re = re;
         this.im = im;
         return this;
