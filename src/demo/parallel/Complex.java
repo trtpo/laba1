@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import static java.lang.Double.NaN;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -91,6 +93,7 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex div(Complex b) {
+        if (b.re == 0 && b.im == 0) throw ArithmeticException("Cannot divide by zero");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
@@ -132,5 +135,14 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) return true;
+        if (otherObject == null) return false;
+        if (this.getClass() != otherObject.getClass()) return false;
+        Complex other = (Complex) otherObject;
+        return this.re == other.re && this.im == other.im;
     }
 }
