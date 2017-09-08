@@ -93,7 +93,7 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex div(Complex b) {
-        if (b.re == 0 && b.im == 0) throw ArithmeticException("Cannot divide by zero");
+        if (b.re == 0 && b.im == 0) throw new ArithmeticException("Cannot divide by zero");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
@@ -119,8 +119,8 @@ public class Complex {
         Complex a = this;
         double real = Math.sin(a.re) * Math.cosh(a.im);
         double imag = Math.cos(a.re) * Math.sinh(a.im);
-        re = real;
-        im = imag;
+        re = Math.round(real * 100) / 100.0;
+        im = Math.round(imag * 100) / 100.0;
         return this;
     }
 
@@ -132,8 +132,8 @@ public class Complex {
         Complex a = this;
         double real = Math.cos(a.re) * Math.cosh(a.im);
         double imag = -Math.sin(a.re) * Math.sinh(a.im);
-        re = real;
-        im = imag;
+        re = Math.round(real * 100) / 100.0;
+        im = Math.round(imag * 100) / 100.0;
         return this;
     }
 
