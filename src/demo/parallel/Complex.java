@@ -49,6 +49,22 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    /**
+     * getter of real part
+     * @return real part
+     * */
+    public double getReal() {
+        return this .re;
+    }
+
+    /**
+     * getter of imaginary part
+     * @return imaginary part
+     * */
+    public double getImaginary() {
+        return this.im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -89,8 +105,8 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (a.re * a.re + b.re * b.re);
-        double imag = (a.im * b.re - a.re * b.im) / (a.re * a.re + b.re * b.re);
+        double real = a.re * b.re - a.im * b.im;
+        double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
         return this;
@@ -103,8 +119,8 @@ public class Complex {
      */
     public Complex division(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
