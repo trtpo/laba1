@@ -99,6 +99,7 @@ public class Complex {
      *
      * @param b divider
      * @return this Complex object whose value is this / b
+     * @throws ArithmeticException Thrown when divider is zero
      */
     public Complex div(Complex b) throws ArithmeticException {
         if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero complex number ( in Complex.div(Complex)");
