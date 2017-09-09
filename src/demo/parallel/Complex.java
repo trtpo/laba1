@@ -100,7 +100,7 @@ public class Complex {
 
     /** Subtraction operation
      * @param b subtrahend
-     * @return this Complex object whose value is thic - b
+     * @return this Complex object whose value is this - b
      */
     public Complex sub(Complex b) {
         Complex a = this;
@@ -109,6 +109,13 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /** Equals operation
+     * @return true if value of Complex num1 is equal value of Complex num2
+     */
+    public Boolean equals(Complex b) {
+        return re==b.re && im==b.im;
     }
 
     /**
