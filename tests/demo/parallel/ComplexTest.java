@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ComplexTest {
     private Complex z1;
@@ -20,6 +21,7 @@ class ComplexTest {
         Complex temp = z1.div(z2);
         assertEquals(temp.getRe(), -41.0 / 173.0, "First pair result real part has wrong value (in Complex.div(Complex))");
         assertEquals(temp.getIm(), -7.0 / 173.0, "First pair result imaginary part has wrong value (in Complex.div(Complex))");
+        assertThrows(ArithmeticException.class, () -> z1.div(new Complex(0, 0)), "Division by zero in Complex.div(Complex)");
     }
 
     @Test
