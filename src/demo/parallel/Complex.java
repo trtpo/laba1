@@ -123,6 +123,16 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Compare two objects.
+     * @param obj - second object.
+     * @return true if objects are equal else false.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to
