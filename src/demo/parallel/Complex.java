@@ -111,6 +111,22 @@ public class Complex {
     }
 
     /**
+     * Get real part of complex number
+     * @return real part
+     */
+    public double getReal(){
+        return this.re;
+    }
+
+    /**
+     * Get imaginary part of complex number
+     * @return imaginary part
+     */
+    public double getImage(){
+        return this.im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
