@@ -72,6 +72,20 @@ public class Complex {
     }
 
     /**
+     * My operation.
+     * @param b summand
+     * @return this Complex object whose value is (this + b)
+     */
+    public Complex customOperation(Complex b) {
+        Complex a = this;
+        double real = a.re * b.re / a.im * b.im;
+        double imag = a.re * b.im + a.im * b.re + a.im * b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
