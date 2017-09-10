@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
-    private double re;   // the real part
-    private double im;   // the imaginary part
 
-    /** 
+    public double re;   // the real part
+    public double im;   // the imaginary part
+
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -61,7 +62,27 @@ public class Complex {
     }
 
     /**
+     * Absolute value.
+     * sqrt(<i>x</i><sup>2</sup>&nbsp;+<i>y</i><sup>2</sup>)
+     *
+     * @return return abs/modulus/magnitude
+     */
+    public double abs() {
+        return Math.hypot(re, im);
+    }
+
+    /**
+     * Complex angle or angle in polar coordinates.
+     *
+     * @return angle/phase/argument, normalized to be between -pi and pi
+     */
+    public double phase() {
+        return Math.atan2(im, re);
+    }
+
+    /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -72,8 +93,93 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     *
+     * @param b operand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Scale operation.
+     *
+     * @param alpha scale factor
+     * @return this Complex object whose value is (this * alpha)
+     */
+    public Complex scale(double alpha) {
+        re *= alpha;
+        im *= alpha;
+        return this;
+    }
+
+    /**
+     * @return this Complex object whose value is the conjugate of this
+     */
+    public Complex conjugate() {
+        im = -im;
+        return this;
+    }
+
+    /**
+     * @return this Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        double scale = re * re + im * im;
+        re /= scale;
+        im /= -scale;
+        return this;
+    }
+
+    /**
+     * @return a / b
+     */
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
+    /**
+     * @return this Complex object whose value is the complex exponential of this
+     */
+    public Complex exp() {
+        re = Math.exp(re) * Math.cos(im);
+        im = Math.exp(re) * Math.sin(im);
+        return this;
+    }
+
+    /**
+     * @return this Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        re = Math.sin(re) * Math.cosh(im);
+        im = Math.cos(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * @return this Complex object whose value is the complex cosine of this
+     */
+    public Complex cos() {
+        re = Math.cos(re) * Math.cosh(im);
+        im = -Math.sin(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * @return this Complex object whose value is the complex tangent of this
+     */
+    public Complex tan() {
+        return sin().divides(cos());
+    }
+
+    /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,10 +192,11 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
