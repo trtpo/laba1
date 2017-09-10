@@ -93,4 +93,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Adjunction operation.
+     * @return Complex object whose value is adjuncted to current
+     */
+    public Complex adjunction()  {
+        Complex temp = this;
+        temp.re = this.re;
+        temp.im = this.im*(-1);
+        return temp;
+    }
 }
