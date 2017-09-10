@@ -70,7 +70,7 @@ public class ComplexTest extends Assert {
         assertEquals(testImage, number1.getImage(), testPresicion);
     }
 
-    private void divideCalculate(){
+    private void divideCalculate() {
         double div = testValues.get("real2") * testValues.get("real2") + testValues.get("image2") * testValues.get("image2");
         testReal = (testValues.get("real1") * testValues.get("real2") + testValues.get("image1") * testValues.get("image2")) / div;
         testImage = (testValues.get("real2") * testValues.get("image1") - testValues.get("real1") * testValues.get("image2")) / div;
@@ -85,18 +85,29 @@ public class ComplexTest extends Assert {
         assertEquals(testImage, number.getImage(), testPresicion);
     }
 
-    private void expCalculate(){
+    private void expCalculate() {
         testReal = Math.exp(testValues.get("real1")) * Math.cos(testValues.get("image1"));
         testImage = Math.exp(testValues.get("real1")) * Math.sin(testValues.get("image1"));
     }
 
     @Test
     public void sin() throws Exception {
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number.sin();
+        sinCalculate();
+        assertEquals(testReal, number.getReal(), testPresicion);
+        assertEquals(testImage, number.getImage(), testPresicion);
+    }
+
+    private void sinCalculate() {
+        testReal = Math.sin(testValues.get("real1")) * Math.cosh(testValues.get("image1"));
+        testImage = Math.cos(testValues.get("real1")) * Math.sinh(testValues.get("image1"));
     }
 
     @Test
     public void cos() throws Exception {
     }
+    
 
     @Test
     public void tg() throws Exception {
