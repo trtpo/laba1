@@ -61,6 +61,18 @@ public class Complex {
     }
 
     /**
+     * Get real part.
+     * @return real part
+     */
+    public double getRe() { return re; }
+
+    /**
+     * Get imaginary part.
+     * @return imaginary part
+     */
+    public double getIm() { return im; }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -88,8 +100,8 @@ public class Complex {
      */
     public Complex div(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im)/(a.re * b.re + b.im * b.im);
-        double imag = (a.im * b.re - a.re * b.im)/(a.re * b.re + b.im * b.im);
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
