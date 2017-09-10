@@ -11,6 +11,7 @@ import java.util.Random;
 public class ComplexTest extends Assert {
 
     private HashMap<String, Double> testValues = new HashMap<>();
+    private Complex number, number1, number2;
     private double testReal, testImage;
     private final double testPresicion = 0.0001;
 
@@ -21,23 +22,23 @@ public class ComplexTest extends Assert {
         testValues.put("real2", val.nextDouble());
         testValues.put("image1", val.nextDouble());
         testValues.put("image2", val.nextDouble());
+        number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
+        number = number1;
     }
 
     @Test
     public void getReal() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         assertEquals(testValues.get("real1"), number.getReal(), testPresicion);
     }
 
     @Test
     public void getImage() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         assertEquals(testValues.get("image1"), number.getImage(), testPresicion);
     }
 
     @Test
     public void negative() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.negative();
         assertEquals(-testValues.get("real1"), number.getReal(), testPresicion);
         assertEquals(-testValues.get("image1"), number.getImage(), testPresicion);
@@ -45,8 +46,6 @@ public class ComplexTest extends Assert {
 
     @Test
     public void minus() throws Exception {
-        Complex number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
-        Complex number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
         number1.minus(number2);
         assertEquals(testValues.get("real1") - testValues.get("real2"), number1.getReal(), testPresicion);
         assertEquals(testValues.get("image1") - testValues.get("image2"), number1.getImage(), testPresicion);
@@ -54,7 +53,6 @@ public class ComplexTest extends Assert {
 
     @Test
     public void minusItSelf() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.minus(number);
         assertEquals(0.0, number.getReal(), testPresicion);
         assertEquals(0.0, number.getImage(), testPresicion);
@@ -62,8 +60,6 @@ public class ComplexTest extends Assert {
 
     @Test
     public void divide() throws Exception {
-        Complex number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
-        Complex number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
         number1.divide(number2);
         divideCalculate();
         assertEquals(testReal, number1.getReal(), testPresicion);
@@ -78,7 +74,6 @@ public class ComplexTest extends Assert {
 
     @Test
     public void exp() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.exp();
         expCalculate();
         assertEquals(testReal, number.getReal(), testPresicion);
@@ -92,7 +87,6 @@ public class ComplexTest extends Assert {
 
     @Test
     public void sin() throws Exception {
-        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.sin();
         sinCalculate();
         assertEquals(testReal, number.getReal(), testPresicion);
@@ -106,8 +100,16 @@ public class ComplexTest extends Assert {
 
     @Test
     public void cos() throws Exception {
+        number.cos();
+        cosCalculate();
+        assertEquals(testReal, number.getReal(), testPresicion);
+        assertEquals(testImage, number.getImage(), testPresicion);
     }
-    
+
+    private void cosCalculate(){
+        testReal = Math.cos(testValues.get("real1")) * Math.cosh(testValues.get("image1"));
+        testImage = -Math.sin(testValues.get("real1")) * Math.sinh(testValues.get("image1"));
+    }
 
     @Test
     public void tg() throws Exception {
