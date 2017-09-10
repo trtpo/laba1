@@ -100,8 +100,12 @@ public class Complex {
      */
     public Complex adjunction()  {
         Complex temp = this;
-        temp.re = this.re;
         temp.im = this.im*(-1);
         return temp;
+    }
+
+    public boolean equals(Complex c){
+        if(c.re == this.re && c.im == this.im) return true;
+        else return false;
     }
 }
