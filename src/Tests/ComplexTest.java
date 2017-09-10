@@ -29,19 +29,19 @@ public class ComplexTest extends Assert {
 
     @Test
     public void getReal() throws Exception {
-        assertEquals(testValues.get("real1"), number.getReal(), testPresicion);
+        assertEquals(testValues.get("real1"), number1.getReal(), testPresicion);
     }
 
     @Test
     public void getImage() throws Exception {
-        assertEquals(testValues.get("image1"), number.getImage(), testPresicion);
+        assertEquals(testValues.get("image1"), number1.getImage(), testPresicion);
     }
 
     @Test
     public void negative() throws Exception {
-        number.negative();
-        assertEquals(-testValues.get("real1"), number.getReal(), testPresicion);
-        assertEquals(-testValues.get("image1"), number.getImage(), testPresicion);
+        number1.negative();
+        assertEquals(-testValues.get("real1"), number1.getReal(), testPresicion);
+        assertEquals(-testValues.get("image1"), number1.getImage(), testPresicion);
     }
 
     @Test
