@@ -12,6 +12,7 @@ public class ComplexTest extends Assert {
 
     private HashMap<String, Double> testValues = new HashMap<>();
     private double testReal, testImage;
+    private final double testPresicion = 0.0001;
 
     @Before
     public void initTestValues() {
@@ -25,21 +26,21 @@ public class ComplexTest extends Assert {
     @Test
     public void getReal() throws Exception {
         Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
-        assertEquals(testValues.get("real1"), number.getReal(), 0.0001);
+        assertEquals(testValues.get("real1"), number.getReal(), testPresicion);
     }
 
     @Test
     public void getImage() throws Exception {
         Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
-        assertEquals(testValues.get("image1"), number.getImage(), 0.0001);
+        assertEquals(testValues.get("image1"), number.getImage(), testPresicion);
     }
 
     @Test
     public void negative() throws Exception {
         Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.negative();
-        assertEquals(-testValues.get("real1"), number.getReal(), 0.0001);
-        assertEquals(-testValues.get("image1"), number.getImage(), 0.0001);
+        assertEquals(-testValues.get("real1"), number.getReal(), testPresicion);
+        assertEquals(-testValues.get("image1"), number.getImage(), testPresicion);
     }
 
     @Test
@@ -47,16 +48,16 @@ public class ComplexTest extends Assert {
         Complex number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
         Complex number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
         number1.minus(number2);
-        assertEquals(testValues.get("real1") - testValues.get("real2"), number1.getReal(), 0.0001);
-        assertEquals(testValues.get("image1") - testValues.get("image2"), number1.getImage(), 0.0001);
+        assertEquals(testValues.get("real1") - testValues.get("real2"), number1.getReal(), testPresicion);
+        assertEquals(testValues.get("image1") - testValues.get("image2"), number1.getImage(), testPresicion);
     }
 
     @Test
     public void minusItSelf() throws Exception {
         Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
         number.minus(number);
-        assertEquals(0.0, number.getReal(), 0.0001);
-        assertEquals(0.0, number.getImage(), 0.0001);
+        assertEquals(0.0, number.getReal(), testPresicion);
+        assertEquals(0.0, number.getImage(), testPresicion);
     }
 
     @Test
@@ -65,8 +66,8 @@ public class ComplexTest extends Assert {
         Complex number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
         number1.divide(number2);
         divideCalculate();
-        assertEquals(testReal, number1.getReal(), 0.0001);
-        assertEquals(testImage, number1.getImage(), 0.0001);
+        assertEquals(testReal, number1.getReal(), testPresicion);
+        assertEquals(testImage, number1.getImage(), testPresicion);
     }
 
     private void divideCalculate(){
@@ -77,6 +78,16 @@ public class ComplexTest extends Assert {
 
     @Test
     public void exp() throws Exception {
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number.exp();
+        expCalculate();
+        assertEquals(testReal, number.getReal(), testPresicion);
+        assertEquals(testImage, number.getImage(), testPresicion);
+    }
+
+    private void expCalculate(){
+        testReal = Math.exp(testValues.get("real1")) * Math.cos(testValues.get("image1"));
+        testImage = Math.exp(testValues.get("real1")) * Math.sin(testValues.get("image1"));
     }
 
     @Test
