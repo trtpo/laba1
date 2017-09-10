@@ -11,9 +11,10 @@ import java.util.Random;
 public class ComplexTest extends Assert {
 
     private HashMap<String, Double> testValues = new HashMap<>();
+    private double testReal, testImage;
 
     @Before
-    public void initTestValues(){
+    public void initTestValues() {
         Random val = new Random(1000);
         testValues.put("real1", val.nextDouble());
         testValues.put("real2", val.nextDouble());
@@ -60,6 +61,18 @@ public class ComplexTest extends Assert {
 
     @Test
     public void divide() throws Exception {
+        Complex number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        Complex number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
+        number1.divide(number2);
+        divideCalculate();
+        assertEquals(testReal, number1.getReal(), 0.0001);
+        assertEquals(testImage, number1.getImage(), 0.0001);
+    }
+
+    private void divideCalculate(){
+        double div = testValues.get("real2") * testValues.get("real2") + testValues.get("image2") * testValues.get("image2");
+        testReal = (testValues.get("real1") * testValues.get("real2") + testValues.get("image1") * testValues.get("image2")) / div;
+        testImage = (testValues.get("real2") * testValues.get("image1") - testValues.get("real1") * testValues.get("image2")) / div;
     }
 
     @Test
