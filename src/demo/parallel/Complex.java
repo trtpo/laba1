@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Getter for Real complex
+     * @return this Complex object whose value is re
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Getter for Immediately complex
+     * @return this Complex object whose value is im
+     */
+    public double getIm(){
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
