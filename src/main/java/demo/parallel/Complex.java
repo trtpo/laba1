@@ -31,6 +31,10 @@
 package demo.parallel;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -45,7 +49,10 @@ package demo.parallel;
  *
  * @author Alexander Kouznetsov, Tristan Yan
  */
+@EqualsAndHashCode
+@ToString
 public class Complex {
+    private static final Complex ZERO = new Complex(0, 0);
 
     public double re;   // the real part
     public double im;   // the imaginary part
@@ -138,6 +145,9 @@ public class Complex {
      * @return a / b
      */
     public Complex divides(Complex b) {
+        if (b.equals(ZERO)) {
+            throw new ArithmeticException("Division by zero");
+        }
         Complex a = this;
         return a.times(b.reciprocal());
     }
