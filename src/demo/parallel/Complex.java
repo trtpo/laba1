@@ -90,6 +90,9 @@ public class Complex {
      * @param b multiplier
      * @return this Complex object whose value is this * b
      */
+    public Boolean equal(Complex b){
+        return im == b.im && re ==b.re;
+    }
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
