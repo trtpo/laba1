@@ -106,13 +106,25 @@ public class ComplexTest extends Assert {
         assertEquals(testImage, number.getImage(), testPresicion);
     }
 
-    private void cosCalculate(){
+    private void cosCalculate() {
         testReal = Math.cos(testValues.get("real1")) * Math.cosh(testValues.get("image1"));
         testImage = -Math.sin(testValues.get("real1")) * Math.sinh(testValues.get("image1"));
     }
 
     @Test
     public void tg() throws Exception {
+        number.tg();
+        number1 = tgCalculate();
+        assertEquals(number1.getReal(), number.getReal(), testPresicion);
+        assertEquals(number1.getImage(), number.getImage(), testPresicion);
+    }
+
+    private Complex tgCalculate() {
+        number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number2 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number2.cos();
+        number1.sin();
+        return number1.divide(number2);
     }
 
     @Test

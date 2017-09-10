@@ -190,8 +190,11 @@ public class Complex {
      * @return this Complex object whose value is tg(this)
      */
     public Complex tg() {
-        Complex c = new Complex(re, im);
-        cos().divide(c.sin());
+
+        double real = Math.sin(2 * re) / (Math.cos(2 * re) + Math.cosh(2 * im));
+        double imag = Math.sinh(2 * im) / (Math.cos(2 * re) + Math.cosh(2 * im));
+        re = real;
+        im = imag;
         return this;
     }
 
