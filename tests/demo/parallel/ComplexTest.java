@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ComplexTest {
     private Complex complex1;
     private Complex complex2;
+
     @BeforeEach
     public void setUp(){
         complex1 = new Complex(5.0, -4.0);
@@ -17,7 +18,7 @@ public class ComplexTest {
     @Test
     public void sub() {
         Complex temp = complex1.sub(complex2);
-        assertEquals(temp.getRe(), 2.0, "Real part of first complex has wrong value (in Complex.sub(Complex))");
+        assertEquals(temp.getRe(), 3.0, "Real part of first complex has wrong value (in Complex.sub(Complex))");
         assertEquals(temp.getIm(), -5.0, "Imaginary part of first complex has wrong value (in Complex.sub(Complex))");
     }
 
