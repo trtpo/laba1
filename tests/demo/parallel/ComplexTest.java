@@ -10,14 +10,14 @@ public class ComplexTest {
     private Complex complex2;
     @BeforeEach
     public void setUp(){
-        complex1 = new Complex(5, -4);
-        complex2 = new Complex(2, 1);
+        complex1 = new Complex(5.0, -4.0);
+        complex2 = new Complex(2.0, 1.0);
     }
 
     @Test
     public void sub() {
         Complex temp = complex1.sub(complex2);
-        assertEquals(temp.getRe(), 3.0, "Real part of first complex has wrong value (in Complex.sub(Complex))");
+        assertEquals(temp.getRe(), 2.0, "Real part of first complex has wrong value (in Complex.sub(Complex))");
         assertEquals(temp.getIm(), -5.0, "Imaginary part of first complex has wrong value (in Complex.sub(Complex))");
     }
 
