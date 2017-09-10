@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Real part getter
+     * @return real part of this Complex object
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * Imaginary part getter
+     * @return imaginary part of this Complex object
+     */
+    public double getIm() {
+        return this.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -68,6 +84,17 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     * Subtract operation.
+     * @param b  subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -82,6 +109,15 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Conjugate finding operation
+     * @return this Complex object whose value is conjugate
+     */
+    public Complex conjugate() {
+        im = -im;
         return this;
     }
 
