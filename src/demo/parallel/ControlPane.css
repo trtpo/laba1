@@ -37,14 +37,14 @@
     -fx-hgap: 1em;
     -fx-vgap: 0.2em;
     -fx-alignment: center;
-    -fx-background-color: black;
+    -fx-background-color: white;
     -fx-background-radius: 0 0 2.5em 2.5em;
     -fx-padding: 0.5em 0.7em 0.5em 0.7em;
     -fx-opacity: 0.9;
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: green;
 }
 
 .progress-indicator .percentage {
@@ -60,7 +60,7 @@
 }
 
 #open-close-toggle-button {
-    -fx-background-color: gray;
+    -fx-background-color: black;
     -fx-background-radius: 0;
     -fx-content-display: graphic-only;
     -fx-shape: "M 0,0 H 40 v 1 h -40 Z M 0,3 H 40 v 1 h -40 Z M 0,6 H40 v 1 h -40 Z";
@@ -75,7 +75,7 @@
 }
 
 .time .bar {
-    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 30%, yellow 60%, red);
+    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 70%, yellow 90%, red 50%);
     -fx-background-radius: 0;
 }
 
