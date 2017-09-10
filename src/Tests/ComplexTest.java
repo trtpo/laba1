@@ -122,13 +122,25 @@ public class ComplexTest extends Assert {
     private Complex tgCalculate() {
         number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
         number2 = new Complex(testValues.get("real1"), testValues.get("image1"));
-        number2.cos();
         number1.sin();
+        number2.cos();
         return number1.divide(number2);
     }
 
     @Test
     public void ctg() throws Exception {
+        number.ctg();
+        number1 = ctgCalculate();
+        assertEquals(number1.getReal(), number.getReal(), testPresicion);
+        assertEquals(number1.getImage(), number.getImage(), testPresicion);
+    }
+
+    private Complex ctgCalculate() {
+        number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number2 = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number1.cos();
+        number2.sin();
+        return number1.divide(number2);
     }
 
 }
