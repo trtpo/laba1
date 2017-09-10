@@ -17,11 +17,12 @@ public class ComplexTest extends Assert {
 
     @Before
     public void initTestValues() {
-        Random val = new Random(1000);
-        testValues.put("real1", val.nextDouble());
-        testValues.put("real2", val.nextDouble());
-        testValues.put("image1", val.nextDouble());
-        testValues.put("image2", val.nextDouble());
+        Random val = new Random();
+        final int baseVal = 100;
+        testValues.put("real1", val.nextDouble()+val.nextInt(baseVal)-baseVal/2);
+        testValues.put("real2",val.nextDouble()+val.nextInt(baseVal)-baseVal/2);
+        testValues.put("image1",val.nextDouble()+val.nextInt(baseVal)-baseVal/2);
+        testValues.put("image2",val.nextDouble()+val.nextInt(baseVal)-baseVal/2);
         number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
         number2 = new Complex(testValues.get("real2"), testValues.get("image2"));
         number = number1;
@@ -56,6 +57,11 @@ public class ComplexTest extends Assert {
         number.minus(number);
         assertEquals(0.0, number.getReal(), testPresicion);
         assertEquals(0.0, number.getImage(), testPresicion);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void divideByZero() throws Exception {
+        number.divide(new Complex(0, 0));
     }
 
     @Test

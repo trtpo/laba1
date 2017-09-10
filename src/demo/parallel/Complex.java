@@ -130,19 +130,30 @@ public class Complex {
     }
 
     /**
+     * Check division operation dividing by zero
+     *
+     * @param b divider
+     * @return this Complex object whose value is this/b
+     */
+    public Complex divide(Complex b){
+        divideCalculate(b);
+        if(Double.isNaN(re) || Double.isNaN(im)) throw new ArithmeticException("Dividing by zero!");
+        return this;
+    }
+
+    /**
      * Division operation
      *
      * @param b divider
      * @return this Complex object whose value is this/b
      */
-    public Complex divide(Complex b) {
+    private void divideCalculate(Complex b) {
         Complex a = this;
         double div = b.re * b.re + b.im * b.im;
         double real = (a.re * b.re + a.im * b.im) / div;
         double imag = (b.re * a.im - a.re * b.im) / div;
         re = real;
         im = imag;
-        return this;
     }
 
     /**
