@@ -85,6 +85,15 @@ public class Complex {
         return this;
     }
 
+    public Complex newOperation(Complex i){
+        Complex a = this;
+        double real = (a.re * i.re + a.im * i.im) * i.re;
+        double imag = (a.re * i.im - a.im * i.re) * i.re;
+        re = real;
+        im = imag;
+        return this;
+
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
