@@ -85,7 +85,9 @@ public class Complex {
      * @return this Complex object with negative real and imaginary parts
      */
     public Complex negative() {
-        return new Complex(-re, -im);
+        re = -re;
+        im = -im;
+        return this;
     }
 
     /**

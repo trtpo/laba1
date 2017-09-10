@@ -35,6 +35,10 @@ public class ComplexTest extends Assert {
 
     @Test
     public void negative() throws Exception {
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number.negative();
+        assertEquals(-testValues.get("real1"), number.getReal(), 0.0001);
+        assertEquals(-testValues.get("image1"), number.getImage(), 0.0001);
     }
 
     @Test
