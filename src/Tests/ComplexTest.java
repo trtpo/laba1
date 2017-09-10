@@ -23,10 +23,14 @@ public class ComplexTest extends Assert {
 
     @Test
     public void getReal() throws Exception {
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        assertEquals(testValues.get("real1"), number.getReal(), 0.0001);
     }
 
     @Test
     public void getImage() throws Exception {
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        assertEquals(testValues.get("image1"), number.getImage(), 0.0001);
     }
 
     @Test
@@ -44,10 +48,10 @@ public class ComplexTest extends Assert {
 
     @Test
     public void minusItSelf() throws Exception {
-        Complex number1 = new Complex(testValues.get("real1"), testValues.get("image1"));
-        number1.minus(number1);
-        assertEquals(0.0, number1.getReal(), 0.0001);
-        assertEquals(0.0, number1.getImage(), 0.0001);
+        Complex number = new Complex(testValues.get("real1"), testValues.get("image1"));
+        number.minus(number);
+        assertEquals(0.0, number.getReal(), 0.0001);
+        assertEquals(0.0, number.getImage(), 0.0001);
     }
 
     @Test
