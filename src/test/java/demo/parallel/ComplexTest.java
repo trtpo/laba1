@@ -48,82 +48,82 @@ public class ComplexTest {
     }
 
     @org.junit.Test
-    public void abs() throws Exception {
+    public void  shouldCalculateAbs() throws Exception {
         assertThat("abs(x, y) = ((x)^2 + y^2)^(1/2)", b.abs(), is(abs));
     }
 
     @org.junit.Test
-    public void phase() throws Exception {
+    public void  shouldCalculatePhase() throws Exception {
         assertThat("phase(x, y) = atan(y / x)", a.phase(), is(phase));
     }
 
     @org.junit.Test
-    public void plus() throws Exception {
+    public void  shouldCalculateSum() throws Exception {
         assertThat("c1 + c2 = x1 + x2 + i(y1 + y2)", a.plus(b), is(sum));
     }
 
     @org.junit.Test
-    public void minus() throws Exception {
+    public void  shouldCalculateSub() throws Exception {
         assertThat("c1 + c2 = x1 - x2 + i(y1 - y2)", a.minus(b), is(sub));
     }
 
     @org.junit.Test
-    public void scale() throws Exception {
+    public void  shouldScale() throws Exception {
         assertThat("scale(c, factor) = x * factor + i(y * factor)", a.scale(2), is(scaled));
     }
 
     @org.junit.Test
-    public void conjugate() throws Exception {
+    public void  shouldConjugate() throws Exception {
         assertThat("conj(c) = x + i(-y)", a.conjugate(), is(conj));
     }
 
     @org.junit.Test
-    public void reciprocal() throws Exception {
+    public void  shouldReciprocal() throws Exception {
         assertThat("recip(c) = x / abs(c)^2 + i(-y / abs(c)^2)", a.reciprocal(), is(recip));
     }
 
     @org.junit.Test
-    public void divides() throws Exception {
+    public void  shouldDivide() throws Exception {
         assertThat("div(c1, c2) = c1 * recip(c2)", a.divides(b), is(div));
     }
 
     @org.junit.Test(expected = ArithmeticException.class)
-    public void divisionByZero() throws Exception {
+    public void shouldThrowArithmeticExceptionWhenDiviByZero() throws Exception {
         a.divides(Complex.ZERO);
     }
 
     @org.junit.Test
-    public void exp() throws Exception {
+    public void  shouldCalculateExponent() throws Exception {
         assertThat("exp(c) = e^x * cos(y) + i(e^x * sin(y))", a.exp(), is(exp));
     }
 
     @org.junit.Test
-    public void sin() throws Exception {
+    public void  shouldCalculateSin() throws Exception {
         assertThat("sin(c) = sin(x) * ch(y) + i(cos(x) * sh(y))", a.sin(), is(sin));
     }
 
     @org.junit.Test
-    public void cos() throws Exception {
+    public void  shouldCalculateCos() throws Exception {
         assertThat("cos(c) = cos(x) * ch(y) + i(-sin(x) * sh(y))", a.cos(), is(cos));
     }
 
     @org.junit.Test
-    public void tan() throws Exception {
+    public void  shouldCalculateTan() throws Exception {
         assertThat("tab(c) = sin(c) / cos(c)", a.tan(), is(tan));
     }
 
     @org.junit.Test
-    public void times() throws Exception {
+    public void  shouldMultiply() throws Exception {
         assertThat("mult(c1, c2) = x1 * x2 - y1 * y2 + i(x1 * y2 + y1 * x2)", a.times(b), is(mult));
     }
 
     @org.junit.Test
-    public void timesCommutative() throws Exception {
+    public void multiplicationShouldBeCommutative() throws Exception {
         assertThat("multiplication is commutative", b.times(a), is(mult));
     }
 
     @org.junit.Test
-    public void lengthSQ() throws Exception {
+    public void  shouldCalculateLengthSQ() throws Exception {
         assertThat("(x)^2 + y^2 = abs(c)^2", a.lengthSQ(), is((double)Math.round(Math.pow(a.abs(), 2))));
     }
 
