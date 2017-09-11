@@ -111,11 +111,18 @@ public class Complex {
         return this;
     }
 
+    public double getRealPart() {
+        return re;
+    }
+
+    public double getImPart() {
+        return im;
+    }
     /** Equals operation
      * @return true if value of Complex num1 is equal value of Complex num2
      */
     public Boolean equals(Complex b) {
-        return re==b.re && im==b.im;
+        return re == b.re && im == b.im;
     }
 
     /**
