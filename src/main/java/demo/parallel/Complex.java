@@ -32,8 +32,8 @@ package demo.parallel;
 
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
+import lombok.val;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -52,10 +52,10 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class Complex {
-    private static final Complex ZERO = new Complex(0, 0);
+    public static final Complex ZERO = new Complex(0, 0);
 
-    public double re;   // the real part
-    public double im;   // the imaginary part
+    private double re;   // the real part
+    private double im;   // the imaginary part
 
     /**
      * create a new object with the given real and imaginary parts
@@ -79,7 +79,7 @@ public class Complex {
     }
 
     /**
-     * Complex angle or angle in polar coordinates.
+     * val angle or angle in polar coordinates.
      *
      * @return angle/phase/argument, normalized to be between -pi and pi
      */
@@ -135,7 +135,7 @@ public class Complex {
      * @return this Complex object whose value is the reciprocal of this
      */
     public Complex reciprocal() {
-        double scale = re * re + im * im;
+        val scale = re * re + im * im;
         re /= scale;
         im /= -scale;
         return this;
@@ -148,7 +148,7 @@ public class Complex {
         if (b.equals(ZERO)) {
             throw new ArithmeticException("Division by zero");
         }
-        Complex a = this;
+        val a = this;
         return a.times(b.reciprocal());
     }
 
@@ -156,8 +156,10 @@ public class Complex {
      * @return this Complex object whose value is the complex exponential of this
      */
     public Complex exp() {
-        re = Math.exp(re) * Math.cos(im);
-        im = Math.exp(re) * Math.sin(im);
+        val real = Math.exp(re) * Math.cos(im);
+        val image = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = image;
         return this;
     }
 
@@ -165,8 +167,10 @@ public class Complex {
      * @return this Complex object whose value is the complex sine of this
      */
     public Complex sin() {
-        re = Math.sin(re) * Math.cosh(im);
-        im = Math.cos(re) * Math.sinh(im);
+        val real = Math.sin(re) * Math.cosh(im);
+        val image = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = image;
         return this;
     }
 
@@ -174,8 +178,10 @@ public class Complex {
      * @return this Complex object whose value is the complex cosine of this
      */
     public Complex cos() {
-        re = Math.cos(re) * Math.cosh(im);
-        im = -Math.sin(re) * Math.sinh(im);
+        val real = Math.cos(re) * Math.cosh(im);
+        val image = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = image;
         return this;
     }
 
@@ -193,11 +199,11 @@ public class Complex {
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        val a = this;
+        val real = a.re * b.re - a.im * b.im;
+        val image = a.re * b.im + a.im * b.re;
         re = real;
-        im = imag;
+        im = image;
         return this;
     }
 
