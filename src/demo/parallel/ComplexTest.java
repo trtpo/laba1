@@ -23,8 +23,8 @@ public class ComplexTest {
     @Test
     public void divByZero() throws Exception {
         Complex b = num1.div(new Complex(0,0));
-        assertEquals("Division by zero is illegal operation", b.getRealPart(),0,0);
-        assertEquals("Division by zero is illegal operation", b.getImPart(),0,0);
+        assertEquals("Division by zero is illegal operation", b.getRealPart(), 0, 0);
+        assertEquals("Division by zero is illegal operation", b.getImPart(), 0, 0);
     }
 
     @Test
