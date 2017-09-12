@@ -61,6 +61,14 @@ public class Complex {
     }
 
     /**
+     * Create independent clone of that number
+     * @return clone of that object
+     */
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -87,6 +95,19 @@ public class Complex {
 
     /**
      * Square of Complex object's length, we're using square of length to 
+     * Dividing operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        this.times(new Complex(b.re, - b.im));
+        re /= b.lengthSQ();
+        im /= b.lengthSQ();
+        return this;
+    }
+
+    /**
      * eliminate the computation of square root
      * @return square of length
     */
