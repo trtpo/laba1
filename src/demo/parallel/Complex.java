@@ -149,4 +149,16 @@ public class Complex {
         im = a.im;
         return this;
     }
+
+    /**
+     * Calculating exponential function of complex number
+     * @return this Complex object whose value is exponential function of this
+     */
+    public Complex exp() {
+        double real = Math.exp(re) * Math.cos(im);
+        double imag = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
 }
