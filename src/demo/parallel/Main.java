@@ -789,7 +789,7 @@ public class Main extends Application {
     
     private void rerender(boolean compareMode, boolean parallel, Runnable onDone) {
         stopTask();
-        canvas.getGraphicsContext2D().setFill(Color.rgb(0, 0, 0, 0.5));
+        canvas.getGraphicsContext2D().setFill(Color.rgb(121, 142, 0, 0.5));
         canvas.getGraphicsContext2D().fillRect(0, 0, winWidth, winHeight);
         render(compareMode, parallel, onDone);
     }
