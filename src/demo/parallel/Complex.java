@@ -81,7 +81,7 @@ public class Complex {
      */
     public Complex minus(Complex b) {
         re -= b.re;
-        im += b.im;
+        im -= b.im;
         return this;
     }
 
@@ -100,12 +100,14 @@ public class Complex {
         return this;
     }
 
-    public Complex devider(Complex b) {
-        if (b.re == 0 && b.im == 0) throw new ArithmeticException("division by zero");
+    public Complex division(Complex b) {
+        if ( b.re == 1 && b.im == 0) return this;
         Complex a = this;
-        double denominator = b.re * b.re + b.im * b.im;
-        double real = (a.re * b.re + a.im + b.im) / denominator;
-        double imag = (b.re * a.im - a.re * b.im) / denominator;
+        if (b.re == 0 && b.im == 0)
+            throw new ArithmeticException();
+
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
@@ -119,5 +121,27 @@ public class Complex {
      */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Complex complex = (Complex) o;
+
+        if (Double.compare(complex.re, re) != 0) return false;
+        return Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(re);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(im);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }
