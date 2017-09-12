@@ -97,6 +97,22 @@ public class Complex {
     }
 
     /**
+     *
+     * @return real part
+     */
+    public double getRe(){
+        return this.re;
+    }
+
+    /**
+     *
+     * @return imaginary part
+     */
+    public double getIm(){
+        return this.im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
