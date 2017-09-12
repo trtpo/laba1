@@ -42,4 +42,29 @@ public class ComplexTest extends Assert {
         assertEquals(true, c1.clone().divide(new Complex(0, -1))
                 .equals(new Complex(- startedImagine, startedReal)));                          //Dividing not to real part only
     }
+
+    @Test
+    public void checkSin() {
+        assertEquals(true, (new Complex(0, 0)).sin().equals(new Complex(0, 0)));     //checking sine (0, 0)
+        assertEquals(true, (new Complex(Math.PI / 2, 0)).sin().equals(new Complex(1, 0)));     //checking sine (PI/2, 1)
+        assertEquals(true, (new Complex(Math.PI * 3 / 2, 0)).sin().equals(new Complex(-1, 0)));     //checking sine (3 * PI /2, -1)
+    }
+
+    @Test
+    public void checkCos() {
+        assertEquals(true, (new Complex(0, 0)).cos().equals(new Complex(1, 0)));     //checking cosine (0, 1)
+        assertEquals(true, (new Complex(Math.PI, 0)).cos().equals(new Complex(-1, 0)));     //checking cosine (PI, -1)
+        assertEquals(true, (new Complex(Math.PI * 2, 0)).cos().equals(new Complex(1, 0)));     //checking cosine (2 * PI, 1)
+    }
+
+    @Test
+    public void checkTan() {
+        assertEquals(true, (new Complex(0, 0)).tan().equals(new Complex(0, 0)));     //checking tan (0, 0)
+    }
+
+    @Test
+    public void checkExp() {
+        assertEquals(true, (new Complex(0, 0)).exp().equals(new Complex(1, 0)));           //checking exp (0, 1)
+        assertEquals(true, (new Complex(1, 0)).exp().equals(new Complex(Math.exp(1), 0)));      //checking exp (1, e)
+    }
 }
