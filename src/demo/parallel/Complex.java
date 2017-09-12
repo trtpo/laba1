@@ -114,4 +114,39 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Sine of complex number
+     * @return this Complex object whose value is sine of this
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine of complex number
+     * @return this Complex object whose value is cosine of this
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = - Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Tangent of complex number
+     * @return this Complex object whose value is tangent of this
+     */
+    public Complex tan() {
+        Complex a = this.clone().sin().divide(this.clone().cos());
+        re = a.re;
+        im = a.im;
+        return this;
+    }
 }
