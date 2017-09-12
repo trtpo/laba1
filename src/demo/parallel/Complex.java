@@ -70,6 +70,44 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex div(Complex b) {
+    	Complex a = this;
+    	double div = b.lengthSQ();
+    	double real = (a.re * b.re - a.im * b.im) / div;
+        double imag = (a.re * b.im + a.im * b.re) / div;
+        re = real;
+        im = imag;       
+        return this;
+    }
+    
+    /**
+         * Square operation.
+         * @return this Complex object whose value is this * this
+         */
+    public Complex square() {
+    //Complex a = this;
+            double real = re * re + im * im;
+            double imag = 2 * re * im;
+            re = real;
+            im = imag;
+            return this;
+        }
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex subtraction(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
