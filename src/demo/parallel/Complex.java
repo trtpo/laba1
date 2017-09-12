@@ -87,18 +87,6 @@ public class Complex {
     }
     
     /**
-         * Square operation.
-         * @return this Complex object whose value is this * this
-         */
-    public Complex square() {
-    //Complex a = this;
-            double real = re * re + im * im;
-            double imag = 2 * re * im;
-            re = real;
-            im = imag;
-            return this;
-        }
-    /**
      * Subtraction operation.
      * @param b subtrahend
      * @return this Complex object whose value is (this - b)
