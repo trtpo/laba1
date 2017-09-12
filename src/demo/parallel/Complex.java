@@ -93,4 +93,63 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+    /**
+     * Square operation.
+     * @return this Complex object whose value is this * this
+     */
+    public Complex square() {
+        double real = re * re - im * im;
+        double imag = 2 * re * im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation by Complex.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double div = b.lengthSQ();
+        if (div == 0.0) {
+            throw new ArithmeticException();
+        }
+        double real = (a.re * b.re + a.im * b.im) / div;
+        double imag = (a.im * b.re - a.re * b.im) / div;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Getting real rart.
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Getting imaginary rart.
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
 }
