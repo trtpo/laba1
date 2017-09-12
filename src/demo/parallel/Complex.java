@@ -94,7 +94,6 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
      * Dividing operation.
      * @param  b divider
      * @return this Complex object whose value is this / b
@@ -108,6 +107,7 @@ public class Complex {
     }
 
     /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
