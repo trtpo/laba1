@@ -85,7 +85,7 @@ public class Complex {
         return this;
     }
 
-    /** Division operation
+    /** Divide operation
      * @param b divider
      * @return this Complex object whose value is this / b
      */
@@ -98,11 +98,11 @@ public class Complex {
         return this;
     }
 
-    /** Subtraction operation
+    /** Minus operation
      * @param b subtrahend
      * @return this Complex object whose value is this - b
      */
-    public Complex sub(Complex b) {
+    public Complex minus(Complex b) {
         Complex a = this;
         double real = a.re - b.re;
         double imag = a.im - b.im;
