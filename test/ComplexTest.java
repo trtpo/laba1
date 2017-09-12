@@ -16,18 +16,16 @@ public class ComplexTest {
     }
 
     @Test
-    public void minus() throws Exception {
+    public void minusTest() throws Exception {
         Complex res = c.minus(d);
-        assertEquals("minus operation test real part", 11.0, res.getReal(), 0.01);
-        assertEquals("minus operation test imaginary part", 258.0, res.getImaginary(), 0.01);
+        assertEquals("minus operation test real part in minus function on line 96", -35.0, res.getReal(), 0.01);
+        assertEquals("minus operation test imaginary part in minus function on line 97", -232.0, res.getImaginary(), 0.01);
     }
 
     @Test
-    public void division() throws Exception {
+    public void divideTest() throws Exception {
         Complex res = c.divide(d);
-        assertEquals("divide operation test real part", 0.048, res.getReal(), 0.001);
-        assertEquals("divide operation test imaginary part", 0.053, res.getImaginary(), 0.001);
-        assertEquals("divide operation test real part", 0.148, res.getReal(), 0.001);
-        assertEquals("divide operation test imaginary part", 0.253, res.getImaginary(), 0.001);
+        assertEquals("divide operation test real part in divide function on line 122", 0.048, res.getReal(), 0.001);
+        assertEquals("divide operation test imaginary part in divide function on line 123", 0.053, res.getImaginary(), 0.001);
     }
 }
