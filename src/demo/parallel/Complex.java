@@ -102,7 +102,7 @@ public class Complex {
      * @throws ArithmeticException Thrown when divider is zero
      */
     public Complex divide(Complex b) throws ArithmeticException {
-        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero complex number ( in Complex.divide(Complex)");
+        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero complex number (in Complex.divide(Complex))");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
