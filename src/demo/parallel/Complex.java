@@ -51,13 +51,28 @@ public class Complex {
 
     /**
      * create a new object with the given real and imaginary parts
-     *
      * @param real a complex number real part
      * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     * Add getter for real part of number
+     * @return real part of number
+     */
+    public double getRealPart() {
+        return re;
+    }
+
+    /**
+     * Add getter for image part of number
+     * @return image part of number
+     */
+    public double getImagePart() {
+        return im;
     }
 
     /**
@@ -71,19 +86,30 @@ public class Complex {
         return this;
     }
 
-    public Complex minus(Complex b){
+    /**
+     * Substract operation.
+     * @param b substracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
-    public Complex customOperation(Complex b){
+    /**
+     *  cross-interaction operation.
+     * @param b summand
+     * @return this Complex object whose real part is sum and imaginary part is substraction
+     */
+    public Complex customOperation(Complex b) {
         re += b.im;
         im -= b.re;
         return this;
     }
+
     /**
      * Multiply operation.
-     * @param  b multiplier
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -99,7 +125,7 @@ public class Complex {
      * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
