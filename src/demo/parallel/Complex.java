@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -71,6 +71,38 @@ public class Complex {
         return this;
     }
 
+
+    /**
+     * Substract from current
+     * @param  b value tu substract
+     * @return this Complex object whose value is this - b
+     */
+    public Complex substract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Count sin
+     * @return this Complex object whose value sin(this)
+     */
+    public Complex sin() {
+        double realPart = Math.sin(re) * Math.cosh(im);
+        double imagePart = Math.cos(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
+
+    /**
+     * Count cos
+     * @return this Complex object whose value cos(this)
+     */
+    public Complex cos() {
+        double realPart = Math.cos(re) * Math.cosh(im);
+        double imagePart = -Math.sin(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -86,11 +118,33 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Complex complex = (Complex) o;
+
+        if (Double.compare(complex.re, re) != 0) return false;
+        return Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(re);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(im);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }
