@@ -114,6 +114,18 @@ public class Complex {
     }
 
     /**
+     * Cos of complex number
+     * @return this Complex object whose value is cos(this)
+     * */
+       public Complex cos() {
+           double real = Math.cos(re) * Math.cosh(im);
+           double imag = - Math.sin(re) * Math.sinh(im);
+           re = real;
+           im = imag;
+           return this;
+       }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
