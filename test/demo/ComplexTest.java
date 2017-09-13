@@ -19,12 +19,12 @@ public class ComplexTest extends Assert {
         Complex c3 = c1.clone();
         Complex c4 = new Complex(startedImagine, startedReal);
 
-        assertEquals(true, c1.equals(c1));                      //Object must be equal with itself
-        assertEquals(true, c1.equals(c2));                      //objects with equal constructor parameters are equal
-        assertEquals(true, c1.equals(c3));                      //cloned object is equals to original
-        assertEquals(false, c1.equals(c4));                     //objects with different constructor parameters are not equal
-        assertEquals(true, c2.equals(c1));                      //if c1 equals c2 => c2 equals c1
-        assertEquals(false, c3.equals((Object) c1));            //not one link after clone
+        assertTrue("Object must be equal with itself", c1.equals(c1));
+        assertTrue("Objects with equal constructor parameters are equal", c1.equals(c2));
+        assertTrue("Cloned object is equals to original", c1.equals(c3));
+        assertFalse("Objects with different constructor parameters are not equal", c1.equals(c4));
+        assertTrue("If c1 equals c2 => c2 equals c1", c2.equals(c1));
+        assertFalse("Must be different link after clone", c3.equals((Object) c1));
     }
 
     @Test
