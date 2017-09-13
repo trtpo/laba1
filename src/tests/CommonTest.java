@@ -6,51 +6,52 @@ import org.junit.Test;
 
 public class CommonTest extends Assert{
     @Test(expected = ArithmeticException.class)
-    public void testNullDivision() {
+    public void testDivisionByNull() {
         Complex a = new Complex(10, 5);
         Complex b = new Complex(0, 0);
-        a.division(b);
+        a.divide(b);
+        System.out.println("No ArithmeticException!");
     }
 
     @Test()
-    public void testNulltoDivide(){
-        Complex a = new Complex(0,0);
-        Complex b = new Complex(10,20);
-        assertEquals("error in method division()", a.division(b), new Complex(0,0));
+    public void testNulltoDivision() {
+        Complex a = new Complex(0, 0);
+        Complex b = new Complex(10, 20);
+        assertEquals("error in method divide()", a.divide(b), new Complex(0, 0));
     }
 
     @Test()
-    public void testRegDivide(){
-        Complex a = new Complex(149,-35);
-        Complex b = new Complex(10,11);
-        assertEquals("error in method division()", a.division(b), new Complex(5,-9));
+    public void testRegularDivision() {
+        Complex a = new Complex(149, -35);
+        Complex b = new Complex(10, 11);
+        assertEquals("error in method divide()", a.divide(b), new Complex(5, -9));
     }
 
     @Test()
-    public void testOneDivide(){
-        Complex a = new Complex(149,-35);
-        Complex b = new Complex(1,0);
-        assertEquals("error in method division()", a.division(b), new Complex(149,-35));
+    public void testDivisionByOne() {
+        Complex a = new Complex(149, -35);
+        Complex b = new Complex(1, 0);
+        assertEquals("error in method divide()", a.divide(b), new Complex(149, -35));
     }
 
     @Test()
-    public void testNegMinus(){
-        Complex a = new Complex(0,0);
-        Complex b = new Complex(10,20);
-        assertEquals("error in method minus()", a.minus(b), new Complex(-10,-20));
+    public void testNegativeMinus() {
+        Complex a = new Complex(0, 0);
+        Complex b = new Complex(10, 20);
+        assertEquals("error in method minus()", a.minus(b), new Complex(-10, -20));
     }
 
     @Test()
-    public void testNullMinus(){
-        Complex a = new Complex(10,20);
-        Complex b = new Complex(10,20);
-        assertEquals("error in method minus()", a.minus(b), new Complex(0,0));
+    public void testMinusWithNull() {
+        Complex a = new Complex(10, 20);
+        Complex b = new Complex(10, 20);
+        assertEquals("error in method minus()", a.minus(b), new Complex(0, 0));
     }
 
     @Test()
-    public void testRegMinus(){
-        Complex a = new Complex(146,47);
-        Complex b = new Complex(1,52);
-        assertEquals("error in method minus()", a.minus(b), new Complex(145,-5));
+    public void testRegularMinus() {
+        Complex a = new Complex(146, 47);
+        Complex b = new Complex(1, 52);
+        assertEquals("error in method minus()", a.minus(b), new Complex(145, -5));
     }
 }
