@@ -407,16 +407,16 @@ public class Main extends Application {
         clearComparisonValues();
         switch (loc) {
             case 0:
-                flyToPosition(-2.4451320039285465, -1.3061943784663503, 0.9425352568739851, 1.2879652356695286);
+                flyToPosition(-5.0451320039285465, -2.3061943784663503, 1.9425352568739851, 2.2879652356695286);
                 break;
             case 1:
-                flyToPosition(-1.4831212866723549, -0.026946715467747517, -1.4831211655199326, -0.026946649881416845);
+                flyToPosition(-2.4831212866723549, -1.026946715467747517, 2.4531211655199326, 1.026946649881416845);
                 break;
             case 2:
-                flyToPosition(-0.6512456310112382, -0.4797642161720457, -0.651219785161165, -0.4797444243048724);
+                flyToPosition(-3.6512456310112382, -0.4797642161720457, 0.651219785161165, -0.4797444243048724);
                 break;
             case 3:
-                flyToPosition(0.38835929484388515, -0.23577130937499838, 0.39102329484388804, -0.2337313093749984);
+                flyToPosition(-0.38835929484388515, -0.23577130937499838, 2.39102329484388804, -0.2337313093749984);
                 break;
         }
     }
@@ -702,10 +702,10 @@ public class Main extends Application {
     @Override public void start(Stage primaryStage) {
         stageTitle = primaryStage.titleProperty();
 
-        double minR = -2.4451320039285465;
-        double maxR = 0.9425352568739851;
-        double minI = -1.3061943784663503;
-        double maxI = 1.2879652356695286;
+        double minR = -5.0451320039285465;
+        double maxR = 1.9425352568739851;
+        double minI = -2.3061943784663503;
+        double maxI = 2.2879652356695286;
         winWidth = 800.0;
         winHeight = 600.0;
         setPosition(minR, minI, maxR, maxI);

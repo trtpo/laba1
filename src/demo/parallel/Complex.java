@@ -93,4 +93,50 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Division operation
+     *
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     * @throws ArithmeticException Thrown when divider is zero
+     */
+    public Complex divide(Complex b) throws ArithmeticException {
+        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException
+                ("Division by zero complex number (in Complex.divide(Complex))");
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Subtraction operation
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Get imaginary part
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * Get real part
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
 }
