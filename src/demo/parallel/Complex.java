@@ -87,6 +87,19 @@ public class Complex {
     }
 
     /**
+    * Dividing operation.
+    * @param  b divider
+    * @return this Complex object whose value is (this / b)
+     * */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        this.times(new Complex(b.re, - b.im));
+        re /= b.lengthSQ();
+        im /= b.lengthSQ();
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
