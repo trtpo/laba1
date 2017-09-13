@@ -74,9 +74,9 @@ public class Complex {
     }
 
     /**
-     * Remove operation.
+     * Subtraction operation.
      *
-     * @param b removend
+     * @param b subtrahend
      * @return this Complex object whose value is (this - b)
      */
     public Complex minus(Complex b) {
@@ -100,13 +100,19 @@ public class Complex {
         return this;
     }
 
-    public Complex division(Complex b) {
+    /**
+     * Divide operation.
+     *
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
         if ( b.re == 1 && b.im == 0) return this;
         Complex a = this;
         if (b.re == 0 && b.im == 0)
             throw new ArithmeticException();
 
-        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double real = (a.re - b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
