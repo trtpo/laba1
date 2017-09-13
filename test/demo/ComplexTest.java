@@ -33,21 +33,21 @@ public class ComplexTest extends Assert {
         final double startedImagine = 2.7;
         Complex c1 = new Complex(startedReal, startedImagine);
 
-        assertEquals(c1, c1.divide(new Complex(2, 0)));                             //Object must return itself
+        assertEquals("Object must return itself", c1, c1.divide(new Complex(2, 0)));
         c1 = new Complex(startedReal, startedImagine);
-        assertEquals(true, c1.clone().divide(new Complex(2, 0))
-                .equals(new Complex(startedReal / 2, startedImagine / 2)));         //Dividing check
-        assertEquals(true, c1.clone().divide(new Complex(1, 0))
-                .equals(c1));                                                                  //Dividing to one
-        assertEquals(true, c1.clone().divide(new Complex(0, -1))
-                .equals(new Complex(- startedImagine, startedReal)));                          //Dividing not to real part only
+        assertTrue("Dividing to (2, 0)", c1.clone().divide(new Complex(2, 0))
+                .equals(new Complex(startedReal / 2, startedImagine / 2)));
+        assertTrue("Dividing to (1, 0)", c1.clone().divide(new Complex(1, 0))
+                .equals(c1));
+        assertTrue("Dividing not to real part only", c1.clone().divide(new Complex(0, -1))
+                .equals(new Complex(- startedImagine, startedReal)));
     }
 
     @Test
     public void checkSin() {
-        assertEquals(true, (new Complex(0, 0)).sin().equals(new Complex(0, 0)));     //checking sine (0, 0)
-        assertEquals(true, (new Complex(Math.PI / 2, 0)).sin().equals(new Complex(1, 0)));     //checking sine (PI/2, 1)
-        assertEquals(true, (new Complex(Math.PI * 3 / 2, 0)).sin().equals(new Complex(-1, 0)));     //checking sine (3 * PI /2, -1)
+        assertTrue("Sine of (0, 0)", (new Complex(0, 0)).sin().equals(new Complex(0, 0)));
+        assertTrue("Sine of (pi/2, 0)", (new Complex(Math.PI / 2, 0)).sin().equals(new Complex(1, 0)));
+        assertTrue("Sine of (3 * pi / 2, 0)", (new Complex(Math.PI * 3 / 2, 0)).sin().equals(new Complex(-1, 0)));
     }
 
     @Test
