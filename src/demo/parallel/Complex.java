@@ -102,17 +102,17 @@ public class Complex {
      */
     public Complex div(Complex b) {
         Complex a = this;
-
-        if (b.re == 0 && b.im == 0)
+        if (b.re == 0 && b.im == 0) {
             throw new ArithmeticException();
-        if (b.re == 1 && b.im == 0)
+        }
+        if (b.re == 1 && b.im == 0) {
             return this;
+        }
         if (b.re == -1 && b.im == 0) {
             re = -re;
             im = -im;
             return this;
         }
-
         double r = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double i = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = r;
@@ -122,13 +122,16 @@ public class Complex {
 
     @Override
     public boolean equals(Object o) {
-
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Complex complex = (Complex) o;
-
-        if (Double.compare(complex.re, re) != 0) return false;
+        if (Double.compare(complex.re, re) != 0) {
+            return false;
+        }
         return Double.compare(complex.im, im) == 0;
     }
 
