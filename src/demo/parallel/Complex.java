@@ -145,6 +145,7 @@ public class Complex {
     /**
      * Tangent of complex number
      * @return this Complex object whose value is tangent of this
+     * @throws ArithmeticException Throws if try to find tan that not exist
      */
     public Complex tan() {
         Complex a = this.clone().sin().divide(this.clone().cos());
