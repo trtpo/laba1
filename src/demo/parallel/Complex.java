@@ -97,9 +97,12 @@ public class Complex {
      * Dividing operation.
      * @param  b divider
      * @return this Complex object whose value is this / b
+     * @throws ArithmeticException Throws if try to divide by zero (0,0)
      */
     public Complex divide(Complex b) {
-        Complex a = this;
+        if (b.equals(new Complex(0, 0))) {
+            throw new ArithmeticException("Divide by (0, 0)");
+        }
         this.times(new Complex(b.re, - b.im));
         re /= b.lengthSQ();
         im /= b.lengthSQ();
