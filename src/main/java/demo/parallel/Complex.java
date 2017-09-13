@@ -85,15 +85,48 @@ public class Complex {
         return this;
     }
 
-    public Complex newOperation(Complex i){
+    /**
+     * Add subtraction operation.
+     * @param b
+     * @return
+     */
+    public Complex sub(Complex b){
         Complex a = this;
-        double real = (a.re * i.re + a.im * i.im) * i.re;
-        double imag = (a.re * i.im - a.im * i.re) * i.re;
+        a.re -= b.re;
+        a.im -= b.im;
+        return a;
+    }
+
+    /**
+     * Add divide operation.
+     * @param b
+     * @return
+     */
+    public Complex div(Complex b) {
+        if(b.re == 0 && b.im == 0) throw new ArithmeticException("Error!Division by (0,0)!");
+        double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
-
     }
+
+    /**
+     * Get real part of Complex;
+     * @return
+     */
+    public double getReal(){
+        return this.re;
+    }
+
+    /**
+     * Get image part of Complex;
+     * @return
+     */
+    public double getImag(){
+        return this.im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
