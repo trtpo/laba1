@@ -86,10 +86,51 @@ public class Complex {
     }
 
     /**
+     * Minus operation
+     * @param b operand
+     * @return this Complex object whose value is this-b
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        if(b.re == 0 && b.im == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Equals operation
+     * @param b other complex number
+     * @return true if  complex number equals to another complex
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
