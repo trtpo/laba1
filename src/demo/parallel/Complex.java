@@ -53,11 +53,27 @@ public class Complex {
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     * Getter for Real complex
+     * @return this Complex object whose value is re
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Getter for Immediately complex
+     * @return this Complex object whose value is im
+     */
+    public double getIm(){
+        return im;
     }
 
     /**
@@ -72,6 +88,17 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -80,6 +107,21 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) throws ArithmeticException  {
+        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero in Complex.division(Complex)");
+        Complex a = this;
+        double real = (a.re*b.re + a.im*b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re*a.im - a.re*b.im)/(b.re*b.re + b.im*b.im);
         re = real;
         im = imag;
         return this;
