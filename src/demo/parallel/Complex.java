@@ -60,6 +60,10 @@ public class Complex {
         im = imag;
     }
 
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -93,7 +97,7 @@ public class Complex {
      * */
     public Complex divide(Complex b) {
         Complex a = this;
-        this.times(new Complex(b.re, - b.im));
+        a.times(new Complex(b.re, - b.im));
         re /= b.lengthSQ();
         im /= b.lengthSQ();
         return this;
