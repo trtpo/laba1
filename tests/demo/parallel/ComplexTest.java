@@ -17,17 +17,17 @@ class ComplexTest {
     }
 
     @Test
-    void div() {
-        Complex temp = z1.div(z2);
-        assertEquals(temp.getRe(), -41.0 / 173.0, "First pair result real part has wrong value (in Complex.div(Complex))");
-        assertEquals(temp.getIm(), -7.0 / 173.0, "First pair result imaginary part has wrong value (in Complex.div(Complex))");
-        assertThrows(ArithmeticException.class, () -> z1.div(new Complex(0, 0)), "Division by zero in Complex.div(Complex)");
+    void divide() {
+        Complex temp = z1.divide(z2);
+        assertEquals(temp.getRe(), -41.0 / 173.0, "First pair result real part has wrong value (in Complex.divide(Complex))");
+        assertEquals(temp.getIm(), -7.0 / 173.0, "First pair result imaginary part has wrong value (in Complex.divide(Complex))");
+        assertThrows(ArithmeticException.class, () -> z1.divide(new Complex(0, 0)), "Division by zero in Complex.divide(Complex)");
     }
 
     @Test
-    void sub() {
-        Complex temp = z1.sub(z2);
-        assertEquals(temp.getRe(), -3.0, "First pair result real part has wrong value (in Complex.sub(Complex))");
-        assertEquals(temp.getIm(), 16.0, "First pair result imaginary part has wrong value (in Complex.sub(Complex))");
+    void minus() {
+        Complex temp = z1.minus(z2);
+        assertEquals(temp.getRe(), -3.0, "First pair result real part has wrong value (in Complex.minus(Complex))");
+        assertEquals(temp.getIm(), 16.0, "First pair result imaginary part has wrong value (in Complex.minus(Complex))");
     }
 }

@@ -101,8 +101,8 @@ public class Complex {
      * @return this Complex object whose value is this / b
      * @throws ArithmeticException Thrown when divider is zero
      */
-    public Complex div(Complex b) throws ArithmeticException {
-        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero complex number ( in Complex.div(Complex)");
+    public Complex divide(Complex b) throws ArithmeticException {
+        if ((b.getIm() == 0) && (b.getRe() == 0)) throw new ArithmeticException("Division by zero complex number ( in Complex.divide(Complex)");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
@@ -117,7 +117,7 @@ public class Complex {
      * @param b subtrahend
      * @return this Complex object whose value is this - b
      */
-    public Complex sub(Complex b) {
+    public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
