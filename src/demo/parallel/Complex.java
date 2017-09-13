@@ -113,10 +113,10 @@ public class Complex {
             im = -im;
             return this;
         }
-        double r = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
-        double i = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
-        re = r;
-        im = i;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
         return this;
     }
 
