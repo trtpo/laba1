@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Getter for Real complex
+     * @return this Complex object whose value is re
+     */
+    public double getRe(){
+        return re;
+    }
+
+    /**
+     * Getter for Immediately complex
+     * @return this Complex object whose value is im
+     */
+    public double getIm(){
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -70,6 +86,62 @@ public class Complex {
         im += b.im;
         return this;
     }
+
+//    public Boolean equals(Complex b) {
+//        return im == b.im && re ==b.re;
+//    }
+//
+//    /**
+//     * Random operation.
+//     * @return this Complex object after random operations.
+//     */
+//    public Complex firstCustomOperation(Complex b) {
+//        Complex a = this;
+//        double real = a.re * b.re - a.im * b.im;
+//        double imag = a.re * b.im + a.im + a.im * b.im;
+//        re = real;
+//        im = imag;
+//        return this;
+//    }
+
+    /**
+     * Subtraction operation.
+     * @param b
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) throws ArithmeticException  {
+        if ((b.re == 0) && (b.im == 0)) throw new ArithmeticException("Division by zero in Complex.division(Complex)");
+        Complex a = this;
+        double real = (a.re*b.re + a.im*b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re*a.im - a.re*b.im)/(b.re*b.re + b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+//
+//    /**
+//     * Another random operation.
+//     * @return this Complex object after random operations.
+//     */
+//    public Complex secondCustomOperation(Complex b) {
+//        Complex a = this;
+//        double real = a.re + a.im * b.im;
+//        double imag = a.re + a.im * b.im;
+//        re = real;
+//        im = imag;
+//        return this;
+//    }
 
     /**
      * Multiply operation.
