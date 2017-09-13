@@ -61,6 +61,14 @@ public class Complex {
     }
 
     /**
+     * Create independent clone of that number
+     * @return clone of that object
+     */
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -86,11 +94,84 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Dividing operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     * @throws ArithmeticException Throws if try to divide by zero (0,0)
+     */
+    public Complex divide(Complex b) {
+        if (b.equals(new Complex(0, 0))) {
+            throw new ArithmeticException("Divide by (0, 0)");
+        }
+        this.times(new Complex(b.re, - b.im));
+        re /= b.lengthSQ();
+        im /= b.lengthSQ();
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Sine of complex number
+     * @return this Complex object whose value is sine of this
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine of complex number
+     * @return this Complex object whose value is cosine of this
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = - Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Tangent of complex number
+     * @return this Complex object whose value is tangent of this
+     * @throws ArithmeticException Throws if try to find tan that not exist
+     */
+    public Complex tan() {
+        Complex a = this.clone().sin().divide(this.clone().cos());
+        re = a.re;
+        im = a.im;
+        return this;
+    }
+
+    /**
+     * Calculating exponential function of complex number
+     * @return this Complex object whose value is exponential function of this
+     */
+    public Complex exp() {
+        double real = Math.exp(re) * Math.cos(im);
+        double imag = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Check for equal this object and object b
+     * @param b second object for compare
+     * @return true if objects are equals, else false
+     */
+    public boolean equals(Complex b) {
+        return ((this.re == b.re) && (this.im == b.im));
     }
 }
