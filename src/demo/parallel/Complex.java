@@ -116,13 +116,17 @@ public class Complex {
      * Division operation.
      *
      * @param b devider
+     * @exception ArithmeticException if devider is null.
      * @return this Complex object whose value is this / b
      */
-    public Complex div(Complex b) {
+    public Complex div(Complex b) throws ArithmeticException{
         Complex a = this;
         Complex c = new Complex(b.re, -b.im);
         Complex d = new Complex(1 / b.lengthSQ(), 0);
-        return this.times(c).times(d);
+        this.times(c).times(d);
+        int k = 1;
+        if (Double.isNaN(this.re)) k /= 0;
+        return this;
     }
 
     /**
