@@ -87,7 +87,7 @@ public class Complex {
 
     /**
      * Minus operation
-     * @param b
+     * @param b operand
      * @return this Complex object whose value is this-b
      */
     public Complex minus(Complex b) {
@@ -98,7 +98,7 @@ public class Complex {
 
     /**
      * Division operation
-     * @param b
+     * @param b divider
      * @return this Complex object whose value is this / b
      */
     public Complex divide(Complex b) {
@@ -114,10 +114,23 @@ public class Complex {
     }
 
     /**
+     * Equals operation
+     * @param b other complex number
+     * @return true if  complex number equals to another complex
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
