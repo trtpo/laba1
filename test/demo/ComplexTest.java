@@ -52,19 +52,19 @@ public class ComplexTest extends Assert {
 
     @Test
     public void checkCos() {
-        assertEquals(true, (new Complex(0, 0)).cos().equals(new Complex(1, 0)));     //checking cosine (0, 1)
-        assertEquals(true, (new Complex(Math.PI, 0)).cos().equals(new Complex(-1, 0)));     //checking cosine (PI, -1)
-        assertEquals(true, (new Complex(Math.PI * 2, 0)).cos().equals(new Complex(1, 0)));     //checking cosine (2 * PI, 1)
+        assertTrue("Cosine of (0, 0)", (new Complex(0, 0)).cos().equals(new Complex(1, 0)));
+        assertTrue("Cosine of (Pi, 0)", (new Complex(Math.PI, 0)).cos().equals(new Complex(-1, 0)));
+        assertTrue("Cosine of (2 * Pi, 0)", (new Complex(Math.PI * 2, 0)).cos().equals(new Complex(1, 0)));
     }
 
     @Test
     public void checkTan() {
-        assertEquals(true, (new Complex(0, 0)).tan().equals(new Complex(0, 0)));     //checking tan (0, 0)
+        assertTrue("Tan of (0, 0)", (new Complex(0, 0)).tan().equals(new Complex(0, 0)));
     }
 
     @Test
     public void checkExp() {
-        assertEquals(true, (new Complex(0, 0)).exp().equals(new Complex(1, 0)));           //checking exp (0, 1)
-        assertEquals(true, (new Complex(1, 0)).exp().equals(new Complex(Math.exp(1), 0)));      //checking exp (1, e)
+        assertTrue("Exp of (0, 0)", (new Complex(0, 0)).exp().equals(new Complex(1, 0)));
+        assertTrue("Exp of (1, 0)", (new Complex(1, 0)).exp().equals(new Complex(Math.exp(1), 0)));
     }
 }
