@@ -42,6 +42,7 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
@@ -87,8 +88,8 @@ public class Complex {
     }
 
     /**
-     * Substract operation.
-     * @param b substracted
+     * Subtract operation.
+     * @param b subtracted
      * @return this Complex object whose value is (this - b)
      */
     public Complex minus(Complex b) {
@@ -96,8 +97,9 @@ public class Complex {
         im -= b.im;
         return this;
     }
+
     /**
-     *  cross-interaction operation.
+     * cross-interaction operation.
      * @param b summand
      * @return this Complex object whose real part is sum and imaginary part is substraction
      */
@@ -122,8 +124,24 @@ public class Complex {
     }
 
     /**
+     * Divide operation
+     * @param b dividand
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex div(Complex b) {
+        if(b.getRealPart()==0 && b.getImagePart()==0)
+            throw new ArithmeticException("Exception: divide by zero");
+        double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = realPart;
+        im = imagePart;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
      */
     public double lengthSQ() {
