@@ -66,23 +66,19 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
-        return this;
+        return new Complex(this.re + b.re,  this.im += b.im);
     }
 
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return Complex object whose value is this * b
      */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
-        return this;
+        return new Complex(real, imag);
     }
 
     /**
@@ -93,4 +89,38 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+    /**
+     *Substraction operation for complex numbers
+     * @param subtrahend complex num to substract
+     * @return Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex subtrahend) {
+        return new Complex(this.re - subtrahend.re, this.im - subtrahend.im);
+    }
+
+    /**
+     * Dividion operation for complex numbers
+     * @param divider complex num to divide
+     * @return Complex object whose value is (this / b)
+     */
+    public Complex div(Complex divider) {
+        Complex conjugateToDivider = divider.getConjugateComplexNum();   //get cojugate number
+        Complex newDivider = divider.times(conjugateToDivider);
+        Complex  newDivident = this.times(conjugateToDivider);
+        return new Complex( newDivident.re / newDivider.re, newDivident.im / newDivider.re);
+    }
+
+    /**
+     * @return Complex object with cojugate value to this
+     * */
+    public Complex getConjugateComplexNum() {
+        return new Complex(this.re, (-1)*this.im);
+    }
+
+    public boolean equals(Complex cmp) {
+        return (this.re == cmp.re && this.im == cmp.im);
+    }
+
 }
