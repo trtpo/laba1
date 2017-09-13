@@ -2,7 +2,9 @@ package demo;
 
 import demo.parallel.Complex;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Created by AJIOB on 12.09.2017.
@@ -10,6 +12,9 @@ import org.junit.Test;
  * @author AJIOB
  */
 public class ComplexTest extends Assert {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Test
     public void testEqualsAndClone() {
         final double startedReal = 1.3;
@@ -41,6 +46,10 @@ public class ComplexTest extends Assert {
                 .equals(c1));
         assertTrue("Dividing not to real part only", c1.clone().divide(new Complex(0, -1))
                 .equals(new Complex(- startedImagine, startedReal)));
+
+        thrown.expect(ArithmeticException.class);
+        thrown.expectMessage("Divide by (0, 0)");
+        c1.clone().divide(new Complex(0, 0));
     }
 
     @Test
