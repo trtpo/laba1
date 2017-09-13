@@ -94,6 +94,29 @@ public class Complex {
         return re * re + im * im;
     }
 
+
+    /**
+     * Substraction of complex numbers.
+     * @param c
+     * @return
+     */
+    public Complex sub(Complex c){
+        this.re-=c.re;
+        this.im-=c.re;
+        return this;
+    }
+
+    /**
+     * Division of complex numbers.
+     * @param
+     * @return
+     */
+    public Complex div(Complex c){
+        this.re = (this.re * c.re + this.im*c.im)/(c.re*c.re + c.im*c.im);
+        this.im = (c.re*this.im+c.im*this.re)/(c.re*c.re + c.im*c.im);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
