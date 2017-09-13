@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -61,7 +62,32 @@ public class Complex {
     }
 
     /**
+     * @return double object whose value is real part of Complex this
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return double object whose value is imagine part of Complex this
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * Module operation.
+     *
+     * @return double object whose value is module of Complex this
+     */
+    public double abs() {
+        double mod = Math.sqrt(re * re + im * im);
+        return mod;
+    }
+
+    /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +99,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,10 +113,28 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Division operation.
+     *
+     * @param b devider
+     * @exception ArithmeticException if devider is null.
+     * @return this Complex object whose value is this / b
+     */
+    public Complex div(Complex b) throws ArithmeticException{
+        Complex a = this;
+        Complex c = new Complex(b.re, -b.im);
+        Complex d = new Complex(1 / b.lengthSQ(), 0);
+        this.times(c).times(d);
+        int k = 1;
+        if (Double.isNaN(this.re)) k /= 0;
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
