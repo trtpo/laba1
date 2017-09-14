@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
-
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -76,6 +76,7 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
+
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
@@ -86,10 +87,13 @@ public class Complex {
     }
 
     public Complex substr(Complex b){
-                re -= b.re;
-                im -= b.im;
-                return this;
-            }
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    public Boolean equals(Complex b){
+        return im == b.im && re ==b.re;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
