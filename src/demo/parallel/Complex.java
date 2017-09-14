@@ -105,7 +105,9 @@ public class Complex {
      * @param divider complex num to divide
      * @return Complex object whose value is (this / b)
      */
-    public Complex div(Complex divider) {
+    public Complex div(Complex divider) throws ArithmeticException {
+        if (divider.equals(new Complex(0, 0)))
+            throw new ArithmeticException();
         Complex conjugateToDivider = divider.getConjugateComplexNum();   //get cojugate number
         Complex newDivider = divider.times(conjugateToDivider);
         Complex  newDivident = this.times(conjugateToDivider);
