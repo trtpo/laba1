@@ -102,7 +102,7 @@ public class Complex {
      */
     public Complex sub(Complex c){
         this.re-=c.re;
-        this.im-=c.re;
+        this.im-=c.im;
         return this;
     }
 
