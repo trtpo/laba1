@@ -84,7 +84,17 @@ public class Complex {
         im = imag;
         return this;
     }
+    /**
+     * Minus operation.
+     * @param  b minuser
+     * @return this Complex object whose value is this - b
+     */
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +102,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    /*
+     * getting real part
+     * @return real part
+     */
+    public double getRe(){
+        return this.re;
+    }
+    /*
+    * getting imaginary part
+    * @return imaginary part
+    */
+    public double getIm(){
+        return this.im;
     }
 }
