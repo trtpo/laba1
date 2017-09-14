@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.BLUE;  //COMMIT 2:Changed image color to blue
         }
         return colors[count];
     }
