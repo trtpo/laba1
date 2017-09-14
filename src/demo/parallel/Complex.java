@@ -44,10 +44,13 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
+//NOTE: Geez, these fuction names are terrible. Someone really should rename them.
+
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    public double re;   // the real part
+    public double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -72,6 +75,17 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -80,6 +94,30 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this * b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        double bAbs = b.re * b.re + b.im * b.im;
+        double real,imag;
+        if (bAbs==0)
+        {
+            real=0;
+            imag=0;
+        }
+        else {
+            real = (a.re * b.re + a.im * b.im) / bAbs;
+            imag = (b.re * a.im - a.re * b.im) / bAbs;
+        }
+
         re = real;
         im = imag;
         return this;
