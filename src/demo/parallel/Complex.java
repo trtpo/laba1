@@ -59,6 +59,14 @@ public class Complex {
         re = real;
         im = imag;
     }
+    public double printReal(){
+
+        return re;
+    }
+    public double printImag(){
+
+        return im;
+    }
 
     /**
      * Add operation.
@@ -68,6 +76,12 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
