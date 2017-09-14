@@ -20,6 +20,7 @@ public class ComplexTest{
         startComplex = new Complex(-2,1);
         Complex assertComplex = new Complex(-1.5,-0.5);
         resultComplex = startComplex.div(new Complex(1, -1));
+        assertTrue("Test Context.div() failed.", assertComplex.equals(resultComplex));
     }
 
 }

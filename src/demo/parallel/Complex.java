@@ -112,8 +112,11 @@ public class Complex {
      * @return
      */
     public Complex div(Complex c){
-        this.re = (this.re * c.re + this.im*c.im)/(c.re*c.re + c.im*c.im);
-        this.im = (c.re*this.im+c.im*this.re)/(c.re*c.re + c.im*c.im);
+        Complex a = this;
+        double real = (a.re * c.re + a.im*c.im)/(c.re*c.re + c.im*c.im);
+        double imag = (c.re*a.im-c.im*a.re)/(c.re*c.re + c.im*c.im);
+        re = real;
+        im = imag;
         return this;
     }
 
