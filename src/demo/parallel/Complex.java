@@ -115,6 +115,14 @@ public class Complex {
         return a.times(b).minus(b).inversion();
     }
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImagine() {
+        return im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
