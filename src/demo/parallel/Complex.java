@@ -72,6 +72,16 @@ public class Complex {
     }
 
     /**
+     * Substr operation
+     * @param b
+     * @return this Complex object whose value is (this-b)
+     */
+    public Complex substr(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -93,4 +103,20 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    /**
+     +     * Get real part.
+     +     * @return real part
+     +     */
+    public double getReal() { return re; }
+
+    public double getImag() { return im; }
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
 }
