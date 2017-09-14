@@ -44,15 +44,15 @@
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: black;
 }
 
 .progress-indicator .percentage {
-    -fx-fill: white;
+    -fx-fill: darkred;
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: peru;
 }
 
 #spacer {
@@ -60,7 +60,7 @@
 }
 
 #open-close-toggle-button {
-    -fx-background-color: gray;
+    -fx-background-color: peachpuff;
     -fx-background-radius: 0;
     -fx-content-display: graphic-only;
     -fx-shape: "M 0,0 H 40 v 1 h -40 Z M 0,3 H 40 v 1 h -40 Z M 0,6 H40 v 1 h -40 Z";
