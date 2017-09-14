@@ -59,6 +59,14 @@ public class Complex {
         re = real;
         im = imag;
     }
+    public double printReal(){
+
+        return re;
+    }
+    public double printImag(){
+
+        return im;
+    }
 
     /**
      * Add operation.
