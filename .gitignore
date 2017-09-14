@@ -1,6 +1,5 @@
 .DS_Store
 out/
-target
 *.iml
 .idea/
 *.swp
