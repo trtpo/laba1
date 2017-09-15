@@ -85,6 +85,23 @@ public class Complex {
         return this;
     }
 
+    public Complex sub(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        re = re/scale;
+        im = -im/scale;
+        return this;
+    }
+
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
