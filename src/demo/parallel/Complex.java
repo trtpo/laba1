@@ -51,13 +51,28 @@ public class Complex {
 
     /** 
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     *  get real part
+     * @return re - Real part
+     */
+    public double getRe (){
+        return re;
+    }
+
+    /**
+     * get real part
+     * @return  im - imaginary part
+     */
+    public double getIm() {
+        return im;
     }
 
     /**
@@ -68,6 +83,34 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+
+/**
+ * Subtraction operation
+ * @param  b subtractor
+ * @return this Complex object whose value is (this  -  b)
+ */
+    public Complex Sub( Complex b ) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+    * Dividing operation.
+    * @param  b divider
+    * @return this Complex object whose value is (this / b)
+     * */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        a.times(new Complex(b.re, - b.im));
+        re /= b.lengthSQ();
+        im /= b.lengthSQ();
         return this;
     }
 
@@ -84,6 +127,18 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Cos of complex number
+     * @return this Complex object whose value is cos(this)
+     * */
+       public Complex cos() {
+           double real = Math.cos(re) * Math.cosh(im);
+           double imag = - Math.sin(re) * Math.sinh(im);
+           re = real;
+           im = imag;
+           return this;
+       }
 
     /**
      * Square of Complex object's length, we're using square of length to 
