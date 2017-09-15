@@ -5,44 +5,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComplexTest {
     @Test
-    void div() {
-        Complex a0 = new Complex(-2, 1);
-        Complex b0 = new Complex(1, -1);
-        Complex r0 = new Complex(-1.5, -0.5);
-
-
-        Complex a1 = new Complex(-2, 1);
-        Complex b1 = new Complex(0, 0);
+    void divideOperationTest() {
+        Complex Numerator = new Complex(-2, 1);
+        Complex nonZeroDenominator = new Complex(1, -1);
+        Complex expectedResult = new Complex(-1.5, -0.5);
+        Complex zeroDenominator = new Complex(0, 0);
 
         assertAll("Divide operation test",
-                () -> assertEquals(a0.div(b0), r0, "Divide operation test"),
-                () -> assertThrows(ArithmeticException.class, () -> a1.div(b1)));
+                () -> assertEquals(Numerator.div(nonZeroDenominator), expectedResult, "Divide by non-zero test"),
+                () -> assertThrows(ArithmeticException.class, () -> Numerator.div(zeroDenominator), "Divide by zero test"));
     }
 
     @Test
-    void sin() {
-        Complex a0 = new Complex(0, 0);
-        Complex r0 = new Complex(0, 0);
+    void sineFunctionTest() {
+        Complex zeroNumber = new Complex(0, 0);
+        Complex expectedSineOfZero = new Complex(0, 0);
 
-        Complex a1 = new Complex(3, 5);
-        Complex r1 = new Complex(10.47, -73.46);
+        Complex nonZeroNumber = new Complex(3, 5);
+        Complex expectedSizeofNonZero = new Complex(10.47, -73.46);
 
         assertAll("Sine function test",
-                () -> assertEquals(a0.sin(), r0),
-                () -> assertEquals(a1.sin(), r1));
+                () -> assertEquals(zeroNumber.sin(), expectedSineOfZero, "Sine function test for zero"),
+                () -> assertEquals(nonZeroNumber.sin(), expectedSizeofNonZero, "Sine function test for non-zero"));
     }
 
     @Test
-    void cos() {
-        Complex a0 = new Complex(0, 0);
-        Complex r0 = new Complex(1, 0);
+    void cosineFunctionTest() {
+        Complex zeroNumber = new Complex(0, 0);
+        Complex expectedCosineOfZero = new Complex(1, 0);
 
-        Complex a1 = new Complex(5, -5.32);
-        Complex r1 = new Complex(28.99, -97.99);
+        Complex nonZeroNumber = new Complex(5, -5.32);
+        Complex expectedCosineOfNonZero = new Complex(28.99, -97.99);
 
-        assertAll("Sine function test",
-                () -> assertEquals(a0.cos(), r0),
-                () -> assertEquals(a1.cos(), r1));
+        assertAll("Cosine function test",
+                () -> assertEquals(zeroNumber.cos(), expectedCosineOfZero, "Cosine function test for zero"),
+                () -> assertEquals(nonZeroNumber.cos(), expectedCosineOfNonZero, "Cosine function test for non-zero"));
     }
 
 }
