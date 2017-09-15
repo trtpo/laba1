@@ -51,7 +51,6 @@ public class Complex {
 
     /** 
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -60,8 +59,20 @@ public class Complex {
         im = imag;
     }
 
-    public Complex clone() {
-        return new Complex(re, im);
+    /**
+     *  get real part
+     * @return re - Real part
+     */
+    public double getRe (){
+        return re;
+    }
+
+    /**
+     * get real part
+     * @return  im - imaginary part
+     */
+    public double getIm() {
+        return im;
     }
 
     /**

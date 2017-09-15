@@ -5,40 +5,57 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *Created by JohnyBurak on 14.09.2017.
+ * Created by JohnyBurak on 14.09.2017.
  *
- * @author burak
+ * @author Yauheni Burak group 550502
  * */
     public class ComplexTest extends Assert {
 
         @Test
         public void testDivide() {
-            final double startedReal = 1.3;
-            final double startedImagine = 2.7;
-            Complex c1 = new Complex(startedReal, startedImagine);
-            assertEquals(c1, c1.divide(new Complex(2, 0)));
-            c1 = new Complex(startedReal, startedImagine);
-            assertFalse("test 1", c1.clone().divide(new Complex(2, 0)).equals(new Complex(startedReal / 2, startedImagine / 2)));
-            assertFalse("test 2", c1.clone().divide(new Complex(1, 0)).equals(c1));
-            assertFalse("test 3", c1.clone().divide(new Complex(0, -1)).equals(new Complex(- startedImagine, startedReal)));
+            assertTrue((new Complex(1,1).divide(new Complex(2,1))).getRe()== 0.6 ||
+                    (new Complex(1,1).divide(new Complex(2,1))).getIm()== 0.2);
+            assertTrue((new Complex(10,12).divide(new Complex(5,5))).getRe()== 2.2 ||
+                    (new Complex(10,12).divide(new Complex(5,5))).getIm()== 0.2);
+            assertTrue((new Complex(3,8).divide(new Complex(2,4))).getRe()== 1.9 ||
+                    (new Complex(3,8).divide(new Complex(2,4))).getIm()== 0.2);
+
+            assertFalse((new Complex(1,2).divide(new Complex(7,3))).getRe()==0 &&
+                    (new Complex(1,2).divide(new Complex(7,3))).getIm()==5);
+            assertFalse((new Complex(14,0).divide(new Complex(12,3))).getRe()==262 &&
+                    (new Complex(14,0).divide(new Complex(12,3))).getIm()==3);
         }
 
         @Test
         public void checkCos() {
-            assertEquals(false, (new Complex(0, 0)).cos().equals(new Complex(1, 0)));
-            assertEquals(false, (new Complex(Math.PI, 0)).cos().equals(new Complex(-1, 0)));
-            assertEquals(false, (new Complex(Math.PI * 2, 0)).cos().equals(new Complex(1, 0)));
+            assertTrue((new Complex(0,0).cos().getRe()== 1 ||
+                    (new Complex(0,0).cos().getIm() == 0)));
+
+            assertTrue((new Complex(0,0.55).cos().getRe()== 1.5431 ||
+                    (new Complex(0,0.55).cos().getIm() == 0)));
+
+            assertFalse((new Complex(1,0).cos().getRe()== 1 &&
+                    (new Complex(1,0).cos().getIm() == 0)));
+
+            assertFalse((new Complex(1,0.55).cos().getRe()== 1.5431 &&
+                    (new Complex(1,0.55).cos().getIm() == 0)));
         }
 
         @Test
-        public void checkplus() {
+        public void testPlus() {
 
-            final double startedReal = 4;
-            final double startedImagine = 5;
-            Complex c1 = new Complex(startedReal, startedImagine);
+            assertTrue((new Complex(1,2).plus(new Complex(7,3))).getRe()==8 ||
+                    (new Complex(1,2).plus(new Complex(7,3))).getIm()==5);
+            assertTrue((new Complex(14,0).plus(new Complex(12,3))).getRe()==26 ||
+                    (new Complex(14,0).plus(new Complex(12,3))).getIm()==3);
+            assertTrue((new Complex(0,0).plus(new Complex(12,3))).getRe()==12 ||
+                    (new Complex(0,0).plus(new Complex(12,3))).getIm()==3);
 
-            assertFalse(c1.plus(c1).equals(new Complex(5,10)));
-            assertTrue(c1.plus(c1).equals(new Complex(8,10)));
+            assertFalse((new Complex(1,2).plus(new Complex(7,3))).getRe()==0 &&
+                    (new Complex(1,2).plus(new Complex(7,3))).getIm()==5);
+            assertFalse((new Complex(14,0).plus(new Complex(12,3))).getRe()==262 &&
+                    (new Complex(14,0).plus(new Complex(12,3))).getIm()==3);
+
         }
 
     }
