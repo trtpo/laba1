@@ -70,6 +70,51 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Divison operation.
+     * @param b - divisor
+     * @return new Complex object whose value is the complex is this / b
+     */
+    public Complex divide(Complex b) {
+        divisorValidation(b);
+        double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = realPart;
+        im = imagePart;
+        return this;
+    }
+
+    /**
+     * Validation for a division operation
+     * @param b - divisor
+     */
+    private void divisorValidation(Complex b){
+        if(b.getImaginaryPart() == 0 && b.getRealPart() == 0){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * Sine operation.
+     * @return new Complex object whose value is the complex sine of this
+     */
+    public Complex sinus() {
+        double realPart = Math.sin(re) * Math.cosh(im);
+        double imagePart = Math.cos(re) * Math.sinh(im);
+
+        return new Complex(realPart, imagePart);
+    }
 
     /**
      * Multiply operation.
@@ -92,5 +137,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRealPart() {
+        return re;
+    }
+
+    public double getImaginaryPart() {
+        return im;
     }
 }
