@@ -30,9 +30,6 @@
  */
 package demo.parallel;
 
-
-import static java.lang.Double.NaN;
-
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -44,6 +41,7 @@ import static java.lang.Double.NaN;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
@@ -64,6 +62,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -75,7 +74,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -89,6 +89,7 @@ public class Complex {
 
     /**
      * Divide operation.
+     *
      * @param b divider
      * @return this Complex object whose value is this / b
      */
@@ -105,14 +106,16 @@ public class Complex {
     /**
      * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
 
     /**
      * Sine function.
+     *
      * @return this Complex object whose value is sin(this)
      */
     public Complex sin() {
@@ -126,6 +129,7 @@ public class Complex {
 
     /**
      * Cosine function.
+     *
      * @return this Complex object whose value is cos(this)
      */
     public Complex cos() {
@@ -144,5 +148,10 @@ public class Complex {
         if (this.getClass() != otherObject.getClass()) return false;
         Complex other = (Complex) otherObject;
         return this.re == other.re && this.im == other.im;
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(re) + ((im < 0) ? "": '+') + Double.toString(im) + 'j';
     }
 }
