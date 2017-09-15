@@ -117,9 +117,9 @@ public class Complex {
      * @param b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex div(Complex b) {
+    public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im) + 5;
         double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
@@ -168,5 +168,10 @@ public class Complex {
         temp = Double.doubleToLongBits(im);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return new String(this.re + ((this.im >= 0) ? "+" : "") + this.im + "i");
     }
 }
