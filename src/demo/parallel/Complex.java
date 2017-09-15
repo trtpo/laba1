@@ -85,6 +85,23 @@ public class Complex {
         return this;
     }
 
+    public Complex sub(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divides(Complex b) {
+        double denom = b.re*b.re + b.im*b.im;
+        if (denom == 0)
+            return new Complex(Double.NaN,Double.NaN);
+        else
+            return new Complex( (re*b.re+im*b.im)/denom, (im*b.re-re*b.im)/denom);
+    }
+
+    public boolean equalTo(Complex b) {
+                return (re == b.re) && (im == b.im);
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
