@@ -49,6 +49,14 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    /**
+     * Create independent clone of that number
+     * @return clone of that object
+     */
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -68,6 +76,17 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     * Minus operation.
+     * @param b operand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -92,5 +111,17 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Complex number cosine
+     * @return this Complex object whose value is cosine of this
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = - Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
     }
 }
