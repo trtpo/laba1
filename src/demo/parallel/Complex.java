@@ -120,4 +120,20 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     +     * Get real value method
+     +     * @return real value
+     +     */
+     public double getReal(){
+         return re;
+     }
+
+    /**'
+       * Get imagine value method
+       * @return image value
+     */
+    public double getImage(){
+        return im;
+    }
 }
