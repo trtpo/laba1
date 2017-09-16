@@ -91,6 +91,8 @@ public class Complex {
      *  @return this Complex object whose value is this / b
      */
     public Complex divide(Complex b) {
+        if (b.equals(new Complex( 0, 0)))
+            throw new ArithmeticException("Divide by 0");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
