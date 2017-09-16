@@ -124,4 +124,13 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Check for equal this object and object b
+     * @param b second object for compare
+     * @return true if objects are equals, else false
+     */
+    public boolean equals(Complex b) {
+        return ((this.re == b.re) && (this.im == b.im));
+    }
 }
