@@ -102,6 +102,7 @@ public class Complex {
      * @return this Complex object whose value is (this / b)
      */
     public Complex div(Complex b) {
+        if (b.re == 0 || b.im == 0) throw new ArithmeticException("Division by zero.");
         re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
         im = (im * b.re - re * b.im) / (b.re * b.re + b.im * b.im);
         return this;
@@ -125,6 +126,23 @@ public class Complex {
         re = Math.cos(re) * Math.cosh(im);
         im = -Math.sin(re) * Math.sinh(im);
         return this;
+    }
+
+    /**
+     * Get real part of this complex num.
+     * @return this.re
+     */
+    public double getRe()
+    {
+        return this.re;
+    }
+
+    /**
+     * Get imaginary part of this complex num.
+     * @return this.im
+     */
+    public double getIm() {
+        return this.im;
     }
 
     /**
