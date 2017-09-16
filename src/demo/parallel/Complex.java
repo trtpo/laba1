@@ -86,6 +86,66 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex div(Complex b) {
+        if (b.re == 0 || b.im == 0) throw new ArithmeticException("Division by zero.");
+        re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        im = (im * b.re - re * b.im) / (b.re * b.re + b.im * b.im);
+        return this;
+    }
+
+    /**
+     * Sin operation.
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        re = Math.sin(re) * Math.cosh(im);
+        im = Math.cos(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * Cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        re = Math.cos(re) * Math.cosh(im);
+        im = -Math.sin(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * Get real part of this complex num.
+     * @return this.re
+     */
+    public double getRe()
+    {
+        return this.re;
+    }
+
+    /**
+     * Get imaginary part of this complex num.
+     * @return this.im
+     */
+    public double getIm() {
+        return this.im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
