@@ -61,6 +61,43 @@ public class Complex {
     }
 
     /**
+     * create
+     */
+    public Complex() {
+        re = 0;
+        im = 0;
+    }
+
+    public  Complex(Complex c) {
+        re = c.re;
+        im = c.im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Complex complex = (Complex) o;
+
+        if (Double.compare(complex.re, re) != 0) return false;
+
+        return Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(re);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(im);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+
+        return result;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -68,6 +105,19 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+
+        return this;
+    }
+
+    /**
+     * Subtract operation.
+     * @param b what to subtract from current number
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+
         return this;
     }
 
@@ -82,8 +132,41 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+
         return this;
     }
+
+    /**
+     * Divide operation.
+     * @param b divides on b
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        if (b.re == 0 && b.im == 0) {
+            throw new ArithmeticException();
+        }
+
+        double denominator = b.re * b.re + b.im * b.im;
+
+        double real = (re * b.re + im * b.im) / denominator;
+        double imag = (b.re * im - b.im * re) / denominator;
+
+        re = real;
+        im = imag;
+
+        return this;
+    }
+
+    /**
+     * Get real part of complex number
+     * @return
+     */
+    public double getReal() { return this.re; }
+    /**
+     * Get imagine part of complex number
+     * @return
+     */
+    public double getImagine() { return this.im; }
 
     /**
      * Square of Complex object's length, we're using square of length to 
