@@ -99,7 +99,7 @@ public class Complex {
             return this;
         } else {
             Complex multiplier = new Complex(re, im);
-            while (deg-- > 0) {
+            while (deg-- > 1) {
                 this.times(multiplier);
             }
         }
