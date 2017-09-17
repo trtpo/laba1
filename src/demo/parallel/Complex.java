@@ -49,6 +49,12 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -92,7 +98,7 @@ public class Complex {
      */
     public Complex substruct(Complex b) {
         re -= b.re;
-        im -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -103,11 +109,25 @@ public class Complex {
      */
     public Complex division(Complex b) {
         Complex a = this;
-        double real = (a.re * a.im + b.re * b.im)/(a.im * a.im + b.im * b.im);
-        double imag = (a.im * b.re -a.re * b.im)/(a.im * a.im + b.im * b.im);
+        if (b.im == 0 && a.im == 0) throw new IllegalArgumentException();
+        double real = (a.re * b.re + a.im * b.im)/(a.im * a.im + b.im * b.im);
+        double imag = (b.re * a.im -a.re * b.im)/(a.im * a.im + b.im * b.im);
+        System.out.println(imag);
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Equals operation.
+     * @param  b complex number for equals
+     * @return this boolean whose value is this = b
+     */
+    public boolean equals(Complex b) {
+        if (this.re == b.re && this.im == b.im)
+            return true;
+        else
+            return false;
     }
 
     /**
