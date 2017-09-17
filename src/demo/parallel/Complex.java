@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -86,11 +86,58 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+    /**
+     * division of two numbers: /b
+     * @param b divider
+     * @return result of operation /b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        if (b.re == 0 && b.im == 0) {
+            throw new ArithmeticException();
+        }
+        if (b.re == 1 && b.im == 0) {
+            return this;
+        }
+        if (b.re == -1 && b.im == 0) {
+            re = -re;
+            im = -im;
+            return this;
+        }
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Complex complex = (Complex) o;
+        if (Double.compare(complex.re, re) != 0) {
+            return false;
+        }
+        return Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public String toString() {
+        return new String(re + ((im < 0) ? "" : "+") + im + "i");
+    }
+
 }
