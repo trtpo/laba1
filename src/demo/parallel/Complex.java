@@ -101,10 +101,10 @@ public class Complex {
      * @return this Complex object whose value is (this - b)
      */
     public Complex minus(Complex b) {
-        double real = this.re - b.re;
-        double imag = this.im - b.im;
-        this.im = imag;
-        this.re = real;
+        if (b != null) {
+            re -= b.re;
+            im -= b.im;
+        }
         return this;
     }
 
@@ -137,7 +137,7 @@ public class Complex {
      * @param b the other complex number
      * @return the result of division
      */
-    public Complex divides(Complex b) {
+    public Complex divide(Complex b) {
         if(b.im == 0 && b.re == 0){
             throw new ArithmeticException("Division by zero");
         }
@@ -148,6 +148,20 @@ public class Complex {
         a.im = imagePart;
         return a;
      }
+
+    /**
+     * Check for equals for other complex number
+     * @param b - other complex number
+     * @return if this number equals other complex number
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        else {
+            return false;
+        }
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
