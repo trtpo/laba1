@@ -97,12 +97,15 @@ public class Complex {
     }
 
     /**
-     * Division operation
+     * Divide operation
      * @param b devider
      * @return this Complex object whose value is this / b
      */
-    public Complex div(Complex b) {
+    public Complex divide(Complex b) {
         Complex a = this;
+        if (b.equals(new Complex(0, 0))) {
+            throw new ArithmeticException("Divide by (0, 0)");
+        }
         double real = (a.re*b.re + a.im*b.im)/(b.re*b.re+b.im*b.im);
         double imag = (b.re*a.im - a.im*b.im)/(b.re*b.re + b.im*b.im);
         re = real;
