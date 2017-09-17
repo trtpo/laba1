@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    double re;   // the real part
+    double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -82,6 +82,38 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     *
+     * Multiply complex on real:
+     * @param  b real value
+     * @return this Complex object whose value is: b(x+iy)=bx+biy.
+
+     */
+    public Complex mult(double b){
+        Complex a= this;
+        double real =a.re*b;
+        double imag =a.im*b;
+        re=real;
+        im=imag;
+        return this;
+    }
+
+    /**
+     *
+     * Multilye complex on real:
+     * @param  b substr
+     * @return this Complex object whose value is: this-b.
+
+     */
+    public Complex subs(Complex b){
+        Complex a= this;
+        double real =a.re-b.re;
+        double imag =a.im-b.im;
+        re=real;
+        im=imag;
         return this;
     }
 
