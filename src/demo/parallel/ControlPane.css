@@ -44,10 +44,10 @@
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: green;
 }
 
-.progress-indicator .percentage {
+.progress-indicator .peercentage {
     -fx-fill: white;
 }
 
