@@ -86,6 +86,32 @@ public class Complex {
     }
 
     /**
+     * Tangent function
+     * @return this Complex object whose value is tg(this)
+     */
+    public Complex tg() {
+        double real = Math.sin(2 * this.re) / (Math.cos(2 * this.re) + Math.cosh(2 * this.im));
+        double imag = Math.sinh(2 * this.im) / (Math.cos(2 * this.re) + Math.cosh(2 * this.im));
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (Math.sqrt(b.re) + Math.sqrt(b.im));
+        double imag = (b.re * a.im - a.re * b.im) / (Math.sqrt(b.re) + Math.sqrt(b.im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
