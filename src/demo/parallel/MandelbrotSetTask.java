@@ -282,6 +282,7 @@ class MandelbrotSetTask extends Task<Long> {
         return count;
     }
 
+
     /**
      * Calculates a color of a given pixel on the image using 
      * {@link #calc(demo.parallel.Complex) } method.
