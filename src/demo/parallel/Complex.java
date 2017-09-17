@@ -65,6 +65,17 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    
+    /**
+     * Add operation.
+     * @param b summand
+     * @return this Complex object whose value is (this + b)
+     */
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
@@ -77,11 +88,24 @@ public class Complex {
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double real = this.re * b.re - this.im * b.im;
+        double imag = this.re * b.im + this.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+    
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this * b
+     */
+    public Complex divide(Complex b) {
+    	if (b.re == 0 && b.im == 0) throw new ArithmeticException("Cannot divide by zero");
+    	double real = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
+    	double imag = (b.re * this.im - this.re * b.im) / (b.re * b.re + b.im * b.im);
+        this.re = real;
+        this.im = imag;
         return this;
     }
 
