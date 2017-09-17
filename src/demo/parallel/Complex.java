@@ -132,6 +132,7 @@ public class Complex {
      */
     public Complex divide(Complex b) {
         Complex a = this;
+        if (b.re == 0 && b.im == 0) throw new IllegalArgumentException();
         double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
         double imag = (a.re * b.re - a.im * b.im)/(b.re * b.re + b.im * b.im);
         re = real;
