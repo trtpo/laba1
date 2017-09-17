@@ -86,6 +86,38 @@ public class Complex {
     }
 
     /**
+     *
+     * Multiply complex on real:
+     * @param  b real value
+     * @return this Complex object whose value is: b(x+iy)=bx+biy.
+
+     */
+    public Complex mult(double b){
+        Complex a= this;
+        double real =a.re*b;
+        double imag =a.im*b;
+        re=real;
+        im=imag;
+        return this;
+    }
+
+    /**
+     *
+     * Multilye complex on real:
+     * @param  b substr
+     * @return this Complex object whose value is: this-b.
+
+     */
+    public Complex subs(Complex b){
+        Complex a= this;
+        double real =a.re-b.re;
+        double imag =a.im-b.im;
+        re=real;
+        im=imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
