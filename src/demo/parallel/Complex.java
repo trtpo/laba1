@@ -119,6 +119,16 @@ public class Complex {
 
     }
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImag() {
+        return im;
+    }
+
+
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
