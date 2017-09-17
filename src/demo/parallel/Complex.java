@@ -86,6 +86,31 @@ public class Complex {
     }
 
     /**
+     * Negation operation.
+     * @return this Complex object whose value is complex conjugate this
+     */
+    public Complex not() {
+        im *= (-1);
+        return this;
+    }
+
+    /**
+     * Get a complex number real part.
+     * @return a complex number real part
+     */
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Get a complex number imaginary part.
+     * @return a complex number imaginary part
+     */
+    public double getImag(){
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
