@@ -93,10 +93,10 @@ public class Complex {
     public Complex division(Complex b) {
         Complex a = this;
         double realTop = a.re * b.re + a.im * b.im;
-        double realBot = a.im * a.im + b.im * b.im;
+        double realBot = b.re * b.re + b.im * b.im;
         double real = realTop / realBot;
         double imTop = b.re * a.im - a.re * b.im;
-        double imBot = a.im * a.im + b.im * b.im;
+        double imBot = b.re * b.re + b.im * b.im;
         double imag = imTop / imBot;
         re = real;
         im = imag;
