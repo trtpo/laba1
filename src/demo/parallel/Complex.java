@@ -48,6 +48,20 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
+    
+    /**
+     * A real part of the number.
+     */
+    public double getReal() {
+    	return this.re;
+    }
+    
+    /**
+     * An imaginary part of the number.
+     */
+    public double getImaginary() {
+    	return this.im;
+    }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -56,8 +70,8 @@ public class Complex {
      * @param imag a complex number imaginary part 
      */
     public Complex(double real, double imag) {
-        re = real;
-        im = imag;
+        this.re = real;
+        this.im = imag;
     }
 
     /**
@@ -65,9 +79,20 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
+    public Complex minus(Complex b) {
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
+    
+    /**
+     * Add operation.
+     * @param b summand
+     * @return this Complex object whose value is (this + b)
+     */
     public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
+        this.re += b.re;
+        this.im += b.im;
         return this;
     }
 
@@ -77,11 +102,24 @@ public class Complex {
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
+        double real = this.re * b.re - this.im * b.im;
+        double imag = this.re * b.im + this.im * b.re;
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
+    
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this * b
+     */
+    public Complex divide(Complex b) {
+    	if (b.re == 0 && b.im == 0) throw new ArithmeticException("Cannot divide by zero");
+    	double real = (this.re * b.re + this.im * b.im) / b.lengthSQ();
+    	double imag = (b.re * this.im - this.re * b.im) / b.lengthSQ();
+        this.re = real;
+        this.im = imag;
         return this;
     }
 
@@ -91,6 +129,6 @@ public class Complex {
      * @return square of length
     */
     public double lengthSQ() {
-        return re * re + im * im;
+        return this.re * this.re + this.im * this.im;
     }
 }
