@@ -49,7 +49,23 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    public double getReal() {
+        return re;
+    }
+
+    public void setReal(double real) {
+        this.re = real;
+    }
+
+    public double getImaginary() {
+        return im;
+    }
+
+    public void setImaginary(double imag) {
+        this.im = imag;
+    }
+
+    /**
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
