@@ -112,6 +112,14 @@ public class Complex {
     }
 
     /**
+     * comparing real and imaginary parts of two complex numbers
+     * @param b second numbr
+     * @return result of comparing
+     */
+    public boolean equalTo(Complex b) {
+        return (re == b.re) && (im == b.im);
+    }
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
