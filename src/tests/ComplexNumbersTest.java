@@ -6,32 +6,27 @@ import org.junit.Test;
 
 
 public class ComplexNumbersTest {
-    @Test()
-    public void divOnOne() {
-        Complex a = new Complex(88, 89);
-        Assert.assertEquals("method div() work bad with real 1", a.div(new Complex(1, 0)), new Complex(88, 89));
-        Assert.assertEquals("method div() work bad with real -1", a.div(new Complex(-1, 0)), new Complex(-88, -89));
-    }
 
 
     @Test()
-    public void divOnOneComplex() {
+    public void divisionByOneComplex() {
         Complex a = new Complex(88, -2);
-        Assert.assertEquals("method div() work bad with 1+1i", a.div(new Complex(1, 1)), new Complex(43, -45));
+        Assert.assertEquals("method div() does not work correctly with 1+0i", a.div(new Complex(1, 0)), new Complex(88, -2));
+        Assert.assertEquals("method div() does not work correctly with -1+0i", a.div(new Complex(-1, 0)), new Complex(-88, 2));
     }
 
     @Test(expected = ArithmeticException.class)
-    public void divOnZero() {
+    public void divisionByZero() {
         Complex a = new Complex(88, -2);
         Complex b = new Complex(0, 0);
-        Assert.assertEquals("method div(): division by zero work incorrectly", a.div(b), new Complex(43, -45));
+        Assert.assertEquals("method div() does not work correctly with division by zero", a.div(b), new Complex(43, -45));
     }
 
 
     @Test()
-    public void divOnAnyComplex() {
-        Assert.assertEquals("method div() work bad with some complex number", new Complex(4, 40).div(new Complex(2, 0)), new Complex(2, 20));
-        Assert.assertEquals("method div() work bad with some complex number", new Complex(4, 40).div(new Complex(0, -2)), new Complex(-20, 2));
+    public void divisionByAnyComplex() {
+        Assert.assertEquals("method div() does not work correctly with some complex number", new Complex(4, 40).div(new Complex(2, 0)), new Complex(2, 20));
+        Assert.assertEquals("method div() does not work correctly with some complex number", new Complex(4, 40).div(new Complex(0, -2)), new Complex(-20, 2));
     }
 }
 

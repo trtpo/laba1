@@ -135,4 +135,9 @@ public class Complex {
         return Double.compare(complex.im, im) == 0;
     }
 
+    @Override
+    public String toString() {
+        return new String(re + ((im < 0) ? "" : "+") + im + "i");
+    }
+
 }
