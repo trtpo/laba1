@@ -86,6 +86,24 @@ public class Complex {
     }
 
     /**
+     * subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex minus(Complex b){
+        re-=b.re;
+        im-=b.im;
+        return this;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
