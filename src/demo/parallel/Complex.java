@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Get the real part of complex number
+     * @return real part
+     */
+    public double getRealPart() {
+        return re;
+    }
+
+    /**
+     * Get the imaginary part of complex number
+     * @return imaginary part
+     */
+    public double getImagPart() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -103,9 +119,11 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex division(Complex b) {
+        if(b == null || b.re == 0 || b.im == 0)
+            return null;
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (Math.sqrt(b.re) + Math.sqrt(b.im));
-        double imag = (b.re * a.im - a.re * b.im) / (Math.sqrt(b.re) + Math.sqrt(b.im));
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
         re = real;
         im = imag;
         return this;
