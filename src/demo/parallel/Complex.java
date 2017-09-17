@@ -133,8 +133,8 @@ public class Complex {
     public Complex divide(Complex b) {
         Complex a = this;
         if (b.re == 0 && b.im == 0) throw new IllegalArgumentException();
-        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
-        double imag = (a.re * b.re - a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double real = (a.re * a.im + b.re * b.im)/(a.im * a.im + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(a.im * a.im + b.im * b.im);
         re = real;
         im = imag;
         return this;
