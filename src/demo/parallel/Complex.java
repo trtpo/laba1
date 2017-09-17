@@ -45,9 +45,19 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+    private static final int ZERO = 0;
+
     private double re;   // the real part
     private double im;   // the imaginary part
+
+    public double getRealPart() {
+        return re;
+    }
+
+     public double getImagPart() {
+        return im;
+     }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -84,6 +94,60 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Sub operation
+     * @param b operand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        double real = this.re - b.re;
+        double imag = this.im - b.im;
+        this.im = imag;
+        this.re = real;
+        return this;
+    }
+
+    /**
+     * Sin operation.
+     * @return new Complex object whose value is the complex sin of this
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = image;
+        return this;
+    }
+
+    /**
+     * Cos operation.
+     * @return new Complex object whose value is the complex cos of this
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = image;
+        return this;
+    }
+
+    /**
+     * Divide this complex number to other complex number
+     * @param b the other complex number
+     * @return the result of division
+     */
+    public Complex divides(Complex b) {
+        if(b.im == 0 && b.re == 0){
+            throw new ArithmeticException("Division by zero");
+        }
+        Complex a = this;
+        double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        a.re = realPart;
+        a.im = imagePart;
+        return a;
+     }
 
     /**
      * Square of Complex object's length, we're using square of length to 
