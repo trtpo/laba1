@@ -86,6 +86,42 @@ public class Complex {
     }
 
     /**
+     * Minus operation.
+     * @param Number subtrahend
+     * @return this Complex object whose value is (this - Number)
+     */
+    public Complex minus(Complex Number) {
+        Complex Old = this;
+        double real = Old.re - Number.re;
+        double imag = Old.im - Number.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Сomparison operation.
+     * @param Number compare variable
+     * @return this Boolean object whose value is true if this == b and false if this != b
+     */
+     public Boolean equals(Complex Number) {
+         return im == Number.im && re == Number.re;
+     }
+
+    /**
+     * Exponent operation
+     *
+     * @return this Complex object whose value is exp(this)
+     */
+    public Complex exp() {
+        double real = Math.exp(re) * Math.cos(im);
+        double imag = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
