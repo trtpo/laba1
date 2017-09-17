@@ -3,8 +3,11 @@ package demo.parallel;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ComplexTest {
+	
+	private ExpectedException thrown = ExpectedException.none();
 
 	@Test
 	public void complexConstructorCreatesNewObjectWithCorrectRealPart() {
@@ -75,6 +78,15 @@ public class ComplexTest {
 		// Assert
 		assertEquals("Real part of a is", real, a.getReal(), 0.0);
 		assertEquals("Imaginary part of a is", imaginary, a.getImaginary(), 0.0);		
+	}
+	
+	@Test	
+	public void complexDivideThrowsExceptionIfDivideByZero() throws Exception{
+		// Arrange
+		Complex a = new Complex(0,0);
+		Complex b = new Complex(0,0);
+		
+		thrown.expect(ArithmeticException.class);
 	}
 
 }
