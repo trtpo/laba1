@@ -60,6 +60,22 @@ public class Complex {
         im = imag;
     }
 
+
+    public Complex subtract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imaginary = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imaginary;
+        return this;
+    }
+
+
     /**
      * Add operation.
      * @param b summand
