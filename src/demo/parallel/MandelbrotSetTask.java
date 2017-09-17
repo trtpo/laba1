@@ -275,11 +275,13 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).times(c).plus(comp).times(c);
+            c = c.times(c).division(comp).times(c).minus(comp).minus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
+
 
     /**
      * Calculates a color of a given pixel on the image using 
@@ -351,13 +353,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(15, 0, 0),
+            Color.BLUE,
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.TURQUOISE,
+            Color.rgb(16, 0, 0),
+            Color.GREY,
+            Color.rgb(25, 0, 0)
         };
         
         /**
