@@ -125,4 +125,17 @@ public class Complex {
         return temp;
     }
 
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this divided for b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (a.re * b.re - a.im * b.im)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
 }
