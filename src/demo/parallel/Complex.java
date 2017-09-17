@@ -49,15 +49,23 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param image a complex number imaginary part
      */
-    public Complex(double real, double imag) {
+    public Complex(double real, double image) {
         re = real;
-        im = imag;
+        im = image;
     }
 
     /**
@@ -72,6 +80,17 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -79,9 +98,24 @@ public class Complex {
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double image = a.re * b.im + a.im * b.re;
         re = real;
-        im = imag;
+        im = image;
+        return this;
+    }
+
+    /**
+     * Division.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex dividedInto(Complex b) {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double image = (b.re * a.im - a.re * b.im) / denominator;
+        re = real;
+        im = image;
         return this;
     }
 
