@@ -34,11 +34,4 @@ class ComplexTest {
         assertEquals(temp.getIm(), 3.0,
                 "Imaginary part of first complex has wrong value (in Complex.sub(Complex))");
     }
-
-
-
-
-
-
-
 }
