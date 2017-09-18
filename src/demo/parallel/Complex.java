@@ -101,6 +101,15 @@ public class Complex {
     }
 
     /**
+     * @return the exponent of a complex number
+     */
+    public Complex exp(){
+        re = Math.exp(re) * Math.cos(im);
+        im = Math.exp(re) * Math.sin(im);
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
