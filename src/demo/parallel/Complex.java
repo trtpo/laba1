@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -61,7 +62,37 @@ public class Complex {
     }
 
     /**
+     * Get a complex number real part
+     *
+     * @return a complex number real part
+     */
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Get a complex number imaginary part
+     *
+     * @return a complex number imaginary part
+     */
+    public double getImage() {
+        return im;
+    }
+
+    /**
+     * Invert complex number values
+     *
+     * @return this Complex object with negative real and imaginary parts
+     */
+    public Complex negative() {
+        re = -re;
+        im = -im;
+        return this;
+    }
+
+    /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -72,8 +103,21 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,10 +130,104 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Check division operation dividing by zero
+     *
+     * @param b divider
+     * @return this Complex object whose value is this/b
+     */
+    public Complex divide(Complex b) {
+        divideCalculate(b);
+        if (Double.isNaN(re) || Double.isNaN(im)) throw new ArithmeticException("Dividing by zero!");
+        return this;
+    }
+
+    /**
+     * Division operation
+     *
+     * @param b divider
+     * @return this Complex object whose value is this/b
+     */
+    private void divideCalculate(Complex b) {
+        Complex a = this;
+        double div = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / div;
+        double imag = (b.re * a.im - a.re * b.im) / div;
+        re = real;
+        im = imag;
+    }
+
+    /**
+     * Exponent operation
+     *
+     * @return this Complex object whose value is exp(this)
+     */
+    public Complex exp() {
+        double real = Math.exp(re) * Math.cos(im);
+        double imag = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sinus operation
+     *
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine operation
+     *
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Tangent operation
+     *
+     * @return this Complex object whose value is tg(this)
+     */
+    public Complex tg() {
+        double real = Math.sin(2 * re) / (Math.cos(2 * re) + Math.cosh(2 * im));
+        double imag = Math.sinh(2 * im) / (Math.cos(2 * re) + Math.cosh(2 * im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cotangent operation
+     *
+     * @return this Complex object whose value is ctg(this)
+     */
+    public Complex ctg() {
+        double real = -Math.sin(2 * re) / (Math.cos(2 * re) - Math.cosh(2 * im));
+        double imag = Math.sinh(2 * im) / (Math.cos(2 * re) - Math.cosh(2 * im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
