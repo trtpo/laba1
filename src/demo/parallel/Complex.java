@@ -86,6 +86,21 @@ public class Complex {
     }
 
     /**
+     * Divide operation
+     * @param d divisor
+     * @return this complex number divided by d
+     */
+    public Complex divide(Complex d){
+        Complex c = this;
+        double div = d.re * d.re + d.im * d.im;
+        double real = (c.re * d.re + c.im * d.im) / div;
+        double image = (c.im * d.re - c.re * d.im) / div;
+        re = real;
+        im = image;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
