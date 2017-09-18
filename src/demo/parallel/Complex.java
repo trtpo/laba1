@@ -135,9 +135,9 @@ public class Complex {
      * @param b divider
      * @return this Complex object whose value is this/b
      */
-    public Complex divide(Complex b){
+    public Complex divide(Complex b) {
         divideCalculate(b);
-        if(Double.isNaN(re) || Double.isNaN(im)) throw new ArithmeticException("Dividing by zero!");
+        if (Double.isNaN(re) || Double.isNaN(im)) throw new ArithmeticException("Dividing by zero!");
         return this;
     }
 
