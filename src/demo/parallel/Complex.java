@@ -72,6 +72,32 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b deductive
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex sin() {
+        double real = re;
+        double imag = im;
+        re = Math.sin(real) * Math.cosh(imag);
+        im = Math.cos(real) * Math.sinh(imag);
+        return this;
+    }
+
+    public Complex cos(){
+        double real = re;
+        double imag = im;
+        re = Math.cos(real) * Math.cosh(imag);
+        im = -Math.sin(real) * Math.sinh(imag);
+        return this;
+    }
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
