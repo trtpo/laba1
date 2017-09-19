@@ -50,7 +50,7 @@ public class ComplexTest {
     }
 
     @Test
-    public void sinus() throws Exception {
+    public void sinusValidComplexNumbers() throws Exception {
         Complex expected = a.sinus();
         Complex actual = new Complex(-62.445,40.0921);
 
