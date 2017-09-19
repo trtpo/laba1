@@ -22,8 +22,9 @@ public class ComplexTest {
     @Test
     public void calculateDivision() throws Exception {
         Complex z = z1.div(z2);
-        assertEquals( "Real part of division",0.5384615384615384, z.getReal(), 0.0);
-        assertEquals( "Image part of division", 0.3076923076923077, z.getImag(), 0.0);
+        final String errorMessage= "Error of division operation!";
+        assertEquals( errorMessage+"Expected and result value of real part not equal.",0.5384615384615384, z.getReal(), 0.0);
+        assertEquals( errorMessage+"Expected and result value of image part not equal.", 0.3076923076923077, z.getImag(), 0.0);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -35,7 +36,8 @@ public class ComplexTest {
     @Test
     public void calculateSubtraction() throws Exception {
         Complex z = z1.sub(z2);
-        assertEquals( "Real part of subtracting",-2, z.getReal(), 0.0);
-        assertEquals( "Image part of subtracting", 2, z.getImag(), 0.0);
+        final String errorMessage= "Error of subtraction operation!";
+        assertEquals( errorMessage+"Expected and result value of real part not equal.",-2, z.getReal(), 0.0);
+        assertEquals( errorMessage+"Expected and result value of image part not equal.", 2, z.getImag(), 0.0);
     }
 }
