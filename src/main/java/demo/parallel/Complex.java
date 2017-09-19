@@ -90,11 +90,10 @@ public class Complex {
      * @param b
      * @return
      */
-    public Complex sub(Complex b){
-        Complex a = this;
-        a.re -= b.re;
-        a.im -= b.im;
-        return a;
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
     }
 
     /**
