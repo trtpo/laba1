@@ -61,21 +61,29 @@ public class Complex {
         im = imag;
     }
 
+    /**method get the real part*/
     public double getRe() {
         return re;
     }
-
+    /**method get the imaginary part*/
     public double getIm() {
         return im;
     }
 
-
+    /**
+     * Sub operation
+     * @param b
+     * @return this Complex object whose value is (this + b)*/
     public Complex subtract(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
+    /**
+     * div operation
+     * @param b
+     * @return this Complex object whose value is (this + b)*/
     public Complex divide(Complex b) {
         double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
         double imaginary = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);

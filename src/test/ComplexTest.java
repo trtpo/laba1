@@ -1,5 +1,6 @@
-package demo.parallel;
+package test;
 
+import demo.parallel.Complex;
 import org.junit.Before;
 import org.junit.Test;
 
