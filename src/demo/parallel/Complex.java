@@ -93,4 +93,50 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Adjunction operation.
+     * @return Complex object whose value is adjuncted to current
+     */
+    public Complex adjunction() {
+        Complex temp = this;
+        temp.im = this.im*(-1);
+        return temp;
+    }
+
+    /**
+     * Comparation between 2 complex numbers.
+     * @param  c is second comparable
+     * @return returns true if numbers are equal and false neither
+     */
+    public boolean equals(Complex c) {
+        if(c.re == this.re && c.im == this.im) return true;
+        else return false;
+    }
+
+    /**
+     * Inversion operation.
+     * @return Complex object whose value is inverted to current
+     */
+    public Complex inversion() {
+        Complex temp = this;
+        temp.im = this.im*(-1);
+        temp.re = this.re*(-1);
+        return temp;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this divided for b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        if (b.re == 0 && b.im == 0) throw new IllegalArgumentException();
+        double real = (a.re * a.im + b.re * b.im)/(a.im * a.im + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(a.im * a.im + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
 }
