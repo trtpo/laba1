@@ -98,7 +98,7 @@ public class Complex {
      * Equals operation.
      * @return true if equal, false if not equal
      */
-    public boolean equals() { return (re == re) && (im == im); }
+    public boolean equals(Complex a) { return (this.re == a.re) && (this.im == a.im); }
 
     /**
      * Cos() of complex number
