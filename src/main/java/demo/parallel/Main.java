@@ -294,7 +294,7 @@ public class Main extends Application {
         grid.add(openCloseButton, colIndex, rowIndex, totalColumns, 1);
         GridPane.setHalignment(openCloseButton, HPos.CENTER);
         grid.setId("grid");
-        grid.getStylesheets().add("/demo/parallel/ControlPane.css");
+        grid.getStylesheets().add("ControlPane.css");
 
         sequentialTime.translateXProperty().bind(
                 sequentialTimeBar.add(-1.1).multiply(sequentialProgressBar.widthProperty()));
