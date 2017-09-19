@@ -72,6 +72,23 @@ public class Complex {
     }
 
     /**
+     * /**
+     * Decrease operation.
+     * @param b
+     * @return
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex square() {
+        this.times(this);
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
