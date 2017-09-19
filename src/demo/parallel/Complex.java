@@ -42,18 +42,18 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -61,7 +61,7 @@ public class Complex {
     }
 
     /**
-     * Get the real part of complex number
+     * Getting the real part of complex number
      * @return real part
      */
     public double getRealPart() {
@@ -69,7 +69,7 @@ public class Complex {
     }
 
     /**
-     * Get the imaginary part of complex number
+     * Getting the imaginary part of complex number
      * @return imaginary part
      */
     public double getImagPart() {
@@ -89,7 +89,7 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -106,10 +106,11 @@ public class Complex {
      * @return this Complex object whose value is tg(this)
      */
     public Complex tg() {
-        double real = Math.sin(2 * this.re) / (Math.cos(2 * this.re) + Math.cosh(2 * this.im));
-        double imag = Math.sinh(2 * this.im) / (Math.cos(2 * this.re) + Math.cosh(2 * this.im));
-        this.re = real;
-        this.im = imag;
+        Complex a = this;
+        double real = Math.sin(2 * a.re) / (Math.cos(2 * a.re) + Math.cosh(2 * a.im));
+        double imag = Math.sinh(2 * a.im) / (Math.cos(2 * a.re) + Math.cosh(2 * a.im));
+        re = real;
+        im = imag;
         return this;
     }
 
@@ -119,7 +120,7 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex division(Complex b) {
-        if(b == null || b.re == 0 || b.im == 0)
+        if (b == null || b.re == 0 || b.im == 0)
             return null;
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
@@ -130,10 +131,10 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }

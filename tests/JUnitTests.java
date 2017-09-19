@@ -1,9 +1,9 @@
-package demo.parallel;
+package tests;
 
+import demo.parallel.Complex;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
-import java.text.DecimalFormat;
 
 public class JUnitTests {
     private Complex complexNumberOne;
