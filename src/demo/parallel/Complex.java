@@ -93,4 +93,34 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Equals operation.
+     * @return true if equal, false if not equal
+     */
+    public boolean equals() { return (re == re) && (im == im); }
+
+    /**
+     * Cos() of complex number
+     * @return Complex object whose value is cosine of this
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sin() of complex number
+     * @return Complex object whose value is sine of this
+     */
+    public Complex sin(){
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
 }
