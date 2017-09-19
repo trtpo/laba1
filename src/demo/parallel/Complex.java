@@ -78,7 +78,7 @@ public class Complex {
      */
     public Complex subtract(Complex b){
         re-=b.re;
-        im+=b.im;
+        im-=b.im;
         return this;
     }
 
@@ -105,6 +105,10 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public boolean equalsTo(Complex b) {
+        return (re == b.re) && (im == b.im);
     }
 
     /**
