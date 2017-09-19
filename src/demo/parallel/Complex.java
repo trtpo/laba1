@@ -42,26 +42,60 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
     }
 
+    /**method get the real part*/
+    public double getRe() {
+        return re;
+    }
+    /**method get the imaginary part*/
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * Sub operation
+     * @param b
+     * @return this Complex object whose value is (this + b)*/
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * div operation
+     * @param b
+     * @return this Complex object whose value is (this + b)*/
+    public Complex div(Complex b) {
+        double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imaginary = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imaginary;
+        return this;
+    }
+
+
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +107,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,10 +121,11 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
