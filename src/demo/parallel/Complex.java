@@ -98,7 +98,7 @@ public class Complex {
      * Adjunction operation.
      * @return Complex object whose value is adjuncted to current
      */
-    public Complex adjunction()  {
+    public Complex adjunction() {
         Complex temp = this;
         temp.im = this.im*(-1);
         return temp;
@@ -109,7 +109,7 @@ public class Complex {
      * @param  c is second comparable
      * @return returns true if numbers are equal and false neither
      */
-    public boolean equals(Complex c){
+    public boolean equals(Complex c) {
         if(c.re == this.re && c.im == this.im) return true;
         else return false;
     }
@@ -118,7 +118,7 @@ public class Complex {
      * Inversion operation.
      * @return Complex object whose value is inverted to current
      */
-    public Complex inversion()  {
+    public Complex inversion() {
         Complex temp = this;
         temp.im = this.im*(-1);
         temp.re = this.re*(-1);
