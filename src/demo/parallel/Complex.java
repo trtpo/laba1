@@ -72,6 +72,28 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex subtract(Complex b){
+        re-=b.re;
+        im+=b.im;
+        return this;
+    }
+
+    /**
+     * Inversion operation.
+     * @return Complex object whose value is inverted to current
+     */
+    public Complex inversion()  {
+        Complex temp = this;
+        temp.im = this.im*(-1);
+        temp.re = this.re*(-1);
+        return temp;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
