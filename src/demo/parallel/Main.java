@@ -364,7 +364,7 @@ public class Main extends Application {
         antiTranslate.xProperty().bind(canvas.translateXProperty().negate());
         antiTranslate.yProperty().bind(canvas.translateYProperty().negate());
         snapshotParameters.setTransform(antiTranslate);
-        snapshotParameters.setFill(Color.BLACK);
+        snapshotParameters.setFill(Color.SILVER);
 
         //Fetch position when Mouse released
         canvas.setOnMouseReleased(e -> {
@@ -789,7 +789,7 @@ public class Main extends Application {
     
     private void rerender(boolean compareMode, boolean parallel, Runnable onDone) {
         stopTask();
-        canvas.getGraphicsContext2D().setFill(Color.rgb(0, 0, 0, 0.5));
+        canvas.getGraphicsContext2D().setFill(Color.rgb(8, 66, 25, 0.502));
         canvas.getGraphicsContext2D().fillRect(0, 0, winWidth, winHeight);
         render(compareMode, parallel, onDone);
     }
