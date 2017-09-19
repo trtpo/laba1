@@ -18,14 +18,14 @@ public class ComplexTest {
     @Test
     public void minusTest() throws Exception {
         Complex res = c.minus(d);
-        assertEquals("minus operation test", -35.0, res.getReal(), 0.01);
-        assertEquals("minus operation test", 48.0, res.getImaginary(), 0.01);
+        assertEquals("minus operation test on 80th line", -35.0, res.getReal(), 0.01);
+        assertEquals("minus operation test on 81th line", 48.0, res.getImaginary(), 0.01);
     }
 
     @Test
     public void divideTest() throws Exception {
         Complex res = c.divide(d);
-        assertEquals("divide operation test", -0.043, res.getReal(), 0.001);
-        assertEquals("divide operation test", -0.022, res.getImaginary(), 0.001);
+        assertEquals("divide operation test on 109th line", -0.043, res.getReal(), 0.001);
+        assertEquals("divide operation test on 110th line", -0.022, res.getImaginary(), 0.001);
     }
 }
