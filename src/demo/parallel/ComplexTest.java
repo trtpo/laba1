@@ -19,15 +19,23 @@ public class ComplexTest {
     @Test
     public void subtractTest() throws Exception {
         a.subtract(b);
-        assertTrue("Error in subtract method",  a.getRe() == -9 && a.getIm() == 14 );
+        try {
+            assertTrue(a.getRe() == -9 && a.getIm() == 14);
+        } catch (junit.framework.AssertionFailedError ex) {
+            System.out.println("Exception in \"subtractTest\" method. The parameters aren't equal. The number of line exception: " + ex.getStackTrace()[4].getLineNumber());
+        }
 
     }
+
 
     @Test
     public void divide() throws Exception {
         a.divide(b);
-        assertTrue("Error in divide method, 97  string in Complex file",  a.getRe() == -0.05737704918032787 && a.getIm() == 0.13114754098360656  );
-
+        try {
+            assertTrue(a.getRe() == -0.05737704918032787 && a.getIm() == 0.13114754098360656);
+        } catch (junit.framework.AssertionFailedError ex) {
+            System.out.println("Exception in \"divideTest\" method. The parameters aren't equal. The number of line exception: " + ex.getStackTrace()[4].getLineNumber());
+        }
     }
 
 
