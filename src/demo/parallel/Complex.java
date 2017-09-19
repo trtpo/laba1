@@ -74,7 +74,7 @@ public class Complex {
      * Sub operation
      * @param b
      * @return this Complex object whose value is (this + b)*/
-    public Complex subtract(Complex b) {
+    public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
@@ -84,7 +84,7 @@ public class Complex {
      * div operation
      * @param b
      * @return this Complex object whose value is (this + b)*/
-    public Complex divide(Complex b) {
+    public Complex div(Complex b) {
         double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
         double imaginary = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;

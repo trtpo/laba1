@@ -19,7 +19,7 @@ public class ComplexTest {
 
     @Test
     public void subtractTest() throws Exception {
-        a.subtract(b);
+        a.minus(b);
         try {
             assertTrue(a.getRe() == -9 && a.getIm() == 14);
         } catch (junit.framework.AssertionFailedError ex) {
@@ -31,7 +31,7 @@ public class ComplexTest {
 
     @Test
     public void divide() throws Exception {
-        a.divide(b);
+        a.div(b);
         try {
             assertTrue(a.getRe() == -0.05737704918032787 && a.getIm() == 0.13114754098360656);
         } catch (junit.framework.AssertionFailedError ex) {
