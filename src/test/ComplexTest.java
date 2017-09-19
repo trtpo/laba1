@@ -1,4 +1,6 @@
-package demo.parallel;
+package test;
+
+import demo.parallel.Complex;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +22,17 @@ public class ComplexTest {
         assertEquals("Wrong real part in method minus(object: Complex(3, 8), argument: Complex(8, 15)) of class Complex(file: demo.parallel.Complex.java)", -5, num.getRe(),0);
         assertEquals("Wrong imagine part in method minus(object: Complex(3, 8), argument: Complex(8, 15)) of class Complex(file: demo.parallel.Complex.java)", -7, num.getIm(),0);
         
+    }
+    @org.junit.Test
+    public void getting_real_part() throws Exception {
+        Complex num = new Complex(61,-28);
+        assertEquals("Wrong returned value in method getRe(object: Complex(61, -28)) of class Complex(file: demo.parallel.Complex.java)", 61, num.getRe(),0);
+    }
+
+    @org.junit.Test
+    public void getting_imagine_part() throws Exception {
+        Complex num = new Complex(61,-28);
+        assertEquals("Wrong returned value in method getIm(object: Complex(61, -28)) of class Complex(file: demo.parallel.Complex.java)", -28, num.getIm(),0);
     }
 
 }

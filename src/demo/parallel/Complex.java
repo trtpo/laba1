@@ -82,14 +82,6 @@ public class Complex {
         return this;
     }
 
-    /**
-     * Сomparison operation.
-     * @param b compare variable
-     * @return this Boolean object whose value is true if this == b and false if this != b
-     */
-    public Boolean equals(Complex b) {
-        return im == b.im && re == b.re;
-    }
 
     /**
      * Multiply operation.
