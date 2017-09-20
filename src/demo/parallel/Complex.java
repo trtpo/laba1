@@ -60,6 +60,12 @@ public class Complex {
         im = imag;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +74,28 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re = this.re - b.re;
+        im = this.im - b.im;
+        return this;
+    }
+
+    public Complex sin() {
+        double real = re;
+        double imag = im;
+        re = Math.sin(real) * Math.cosh(imag);
+        im = Math.cos(real) * Math.sinh(imag);
+        return this;
+    }
+
+    public Complex cos() {
+        double real = re;
+        double imag = im;
+        re = Math.cos(real) * Math.cosh(imag);
+        im = -Math.sin(real) * Math.sinh(imag);
         return this;
     }
 
