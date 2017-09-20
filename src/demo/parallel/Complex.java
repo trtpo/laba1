@@ -93,4 +93,42 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+    /**
+     * Substraction of complex numbers.
+     * @param c
+     * @return
+     */
+    public Complex sub(Complex c){
+        this.re-=c.re;
+        this.im-=c.im;
+        return this;
+    }
+
+    /**
+     * Division of complex numbers.
+     * @param
+     * @return
+     */
+    public Complex div(Complex c){
+        Complex a = this;
+        double real = (a.re * c.re + a.im*c.im)/(c.re*c.re + c.im*c.im);
+        double imag = (c.re*a.im-c.im*a.re)/(c.re*c.re + c.im*c.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Complex)) return false;
+
+        Complex complex = (Complex) o;
+
+        if (Double.compare(complex.re, re) != 0) return false;
+        return Double.compare(complex.im, im) == 0;
+    }
+
 }
