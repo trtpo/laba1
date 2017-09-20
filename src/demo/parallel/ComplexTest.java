@@ -1,6 +1,6 @@
 package demo.parallel;
 import static org.junit.Assert.*;
-public class Test {
+public class ComplexTest {
     @org.junit.Test
     public void Subtracttest1() throws Exception {
         Complex a = new Complex(4,8);
