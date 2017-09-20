@@ -51,4 +51,12 @@ public class ComplexTest {
             }
         }
     }
+    @org.junit.Test
+    public void equals() throws Exception {
+        for (double re = -10, im = -10; re <= 10; re += 0.3, im += 0.4) {
+            Complex result = new Complex(re,im);
+            Complex num = (new Complex(re, im));
+            assertTrue(num.equals(result));
+        }
+    }
 }
