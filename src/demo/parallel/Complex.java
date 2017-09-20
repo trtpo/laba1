@@ -97,6 +97,10 @@ public class Complex {
         im = -Math.sin(real) * Math.sinh(imag);
         return this;
     }
+
+    public boolean equalsTo(Complex b) {
+        return (re == b.re) && (im == b.im);
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
