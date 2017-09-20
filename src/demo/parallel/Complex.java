@@ -98,6 +98,10 @@ public class Complex {
         else return this;
     }
 
+    public Boolean equals(Complex b){
+        return im == b.im && re ==b.re;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
