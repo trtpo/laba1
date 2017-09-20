@@ -60,6 +60,12 @@ public class Complex {
         im = imag;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
+    }
+
     /**
      * Add operation.
      * @param b summand
