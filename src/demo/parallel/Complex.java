@@ -93,4 +93,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    /**
+     * sub complex 
+     * @param b
+     * @return
+     */
+    public Complex sub(Complex b){
+    	Complex a=this;
+    	a.re-=b.re;
+    	a.im-=b.im;
+    	return this;
+    }
+    
+    
 }
