@@ -94,9 +94,9 @@ public class Complex {
         return re * re + im * im;
     }
     /**
-     * sub complex 
+     * sub complex number
      * @param b
-     * @return
+     * @return	a-b
      */
     public Complex sub(Complex b){
     	Complex a=this;
