@@ -98,6 +98,7 @@ public class Complex {
         im = imag;
         return this;
     }
+    
     /**
      * Minus operation
      * @param b subtrahend
