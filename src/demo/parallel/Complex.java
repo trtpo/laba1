@@ -70,7 +70,16 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    /**
+     +     * Sub operation
+     +     * @param b is subtractor
+     +     * @return this Complex object whose value is (this - b)
+     +     */
+     public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+     }
     /**
      * Multiply operation.
      * @param  b multiplier
