@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2013, 2014, Oracle and/or its affiliates. All rights reserved.
  *
@@ -58,6 +59,10 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+    public boolean equals(Complex second)
+    {
+        return ( (this.im == second.im) && (this.re == second.re) );
     }
 
     /**
