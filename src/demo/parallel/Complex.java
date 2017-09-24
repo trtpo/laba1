@@ -122,6 +122,40 @@ public class Complex {
     }
 
     /**
+     * @return the real part of the number
+     * */
+
+    public double GetRe(){
+        return this.re;
+    }
+
+    /**
+     * @return the imaginary part of the number
+     * */
+
+    public double GetIm(){
+        return this.im;
+    }
+
+    /**
+     *
+     * assigns the real part equal to re
+     * @param re
+     */
+    public void SetRe(double re){
+        this.re = re;
+    }
+
+    /**
+     *
+     * assigns an imaginary part equal to im
+     * @param im
+     */
+    public void SetIm(double im){
+        this.im = im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
