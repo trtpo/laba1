@@ -97,6 +97,21 @@ public class Complex {
     }   
 
     /**
+     * Divide operation.
+     * @param  b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        if ((b.re * b.re + b.im * b.im)==0) throw new java.lang.ArithmeticException("Divisor is 0!");
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+    
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
