@@ -119,4 +119,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    
+    /**
+     * Functions for private fields ("re" and "im") access
+     * @return real and imaginary numbers
+     */
+    
+    public double get_real() {
+        return re;
+    }
+    
+    public double get_imag() {
+        return im;
+    }
 }
