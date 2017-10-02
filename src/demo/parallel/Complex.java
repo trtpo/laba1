@@ -86,6 +86,55 @@ public class Complex {
     }
 
     /**
+     * Divide operation
+     * @param d divisor
+     * @return this complex number divided by d
+     */
+    public Complex divide(Complex d){
+        Complex c = this;
+        double div = d.re * d.re + d.im * d.im;
+        double real = (c.re * d.re + c.im * d.im) / div;
+        double image = (c.im * d.re - c.re * d.im) / div;
+        re = real;
+        im = image;
+        return this;
+    }
+
+    /**
+     * @return the exponent of a complex number
+     */
+    public Complex exp(){
+        re = Math.exp(re) * Math.cos(im);
+        im = Math.exp(re) * Math.sin(im);
+        return this;
+    }
+
+    /**
+     * @return the cosine of a complex number
+     */
+    public Complex cos(){
+        re = Math.cos(re) * Math.cosh(im);
+        im = -Math.sin(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * Get real value metod
+     * @return real value
+     */
+    public double getReal(){
+        return re;
+    }
+
+    /**
+     * Get image value metod
+     * @return image value
+     */
+    public double getImage(){
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
