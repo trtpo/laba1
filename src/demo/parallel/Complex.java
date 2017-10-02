@@ -117,7 +117,23 @@ public class Complex {
         im = -Math.sin(re) * Math.sinh(im);
         return this;
     }
-    
+
+    /**
+     * Get real value metod
+     * @return real value
+     */
+    public double getReal(){
+        return re;
+    }
+
+    /**
+     * Get image value metod
+     * @return image value
+     */
+    public double getImage(){
+        return im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
