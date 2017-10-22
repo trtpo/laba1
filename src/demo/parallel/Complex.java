@@ -33,7 +33,7 @@ package demo.parallel;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
- * a and b are real numbers and i is the imaginary unit, which satisfies the
+ * a and b are real numbers i is the aginary unit, which satisfies the
  * equation i ^ 2 = -1. a is the real part and b is the imaginary part of the
  * complex number.
  * <p><i>
