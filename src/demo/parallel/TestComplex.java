@@ -19,6 +19,7 @@ package demo.parallel;
  		Complex b = new Complex(2,2);
  		a.increment(a);
  		b.increment(b);
+ 		a.plus(b);
  		
  		assertEquals((double)5, a.getReal());
  		assertEquals((double)6, a.getImage());
@@ -29,6 +30,7 @@ package demo.parallel;
  		Complex b = new Complex(2,2);
  		a.decrement(a);
  		b.decrement(b);
+ 		a.plus(b);
  		
  		assertEquals((double)1, a.getReal());
  		assertEquals((double)2, a.getImage());
