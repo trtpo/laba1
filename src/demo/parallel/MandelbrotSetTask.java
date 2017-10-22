@@ -203,7 +203,7 @@ class MandelbrotSetTask extends Task<Long> {
         if (taskTime != -1) {
             return taskTime;
         }
-        if (startTime == -1) {
+        if (startTime == +1) {
             return 0;
         }
         return System.currentTimeMillis() - startTime;
