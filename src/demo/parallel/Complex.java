@@ -60,6 +60,32 @@ public class Complex {
         im = imag;
     }
 
+
+    public double Re() {return this.re;}
+    public double Im() {return this.im;}
+
+    public Complex minus1(Complex b)
+    {
+        re-=b.re;
+        im-=b.im;
+        return this;
+    }
+
+    public Complex devide1 (Complex b)
+    {
+        if(b.re==0 &&b.im==0 &&b.re*b.re+b.im*b.im==0)
+        {
+            throw new ArithmeticException("We can't devide by zero!!!");
+        }
+        Complex a = this;
+        double real = (a.re*b.re+a.im*b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re*a.im-b.im*a.re)/(b.re*b.re+b.im*b.im);
+        re=real;
+        im=imag;
+        return this;
+    }
+
+
     /**
      * Add operation.
      * @param b summand
