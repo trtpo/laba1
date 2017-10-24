@@ -78,6 +78,7 @@ import javafx.scene.control.ProgressIndicator;
  * 
  * @author Alexander Kouznetsov, Tristan Yan
  */
+//MyFirst commit!
 public class Main extends Application {
 
     /**
