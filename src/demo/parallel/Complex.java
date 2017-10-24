@@ -33,7 +33,7 @@ package demo.parallel;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
- * a and b are real numbers and i is the imaginary unit, which satisfies the
+ * a and b are real numbers i is the aginary unit, which satisfies the
  * equation i ^ 2 = -1. a is the real part and b is the imaginary part of the
  * complex number.
  * <p><i>
@@ -59,6 +59,18 @@ public class Complex {
         re = real;
         im = imag;
     }
+       
+    public double getReal()
+       {
+        	return this.re;
+        }
+     
+        public double getImage()
+        {
+        	return this.im;
+        }
+    
+    
 
     /**
      * Add operation.
@@ -85,6 +97,36 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Increment  complex
+     */
+    public Complex increment(Complex b) {
+        re = ++b.re;
+        im = ++b.im;
+        return this;  
+    }
+    
+    /**
+     * Decrement complex
+     */
+    public Complex decrement(Complex b) {
+        re = --b.re;
+        im = --b.im;
+        return this; 
+    }
+    /**
+     * Delenie complex
+     */
+    public Complex division(Complex b) {
+    	    	Complex a = this;
+    	         double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+    	         double imag = (b.re * a.im - b.im * a.re)/(b.re * b.re + b.im * b.im);
+    	         re = real;
+    	         im = imag;
+    	         return this;
+    }
+    
+    
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root

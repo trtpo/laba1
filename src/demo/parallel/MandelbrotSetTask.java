@@ -203,7 +203,7 @@ class MandelbrotSetTask extends Task<Long> {
         if (taskTime != -1) {
             return taskTime;
         }
-        if (startTime == -1) {
+        if (startTime == +1) {
             return 0;
         }
         return System.currentTimeMillis() - startTime;
@@ -271,13 +271,13 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
-    private int calc(Complex comp) {
+    private int calc(Complex c) {
         int count = 0;
-        Complex c = new Complex(0, 0);
+        Complex x = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+        	 x = x.times(x).times(x).times(x).plus(x).plus(c);
             count++;
-        } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
+        } while (count < CAL_MAX_COUNT && x.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
@@ -309,7 +309,7 @@ class MandelbrotSetTask extends Task<Long> {
         double r = 0, g = 0, b = 0;
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
-                Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
+                Color c = calcPixel(x + step * (i + 1.5) - 0.5, y + step * (j + 0.5) - 0.5);
                 r += c.getRed() / N;
                 g += c.getGreen() / N;
                 b += c.getBlue() / N;
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.GREEN;
         }
         return colors[count];
     }
@@ -352,12 +352,12 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.BLUE,
+            Color.BLUE,
+            Color.BLUE,
+            Color.rgb(150, 0, 0),
+            Color.BLUE,
+            Color.rgb(50, 0, 50)
         };
         
         /**
