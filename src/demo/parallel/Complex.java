@@ -48,7 +48,19 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
-
+    /**
+     * A real part of the number. 
+     */
+    public double get_real() {
+    	return re;
+    }
+    
+    /**
+     * An imaginary part of the number.
+     */
+    public double get_imag() {
+    	return im;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
