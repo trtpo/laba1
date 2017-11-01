@@ -61,13 +61,21 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
+    }
+
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
-    public Complex devide(Complex b) {
+    public Complex divide(Complex b) {
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - b.im * a.re) / (b.re * b.re + b.im * b.im);
