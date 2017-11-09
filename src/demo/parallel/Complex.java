@@ -75,6 +75,12 @@ public class Complex {
         im -= b.im;
         return this;
     }
+    //hmmm /
+    public Complex  divide (Complex b) {
+        re /= b.re;
+        im /= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -84,7 +90,7 @@ public class Complex {
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double imag = a.re * b.im + (a.im * b.re)/a.re;
         re = real;
         im = imag;
         return this;
