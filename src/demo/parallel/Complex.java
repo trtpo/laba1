@@ -49,6 +49,13 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double get_real() {
+    	return re;
+    }
+
+    public double get_imag() {
+    	return im;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
