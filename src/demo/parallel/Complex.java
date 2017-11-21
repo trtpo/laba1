@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
-
+// test commit
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -49,6 +49,15 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+     double getRe() {
+              return this.re;
+            }
+
+            public double getIm() {
+                return this.im;
+            }
+
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -59,6 +68,23 @@ public class Complex {
         re = real;
         im = imag;
     }
+
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+        public Complex divide(Complex b) {
+        Complex a = this;
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+               double imag = (b.re * a.im - b.im * a.re) / (b.re * b.re + b.im * b.im);
+               re = real;
+               im = imag;
+               return this;
+           }
+
 
     /**
      * Add operation.
