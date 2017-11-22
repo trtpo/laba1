@@ -59,6 +59,10 @@ public class Complex {
         re = real;
         im = imag;
     }
+    
+    public boolean equalTo(Complex b) {
+        return (re == b.re) && (im == b.im);
+        }
 
     /**
      * Add operation.
