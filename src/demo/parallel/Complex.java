@@ -70,7 +70,28 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+   
+    public double getReal() {
+    	return re;
+    }
+   
+    public double getImag() {
+    	return im;
+    }
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    
+    public Complex div(Complex b) {
+         Complex a = this;
+         double real = (a.re*b.re + a.im*b.im) / (b.re*b.re + b.im*b.im);
+         double imq = (b.re*a.im - a.re*b.im) / (b.re*b.re + b.im*b.im);
+         re = real;
+         im = imq;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
