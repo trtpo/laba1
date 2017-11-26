@@ -70,7 +70,18 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+   
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    
+    public Complex div(Complex b) {
+    	re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+    	im = (im * b.re - re * b.im) / (b.re * b.re + b.im * b.im);
+    	return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
