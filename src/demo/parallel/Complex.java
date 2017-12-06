@@ -60,17 +60,34 @@ public class Complex {
         im = imag;
     }
 
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
-     */
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+         return this.im;
+    }
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+        }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        if ((b.re * b.re + b.im * b.im)==0) throw new java.lang.ArithmeticException("Nel'zja delit' na 0");
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
