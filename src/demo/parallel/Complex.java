@@ -107,10 +107,13 @@ public class Complex {
 	 * @param c
 	 * @return
 	 */
+	public boolean equals(Complex second) {
+		return ((this.im == second.im) && (this.re == second.re));
+	}
 
 	public Complex sub(Complex c) {
 		this.re -= c.re;
-		this.im -= c.re;
+		this.im -= c.im;
 		return this;
 	}
 }
