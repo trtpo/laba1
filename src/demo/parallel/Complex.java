@@ -48,13 +48,13 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
-
-    /** 
-     * create a new object with the given real and imaginary parts
-     * 
-     * @param real a complex number real part
-     * @param imag a complex number imaginary part 
-     */
+        public double get_real() {
+    	     	return re;
+    	     }
+    	     
+    	     public double get_imag() {
+    	     	return im;
+    	     }
     public Complex(double real, double imag) {
         re = real;
         im = imag;
