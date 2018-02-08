@@ -9,8 +9,8 @@ public class Test extends TestCase {
         Complex b = new Complex(2,2);
         a.plus(b);
 
-        assertEquals((double)3, a.getRe());
-        assertEquals((double)4, a.getIm());
+        assertEquals((double)3, a.get_real());
+        assertEquals((double)4, a.get_imag());
     }
 
     public void testTimes()
@@ -19,8 +19,8 @@ public class Test extends TestCase {
         Complex b = new Complex(2,2);
         a.times(b);
 
-        assertEquals((double)-2, a.getRe());
-        assertEquals((double)6, a.getIm());
+        assertEquals((double)-2, a.get_real());
+        assertEquals((double)6, a.get_imag());
     }
 
     public void testMinus()
@@ -29,17 +29,17 @@ public class Test extends TestCase {
         Complex b = new Complex(2,2);
         a.minus(b);
 
-        assertEquals((double)1, a.getRe());
-        assertEquals((double)2, a.getIm());
+        assertEquals((double)1, a.get_real());
+        assertEquals((double)2, a.get_imag());
     }
 
     public void testdivision()
     {
         Complex a = new Complex(7,-4);
         Complex b = new Complex(3,2);
-        a.divide(b);
+        a.division(b);
 
-        assertEquals((double)1, a.getRe());
-        assertEquals((double)-2, a.getIm());
+        assertEquals((double)1, a.get_real());
+        assertEquals((double)-2, a.get_imag());
     }
 }
