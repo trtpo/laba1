@@ -39,19 +39,19 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See {@link
+ * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
+ * double, double, double, double, double, double, double, double, boolean)
+ * constructor} for parameters list. The task returns time in milliseconds as
  * its calculated value.
- * 
+ *
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
- * 
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
@@ -61,16 +61,16 @@ class MandelbrotSetTask extends Task<Long> {
      * count to calculate Color
      */
     private static final int CAL_MAX_COUNT = 256;
-
+    
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
-     * disk of radius 2 around the origin plus some area around, so 
+     * disk of radius 2 around the origin plus some area around, so
      * LENGTH_BOUNDARY is 6.
      */
     private static final double LENGTH_BOUNDARY = 6d;
-
+    
     /**
-     * For antialiasing we break each pixel into 3x3 grid and interpolate 
+     * For antialiasing we break each pixel into 3x3 grid and interpolate
      * between values calculated on those grid positions
      */
     private static final int ANTIALIASING_BASE = 3;
@@ -126,7 +126,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Progress of the task
      */
     private final AtomicInteger progress = new AtomicInteger(0);
-
+    
     /**
      * Creates a task to render a MandelBrot set into an image using given
      * PixelWriter with given dimensions of the image, given real and imaginary
@@ -162,29 +162,29 @@ class MandelbrotSetTask extends Task<Long> {
         this.antialiased = !fast;
         updateProgress(0, 0);
     }
-
+    
     /**
-     * 
+     *
      * @return whether new pixels were written to the image
      */
     public boolean hasUpdates() {
         return hasUpdates;
     }
-
+    
     /**
      * @return true if task is parallel
      */
     public boolean isParallel() {
         return parallel;
     }
-
+    
     /**
      * Clears the updates flag
      */
     public void clearHasUpdates() {
         hasUpdates = false;
     }
-
+    
     /**
      * {@inheritDoc}
      */
@@ -193,9 +193,9 @@ class MandelbrotSetTask extends Task<Long> {
         super.failed();
         getException().printStackTrace(System.err);
     }
-
+    
     /**
-     * Returns current task execution time while task is running and total 
+     * Returns current task execution time while task is running and total
      * task time when task is finished
      * @return task time in milliseconds
      */
@@ -208,14 +208,14 @@ class MandelbrotSetTask extends Task<Long> {
         }
         return System.currentTimeMillis() - startTime;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
     protected Long call() throws Exception {
         synchronized(pixelWriter) {
-            // Prepares an image 
+            // Prepares an image
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     pixelWriter.setColor(x, y, Color.TRANSPARENT);
@@ -260,12 +260,12 @@ class MandelbrotSetTask extends Task<Long> {
         taskTime = getTime();
         return taskTime;
     }
-
+    
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     * 
-     * This number is used to choose a color for this pixel for precalculated 
+     *
+     * This number is used to choose a color for this pixel for precalculated
      * color tables.
      *
      * @param comp a complex number used for calculation
@@ -274,15 +274,16 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+        Complex c2 = new Complex(2, 8);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).div(c2).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
-
+    
     /**
-     * Calculates a color of a given pixel on the image using 
+     * Calculates a color of a given pixel on the image using
      * {@link #calc(demo.parallel.Complex) } method.
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
@@ -294,7 +295,7 @@ class MandelbrotSetTask extends Task<Long> {
         Complex calPixel = new Complex(re, im);
         return getColor(calc(calPixel));
     }
-
+    
     /**
      * Calculates antialised color of a given pixel on the image by dividing
      * real and imaginary value ranges of a pixel by {@link #ANTIALIASING_BASE}
@@ -317,7 +318,7 @@ class MandelbrotSetTask extends Task<Long> {
         }
         return new Color(clamp(r), clamp(g), clamp(b), 1);
     }
-
+    
     /**
      * Clamps the value in 0..1 interval
      * @param val value to clamp
@@ -326,10 +327,10 @@ class MandelbrotSetTask extends Task<Long> {
     private double clamp(double val) {
         return val > 1 ? 1 : val < 0 ? 0 : val;
     }
-
+    
     /**
      * Returns a color for a given iteration count.
-     * @param count number of iterations return by 
+     * @param count number of iterations return by
      * {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
@@ -344,27 +345,27 @@ class MandelbrotSetTask extends Task<Long> {
      * Pre-calculated colors table
      */
     static final Color[] colors = new Color[256];
-
+    
     static {
         
         /**
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+        Color.rgb(100, 0, 0),
+        Color.BLUE,
+        Color.YELLOW,
+        Color.BLUE,
+        Color.rgb(80, 0, 0),
+        Color.BLUE,
+        Color.rgb(100, 0, 0)
         };
         
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+        0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
         
         /**
          * Color table population
