@@ -91,6 +91,11 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return re+"|"+im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
