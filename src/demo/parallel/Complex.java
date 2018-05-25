@@ -79,21 +79,26 @@ public class Complex {
         im -= b.im;
         return this;
     }
-
-    public double mod(){
-        return Math.sqrt(re * re + im * im);
-    }
-    public Complex div(Complex b){
-
-        double m = b.mod();
-
-        double t = re * b.re - im * b.im;
-
-        im = (im * b.re - re * b.im) / m;
-
-        re = t / m;
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
+        re = real;
+        im = imag;
         return this;
     }
+    /*public double mod(){
+        return Math.sqrt(re * re + im * im);
+    }
+
+    public Complex div(Complex b){
+        double m = b.mod();
+        double t = re * b.re - im * b.im;
+        im = (im * b.re - re * b.im) / m;
+        re = t / m;
+        return this;
+    }*/
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -116,4 +121,11 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    public double getReal() {
+        return re;
+    }
+    public double getImg() {
+        return im;
+    }
+
 }
