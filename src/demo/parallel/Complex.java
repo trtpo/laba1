@@ -75,6 +75,9 @@ public class Complex {
         im -= b.im;
         return this;
     }
+    public boolean equalTo(Complex b) {
+        return (re == b.re) && (im == b.im);
+    }
 
     /**
      * Multiply operation.
