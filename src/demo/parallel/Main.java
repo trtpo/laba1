@@ -319,12 +319,14 @@ public class Main extends Application {
 
         wiOffscreen = new WritableImage((int) winWidth, (int) winHeight);
         wiSnapshot = new WritableImage((int) winWidth, (int) winHeight);
+
         canvas = new Canvas(winWidth, winHeight);
         render(() -> {
             wiGlobalSnapshot = new WritableImage(wiOffscreen.getPixelReader(), (int) winWidth, (int) winHeight);
             ivGlobalSnapshot.setImage(wiGlobalSnapshot);
             flyToPosition(minR, minI, maxR, maxI);
         });
+
         global = new Position(position);
 
         /**
