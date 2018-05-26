@@ -65,9 +65,9 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
-    public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -92,5 +92,14 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public Complex div(Complex b) {
+        Complex a = this;
+      double t_re = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+      double t_im = (b.re * a.im - a.re * b.im) / b.lengthSQ();
+        re = t_re;
+        im = t_im;
+        return this;
     }
 }
