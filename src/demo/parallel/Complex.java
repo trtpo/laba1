@@ -71,6 +71,11 @@ public class Complex {
         return this;
     }
 
+    public Complex mun(Complex b) {
+    	re = (b.re*this.re - this.im*b.im) ;
+        im = (b.re*this.im + this.re*b.im) ;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
