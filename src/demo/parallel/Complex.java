@@ -69,6 +69,11 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Add operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
     public Complex minus(Complex b){
 
         return new Complex(re - b.re, im - b.im);
@@ -79,25 +84,27 @@ public class Complex {
         im -= b.im;
         return this;
     }
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
     public Complex div(Complex b) {
         Complex a = this;
         double real = a.re / b.re - a.im / b.im;
         double imag = a.re / b.im + a.im / b.re;
         re = real;
         im = imag;
+        if (b.re != 0 || b.im !=0)
+        {
+            return this;
+        }
+        else {
+            System.out.println("Произошла недопустимая арифметическая операция");
+             } System.exit(0);
         return this;
-    }
-    /*public double mod(){
-        return Math.sqrt(re * re + im * im);
-    }
+        }
 
-    public Complex div(Complex b){
-        double m = b.mod();
-        double t = re * b.re - im * b.im;
-        im = (im * b.re - re * b.im) / m;
-        re = t / m;
-        return this;
-    }*/
 
     /**
      * Multiply operation.
@@ -121,9 +128,16 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * @return real part of complex object
+     */
     public double getReal() {
         return re;
     }
+    /**
+     * @return imaginary part of complex object
+     */
     public double getImg() {
         return im;
     }
