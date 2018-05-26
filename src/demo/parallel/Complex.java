@@ -70,11 +70,20 @@ public class Complex {
         im += b.im;
         return this;
     }
+
+    /**
+     * Add operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
     public Complex minus(Complex b){
         re -= b.re;
         im -= b.im;
         return this;
     }
+    /**
+    * filter evaluating equal values
+    */
     public boolean equalTo(Complex b) {
         return (re == b.re) && (im == b.im);
     }
@@ -94,7 +103,7 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
