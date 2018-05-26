@@ -356,9 +356,9 @@ class MandelbrotSetTask extends Task<Long> {
 //            Color.RED,
             Color.AQUA,
             Color.WHITE,
-            Color.AQUA,
+            Color.RED,
             Color.rgb(100, 0, 0),
-            Color.AQUA,
+            Color.RED,
             Color.rgb(50, 0, 0)
         };
         
