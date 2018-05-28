@@ -49,6 +49,10 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public Complex(double real) {
+          this(real, 0);
+    }
+
      /**
      * create a new object with the given real and imaginary parts
      * 
@@ -84,6 +88,18 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex minus(Complex b) {
+               return new Complex(re - b.re, im - b.im);
+            }
+
+
+          public Complex div(Complex b) {
+                return this.times(b.conj()).times(new Complex(1 / b.lengthSQ()));
+           }
+
+            public Complex conj() {
+               return new Complex(re, -im);
+            }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -92,5 +108,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
