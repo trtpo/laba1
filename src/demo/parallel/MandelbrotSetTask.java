@@ -274,11 +274,10 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
-        Complex x = new Complex(1, 2);
+        Complex x = new Complex(0, 1);
         do {
 
             try{
-
                 if (x.getReal()==0)throw  new IllegalArgumentException();
             c = c.times(c).plus(comp).times(c).newComplexOperation(x);}catch (IllegalArgumentException e){}
             count++;
