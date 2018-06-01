@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ComplexTest {
 
     @org.junit.jupiter.api.Test
-    void newComplexOperation() throws IllegalArgumentException{
+    void newComplexOperation(){
         Complex tmp =new Complex(0,0);
         Complex result;
         Complex tmp1;
