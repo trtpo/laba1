@@ -71,6 +71,14 @@ public class Complex {
         return this;
     }
 
+    public double getReal(){
+        return this.re;
+    }
+
+    public double getImage(){
+        return this.im;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -80,6 +88,15 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+    public Complex newComplexOperation(Complex b) {
+        Complex a = this;
+        if(b.re==0 || b.im==0)throw new java.lang.ArithmeticException("Division by zero");
+        double real = (a.re*b.re+a.im*b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re*b.re+b.im*b.im);
         re = real;
         im = imag;
         return this;
