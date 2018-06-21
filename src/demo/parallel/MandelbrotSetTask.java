@@ -59,6 +59,8 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
+     * Расчет времени, преднамеренно выбрано как 256, потому что мы будем использовать
+     * подсчет для расчета цвета
      */
     private static final int CAL_MAX_COUNT = 256;
 
@@ -66,64 +68,81 @@ class MandelbrotSetTask extends Task<Long> {
      * This is the square of max radius, Mandelbrot set contained in the closed
      * disk of radius 2 around the origin plus some area around, so 
      * LENGTH_BOUNDARY is 6.
+     * Это квадрат максимального радиуса, множество Мандельброта, содержащееся в замкнутом
+     * диск радиуса 2 вокруг начала координат плюс область вокруг, поэтому
+     * LENGTH_BOUNDARY - 6.
      */
     private static final double LENGTH_BOUNDARY = 6d;
 
     /**
      * For antialiasing we break each pixel into 3x3 grid and interpolate 
      * between values calculated on those grid positions
+     * Для сглаживания мы разбиваем каждый пиксель на сетку 3x3 и интерполируем
+     * между значениями, рассчитанными для этих позиций сетки
      */
     private static final int ANTIALIASING_BASE = 3;
     
     /**
      * Sequential vs. parallel calculation mode
+     * Режим последовательного или параллельного вычисления
      */
     private final boolean parallel;
     
     /**
      * Antialiased mode flag
+     * Флаг с режимом сглаживания
      */
     private final boolean antialiased;
     
     /**
      * Dimension of the area
+     * Размер площади
      */
     private final int width, height;
     
     /**
      * Rectangle range to exclude from calculations. Used to skip calculations
      * for parts of MandelbrotSet that are already calculated.
+     * Диапазон прямоугольников для исключения из вычислений. Используется для пропусков вычислений
+     * для частей MandelbrotSet, которые уже рассчитаны.
      */
     private final double minX, minY, maxX, maxY;
     
     /**
      * Real and imaginary part of min and max number in the set we need
      * calculate
+     * Реальная и мнимая часть минимального и максимального числа в нужном наборе
+     * рассчитать
      */
     private final double minR, minI, maxR, maxI;
     
     /**
      * Pixel writer to use for writing calculated pixels
+     * Пиксельный писатель, используемый для записи рассчитанных пикселей
      */
     private final PixelWriter pixelWriter;
     
     /**
      * Flag indicating that some new pixels were calculated
+     * Флаг, указывающий, что были вычислены некоторые новые пиксели
      */
     private volatile boolean hasUpdates;
     
     /**
      * Start time of the task in milliseconds
+     * Время запуска задачи в миллисекундах
      */
     private volatile long startTime = -1;
     
     /**
      * Total time of the task in milliseconds
+     * Общее время задачи в миллисекундах
      */
     private volatile long taskTime = -1;
     
     /**
      * Progress of the task
+     * Ход выполнения задачи
      */
     private final AtomicInteger progress = new AtomicInteger(0);
 
@@ -166,6 +185,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * 
      * @return whether new pixels were written to the image
+     * @return были ли новые пиксели записаны на изображение
      */
     public boolean hasUpdates() {
         return hasUpdates;
@@ -173,6 +193,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * @return true if task is parallel
+     * @return true, если задача параллельна
      */
     public boolean isParallel() {
         return parallel;
@@ -180,6 +201,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Clears the updates flag
+     * Очищает флаг обновлений
      */
     public void clearHasUpdates() {
         hasUpdates = false;
@@ -198,6 +220,9 @@ class MandelbrotSetTask extends Task<Long> {
      * Returns current task execution time while task is running and total 
      * task time when task is finished
      * @return task time in milliseconds
+     * Возвращает текущее время выполнения задачи во время выполнения задачи и общее количество
+     * время задачи, когда задача завершена
+     * @return рабочее время в миллисекундах
      */
     public long getTime() {
         if (taskTime != -1) {
@@ -271,6 +296,16 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
+    /**
+     * Вычисляет число итераций сложных квадратичных многочленов
+     * остается в диске некоторого конечного радиуса для заданного комплексного числа.
+     *
+     * Этот номер используется для выбора цвета для этого пикселя для предварительно рассчитанного
+     * цветные таблицы.
+     *
+     * @param comp - комплексное число, используемое для расчета
+     * @ возвращающ число итераций, значение оставалось на заданном диске.
+     */
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
@@ -288,6 +323,13 @@ class MandelbrotSetTask extends Task<Long> {
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
      */
+    /**
+     * Вычисляет цвет данного пикселя на изображении, используя
+     * {@link #calc (demo.parallel.Complex)} метод.
+     * @param x x координата пикселя в изображении
+     * @param y y координата пикселя в изображении
+     * @return вычисляемый цвет пикселя
+     */
     private Color calcPixel(double x, double y) {
         double re = (minR * (width - x) + x * maxR) / width;
         double im = (minI * (height - y) + y * maxI) / height;
@@ -302,6 +344,14 @@ class MandelbrotSetTask extends Task<Long> {
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
+     */
+    /**
+     * Вычисляет антиализованный цвет заданного пикселя на изображении путем деления
+     * реальные и мнимые диапазоны значений пикселя по {@link #ANTIALIASING_BASE}
+     * и интерполяция между вычисленными значениями
+     * @param x x координата пикселя в изображении
+     * @param y y координата пикселя в изображении
+     * @return вычисляемый цвет пикселя
      */
     private Color calcAntialiasedPixel(int x, int y) {
         double step = 1d / ANTIALIASING_BASE;
@@ -323,6 +373,11 @@ class MandelbrotSetTask extends Task<Long> {
      * @param val value to clamp
      * @return value in 0..1 interval
      */
+    /**
+     * Закрепляет значение в интервале 0..1
+     * значение параметра @param val для зажима
+     * @ возвращаемое значение в интервале 0..1
+     */
     private double clamp(double val) {
         return val > 1 ? 1 : val < 0 ? 0 : val;
     }
@@ -333,15 +388,22 @@ class MandelbrotSetTask extends Task<Long> {
      * {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
+    /**
+     * Возвращает цвет для заданного количества итераций.
+     * @param рассчитывает количество повторений итераций
+     * {@link #calc (demo.parallel.Complex)} метод
+     * @return цвет из предварительно рассчитанной таблицы
+     */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.CORAL;
         }
         return colors[count];
     }
     
     /**
      * Pre-calculated colors table
+     * Предварительно рассчитанная таблица цветов
      */
     static final Color[] colors = new Color[256];
 
@@ -349,25 +411,28 @@ class MandelbrotSetTask extends Task<Long> {
         
         /**
          * Color stops for colors table: color values
+         * Цвет останавливается для таблицы цветов: значения цвета
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(200, 200, 50),
+            Color.BLUE,
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.BLUE,
+            Color.rgb(10, 200, 100),
+            Color.BLUE,
+            Color.rgb(140, 40, 20)
         };
         
         /**
          * Color stops for colors table: relative position in the table
+         * Цвет останавливается для таблицы цветов: относительное положение в таблице
          */
         double[] cp = {
             0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
         
         /**
          * Color table population
+         * Заполнение таблицы цветом
          */
         int j = 0;
         for (int i = 0; i < colors.length; i++) {
