@@ -60,6 +60,22 @@ public class Complex {
     }
 
     /**
+     * get real part
+     * @return re a complex number real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * get imaginary part
+     * @return im a complex number imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Addition operation.
      * @param b addend
      * @return this Complex object whose value is (this + b)
