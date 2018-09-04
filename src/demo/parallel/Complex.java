@@ -51,7 +51,6 @@ public class Complex {
 
     /** 
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -61,8 +60,8 @@ public class Complex {
     }
 
     /**
-     * Add operation.
-     * @param b summand
+     * Addition operation.
+     * @param b addend
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
@@ -72,14 +71,28 @@ public class Complex {
     }
 
     /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * Multiplication operation.
+     * @param b multiplicand
+     * @return this Complex object whose value is (this * b)
      */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divisor
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2.0) + Math.pow(b.im, 2.0));
+        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re, 2.0) + Math.pow(b.im, 2.0));
         re = real;
         im = imag;
         return this;
