@@ -71,6 +71,17 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiplication operation.
      * @param b multiplicand
      * @return this Complex object whose value is (this * b)
@@ -89,7 +100,7 @@ public class Complex {
      * @param b divisor
      * @return this Complex object whose value is (this / b)
      */
-    public Complex divide(Complex b) {
+    public Complex divideBy(Complex b) {
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2.0) + Math.pow(b.im, 2.0));
         double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re, 2.0) + Math.pow(b.im, 2.0));
