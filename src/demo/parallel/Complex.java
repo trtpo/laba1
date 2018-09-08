@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * getting the value the real part of the copmlex number
+     * @return the value of the real part
+     */
+    public double getReal() {
+        return this.re;
+    }
+
+    /**
+     * getting the value the imaginary part of the copmlex number
+     * @return the value of the imaginary part
+     */
+    public double getImage() {
+        return this.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
