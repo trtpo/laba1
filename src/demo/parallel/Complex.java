@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +95,21 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+        Complex a = this; 	//z1 = a = a1+ib1 ; z2 = b = a2+ib2
+        double real = (a.re * b.re + a.im * b.im)/(Math.pow(b.re, 2.0)+ Math.pow(b.im, 2.0));
+        double imag = (b.re * a.im - a.re * b.im)/(Math.pow(b.re, 2.0)+ Math.pow(b.im, 2.0));
+        re = real;			//re = (a1*a2+b1*b2)/(a2^2+b2^2)
+        im = imag;			//im = (a2*b1-a1*b2)/(a2^2+b2^2)
+        return this;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
