@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import static java.lang.StrictMath.sqrt;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -72,6 +74,17 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this + b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -82,6 +95,78 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Divide this complex number to other complex number.
+     * @param b the other complex number
+     * @return the result of division
+     */
+    public Complex divide(Complex b) {
+        if (b != null) {
+            Complex a = this;
+            if (b.lengthSQ() == 0) {
+                re = 0;
+                im = 0;
+            } else {
+                double topre = (a.re * b.re + a.im * b.im);
+                double topim = (-a.re * b.im + a.im * b.re);
+                double down = (b.re * b.re + b.im * b.im);
+                re = topre / down;
+                im = topim / down;
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Getting angle in trigonometry form.
+     * @return the value of angle in radians
+     */
+    public double getAngleInTrigonometryForm() {
+        Complex complexNumber = new Complex(re, im);
+        complexNumber.divide(new Complex(sqrt(this.lengthSQ()),0));
+        double tan;
+        if (complexNumber.im == 0 && complexNumber.re == 0) {
+            return 0;
+        } else {
+            tan = Math.atan(Math.abs(complexNumber.im)/Math.abs(complexNumber.re));
+        }
+        if (complexNumber.im >= 0 && complexNumber.re >= 0) {
+            return tan;
+        } else if (complexNumber.im >= 0 && complexNumber.re < 0) {
+            return Math.PI - tan;
+        } else if (complexNumber.im < 0 && complexNumber.re >= 0) {
+            return Math.PI*2 - tan;
+        } else if (complexNumber.im < 0 && complexNumber.re < 0) {
+            return Math.PI + tan;
+        }
+        return tan;
+    }
+
+    /**
+     * Get a complex number real part.
+     * @return a complex number real part
+     */
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Get a complex number imaginary part.
+     * @return a complex number imaginary part
+     */
+    public double getImag(){
+        return im;
+    }
+
+    /**
+     * Negation operation.
+     * @return this Complex object whose value is complex conjugate this
+     */
+    public Complex notImag() {
+        im *= (-1);
         return this;
     }
 
