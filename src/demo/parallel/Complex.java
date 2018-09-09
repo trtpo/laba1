@@ -98,15 +98,32 @@ public class Complex {
     }
 
     /**
+     * Getter for re
+     * @return re
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Getter for im
+     * @return im
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Division operation.
      * @param b divider
      * @return this Complex object whose value is this / b
      */
-
     public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re*b.re+a.im*a.im)/(a.re*a.re + a.im*a.im);
-        double imag = (a.im*b.re - a.re*b.im)/(a.re*a.re + a.im*a.im);
+        if (b.im == 0 && b.re == 0)
+            return null;//-2 1 1 -1
+        double real = (a.re*b.re + a.im*b.im)/(b.re*b.re + b.im*b.im);
+        double imag = (a.im*b.re - a.re*b.im)/(b.re*b.re + b.im*b.im);
         re = real;
         im = imag;
         return this;
