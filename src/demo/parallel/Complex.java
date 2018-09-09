@@ -93,4 +93,51 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Divide operation by Complex.
+     * @param  b divider
+     * @return this Complex object whose value is this /b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double div = b.lengthSQ();
+        if (div == 0.0) {
+            throw new ArithmeticException();
+        }
+        double real = (a.re * b.re + a.im * b.im) / div;
+        double imag = (a.im * b.re - a.re * b.im) / div;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Pow operation.
+     * @param power power
+     * @return this Complex object whose value is (this ^ power)
+     */
+    public Complex pow(int power) {
+        Complex startValue = new Complex(re, im);
+
+        if (power > 0 ) {
+            for (int i = 1; i < power; i++)
+                times(startValue);
+        } else {
+            for (int i = 0; i < Math.abs(power); i++)
+                divide(startValue);
+        }
+        return this;
+    }
 }
