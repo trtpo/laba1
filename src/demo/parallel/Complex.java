@@ -115,7 +115,7 @@ public class Complex {
      * @param power power
      * @return this Complex object whose value is this ^ b
      */
-    public Complex powComplex(int power) {
+    public Complex powComplex(double power) {
         Complex a = this;
         double real = Math.pow(Math.abs(a.module()),power)*Math.cos(a.arg() * power);
         double imag = Math.pow(Math.abs(a.module()),power)*Math.sin(a.arg() * power);

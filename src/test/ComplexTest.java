@@ -26,7 +26,7 @@ public class ComplexTest {
                 new Complex(5.5,4.3)
         };
 
-       // ArrayList<Complex> ex = new ArrayList<>();
+      
         Complex[] expected= new Complex[args1.length];
 
         for (int i=0;i<expected.length;i++)
