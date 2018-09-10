@@ -70,6 +70,11 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex minusic(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
