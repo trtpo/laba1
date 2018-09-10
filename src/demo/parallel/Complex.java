@@ -72,6 +72,16 @@ public class Complex {
     }
 
 
+    public double getRe() {
+        return re;
+    }
+
+
+    public double getIm() {
+        return im;
+    }
+
+
     /**
      * Division operation.
      * @param b divided
