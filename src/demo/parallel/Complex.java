@@ -44,6 +44,7 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 public class Complex {
     
     private double re;   // the real part
@@ -59,6 +60,14 @@ public class Complex {
         re = real;
         im = imag;
     }
+
+    public double getIm() {
+        return im;
+    }
+    public double getRe() {
+        return re;
+    }
+
 
     /**
      * Add operation.
