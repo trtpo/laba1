@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -92,5 +92,43 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        if (b != null) {
+            Complex a = this;
+            if (b.lengthSQ() == 0) {
+                throw new IllegalArgumentException("Argument 'divisor' is 0");
+            } else {
+                double topre = (a.re * b.re + a.im * b.im);
+                double topim = (-a.re * b.im + a.im * b.re);
+                double down = (b.re * b.re + b.im * b.im);
+                re = topre / down;
+                im = topim / down;
+            }
+        }
+        return this;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
     }
 }
