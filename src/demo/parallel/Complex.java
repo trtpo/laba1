@@ -79,8 +79,10 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex minus(Complex b) {
-        re -= b.re;
-        im -= b.im;
+        if (b != null) {
+            re -= b.re;
+            im -= b.im;
+        }
         return this;
     }
 
@@ -146,11 +148,25 @@ public class Complex {
     }
 
     /**
+     * Check for equals for other complex number.
+     * @param b - other complex number
+     * @return if this number equals other complex number
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
      * Get a complex number real part.
      * @return a complex number real part
      */
     public double getReal() {
-        return re;
+        return this.re;
     }
 
     /**
@@ -158,7 +174,7 @@ public class Complex {
      * @return a complex number imaginary part
      */
     public double getImag(){
-        return im;
+        return this.im;
     }
 
     /**
@@ -166,7 +182,7 @@ public class Complex {
      * @return this Complex object whose value is complex conjugate this
      */
     public Complex notImag() {
-        im *= (-1);
+        this.im *= (-1);
         return this;
     }
 
