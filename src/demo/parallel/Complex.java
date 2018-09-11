@@ -79,10 +79,25 @@ public class Complex {
      * @param b - complex number to subtract from this number
      * @return this Complex object whose value is (this - b)
      */
-    public Complex substract(Complex b) {
+    public Complex subtract(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Complex num = (Complex) obj;
+
+        return num.re == this.re && num.im == this.im;
     }
 
     /**
@@ -145,6 +160,14 @@ public class Complex {
 
     public double getModulus() {
         return Math.sqrt(lengthSQ());
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
     }
 
     /**

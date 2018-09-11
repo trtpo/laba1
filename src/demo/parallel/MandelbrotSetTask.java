@@ -33,6 +33,7 @@ package demo.parallel;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
@@ -132,19 +133,20 @@ class MandelbrotSetTask extends Task<Long> {
      * PixelWriter with given dimensions of the image, given real and imaginary
      * values range and given rectangular area to skip. Also there is a switch
      * that disables more computational-extensive antialiasing mode.
-     * @param parallel parallel vs. sequential switch
+     *
+     * @param parallel    parallel vs. sequential switch
      * @param pixelWriter target to write pixels to
-     * @param width width of the image area
-     * @param height height of the image area
-     * @param minR min real value of the area
-     * @param minI min imaginary value of the area
-     * @param maxR max real value of the area
-     * @param maxI max imaginary value of the area
-     * @param minX min x value of the rectangular area to skip
-     * @param minY min y value of the rectangular area to skip
-     * @param maxX max x value of the rectangular area to skip
-     * @param maxY max y value of the rectangular area to skip
-     * @param fast fast mode disables antialiasing
+     * @param width       width of the image area
+     * @param height      height of the image area
+     * @param minR        min real value of the area
+     * @param minI        min imaginary value of the area
+     * @param maxR        max real value of the area
+     * @param maxI        max imaginary value of the area
+     * @param minX        min x value of the rectangular area to skip
+     * @param minY        min y value of the rectangular area to skip
+     * @param maxX        max x value of the rectangular area to skip
+     * @param maxY        max y value of the rectangular area to skip
+     * @param fast        fast mode disables antialiasing
      */
     public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
         this.parallel = parallel;
@@ -164,7 +166,6 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     *
      * @return whether new pixels were written to the image
      */
     public boolean hasUpdates() {
@@ -197,6 +198,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Returns current task execution time while task is running and total
      * task time when task is finished
+     *
      * @return task time in milliseconds
      */
     public long getTime() {
@@ -214,7 +216,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     @Override
     protected Long call() throws Exception {
-        synchronized(pixelWriter) {
+        synchronized (pixelWriter) {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
@@ -250,7 +252,7 @@ class MandelbrotSetTask extends Task<Long> {
                 if (isCancelled()) {
                     return;
                 }
-                synchronized(pixelWriter) {
+                synchronized (pixelWriter) {
                     pixelWriter.setColor(x, y, c);
                 }
                 hasUpdates = true;
@@ -264,7 +266,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     *
+     * <p>
      * This number is used to choose a color for this pixel for precalculated
      * color tables.
      *
@@ -275,7 +277,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp).plus(c.times(comp)).divide(comp).times(c).pow(3).divide(new Complex(3,-5));
+            c = c.times(c).plus(comp).plus(c.times(comp)).divide(comp).times(c).pow(3).divide(new Complex(3, -5));
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -284,6 +286,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates a color of a given pixel on the image using
      * {@link #calc(demo.parallel.Complex) } method.
+     *
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -299,6 +302,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Calculates antialised color of a given pixel on the image by dividing
      * real and imaginary value ranges of a pixel by {@link #ANTIALIASING_BASE}
      * and doing interpolation between calculated values
+     *
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -320,6 +324,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Clamps the value in 0..1 interval
+     *
      * @param val value to clamp
      * @return value in 0..1 interval
      */
@@ -329,8 +334,9 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Returns a color for a given iteration count.
+     *
      * @param count number of iterations return by
-     * {@link #calc(demo.parallel.Complex)} method
+     *              {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {
@@ -351,20 +357,20 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(73, 82, 214),
-            Color.AZURE,
-            Color.YELLOW,
-            Color.TOMATO,
-            Color.rgb(153, 214, 73),
-            Color.PURPLE,
-            Color.rgb(2, 113, 73)
+                Color.rgb(73, 82, 214),
+                Color.AZURE,
+                Color.YELLOW,
+                Color.TOMATO,
+                Color.rgb(153, 214, 73),
+                Color.PURPLE,
+                Color.rgb(2, 113, 73)
         };
 
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+                0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
 
         /**
          * Color table population
