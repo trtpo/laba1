@@ -107,4 +107,15 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Sub operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 }
