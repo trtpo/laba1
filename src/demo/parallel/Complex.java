@@ -85,6 +85,24 @@ public class Complex {
         return this;
     }
 
+    public Complex sin() {
+        re = Math.sin(re)*Math.cosh(im);
+        im = Math.cos(re)*Math.sinh(im);
+        return this;
+    }
+
+    public Complex cos() {
+        re = Math.cos(re)*Math.cosh(im);
+        im = -Math.sin(re)*Math.sinh(im);
+        return this;
+    }
+
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
