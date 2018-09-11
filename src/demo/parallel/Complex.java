@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +63,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +75,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,11 +89,85 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Division operation.
+     *
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex div(Complex b) throws ArithmeticException {
+
+
+        Complex a = this;
+        if (Math.pow(b.re, 2) + Math.pow(b.im, 2) == 0) throw new ArithmeticException();
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+        re = real;
+        im = imag;
+
+
+        return this;
+    }
+
+
+    /**
+     *  Power operation.
+     *
+     * @param power power
+     * @return this Complex object whose value is this ^ b
+     */
+    public Complex powComplex(double power) {
+        Complex a = this;
+        double real = Math.pow(Math.abs(a.module()),power)*Math.cos(a.arg() * power);
+        double imag = Math.pow(Math.abs(a.module()),power)*Math.sin(a.arg() * power);
+        re = real;
+        im = imag;
+        if(power%2!=0) {
+            re = -re;
+            im= -im;
+        }
+        return this;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+    /**
+     *  get argument operation.
+     *
+     * @return the argument of complex object
+     */
+    private double arg() {
+        return Math.atan(this.im / this.re);
+    }
+    /**
+     *  get module operation.
+     *
+     * @return the module of complex object
+     */
+    private double module() {
+        return Math.sqrt(Math.pow(this.im, 2) + Math.pow(this.re, 2));
+    }
+
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
