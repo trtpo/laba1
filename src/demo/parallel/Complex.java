@@ -101,8 +101,12 @@ public class Complex {
      */
     public Complex div(Complex b) {
         Complex a = this;
-        double real = (a.re * a.re + a.im * b.im)/(a.re * a.re + b.im * b.im);
-        double imag = (a.im * b.re - a.re * b.im)/(a.re * a.re + b.im * b.im);
+
+        if (b.re == 0 && b.im == 0)
+            return new Complex(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
@@ -117,5 +121,13 @@ public class Complex {
         re -= b.re;
         im -= b.im;
         return this;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImag() {
+        return im;
     }
 }
