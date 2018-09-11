@@ -20,4 +20,13 @@ class ComplexTest {
         assertEquals(c.getIm(), -0.5);
     }
 
+    @Test
+    public void minusTest() {
+        demo.parallel.Complex a = new demo.parallel.Complex(-2, 1);
+        demo.parallel.Complex b = new Complex(1, -1);
+        Complex c = a.minus(b);
+        assertEquals(c.getRe(), -3);
+        assertEquals(c.getIm(), 2);
+    }
+
 }
