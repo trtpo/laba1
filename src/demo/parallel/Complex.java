@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double real() {
+        return re;
+    }
+
+    public double imag() {
+        return im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -83,6 +91,31 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public double mod() {
+        if (re!=0 || im!=0) {
+            return Math.sqrt(re*re+im*im);
+        } else {
+            return 0d;
+        }
+    }
+
+    public Complex div(Complex w) {
+        double den=Math.pow(w.mod(),2);
+        return new Complex((re*w.real()+im*w.imag())/den,(im*w.real()-re*w.imag())/den);
+    }
+
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    public Complex tan() {
+        return (this.sin()).div(this.cos());
     }
 
     /**
