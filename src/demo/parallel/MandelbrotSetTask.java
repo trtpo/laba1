@@ -39,10 +39,7 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See  for parameters list. The task returns time in milliseconds as
  * its calculated value.
  * 
  * <p><i>
@@ -310,9 +307,9 @@ class MandelbrotSetTask extends Task<Long> {
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
                 Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
-                r += c.getRed() / N;
-                g += c.getGreen() / N;
-                b += c.getBlue() / N;
+                r += c.getBlue() / N;
+                g += c.getRed() / N;
+                b += c.getGreen() / N;
             }
         }
         return new Color(clamp(r), clamp(g), clamp(b), 1);
@@ -335,7 +332,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.LEMONCHIFFON;
         }
         return colors[count];
     }
@@ -351,22 +348,23 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(0, 30, 0),
+            Color.FUCHSIA,
+            Color.KHAKI,
+            Color.OLIVE,
+            Color.rgb(50, 0, 100),
+            Color.KHAKI,
+            Color.rgb(0, 60, 0)
         };
         
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+                0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
         
         /**
+         *  0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,
          * Color table population
          */
         int j = 0;
