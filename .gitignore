@@ -4,3 +4,12 @@ out/
 .idea/
 *.swp
 nbproject/
+.idea/*
+target/*
+log/*
+
+*.class
+
+*.war
+*.jar
+*.ear
