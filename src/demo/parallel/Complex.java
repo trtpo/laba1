@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -86,11 +86,57 @@ public class Complex {
     }
 
     /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+
+        double real = b.re * this.re + b.im * this.im;
+        double imag = this.im * b.re - this.re * b.im;
+        this.re = real / b.lengthSQ();
+        this.im = imag / b.lengthSQ();
+
+        return this;
+    }
+
+    /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this - b
+     */
+    public Complex substraction(Complex b) {
+        Complex a = this;
+        double real =a.re-b.re;
+        double imag =a.im-b.im;
+        re = real;
+        im = imag;
+
+        return this;
+    }
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Complex))return false;
+        Complex otherComplex = (Complex)other;
+        Complex result = substraction(otherComplex);
+        if(result.re==0 && result.im==0){
+            return true;
+        }
+
+        return  false;
     }
 }
