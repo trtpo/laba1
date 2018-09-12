@@ -87,9 +87,14 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+
         return this;
     }
-
+ public boolean equals(Object c){
+        if(this.re==((Complex)c).re&&this.im==((Complex)c).im)
+            return true;
+        else return false;
+}
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
