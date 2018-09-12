@@ -84,7 +84,23 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    public Complex sub(Complex b){
+        Complex a = this;
+        re = a.re - b.re;
+        im = a.im - b.im;
+        return this;
+    }
+    public Complex div(Complex b){
+        Complex a = this;
+        re = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        im = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        return this;
+    }
+    public Complex sin(){
+        re = Math.sin(re)*Math.cosh(im);
+        im = Math.cos(re)*Math.sinh(im);
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root

@@ -126,6 +126,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Progress of the task
      */
     private final AtomicInteger progress = new AtomicInteger(0);
+    private Complex complex;
 
     /**
      * Creates a task to render a MandelBrot set into an image using given
@@ -295,8 +296,7 @@ class MandelbrotSetTask extends Task<Long> {
         return getColor(calc(calPixel));
     }
 
-    /**
-     * Calculates antialised color of a given pixel on the image by dividing
+    /**     * Calculates antialised color of a given pixel on the image by dividing
      * real and imaginary value ranges of a pixel by {@link #ANTIALIASING_BASE}
      * and doing interpolation between calculated values
      * @param x x coordinate of the pixel in the image
