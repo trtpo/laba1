@@ -60,10 +60,18 @@ public class Complex {
         im = imag;
     }
 
+    /**
+     * Get real part of this.
+     * @return this Complex object whose value is (this + b)
+     */
     public double real() {
         return re;
     }
 
+    /**
+     * Get imagine part of this.
+     * @return this Complex object whose value is (this + b)
+     */
     public double imag() {
         return im;
     }
@@ -93,6 +101,10 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Mod operation.
+     * @return this mod from this value
+     */
     public double mod() {
         if (re!=0 || im!=0) {
             return Math.sqrt(re*re+im*im);
@@ -101,19 +113,36 @@ public class Complex {
         }
     }
 
+    /**
+     * Div operation.
+     * @param  w divider
+     * @return this Complex object whose value is this / w
+     */
     public Complex div(Complex w) {
         double den=Math.pow(w.mod(),2);
         return new Complex((re*w.real()+im*w.imag())/den,(im*w.real()-re*w.imag())/den);
     }
 
+    /**
+     * Sine operation.
+     * @return new Complex object whose value is equals to sine of this
+     */
     public Complex sin() {
         return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
     }
 
+    /**
+     * Cosine  operation.
+     * @return new Complex object whose value is equals to cosine of this
+     */
     public Complex cos() {
         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 
+    /**
+     * Tan operation.
+     * @return new Complex object whose value is equals to tan of this
+     */
     public Complex tan() {
         return (this.sin()).div(this.cos());
     }
