@@ -104,7 +104,7 @@ public class Complex {
     public Complex divide(Complex b) {
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im)/(b.re*b.re+b.im*b.im);
-        double imag = (b.re * a.im + b.im * a.re)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re * a.im - b.im * a.re)/(b.re*b.re+b.im*b.im);
         if(Double.isNaN(real)||Double.isNaN(imag)){
             return new Complex(0,0);
         }
@@ -112,7 +112,9 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    public boolean equals(Object o){
+        return this.re==((Complex)o).re&&this.im==((Complex)o).im;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
