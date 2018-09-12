@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Substracting operation.
+     * @param b substracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -80,6 +91,23 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param  b divident
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re * a.im + b.im * a.re)/(b.re*b.re+b.im*b.im);
+        if(Double.isNaN(real)||Double.isNaN(imag)){
+            return new Complex(0,0);
+        }
         re = real;
         im = imag;
         return this;
