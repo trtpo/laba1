@@ -24,12 +24,13 @@ class ComplexTest {
     void div() {
         Complex complex_a = new Complex(1, 2);
         Complex complex_b = new Complex(2, 1);
-        Complex complex_result = new Complex(0.8, 0.6);
-        Complex a;
+        Complex complex_must_result = new Complex(0.8, 0.6);
+        Complex result;
 
-        a = complex_a.div(complex_b);
-        a.round();
-        assertEquals(complex_result, complex_a, "Complex_a / Complex_b test");
+        result = complex_a.div(complex_b);
+        result.round();
+        assertEquals(complex_must_result.real(), result.real(), "Complex_a / Complex_b test real");
+        assertEquals(complex_must_result.imag(), result.imag(), "Complex_a / Complex_b test imag");
     }
 
     @org.junit.jupiter.api.Test
