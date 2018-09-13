@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double get_im(){
+        return this.im;
+    }
+
+    public double get_re(){
+        return this.re;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -94,8 +102,8 @@ public class Complex {
         Complex a = this;
         double real = a.re * b;
         double imag = a.im * b;
-        re = real;
-        im = imag;
+        this.re = real;
+        this.im = imag;
         return this;
     }
 
