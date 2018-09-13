@@ -120,6 +120,13 @@ public class Complex {
         return this;
     }
 
+    public Complex substract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+
     public Complex divide(Complex b) throws ArithmeticException {
         if (b.lengthSQ() == 0) {
             throw new ArithmeticException("Division by zero");
