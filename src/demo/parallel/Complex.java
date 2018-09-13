@@ -93,4 +93,31 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    // return a new Complex object whose value is the reciprocal of this
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    // return a / b
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
+    // return a new Complex object whose value is the complex sine of this
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    // return a new Complex object whose value is the complex cosine of this
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    // return a new Complex object whose value is the complex tangent of this
+    public Complex tan() {
+        return sin().divides(cos());
+    }
 }
