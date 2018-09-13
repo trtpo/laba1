@@ -28,7 +28,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
+package parallel;
 
 
 /**
@@ -83,6 +83,36 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public Complex division(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex asterix(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re - a.im * b.im)/100;
+        double imag = (a.im * b.re - a.re * b.im)/100;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public static String toString(Complex c) {
+        return Double.toString(c.re) + Double.toString(c.im);
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
     }
 
     /**
