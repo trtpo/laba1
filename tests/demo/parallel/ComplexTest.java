@@ -12,11 +12,10 @@ public class ComplexTest extends Assert {
     public void reciprocalNullComplex() {
         Complex complex = new Complex(0, 0);
         double difOfSq = complex.getRe()*complex.getRe() + complex.getIm()*complex.getIm();
-        double real =  complex.getRe() / difOfSq;
+        double re =  complex.getRe() / difOfSq;
         double im = - complex.getIm() / difOfSq;
-        double g = complex.reciprocal().getRe();
 
-        assertEquals(real, complex.reciprocal().getRe(), 0.00001);
+        assertEquals(re, complex.reciprocal().getRe(), 0.00001);
         assertEquals(im, complex.reciprocal().getIm(),0.00001);
     }
 
@@ -24,11 +23,10 @@ public class ComplexTest extends Assert {
     public void reciprocalNegRealComplex() {
         Complex complex = new Complex(-10, 5);
         double difOfSq = complex.getRe()*complex.getRe() + complex.getIm()*complex.getIm();
-        double real =  complex.getRe() / difOfSq;
+        double re =  complex.getRe() / difOfSq;
         double im = - complex.getIm() / difOfSq;
-        double g = complex.reciprocal().getRe();
 
-        assertEquals(real, complex.reciprocal().getRe(), 0.00001);
+        assertEquals(re, complex.reciprocal().getRe(), 0.00001);
         assertEquals(im, complex.reciprocal().getIm(),0.00001);
     }
 
@@ -36,11 +34,10 @@ public class ComplexTest extends Assert {
     public void reciprocalNegImComplex() {
         Complex complex = new Complex(4, -7);
         double difOfSq = complex.getRe()*complex.getRe() + complex.getIm()*complex.getIm();
-        double real =  complex.getRe() / difOfSq;
+        double re =  complex.getRe() / difOfSq;
         double im = - complex.getIm() / difOfSq;
-        double g = complex.reciprocal().getRe();
 
-        assertEquals(real, complex.reciprocal().getRe(), 0.00001);
+        assertEquals(re, complex.reciprocal().getRe(), 0.00001);
         assertEquals(im, complex.reciprocal().getIm(),0.00001);
     }
 
@@ -50,43 +47,43 @@ public class ComplexTest extends Assert {
         Complex complexB = new Complex(-18, 6);
         double difOfSq = complexB.getRe()*complexB.getRe() + complexB.getIm()*complexB.getIm();
         Complex complexAnB = complexA.times(complexB.conjugate());
-        double real = complexAnB.getRe() / difOfSq;
+        double re = complexAnB.getRe() / difOfSq;
         double im = complexAnB.getIm() / difOfSq;
 
         Complex complexResA = new Complex(4, -7);
         Complex complexResB = new Complex(-18, 6);
         Complex result = complexResA.divides(complexResB);
-        assertEquals(real, result.getRe(), 0.00001);
+        assertEquals(re, result.getRe(), 0.00001);
         assertEquals(im,  result.getIm(),0.00001);
     }
 
     @Test
     public void sinPositiveRealNegativeImaginary() {
         Complex complex = new Complex(4, -17);
-        double real = Math.sin(complex.getRe()) * Math.cosh(complex.getIm());
+        double re = Math.sin(complex.getRe()) * Math.cosh(complex.getIm());
         double im =  Math.cos(complex.getRe()) * Math.sinh(complex.getIm());
 
-        assertEquals(real, complex.sin().getRe(), 0.00001);
+        assertEquals(re, complex.sin().getRe(), 0.00001);
         assertEquals(im,  complex.sin().getIm(),0.00001);
     }
 
     @Test
     public void sinNegativeRealPositiveImaginary() {
         Complex complex = new Complex(-38, 62);
-        double real = Math.sin(complex.getRe()) * Math.cosh(complex.getIm());
+        double re = Math.sin(complex.getRe()) * Math.cosh(complex.getIm());
         double im =  Math.cos(complex.getRe()) * Math.sinh(complex.getIm());
 
-        assertEquals(real, complex.sin().getRe(), 0.00001);
+        assertEquals(re, complex.sin().getRe(), 0.00001);
         assertEquals(im,  complex.sin().getIm(),0.00001);
     }
 
     @Test
     public void cos() {
         Complex complex = new Complex(4, -17);
-        double real = Math.cos(complex.getRe()) * Math.cosh(complex.getIm());
+        double re = Math.cos(complex.getRe()) * Math.cosh(complex.getIm());
         double im =  -Math.sin(complex.getRe()) * Math.sinh(complex.getIm());
 
-        assertEquals(real, complex.cos().getRe(), 0.00001);
+        assertEquals(re, complex.cos().getRe(), 0.00001);
         assertEquals(im,  complex.cos().getIm(),0.00001);
     }
 
