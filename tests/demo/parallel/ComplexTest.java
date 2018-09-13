@@ -16,6 +16,16 @@ public class ComplexTest {
         assertEquals(errorMessage, a.substract(b), new Complex(14, -12));
     }
 
+    @Test
+    public void secondTestSubstraction() {
+        String errorMessage = "Error in substraction two simple complex numbers";
+
+        Complex a = new Complex(5,6);
+        Complex b = new Complex(5, 7);
+
+        assertEquals(errorMessage, a.substract(b), new Complex(0, -1));
+    }
+
     @Test(expected = ArithmeticException.class)
     public void testDivisionOnZero() {
         new Complex(6,1).divide(new Complex(0,0));
