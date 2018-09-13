@@ -44,6 +44,42 @@ public class ComplexTest {
         assertEquals(errorMessage, a.getIm(), answer.getIm(), 5);
     }
 
-    
+    @Test
+    public void testPowerInZero() {
+        String errorMessage = "Error while exponentiation in zero power";
+
+        Complex a = new Complex(3, Math.sqrt(3));
+        a.pow(0);
+
+        assertEquals(errorMessage, a, new Complex(1,0));
+    }
+
+    @Test
+    public void testGetArgumentInSecondQuadrant() {
+        String errorMessage = "Error while get argument num in second quadrant";
+
+        Complex a = new Complex(-3, 2);
+
+        assertEquals(errorMessage, a.getArgument(), (Math.PI + Math.atan(2.0d / -3.0d)), 0.0001);
+    }
+
+    @Test
+    public void testGetArgumentIn90deg() {
+        String errorMessage = "Error while get argument num in 90 deg";
+
+        Complex a = new Complex(0,5);
+
+        assertEquals(errorMessage, a.getArgument(), Math.PI / 2, 0.0001);
+
+    }
+
+    @Test
+    public void testGetModulus() {
+        String errorMessage = "Count modules error";
+
+        Complex a = new Complex(4, -3);
+
+        assertEquals(errorMessage, a.getModulus(), 5, 0.0001);
+    }
 
 }
