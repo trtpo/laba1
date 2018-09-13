@@ -60,6 +60,55 @@ public class Complex {
         im = imag;
     }
 
+    public double getIm() {
+        return im;
+    }
+    public double getRe() {
+        return re;
+    }
+
+    public double getArgument() {
+        double result = 0;
+        if (re > 0) {
+            result = Math.atan(im / re);
+        } else if (re < 0 && im >= 0) {
+            result = Math.PI + Math.atan(im / re);
+        } else if (re < 0 && im < 0) {
+            result = -Math.PI + Math.atan(im / re);
+        } else if (re == 0 && im > 0) {
+            result = Math.PI / 2;
+        } else if (re == 0 && im < 0) {
+            result = -Math.PI / 2;
+        }
+        return result;
+    }
+
+    public double getModulus() {
+        return Math.sqrt(lengthSQ());
+    }
+
+    public Complex pow(double exponent) {
+        Complex temp = new Complex(0, 0);
+        temp.re = Math.pow(getModulus(), exponent) * Math.cos(getArgument() * exponent);
+        temp.im = Math.pow(getModulus(), exponent) * Math.sin(getArgument() * exponent);
+        this.re = temp.re;
+        this.im = temp.im;
+        return this;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Complex num = (Complex) obj;
+        return num.re == this.re && num.im == this.im;
+    }
+
+
+
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +117,17 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        double tempReal = b.re * this.re + b.im * this.im;
+        double tempImaginary = this.im * b.re - this.re * b.im;
+        this.re = tempReal / b.lengthSQ();
+        this.im = tempImaginary / b.lengthSQ();
         return this;
     }
 
