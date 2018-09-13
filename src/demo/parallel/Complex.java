@@ -87,11 +87,22 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
     public Complex sub(Complex b){
         re -= b.re;
         im -= b.im;
         return this;
     }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
 
     public Complex div(Complex b){
         Complex a = this;
@@ -104,6 +115,11 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     *
+     * @return this Complex object whose value if sinus of this
+     */
     public Complex sin(){
         re = Math.sin(re)*Math.cosh(im);
         im = Math.cos(re)*Math.sinh(im);
