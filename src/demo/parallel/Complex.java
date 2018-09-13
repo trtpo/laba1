@@ -86,6 +86,26 @@ public class Complex {
     }
 
     /**
+     * Minus operation.
+     * @param b minus
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Square operation.
+     * @return sqrt Complex object.
+     */
+    public Complex sqrt() {
+        this.times(this);
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
