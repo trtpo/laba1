@@ -126,6 +126,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Progress of the task
      */
     private final AtomicInteger progress = new AtomicInteger(0);
+    private Complex complex;
 
     /**
      * Creates a task to render a MandelBrot set into an image using given
@@ -275,7 +276,8 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+
+            c = c.times(c).times(c.sin()).times(c).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -295,8 +297,7 @@ class MandelbrotSetTask extends Task<Long> {
         return getColor(calc(calPixel));
     }
 
-    /**
-     * Calculates antialised color of a given pixel on the image by dividing
+    /**     * Calculates antialised color of a given pixel on the image by dividing
      * real and imaginary value ranges of a pixel by {@link #ANTIALIASING_BASE}
      * and doing interpolation between calculated values
      * @param x x coordinate of the pixel in the image
@@ -351,12 +352,12 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(61, 0, 0),
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.PURPLE,
+            Color.rgb(200, 200, 0),
+            Color.rgb(222, 113, 193),
+            Color.WHITE,
             Color.rgb(50, 0, 0)
         };
         

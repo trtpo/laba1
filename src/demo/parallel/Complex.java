@@ -55,6 +55,8 @@ public class Complex {
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
+
+
     public Complex(double real, double imag) {
         re = real;
         im = imag;
@@ -85,6 +87,52 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+
+    public Complex div(Complex b){
+        Complex a = this;
+        if (b.re == 0.0 || b.im == 0){
+            return this;
+        }
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     *
+     * @return this Complex object whose value if sinus of this
+     */
+    public Complex sin(){
+        re = Math.sin(re)*Math.cosh(im);
+        im = Math.cos(re)*Math.sinh(im);
+        return this;
+    }
+
+    public Double getRe(){
+        return re;
+    }
+
+    public Double getIm(){
+        return im;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
