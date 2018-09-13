@@ -41,5 +41,16 @@ public class ComplexTests {
         assertEquals(5, res.getIm(), 0);
     }
 
+    @Test
+    public void sinComplex(){
+        Complex res = value3.sin();
+        assertEquals(0, res.getRe(), 0);
+        assertEquals(0, res.getIm(), 0);
+
+        Complex res2 = value1.sin();
+        assertEquals(1.298, res2.getRe(), 3);
+        assertEquals(0.316, res2.getIm(), 3);
+    }
+
 
 }
