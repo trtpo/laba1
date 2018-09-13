@@ -30,6 +30,8 @@
  */
 package demo.parallel;
 
+import static java.lang.StrictMath.sqrt;
+
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -72,6 +74,17 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -83,6 +96,71 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (-a.re * b.im + a.im * b.re) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Real part operation.
+     * @return re Real part of complex object whose value is re
+     */
+    public double Re() {
+        return re;
+    }
+
+    /**
+     * Image part operation.
+     * @return im Image part of complex object whose value is im
+     */
+    public double Im() {
+        return im;
+    }
+
+    /**
+     * Argument operation
+     * @return arg Argument of complex object whose value in range [-pi; pi]
+     */
+    public double Arg() {
+        if(im == 0.0 && re == 0.0) {
+            return Double.NaN;
+        }
+        return Math.atan2(im, re);
+    }
+
+    /**
+     * Conjugate operation.
+     * @return this Complex conjugate object whose value is re - im*i
+     */
+    public Complex conjugate() {
+        im *= -1.0;
+        return this;
+    }
+
+    /**
+     * Comparision operation.
+     * @param b second comparable
+     * @return equal Returns true if Real and Image parts are pairwise equal
+     */
+    public boolean equal(Complex b) {
+        Complex a = this;
+        return a.re == b.re && a.im == b.im;
+    }
+
+    public boolean isNaN() {
+        return Double.isNaN(re) && Double.isNaN(im);
     }
 
     /**
