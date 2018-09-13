@@ -86,11 +86,54 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex subtraction(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) throws ArithmeticException{
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re);
+        re = real / b.lengthSQ();
+        im = imag / b.lengthSQ();
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Complex))return false;
+        Complex otherComplex = (Complex)other;
+        Complex result = subtraction(otherComplex);
+        if(result.re==0 && result.im==0){
+            return true;
+        }
+
+        return false;
     }
 }
