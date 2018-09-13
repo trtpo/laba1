@@ -142,4 +142,14 @@ public class Complex {
     public boolean isNaN() {
         return Double.isNaN(re) && Double.isNaN(im);
     }
+
+    /**
+     * Equal operation.
+     * @param b second comparable
+     * @return result of comparisons of two complex number objects
+     * */
+    public boolean equal(Complex b) {
+        Complex a = this;
+        return a.getRe() == b.getRe() && a.getIm() == b.getIm();
+    }
 }
