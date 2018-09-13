@@ -59,6 +59,20 @@ public class Complex {
         re = real;
         im = imag;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Complex num = (Complex) obj;
+
+        return num.re == this.re && num.im == this.im;
+    }
 
     /**
      * Add operation.
