@@ -31,6 +31,9 @@
 package demo.parallel;
 
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -145,6 +148,15 @@ public class Complex {
      */
     public Complex tan() {
         return (this.sin()).div(this.cos());
+    }
+
+    /**
+     * Round this value
+     */
+    public void round() {
+        DecimalFormat df = new DecimalFormat("#.#");
+        im = Double.valueOf(df.format(im));
+        re = Double.valueOf(df.format(re));
     }
 
     /**
