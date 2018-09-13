@@ -86,6 +86,20 @@ public class Complex {
     }
 
     /**
+     * Multiplication of a complex number by a real number
+     * @param b is real number
+     * @return this Complex object whose value is this * b
+     */
+    public Complex multiplication(Float b) {
+        Complex a = this;
+        double real = a.re * b;
+        double imag = a.im * b;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
