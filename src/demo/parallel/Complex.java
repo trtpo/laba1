@@ -71,6 +71,20 @@ public class Complex {
         return this;
     }
 
+    public Complex min(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
