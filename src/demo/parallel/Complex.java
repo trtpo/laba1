@@ -90,7 +90,7 @@ public class Complex {
      * @param b is real number
      * @return this Complex object whose value is this * b
      */
-    public Complex multiplication(Float b) {
+    public Complex multiplication(Double b) {
         Complex a = this;
         double real = a.re * b;
         double imag = a.im * b;
