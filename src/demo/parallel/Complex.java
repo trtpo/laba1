@@ -59,6 +59,20 @@ public class Complex {
         re = real;
         im = imag;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Complex num = (Complex) obj;
+
+        return num.re == this.re && num.im == this.im;
+    }
 
     /**
      * Add operation.
@@ -70,7 +84,23 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex div(Complex b)throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re);
+        re = real / b.lengthSQ();
+        im = imag / b.lengthSQ();
+        return this;
+    }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
