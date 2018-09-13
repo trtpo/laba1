@@ -70,7 +70,20 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    public Complex div(Complex b) {
+        Complex a = this;
+        double div = b.lengthSQ();
+        double real = (a.re * b.re - a.im * b.im) / div;
+        double imag = (a.re * b.im + a.im * b.re) / div;
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
