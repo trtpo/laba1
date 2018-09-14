@@ -31,6 +31,9 @@
 package demo.parallel;
 
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -51,13 +54,28 @@ public class Complex {
 
     /** 
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     * Get real part of this.
+     * @return this Complex object whose value is (this + b)
+     */
+    public double real() {
+        return re;
+    }
+
+    /**
+     * Get imagine part of this.
+     * @return this Complex object whose value is (this + b)
+     */
+    public double imag() {
+        return im;
     }
 
     /**
@@ -83,6 +101,70 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Mod operation.
+     * @return this mod from this value
+     */
+    public double mod() {
+        if (re!=0 || im!=0) {
+            return Math.sqrt(re*re+im*im);
+        } else {
+            return 0d;
+        }
+    }
+
+    /**
+     * Div operation.
+     * @param  w divider
+     * @return this Complex object whose value is this / w
+     */
+    public Complex div(Complex w) throws IllegalArgumentException {
+        double den=Math.pow(w.mod(),2);
+        if(w.mod() == 0) throw new IllegalArgumentException("Argument 'divisor' is 0");
+        return new Complex((re*w.real()+im*w.imag())/den,(im*w.real()-re*w.imag())/den);
+    }
+
+    /**
+     * Sine operation.
+     * @return new Complex object whose value is equals to sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    /**
+     * Cosine  operation.
+     * @return new Complex object whose value is equals to cosine of this
+     */
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    /**
+     * Tan operation.
+     * @return new Complex object whose value is equals to tan of this
+     */
+    public Complex tan() {
+        return (this.sin()).div(this.cos());
+    }
+
+    /**
+     * Exp operation.
+     * @return return a new Complex object whose value is the complex exponential of this
+     */
+    public Complex exp() {
+        return new Complex(Math.exp(re) * Math.cos(im), Math.exp(re) * Math.sin(im));
+    }
+
+    /**
+     * Round this value
+     */
+    public void round() {
+        DecimalFormat df = new DecimalFormat("#.#");
+        im = Double.valueOf(df.format(im));
+        re = Double.valueOf(df.format(re));
     }
 
     /**
