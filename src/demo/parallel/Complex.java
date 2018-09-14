@@ -151,6 +151,14 @@ public class Complex {
     }
 
     /**
+     * Exp operation.
+     * @return return a new Complex object whose value is the complex exponential of this
+     */
+    public Complex exp() {
+        return new Complex(Math.exp(re) * Math.cos(im), Math.exp(re) * Math.sin(im));
+    }
+
+    /**
      * Round this value
      */
     public void round() {
