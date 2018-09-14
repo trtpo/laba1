@@ -102,12 +102,16 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex divide(Complex b) {
-        Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
-        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
-        re = real;
-        im = imag;
-        return this;
+            if (b.lengthSQ() == 0)
+                return null;
+            else {
+                Complex a = this;
+                double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+                double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+                re = real;
+                im = imag;
+            }
+            return this;
     }
 
     /**
@@ -117,5 +121,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
