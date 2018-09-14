@@ -71,6 +71,7 @@ public class Complex {
         return this;
     }
 
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +85,20 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex multiplication(Double b) {
+            Complex a = this;
+            double real = a.re * b;
+            double imag = a.im * b;
+            this.re = real;
+            this.im = imag;
+            return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -92,5 +107,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double get_im() {
+        return im;
+    }
+
+    public double get_re() {
+        return re;
     }
 }
