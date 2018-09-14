@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -60,9 +62,12 @@ public class Complex {
         im = imag;
     }
 
+
+
     /**
      * Add operation.
      * @param b summand
+
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
@@ -86,11 +91,50 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex conjugate  = new Complex(b.re, -b.im);
+        Complex numerator = new Complex(re, im).times(conjugate);
+        Complex denominator = b.times(conjugate);
+        double real = numerator.re / denominator.re;
+        double imag = numerator.im / denominator.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 && Double.compare(complex.im, im) == 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(re, im);
     }
 }
