@@ -89,4 +89,15 @@ class ComplexTest {
         Complex result_b = new Complex(0, 0);
         assertEquals(Utility.round(result_b.mod()), Utility.round(complex_b.tan().mod()), "tan zero case test");
     }
+
+    @org.junit.jupiter.api.Test
+    void exp() {
+        Complex complex_a = new Complex(1, 1);
+        Complex result_a = new Complex(1.5, 2.3);
+        assertEquals(Utility.round(result_a.mod()), Utility.round(complex_a.exp().mod()), "tan common case test");
+
+        Complex complex_b = new Complex(0, 0);
+        Complex result_b = new Complex(1, 0);
+        assertEquals(Utility.round(result_b.mod()), Utility.round(complex_b.exp().mod()), "tan zero case test");
+    }
 }
