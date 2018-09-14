@@ -25,7 +25,7 @@ class ComplexTest {
         assertEquals(Math.sqrt(0), complex_b.mod(), "mod zero test");
 
         Complex complex_c = new Complex(-1, -2);
-        assertEquals(Math.sqrt(5), complex_c.mod(), "mod zero test");
+        assertEquals(Math.sqrt(5), complex_c.mod(), "mod negative test");
     }
 
     @org.junit.jupiter.api.Test
