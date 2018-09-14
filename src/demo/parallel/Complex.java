@@ -54,7 +54,6 @@ public class Complex {
 
     /** 
      * create a new object with the given real and imaginary parts
-     * 
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -121,8 +120,9 @@ public class Complex {
      * @param  w divider
      * @return this Complex object whose value is this / w
      */
-    public Complex div(Complex w) {
+    public Complex div(Complex w) throws IllegalArgumentException {
         double den=Math.pow(w.mod(),2);
+        if(w.mod() == 0) throw new IllegalArgumentException("Argument 'divisor' is 0");
         return new Complex((re*w.real()+im*w.imag())/den,(im*w.real()-re*w.imag())/den);
     }
 
