@@ -17,26 +17,50 @@ public class ComplexTest {
     public void destroy() {}
 
     @Test
-    public void getReTest() {
+    public void getReTestZero() {
 
         Complex a = new Complex(0, 0);
-        Complex b = new Complex(10,0);
-        Complex c = new Complex(-10, 0);
 
         assertEquals(a.getRe(), 0, DELTA);
+    }
+
+    @Test
+    public void getReTestPositive() {
+
+        Complex b = new Complex(10,0);
+
         assertEquals(b.getRe(), 10, DELTA);
+    }
+
+    @Test
+    public void getReTestNegative() {
+
+        Complex c = new Complex(-10, 0);
+
         assertEquals(c.getRe(), -10, DELTA);
     }
 
     @Test
-    public void getImTest() {
+    public void getImTestZero() {
 
         Complex a = new Complex(0,0);
-        Complex b = new Complex(10, 10);
-        Complex c = new Complex(10, -10);
 
         assertEquals(a.getIm(), 0, DELTA);
+    }
+
+    @Test
+    public void getImPositive() {
+
+        Complex b = new Complex(10, 10);
+
         assertEquals(b.getIm(), 10);
+    }
+
+    @Test
+    public void getImNegative() {
+
+        Complex c = new Complex(10, -10);
+
         assertEquals(c.getIm(), -10);
     }
 
@@ -45,7 +69,7 @@ public class ComplexTest {
 
         Complex a = new Complex(0,0);
 
-        assertTrue(a.isNaN());
+        assertFalse(a.isNaN());
     }
 
     @Test
@@ -71,22 +95,35 @@ public class ComplexTest {
     }
 
     @Test
-    public void minusTest() {
+    public void minusTestPositive() {
 
         Complex a = new Complex(12, 9);
-        Complex b = new Complex(18, -1);
-        Complex c = new Complex(0, -10);
-
         Complex subtrahend = new Complex(12, -7);
 
         a.minus(subtrahend);
-        b.minus(subtrahend);
-        c.minus(subtrahend);
 
         assertTrue(a.equal(new Complex(0, 16)));
-        assertTrue(b.equal(new Complex(6, 6)));
-        assertTrue(c.equal(new Complex(-12, -3)));
     }
 
+    @Test
+    public void minusTestNegative() {
 
+        Complex b = new Complex(-18, -1);
+        Complex subtrahend = new Complex(12, -7);
+
+        b.minus(subtrahend);
+
+        assertTrue(b.equal(new Complex(-30, 6)));
+    }
+
+    @Test
+    public void minusTestZero() {
+
+        Complex c = new Complex(12, -3);
+        Complex subtrahend = new Complex(12, -3);
+
+        c.minus(subtrahend);
+
+        assertTrue(c.equal(new Complex(0, 0)));
+    }
 }
