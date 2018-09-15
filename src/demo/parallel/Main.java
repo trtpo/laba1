@@ -1016,7 +1016,7 @@ public class Main extends Application {
             double c = p2y;
 
             u = a - 2 * b + c;
-            v = b * b - a * c;
+            v = b *b - a * c;
             w = a - b;
         }
 

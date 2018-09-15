@@ -30,7 +30,7 @@
  */
 package demo.parallel;
 
-
+import java.util.LinkedList;
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -83,6 +83,32 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * The method calculates module for this complex value.
+     * @return value module.
+     */
+    public double abs(){
+        return Math.sqrt(re*re+im*im);
+    }
+    /**
+     * The method calculates root this complex value for degree.
+     * @param degree This is degree for method.
+     * @return result This is results all root.
+     */
+    public LinkedList<Complex> sqrtDegreeN(int degree){
+        LinkedList<Complex> result = new LinkedList<Complex>();
+
+        double realValue = 0;
+        double imageValue = 0;
+
+        for(int k=0; k<degree; k++){
+            realValue = Math.pow(this.abs(), 1.0/degree)*Math.cos((Math.acos(re/this.abs())+2*Math.PI*k)/degree);
+            imageValue = Math.pow(this.abs(), 1.0/degree)*Math.sin((Math.acos(re/this.abs())+2*Math.PI*k)/degree);
+            result.add(new Complex(realValue,imageValue));
+        }
+        return result;
     }
 
     /**
