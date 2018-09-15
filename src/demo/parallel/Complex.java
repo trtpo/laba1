@@ -115,6 +115,10 @@ public class Complex {
         return this;
     }
 
+    public boolean equals(Object o){
+        return this.re == ((Complex)o).re && this.im == ((Complex)o).im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
