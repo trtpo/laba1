@@ -31,6 +31,7 @@
 package demo.parallel;
 
 
+import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 import javafx.concurrent.Task;
@@ -274,8 +275,11 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+
+        int degree = 2;
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).plus(comp).times(c.plus(comp).times(c));
+            c = c.plus(c.sqrtDegreeN(degree).get(1));
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -335,7 +339,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.BLUE;
         }
         return colors[count];
     }
@@ -352,8 +356,8 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
             Color.WHITE,
+            Color.GREEN,
             Color.RED,
             Color.rgb(100, 0, 0),
             Color.RED,
