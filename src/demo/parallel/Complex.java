@@ -44,18 +44,19 @@ import java.util.Objects;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -63,11 +64,10 @@ public class Complex {
     }
 
 
-
     /**
      * Add operation.
+     *
      * @param b summand
-
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
@@ -78,7 +78,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -91,12 +92,39 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Exponentiation operation.
+     *
+     * @param n power
+     * @return this Complex object whose value is this ^ n
+     */
+    public Complex pow(double n) {
+        double multiplier = Math.pow(Math.sqrt(lengthSQ()), n);
+        double arg = arg();
+        re = multiplier * Math.cos(arg * n);
+        im = multiplier * Math.sin(arg * n);
+        return this;
+    }
+
+    /**
      * Division operation.
-     * @param  b divider
+     *
+     * @param b divider
      * @return this Complex object whose value is this / b
      */
     public Complex divide(Complex b) {
-        Complex conjugate  = new Complex(b.re, -b.im);
+        Complex conjugate = new Complex(b.re, -b.im);
         Complex numerator = new Complex(re, im).times(conjugate);
         Complex denominator = b.times(conjugate);
         double real = numerator.re / denominator.re;
@@ -107,12 +135,82 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Sine operation.
+     *
+     * @return this Complex object whose value sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine operation.
+     *
+     * @return this Complex object whose value cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Tangent operation.
+     *
+     * @return this Complex object whose value tan(this)
+     */
+    public Complex tan() {
+        Complex numerator = new Complex(re, im).sin();
+        Complex divider = new Complex(re, im).cos();
+        numerator.divide(divider);
+        re = numerator.re;
+        im = numerator.im;
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * @return argument of this complex number
+     */
+    public double arg() {
+        return Math.atan(im / re);
+    }
+
+    /**
+     * @return the real number value
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return the image number value
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "Complex{" + "re=" + re + ", im=" + im + '}';
     }
 
     /**
