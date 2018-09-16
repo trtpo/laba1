@@ -2,13 +2,16 @@ package demo.parallel;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ErrorCollector;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class ComplexTest {
 
-    private static final double DELTA = 1e-15;
+    @Rule
+    public ErrorCollector collector = new ErrorCollector();
 
     @Before
     public void setup() {}
@@ -21,7 +24,11 @@ public class ComplexTest {
 
         Complex a = new Complex(0, 0);
 
-        assertEquals(a.getRe(), 0, DELTA);
+        collector.checkThat(
+                "Getting real part operation test. Wrong result.",
+                a.getRe(),
+                equalTo(0.0)
+        );
     }
 
     @Test
@@ -29,7 +36,11 @@ public class ComplexTest {
 
         Complex b = new Complex(10,0);
 
-        assertEquals(b.getRe(), 10, DELTA);
+        collector.checkThat(
+                "Getting real part operation test. Wrong result.",
+                b.getRe(),
+                equalTo(10.0)
+        );
     }
 
     @Test
@@ -37,7 +48,11 @@ public class ComplexTest {
 
         Complex c = new Complex(-10, 0);
 
-        assertEquals(c.getRe(), -10, DELTA);
+        collector.checkThat(
+                "Getting real part operation test. Wrong result.",
+                c.getRe(),
+                equalTo(-10.0)
+        );
     }
 
     @Test
@@ -45,7 +60,11 @@ public class ComplexTest {
 
         Complex a = new Complex(0,0);
 
-        assertEquals(a.getIm(), 0, DELTA);
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                a.getIm(),
+                equalTo(0.0)
+        );
     }
 
     @Test
@@ -53,7 +72,11 @@ public class ComplexTest {
 
         Complex b = new Complex(10, 10);
 
-        assertEquals(b.getIm(), 10);
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                b.getIm(),
+                equalTo(10.0)
+        );
     }
 
     @Test
@@ -61,7 +84,11 @@ public class ComplexTest {
 
         Complex c = new Complex(10, -10);
 
-        assertEquals(c.getIm(), -10);
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                c.getIm(),
+                equalTo(-10.0)
+        );
     }
 
     @Test
@@ -69,7 +96,11 @@ public class ComplexTest {
 
         Complex a = new Complex(0,0);
 
-        assertFalse(a.isNaN());
+        collector.checkThat(
+                "isNaN operation test. Wrong result. Shouldn't be NaN.",
+                a.isNaN(),
+                equalTo(false)
+        );
     }
 
     @Test
@@ -80,7 +111,11 @@ public class ComplexTest {
 
         a.divide(zero);
 
-        assertTrue(a.isNaN());
+        collector.checkThat(
+                "Division operation test. Wrong result. Should be NaN.",
+                a.isNaN(),
+                equalTo(true)
+        );
     }
 
     @Test
@@ -91,7 +126,21 @@ public class ComplexTest {
 
         a.divide(b);
 
-        assertTrue(a.equal(new Complex(1.5, -2.5)));
+        collector.checkThat(
+                "Division operation test. Wrong real part result.",
+                a.getRe() != 1.5 && a.getIm() == -2.5,
+                equalTo(false)
+        );
+        collector.checkThat(
+                "Division operation test. Wrong imaginary part result.",
+                a.getRe() == 1.5 && a.getIm() != -2.5,
+                equalTo(false)
+        );
+        collector.checkThat(
+                "Division operation test. Wrong real and imaginary part result.",
+                a.getRe() != 1.5 && a.getIm() != -2.5,
+                equalTo(false)
+        );
     }
 
     @Test
@@ -102,7 +151,11 @@ public class ComplexTest {
 
         a.minus(subtrahend);
 
-        assertTrue(a.equal(new Complex(0, 16)));
+        collector.checkThat(
+                "Subtraction operation test. Wrong result.",
+                a.equal(new Complex(0, 16)),
+                equalTo(true)
+        );
     }
 
     @Test
@@ -113,7 +166,11 @@ public class ComplexTest {
 
         b.minus(subtrahend);
 
-        assertTrue(b.equal(new Complex(-30, 6)));
+        collector.checkThat(
+                "Subtraction operation test. Wrong result.",
+                b.equal(new Complex(-30, 6)),
+                equalTo(true)
+        );
     }
 
     @Test
@@ -124,6 +181,10 @@ public class ComplexTest {
 
         c.minus(subtrahend);
 
-        assertTrue(c.equal(new Complex(0, 0)));
+        collector.checkThat(
+                "Subtraction operation test. Wrong result.",
+                c.equal(new Complex(0, 0)),
+                equalTo(true)
+        );
     }
 }
