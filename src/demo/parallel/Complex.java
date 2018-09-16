@@ -85,6 +85,34 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex division(Complex b) throws ArithmeticException {
+        Complex a = this;
+        if(b.re == 0 && b.im == 0)
+            throw new ArithmeticException("Division on zero");
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        a.re = real;
+        a.im = imag;
+        return this;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImagine() {
+        return im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
