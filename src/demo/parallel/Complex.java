@@ -30,6 +30,7 @@
  */
 package demo.parallel;
 
+import java.util.Objects;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -119,5 +120,31 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Compares this complex to another object. The result is true if the argument is not null and is a Complex object
+     * that represents the same re and im values.
+     *
+     * @param o object to compare this Complex against
+     * @return {@code true} if the given object represents a {@code Complex}
+     * equivalent to this complex, {@code false} otherwise
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Complex)) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
+    }
+
+    /**
+     * Return {@code true} if re or im is NaN
+     *
+     * @return {@code true} if re or im is NaN
+     */
+    public boolean isNaN() {
+        return Double.isNaN(re) || Double.isNaN(im);
     }
 }
