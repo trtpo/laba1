@@ -41,7 +41,7 @@ import java.util.stream.IntStream;
 
 /**
  * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
+ * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
@@ -274,12 +274,12 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private int calc(Complex comp) {
         int count = 0;
-        Complex c = new Complex(0, 0);
+        Complex c;
+        Complex temp = new Complex(comp.getRe(), comp.getIm());
         do {
-            c = c.times(c.times(c).plus(new Complex(-1, 0).times(comp)))
-                 .plus(comp).plus(new Complex(-1, -1));
+            c = comp.pow(3.5).times(temp).cos().sin().minus(temp.times(comp.minus(new Complex(1, 1))));
             count++;
-        } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
+        } while(count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
