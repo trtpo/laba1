@@ -273,7 +273,7 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
-    static int calc(Complex comp) {
+    private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
