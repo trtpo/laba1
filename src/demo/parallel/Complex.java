@@ -62,6 +62,15 @@ public class Complex {
     }
 
     /**
+     * create a new object with real and imaginary parts of already existed object
+     * @param c Complex object
+     */
+    public Complex(Complex c) {
+        re = c.re;
+        im = c.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)

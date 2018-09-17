@@ -67,7 +67,7 @@ class MandelbrotSetTask extends Task<Long> {
      * disk of radius 2 around the origin plus some area around, so 
      * LENGTH_BOUNDARY is 6.
      */
-    private static final double LENGTH_BOUNDARY = 6d;
+    private static final double LENGTH_BOUNDARY = 69d;
 
     /**
      * For antialiasing we break each pixel into 3x3 grid and interpolate 
@@ -274,12 +274,11 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
-        int times = 7;
         do {
-            for (int i = 0; i < times; i ++) {
-                c = c.times(c);
-            }
-            c = c.plus(comp);
+            Complex temp = new Complex(c);
+            temp = temp.eyler();
+            c = c.sin();
+            c = c.plus(temp).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
