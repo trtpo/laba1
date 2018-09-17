@@ -258,6 +258,8 @@ class MandelbrotSetTask extends Task<Long> {
             updateProgress(progress.incrementAndGet(), height);
         });
         taskTime = getTime();
+        System.out.println(taskTime);
+
         return taskTime;
     }
 
@@ -271,7 +273,7 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
-    private int calc(Complex comp) {
+    static int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
@@ -351,13 +353,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
+            Color.rgb(40, 100, 25),
             Color.RED,
             Color.WHITE,
             Color.RED,
-            Color.rgb(100, 0, 0),
+            Color.rgb(10, 50, 30),
             Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(150, 0, 0)
         };
         
         /**
