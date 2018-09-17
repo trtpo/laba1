@@ -29,6 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
+import java.lang.Math;
 
 
 /**
@@ -80,6 +81,31 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sinus operation
+     * @return sinus of Complex number
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Powering E operation
+     * @return E raised to Complex power
+     */
+    public Complex eyler() {
+        double e = Math.pow(Math.E, re);
+        double real = e * Math.cos(im);
+        double imag = e * Math.sin(im);
         re = real;
         im = imag;
         return this;
