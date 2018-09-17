@@ -67,7 +67,7 @@ class MandelbrotSetTask extends Task<Long> {
      * disk of radius 2 around the origin plus some area around, so 
      * LENGTH_BOUNDARY is 6.
      */
-    private static final double LENGTH_BOUNDARY = 6d;
+    private static final double LENGTH_BOUNDARY = 69d;
 
     /**
      * For antialiasing we break each pixel into 3x3 grid and interpolate 
@@ -275,7 +275,10 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            Complex temp = new Complex(c);
+            temp = temp.eyler();
+            c = c.sin();
+            c = c.plus(temp).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -351,13 +354,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(0, 40, 0),
+            Color.GREEN,
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.GREEN,
+            Color.rgb(0, 100, 0),
+            Color.GREEN,
+            Color.rgb(0, 50, 0)
         };
         
         /**

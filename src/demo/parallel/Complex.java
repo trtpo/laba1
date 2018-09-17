@@ -29,6 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
+import java.lang.Math;
 
 
 /**
@@ -61,6 +62,15 @@ public class Complex {
     }
 
     /**
+     * create a new object with real and imaginary parts of already existed object
+     * @param c Complex object
+     */
+    public Complex(Complex c) {
+        re = c.re;
+        im = c.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -83,6 +93,38 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * Sinus operation
+     * @return sinus of Complex number
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Powering E operation
+     * @return E raised to Complex power
+     */
+    public Complex eyler() {
+        double e = Math.pow(Math.E, re);
+        double real = e * Math.cos(im);
+        double imag = e * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public boolean equals(Complex c) {
+        if (re == c.re && im == c.im) {
+            return true;
+        }
+        return false;
     }
 
     /**
