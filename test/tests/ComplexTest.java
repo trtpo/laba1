@@ -17,6 +17,10 @@ class ComplexTest {
 
     @Test
     void division() {
+        Complex test = new Complex(10, 10);
+        Complex result = new Complex(1, 1);
+        test = test.plus(test);
+        assert (test == result);
     }
 
     @Test
