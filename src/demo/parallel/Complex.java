@@ -86,6 +86,21 @@ public class Complex {
     }
 
     /**
+     * Tangent operation
+     * @return this Complex object whose value is tan(this)
+     */
+    public Complex tan() {
+        Complex a = this;
+        double re = Math.sin(2*a.re) / (Math.cos(2*a.re) + Math.cosh(2*a.im));
+        double im = Math.sinh(2*a.im) / (Math.cos(2*a.re) + Math.cosh(2*a.im));
+        this.im = im;
+        this.re = re;
+        return this;
+    }
+
+
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
