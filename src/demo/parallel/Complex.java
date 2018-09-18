@@ -102,4 +102,26 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Check for equals for other complex number.
+     * @param b - other complex number
+     * @return if this number equals other complex number
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        else {
+            return false;
+        }
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
 }
