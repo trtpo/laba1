@@ -45,13 +45,13 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -59,6 +59,53 @@ public class Complex {
         re = real;
         im = imag;
     }
+    /**
+     * getting value of real part
+     * @return the value of real part
+     */
+    public double getReal(){
+        return this.re;
+    }
+
+    /**
+     * getting the value the imaginary part of the copmlex number
+     * @return the value of the imaginary part
+     */
+    public double getImage() {
+        return this.im;
+    }
+
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+        Complex a = this; 	
+        double real = (a.re * b.re + a.im * b.im)/(Math.pow(b.re, 2.0)+ Math.pow(b.im, 2.0));
+        double imag = (b.re * a.im - a.re * b.im)/(Math.pow(b.re, 2.0)+ Math.pow(b.im, 2.0));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+
+
+
+
+
+
 
     /**
      * Add operation.
