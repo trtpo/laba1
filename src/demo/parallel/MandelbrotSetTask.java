@@ -366,6 +366,7 @@ class MandelbrotSetTask extends Task<Long> {
          */
         double[] cp = {
             0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+
         
         /**
          * Color table population
