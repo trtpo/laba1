@@ -13,33 +13,33 @@ public class JUnitTest {
     private Complex d = new Complex(0,0);
 
     @Test
-    public void TestSub0() throws Exception {
+    public void TestSub_0() throws Exception {
         Complex result = a.minus(b);
         assertTrue(result.getReal() == -135.0);
         assertTrue(result.getImage() == -200.0);
     }
     @Test
-    public void TestSub1() throws Exception {
+    public void TestSub_1() throws Exception {
         Complex result = a.minus(c);
         assertTrue(result.getReal() == -17.0);
         assertTrue(result.getImage() == 39.0);
     }
     @Test
-    public void TestSub2() throws Exception {
+    public void TestSub_2() throws Exception {
         Complex result = a.minus(a);
         assertTrue(result.getReal() == 0.0);
         assertTrue(result.getImage() == 0.0);
     }
 
     @Test
-    public void TestSub3() throws Exception {
+    public void TestSub_3() throws Exception {
         Complex result = b.minus(d);
         assertTrue(result.getReal() == 120.0);
         assertTrue(result.getImage() == 240.0);
     }
 
     @Test
-    public void TestDiv0() throws Exception {
+    public void TestDiv_0() throws Exception {
         Complex result = a.division(a);
         assertTrue(result.getReal() == 1.0);
         assertTrue(result.getImage() == 0.0);
@@ -51,7 +51,7 @@ public class JUnitTest {
         assertTrue(result.getImage() == 19.0);
     }
     @Test
-    public void TestDiv2() throws Exception {
+    public void TestDiv_2() throws Exception {
         Complex result = d.division(a);
         assertTrue(result.getReal() == 0.0);
         assertTrue(result.getImage() == 0.0);
