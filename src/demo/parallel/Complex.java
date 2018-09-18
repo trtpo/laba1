@@ -30,6 +30,7 @@
  */
 package demo.parallel;
 
+import java.text.DecimalFormat;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -72,6 +73,32 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex division(Complex b) {
+        Complex a = this;
+        if (b.equals(new Complex(0 , 0))) return new Complex(0, 0);
+        double real = ((a.re * b.re) + (a.im * b.im)) / ((b.re * b.re) + (b.im * b.im));
+        double imag = ((a.im * b.re) - (a.re * b.im)) / ((b.re * b.re) + (b.im * b.im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,6 +113,34 @@ public class Complex {
     }
 
     /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        re = (Math.sin(re) * Math.cosh(im));
+        im = Math.cos(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * Cosinus operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        re = Math.cos(re) * Math.cosh(im);
+        im = -Math.sin(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * Tangens operation
+     * @return Complex object whose value is tan(this)
+     */
+    public Complex tan() {
+        return sin().division(cos());
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
@@ -93,4 +148,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Compare operation
+     * @param b second operand to compare
+     * @return true if (this == b) else false
+     */
+    public boolean equals(Complex b) {
+        if (re == b.re && im == b.im) return true;
+        else return false;
+    }
+
 }
