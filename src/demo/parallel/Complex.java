@@ -85,6 +85,15 @@ public class Complex {
         return this;
     }
 
+    /** Sinus calculation operation
+     *
+     * @return a new Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +101,27 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Check for equals for other complex number.
+     * @param b - other complex number
+     * @return if this number equals other complex number
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        else {
+            return false;
+        }
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
     }
 }
