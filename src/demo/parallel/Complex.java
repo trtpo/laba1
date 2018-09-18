@@ -81,7 +81,8 @@ public class Complex {
      * @return this Complex object whose value is (this - b)
      */
     public Complex minus(Complex b) {
-        re -= b.re;//re+=b.re
+        re -= b.re;
+        //re+=b.re;
         im -= b.im;
         return this;
     }
@@ -99,13 +100,6 @@ public class Complex {
         im = imag;
         return this;
     }
-
-
-
-
-
-
-
 
     /**
      * Add operation.
