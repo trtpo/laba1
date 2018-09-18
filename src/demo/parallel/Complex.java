@@ -60,6 +60,13 @@ public class Complex {
         im = imag;
     }
 
+    public double[] getReAndImValues(){
+        double[] result = new double[2];
+        result[0] = this.re;
+        result[1] = this.im;
+        return result;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -84,6 +91,22 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Tangent operation
+     * @return this Complex object whose value is tan(this)
+     */
+    public Complex tan() {
+        Complex a = this;
+        double re = Math.sin(2*a.re) / (Math.cos(2*a.re) + Math.cosh(2*a.im));
+        double im = Math.sinh(2*a.im) / (Math.cos(2*a.re) + Math.cosh(2*a.im));
+
+        this.re = re;
+        this.im = im;
+        return this;
+    }
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
