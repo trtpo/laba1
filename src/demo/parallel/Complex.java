@@ -108,7 +108,14 @@ public class Complex {
             im = (im * b.re + re * b.im) / (b.re * b.re + b.im * b.im);
             return this;
         }
-        else return this;
+        else throw new ArithmeticException("Division on zero");
+    }
+
+    public double getReal() {
+        return re;
+    }
+    public double getImagine() {
+        return im;
     }
 
     /**
