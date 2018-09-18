@@ -1,6 +1,5 @@
 import demo.parallel.Complex;
 import org.junit.Assert;
-import org.junit.Assert.*;
 import org.junit.Test;
 
 public class ComplexTest {
@@ -13,15 +12,15 @@ public class ComplexTest {
     }
 
     @Test
-    public void usualDivide(){
-        Complex complex = new Complex(-1,3);
+    public void usualDivide() {
+        Complex complex = new Complex(-1, 3);
         Assert.assertEquals("Error in divide!", complex.divide(new Complex(1, 2)),
-                new Complex(1,    1));
+                new Complex(1, 1));
     }
 
     @Test(expected = ArithmeticException.class)
-    public void divideByZero(){
-        Complex complex = new Complex(10,10);
-        complex.divide(new Complex(0,0));
+    public void divideByZero() {
+        Complex complex = new Complex(10, 10);
+        complex.divide(new Complex(0, 0));
     }
 }

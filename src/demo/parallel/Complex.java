@@ -104,12 +104,24 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Subtract operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
     public Complex subtract(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
+    /**
+     * Divide operation.
+     *
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
     public Complex divide(Complex b) throws ArithmeticException {
         if (b.lengthSQ() == 0) {
             throw new ArithmeticException("Division by zero");
