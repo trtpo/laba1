@@ -72,6 +72,30 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     * @throws ArithmeticException when divider equals zero
+     */
+
+    public Complex divide(Complex b) throws ArithmeticException {
+        Complex a = this;
+        if(b.re == 0 && b.im == 0)
+            throw new ArithmeticException("division by zero");
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imaginary = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        a.re = real;
+        a.im = imaginary;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
