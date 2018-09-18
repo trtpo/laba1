@@ -61,6 +61,24 @@ public class Complex {
     }
 
     /**
+     * Real part.
+     * @param
+     * @return real part of Complex number
+     */
+    public double getReal(){
+        return this.re;
+    }
+
+    /**
+     * Image part.
+     * @param
+     * @return image part of Complex number
+     */
+    public double getImage(){
+        return this.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
