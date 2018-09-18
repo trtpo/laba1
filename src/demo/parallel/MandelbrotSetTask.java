@@ -40,7 +40,11 @@ import javafx.scene.paint.Color;
 
 /**
  * Task to render Mandelbrot set using given parameters. See {@link 
+<<<<<<< HEAD
  * #MandelbrotRendererTask(boolean, PixelWriter, int, int,
+=======
+ * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
+>>>>>>> e5e541222acc7c638014400e5b72638d1ac2752a
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
@@ -283,7 +287,11 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Calculates a color of a given pixel on the image using 
+<<<<<<< HEAD
      * {@link #calc(Complex) } method.
+=======
+     * {@link #calc(demo.parallel.Complex) } method.
+>>>>>>> e5e541222acc7c638014400e5b72638d1ac2752a
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -330,7 +338,11 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Returns a color for a given iteration count.
      * @param count number of iterations return by 
+<<<<<<< HEAD
      * {@link #calc(Complex)} method
+=======
+     * {@link #calc(demo.parallel.Complex)} method
+>>>>>>> e5e541222acc7c638014400e5b72638d1ac2752a
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {

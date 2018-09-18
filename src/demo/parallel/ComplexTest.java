@@ -12,7 +12,7 @@ public class ComplexTest {
     }
 
     @org.junit.Test
-    public void divide() {
+    public void  divide() {
         Complex a = new Complex(12, -3);
         Complex b = new Complex(3, 3);
         a.divide(b);
@@ -21,8 +21,6 @@ public class ComplexTest {
     @org.junit.Test
     public void equal() {
         Complex a = new Complex(12, -3);
-        Complex b = new Complex(3, 3);
         assertEquals("Not equal numbers",true,a.equal(a));
-
     }
 }
