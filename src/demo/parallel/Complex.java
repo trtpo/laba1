@@ -102,7 +102,7 @@ public class Complex {
      * Divide operation
      *
      * @param b divider
-     * @return this Complex object whose is this/b or {@code null} if b is Complex(0, 0)
+     * @return this Complex object whose is this/b
      */
     public Complex dividedBy(Complex b) {
         Complex a = this;
