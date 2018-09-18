@@ -86,6 +86,32 @@ public class Complex {
     }
 
     /**
+     * Substract operation.
+     * @param b residual
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    /**
+     * Division operation
+     * @param b divisor
+     * @return this Complex object whose value is (this/b).
+     * If b == 0
+     * @return this Complex object
+     */
+    public Complex divide(Complex b) {
+        if ((b.re*b.re+b.im*b.im) != 0) {
+            re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+            im = (im * b.re + re * b.im) / (b.re * b.re + b.im * b.im);
+            return this;
+        }
+        else return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
