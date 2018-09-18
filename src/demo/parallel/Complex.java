@@ -59,7 +59,12 @@ public class Complex {
         re = real;
         im = imag;
     }
-
+    public double getReal (){
+        return this.re;
+    }
+    public double getImage (){
+        return this.im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -71,6 +76,24 @@ public class Complex {
         return this;
     }
 
+    public  Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double divider = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (-a.re * b.im + a.im * b.re) / divider;
+        re = real;
+        im = imag;
+        return this;
+    }
+    public boolean equal(Complex b) {
+        Complex a = this;
+        return a.re == b.re && a.im == b.im;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
