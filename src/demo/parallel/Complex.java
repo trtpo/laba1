@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    double re;   // the real part
+    double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -130,10 +130,18 @@ public class Complex {
         if (!(other instanceof Complex))return false;
         Complex otherComplex = (Complex)other;
         Complex result = subtraction(otherComplex);
-        if(result.re==0 && result.im==0){
+        if(result.re == 0 && result.im==0){
             return true;
         }
 
         return false;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
     }
 }
