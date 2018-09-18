@@ -101,6 +101,21 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     *
+     * @param b value of the object Complex
+     * @return result of operation '-'
+     * */
+    public Complex subtraction(final Complex b) {
+
+        this.re -= b.re;
+        this.im -= b.im;
+
+        return this;
+
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
