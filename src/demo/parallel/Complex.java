@@ -84,6 +84,18 @@ public class Complex {
         im = imag;
         return this;
     }
+    /**
+     * Division operation.
+     * @param  b devider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex division(Complex b) {
+        double real= ( this.re * b.re + this.im * b.im ) /(b.re * b.re + b.im * b.im);
+        double imag =  (b.re * this.im - this.re * b.im)/(b.re * b.re + b.im * b.im);
+        im = imag;
+        re = real;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
