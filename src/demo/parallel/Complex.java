@@ -117,6 +117,20 @@ public class Complex {
     }
 
     /**
+     * @return the real value
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return the imaging value
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
