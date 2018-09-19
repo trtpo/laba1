@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -92,14 +94,33 @@ public class Complex {
     }
 
     public Complex division(Complex b) {
-        Complex a = this.times(b);
+        Complex a = this.times(invert(b));
         re = a.re / len(b.re, b.im);
         re = a.im / len(b.re, b.im);
         return this;
     }
 
+    public Complex invert(Complex b) {
+        return new Complex(b.re, -b.im);
+    }
+
     public double len(double real, double imag) {
         return real*real + imag*imag;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(re, im);
     }
 
     /**
