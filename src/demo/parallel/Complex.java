@@ -49,6 +49,37 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    /**
+     * Subtraction operation.
+     * @param b subtracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b){
+        return new Complex(this.re - b.re, this.im - b.im);
+    }
+
+    /**
+     * Divide operation.
+     * @param b dividend
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex devide(Complex b){
+        if ( b.re == 0 && b.im == 0){
+            return new Complex(0,0);
+        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re) / (b.re * b.re + b.im * b.im);
+
+        return new Complex(real,imag);
+    }
+
+
+    public boolean equals(Object o){
+        return this.re == ((Complex)o).re &&
+                this.im == ((Complex)o).im;
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
