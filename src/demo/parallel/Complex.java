@@ -96,12 +96,12 @@ public class Complex {
     public Complex division(Complex b) {
         Complex a = this.times(invert(b));
         re = a.re / len(b.re, b.im);
-        re = a.im / len(b.re, b.im);
+        im = a.im / len(b.re, b.im);
         return this;
     }
 
     public Complex invert(Complex b) {
-        return new Complex(b.re, -b.im);
+        return new Complex(b.re, -(b.im));
     }
 
     public double len(double real, double imag) {
