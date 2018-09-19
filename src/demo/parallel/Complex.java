@@ -85,6 +85,21 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex newfunc(Complex b){
+        Complex a = this;
+        double real1 = a.re + b.im-a.re;
+        double imag1 = a.im*b.re - a.im+b.im;
+        re = real1;
+        im = imag1;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
