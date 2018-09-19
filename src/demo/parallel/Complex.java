@@ -72,6 +72,16 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,11 +96,60 @@ public class Complex {
     }
 
     /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double divider = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (-a.re * b.im + a.im * b.re) / divider;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Real part operation.
+     * @return Real part of complex number object whose value is this.re
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Image part operation.
+     * @return Image part of complex number object whose value is this.im
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Check operation.
+     * @return result of existence of complex number object
+     * */
+    public boolean isNaN() {
+        return Double.isNaN(re) && Double.isNaN(im);
+    }
+
+    /**
+     * Equal operation.
+     * @param b second comparable
+     * @return result of comparisons of two complex number objects
+     * */
+    public boolean equal(Complex b) {
+        Complex a = this;
+        return a.getRe() == b.getRe() && a.getIm() == b.getIm();
     }
 }
