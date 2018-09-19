@@ -106,7 +106,14 @@ public class Complex {
         this.im *= c;
         return this;
     }
-
+    /**
+     * Find  conjugated operation.
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex conjugate() {
+        this.im = - this.im;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
