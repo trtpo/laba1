@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import org.junit.Test;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -108,6 +110,26 @@ public class Complex {
         a.re = real;
         a.im = imag;
         return this;
+    }
+
+    /**
+     * Real part operation.
+     * @return Real part of complex number object whose value is this.re
+     */
+    public double getReal() {
+        return this.re;
+    }
+
+    /**
+     * Imaginary part operation.
+     * @return Imaginary part of complex number object whose value is this.re
+     */
+    public double getImaginary() {
+        return this.im;
+    }
+
+    public boolean isNaN() {
+        return Double.isNaN(re) && Double.isNaN(im);
     }
 
     /**
