@@ -86,6 +86,27 @@ public class Complex {
     }
 
     /**
+     * Substract operation.
+     * @param b residual
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+
+    /**
+     * Return the square modulus of a complex number z
+     * @return double whose value is (re^2 + im^2)^(1/2)
+     */
+    public double abs()
+    {
+        return Math.sqrt(re * re + im * im);
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
