@@ -86,6 +86,34 @@ public class Complex {
     }
 
     /**
+     * Dividing operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     * @throws ArithmeticException Throws if try to divide by 0
+     */
+    public Complex divide(Complex b) {
+        if (b.equals(new Complex(0, 0))) {
+            throw new ArithmeticException("Divide by 0");
+        }
+        this.times(new Complex(b.re, - b.im));
+        re /= b.lengthSQ();
+        im /= b.lengthSQ();
+        return this;
+    }
+
+    /**
+     * Calculating exponential function of complex number
+     * @return this Complex object whose value is exponential function of this
+     */
+    public Complex exp() {
+        double real = Math.exp(re) * Math.cos(im);
+        double imag = Math.exp(re) * Math.sin(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
