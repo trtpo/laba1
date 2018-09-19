@@ -114,6 +114,14 @@ public class Complex {
     }
 
     /**
+     * Create independent clone of that number
+     * @return clone of that object
+     */
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
