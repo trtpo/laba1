@@ -94,6 +94,9 @@ public class Complex {
     }
 
     public Complex division(Complex b) {
+        if(b.re == 0 && b.im == 0){
+            throw new ArithmeticException();
+        }
         Complex a = this.times(invert(b));
         re = a.re / len(b.re, b.im);
         im = a.im / len(b.re, b.im);
