@@ -30,7 +30,6 @@
  */
 package demo.parallel;
 
-
 import java.util.List;
 import java.util.Locale;
 import javafx.animation.AnimationTimer;
