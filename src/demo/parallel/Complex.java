@@ -71,6 +71,15 @@ public class Complex {
         return this;
     }
     /**
+     * Add real number operation.
+     * @param b summand
+     * @return this Complex object whose value is (this + b)
+     */
+    public Complex plusReal(double b) {
+        re += b;
+        return this;
+    }
+    /**
      * Subtruct operation.
      * @param b subtrahend
      * @return this Complex object whose value is (this - b)
@@ -78,6 +87,15 @@ public class Complex {
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
+        return this;
+    }
+    /**
+     * Subtruct real number operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minusReal(double b) {
+        re -= b;
         return this;
     }
     /**
