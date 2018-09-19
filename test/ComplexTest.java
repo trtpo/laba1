@@ -32,6 +32,11 @@ public class ComplexTest {
         assertEquals(result, com.invert(com));
     }
 
+    @org.junit.Test(expected = ArithmeticException.class)
+    public void divZero(){
+        com.division(new Complex(0, 0));
+    }
+
     @org.junit.Test
     public void len() {
         assertEquals(85, arg.len(arg.getRe(), arg.getIm()), 0);
