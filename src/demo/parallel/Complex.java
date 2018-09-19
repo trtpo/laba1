@@ -85,6 +85,23 @@ public class Complex {
         return this;
     }
 
+    public Complex subtraction(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex division(Complex b) {
+        Complex a = this.times(b);
+        re = a.re / len(b.re, b.im);
+        re = a.im / len(b.re, b.im);
+        return this;
+    }
+
+    public double len(double real, double imag) {
+        return real*real + imag*imag;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
