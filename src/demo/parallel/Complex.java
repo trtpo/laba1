@@ -96,6 +96,16 @@ public class Complex {
         re = real;
         return this;
     }
+    /**
+     * Multiply by constant operation.
+     * @param  c multiplier
+     * @return this Complex object whose value is this * c
+     */
+    public Complex constMultiply(double c) {
+        this.re *= c;
+        this.im *= c;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
