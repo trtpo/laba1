@@ -118,7 +118,7 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
     public Complex divide(Complex b) throws ArithmeticException{
-        if (this.equals(new Complex(0.0, 0.0)))
+        if (b.equals(new Complex(0.0, 0.0)))
             throw new ArithmeticException("Division by zero");
         Complex a = this;
         double commonDivisor = Math.pow(b.re, 2.0) + Math.pow(b.im, 2.0);
