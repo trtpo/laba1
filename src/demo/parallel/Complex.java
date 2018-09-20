@@ -61,6 +61,17 @@ public class Complex {
     }
 
     /**
+     * Equality check
+     * @param b number to compare
+     * @return false - non-equal, thue - equal
+     */
+    public boolean equal(Complex b) {
+        if (this.re == b.re && this.im == b.im)
+            return true;
+        else
+            return false;
+    }
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
