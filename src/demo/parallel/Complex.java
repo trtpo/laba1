@@ -44,6 +44,7 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 public class Complex {
     
     private double re;   // the real part
@@ -58,6 +59,14 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    public double getRe(){
+        return this.re;
+    }
+
+    public double getIm(){
+        return this.im;
     }
 
     /**
