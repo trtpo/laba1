@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -86,18 +86,18 @@ public class Complex {
     }
 
     /**
-     * division operation.
+     * divide operation.
      * @param b divider
      * @return this Complex object whose value is this / b
      */
-    public Complex division(Complex b) {
+    public Complex divide(Complex b) throws ArithmeticException{
         Complex a = this;
         double realTop = a.re * b.re + a.im * b.im;
         double realBot = b.re * b.re + b.im * b.im;
         double real = realTop / realBot;
-        double imTop = b.re * a.im - a.re * b.im;
-        double imBot = b.re * b.re + b.im * b.im;
-        double imag = imTop / imBot;
+        double imagTop = b.re * a.im - a.re * b.im;
+        double imagBot = b.re * b.re + b.im * b.im;
+        double imag = imagTop / imagBot;
         re = real;
         im = imag;
         return this;
@@ -123,19 +123,19 @@ public class Complex {
      * Getting real rart.
      * @return real part
      */
-    public double getRe() {
+    public double getReal() {
         return re;
     }
     /**
      * Getting imaginary rart.
      * @return imaginary part
      */
-    public double getIm() {
+    public double getImag() {
         return im;
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
