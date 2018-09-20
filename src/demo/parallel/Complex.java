@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +63,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,23 +75,81 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
-        return this;
+        return new Complex(real, imag);
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Divison operation.
+     *
+     * @param b - divisor
+     * @return new Complex object whose value is the complex is this / b
+     */
+    public Complex divide(Complex b) {
+        if (b.getImag() == 0 && b.getReal() == 0) {
+            throw new IllegalArgumentException();
+        }
+        double realPart = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double imagePart = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
+        return new Complex(realPart, imagePart);
+    }
+
+    public Complex subtract(Complex b) {
+        return new Complex( this.re - b.re, this.im - b.im);
+    }
+
+    /**
+     * Cosine operation.
+     *
+     * @return new Complex object whose value is the complex cosine of this
+     */
+    public Complex cos() {
+        double realPart = Math.cos(re) * Math.cosh(im);
+        double imagePart = -Math.sin(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
+
+    /**
+     * Sine operation.
+     *
+     * @return new Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        double realPart = Math.sin(re) * Math.cosh(im);
+        double imagePart = Math.cos(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
+
+    /**
+     * Tangent operation.
+     *
+     * @return new Complex object whose value is the complex tangent of this
+     */
+    public Complex tan() {
+        return sin().divide(cos());
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImag() {
+        return im;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
