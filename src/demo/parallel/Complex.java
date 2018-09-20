@@ -119,4 +119,20 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Real part operation.
+     * @return Real part of complex number object whose value is this.re
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Image part operation.
+     * @return Image part of complex number object whose value is this.im
+     */
+    public double getIm() {
+        return im;
+    }
 }
