@@ -117,4 +117,22 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Complex) {
+           return ((((Complex) obj).re == this.re) && (((Complex) obj).im == this.im));
+        } else {
+            return super.equals(obj);
+        }
+    }
+
+    public double getReal() {
+        return this.re;
+    }
+
+    public double getImg() {
+        return this.im;
+    }
+
 }
