@@ -70,6 +70,7 @@ public class Complex {
         im += b.im;
         return this;
     }
+
     /**
      * Substaction
      * @param b substractor
@@ -80,6 +81,23 @@ public class Complex {
         im -= b.im;
         return this;
     }
+
+    /**
+     * Deviding
+     * @param b devider
+     * @return this Complex object whose value is (this/b)
+     */
+    public Complex devide(Complex b){
+        if ((b.re * b.re + b.im * b.im) != 0) {
+            Complex a = this;
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+            double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+            re = real;
+            im = imag;
+        }
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
