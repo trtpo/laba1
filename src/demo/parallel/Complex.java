@@ -47,6 +47,21 @@ package demo.parallel;
 public class Complex {
     
     private double re;   // the real part
+
+    /**
+     * @return this Complex object real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return this Complex object immaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
     private double im;   // the imaginary part
 
     /** 
@@ -72,6 +87,17 @@ public class Complex {
     }
 
     /**
+     * Deduction operation.
+     * @param b suband
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +110,28 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Module operation.
+     * @return double module of this Complex object
+     */
+    public double mod() {
+       return Math.sqrt(re * re + im * im);
+    }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        Complex temp = new Complex(0,0);
+        temp.re = b.re / (b.re * b.re + b.im * b.im);
+        temp.im = -b.im / (b.re * b.re + b.im * b.im);
+        return a.times(temp);
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
