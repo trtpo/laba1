@@ -68,12 +68,11 @@ import javafx.scene.control.ProgressIndicator;
 
 /**
  * UI main class for MandelbrotSet demo.
- * 
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
+ * input vлоalidation and proper error handling, might not be present in
  * this sample code.</i>
  * 
  * @author Alexander Kouznetsov, Tristan Yan
