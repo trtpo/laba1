@@ -91,6 +91,7 @@ public class Complex {
         return this;
     }
 
+
     public Complex newfunc(Complex b){
         Complex a = this;
         double real1 = a.re + b.im-a.re;
@@ -99,6 +100,15 @@ public class Complex {
         im = imag1;
         return this;
     }
+
+    public double getIm(){
+        return im;
+    }
+
+    public double getRe(){
+        return re;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
