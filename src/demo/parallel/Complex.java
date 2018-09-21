@@ -85,15 +85,25 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Division operation
+     * @param b division
+     * @return this Complex object whose is value this *b
+     */
     public Complex division(Complex b) {
-
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im);
-        double imag = (b.re * a.im - b.im * a.re);
+        double imag = (b.re * a.im + b.im * a.re);
         re = real / b.lengthSQ();
         im = imag / b.lengthSQ();
         return this;
     }
+
+    /**
+     * Subtract operation
+     * @param b subtract
+     * @return this Complex object whose is value this *b
+     */
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
@@ -108,10 +118,18 @@ public class Complex {
         return re * re + im * im;
     }
 
+    /**
+     * Get function
+     * @return im
+     */
     public double getIm() {
         return im;
     }
 
+    /**
+     * Get function
+     * @return re
+     */
     public double getRe() {
         return re;
     }
