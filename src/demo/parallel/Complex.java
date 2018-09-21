@@ -45,6 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
+
     
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -103,6 +104,17 @@ public class Complex {
         double imagePart = Math.cos(re) * Math.sinh(im);
         return new Complex(realPart, imagePart);
     }
+
+    /**
+     * get methods
+    */
+    public double getReal() {
+        return re;
+    }
+    public double getImag() {
+        return im;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
