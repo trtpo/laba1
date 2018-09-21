@@ -71,16 +71,6 @@ public class Complex {
         return this;
     }
     /**
-     * delete operation.
-     * @param b minmand
-     * @return this Complex object whose value is (this - b)
-     */
-    public Complex minus(Complex b) {
-        re -=b.re;
-        re -=b.im;
-        return this;
-    }
-    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
