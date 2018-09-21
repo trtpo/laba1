@@ -79,7 +79,7 @@ import javafx.scene.control.ProgressIndicator;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Main extends Application {
-
+ssss
     /**
      * Current position in fractal
      */

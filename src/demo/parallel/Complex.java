@@ -102,7 +102,7 @@ public class Complex {
     /**
      *
      * @param b dividend
-     * @return  this Complex object whose value is this /b
+     * @return   Complex object whose value is this /b
      */
     public Complex delete(Complex b)
     {
