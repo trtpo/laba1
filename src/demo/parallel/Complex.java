@@ -85,6 +85,8 @@ public class Complex {
         return this;
     }
 
+
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
