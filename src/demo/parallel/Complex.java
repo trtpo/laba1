@@ -103,7 +103,10 @@ public class Complex {
      * @param b Divider
      * @return this Complex object whose value is  this / b
      */
-    public Complex div(Complex b){
+    public Complex div(Complex b) throws ArithmeticException{
+        if(new Complex(0, 0).equals(b)){
+            throw new ArithmeticException("Null division");
+        }
         double real = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
         double imaginary = (b.re * im - re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
