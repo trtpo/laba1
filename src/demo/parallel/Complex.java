@@ -85,7 +85,24 @@ public class Complex {
         return this;
     }
 
-
+    /**
+     * cosine operation.
+     * @return this Complex object whose value is  COS (this)
+     */
+    public Complex cos() {
+        double realPart = Math.cos(re) * Math.cosh(im);
+        double imagePart = -Math.sin(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
+    /**
+     * sinus operation.
+     * @return this Complex object whose value is  SIN (this)
+     */
+    public Complex sin() {
+        double realPart = Math.sin(re) * Math.cosh(im);
+        double imagePart = Math.cos(re) * Math.sinh(im);
+        return new Complex(realPart, imagePart);
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
