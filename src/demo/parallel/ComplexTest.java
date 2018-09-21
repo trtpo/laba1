@@ -19,4 +19,11 @@ public class ComplexTest {
         Complex b = new Complex(1, 2);
         assertEquals(new Complex(1, 0), a.div(b));
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void divNull(){
+        Complex a = new Complex(0, 0);
+        Complex b = new Complex(0 , 0);
+        a.div(b);
+    }
 }
