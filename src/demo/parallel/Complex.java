@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,11 +97,67 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Division operation.
+     * @param  b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double den = b.re * b.re + b.im * b.im;
+        if(den == 0){
+            throw new ArithmeticException("Division by zero is forbidden");
+        }
+        double real = (a.re * b.re + a.im * b.im) / den;
+        double imag = (b.re * a.im - b.im * a.re) / den;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * The operation of obtaining a complex conjugate number.
+     * @return this Complex object whose
+     * the imaginary part has changed its sign
+     */
+    public Complex conjugate() {
+        if (im != 0) {
+            im = -im;
+        }
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Getter for the real part of the complex number
+     * @return this.re
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Getter for the imaginary part of the complex number
+     * @return this.im
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * String representation of the complex number
+     * @return re + im * i
+     */
+    @Override
+    public String toString() {
+        return re + ((im < 0)?" - ":" + ") + im + " * i";
+    }
+
 }
