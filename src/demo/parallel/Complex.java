@@ -85,27 +85,29 @@ public class Complex {
         return this;
     }
 
+
+    public double getRePart() {
+        return re;
+    }
+
+    public double getImPart() {
+        return im;
+    }
+
     /**
      * Division operation.
      *
      * @param b value of the object Complex
      * @return result of operation '/'
      * */
-    public Complex division(final Complex b) {
-        this.re = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
-        this.im = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
-        return this;
-    }
-
-    /**
-     * Subtraction operation.
-     *
-     * @param b value of the object Complex
-     * @return result of operation '-'
-     * */
-    public Complex minus(final Complex b) {
-        this.re -= b.re;
-        this.im -= b.im;
+    public Complex division(Complex b) throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        double real = b.re * this.re + b.im * this.im;
+        double imag = this.im * b.re - this.re * b.im;
+        this.re = real / b.lengthSQ();
+        this.im = imag / b.lengthSQ();
         return this;
     }
 
@@ -116,5 +118,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Complex))return false;
+        Complex otherComplex = (Complex)other;
+        Complex result = minus(otherComplex);
+        if(result.re==0 && result.im==0){
+            return true;
+        }
+        return  false;
     }
 }
