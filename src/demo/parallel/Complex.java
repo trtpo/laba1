@@ -110,6 +110,17 @@ public class Complex {
         this.im = imag / b.lengthSQ();
         return this;
     }
+    /**
+     * Subtraction operation.
+     *
+     * @param b value of the object Complex
+     * @return result of operation '-'
+     * */
+    public Complex minus(final Complex b) {
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -126,7 +137,7 @@ public class Complex {
         if (other == this) return true;
         if (!(other instanceof Complex))return false;
         Complex otherComplex = (Complex)other;
-        Complex result = minus(otherComplex);
+        Complex result = (otherComplex);
         if(result.re==0 && result.im==0){
             return true;
         }
