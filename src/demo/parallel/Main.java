@@ -407,7 +407,7 @@ public class Main extends Application {
         clearComparisonValues();
         switch (loc) {
             case 0:
-                flyToPosition(-2.4451320039285465, -1.3061943784663503, 0.9425352568739851, 1.2879652356695286);
+                flyToPosition(-0.9851320039285465, -1.3061943784663503, 0.9425352568739851, 1.2879652356695286);
                 break;
             case 1:
                 flyToPosition(-1.4831212866723549, -0.026946715467747517, -1.4831211655199326, -0.026946649881416845);
@@ -702,7 +702,7 @@ public class Main extends Application {
     @Override public void start(Stage primaryStage) {
         stageTitle = primaryStage.titleProperty();
 
-        double minR = -2.4451320039285465;
+        double minR = -0.9851320039285465;
         double maxR = 0.9425352568739851;
         double minI = -1.3061943784663503;
         double maxI = 1.2879652356695286;
