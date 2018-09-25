@@ -60,6 +60,32 @@ public class Complex {
         im = imag;
     }
 
+
+    /**
+     * Division operation.
+     * @param b divided
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        if (b.re == 0 && b.im == 0) throw new java.lang.ArithmeticException("Division by zero!");
+        double real = (a.re*b.re+a.im*b.im) / (b.re*b.re + b.im*b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re*b.re + b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+    /**
+     * Minus operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Add operation.
      * @param b summand
