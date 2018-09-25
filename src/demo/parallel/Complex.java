@@ -85,6 +85,14 @@ public class Complex {
         return this;
     }
 
+
+    //division operation
+    public Complex division(final Complex b) {
+        this.re = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
+        this.im = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
