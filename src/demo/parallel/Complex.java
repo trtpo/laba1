@@ -72,6 +72,19 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend(for subtraction from this number)
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        if (b != null) {
+            re -= b.re;
+            im -= b.im;
+        }
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -82,6 +95,25 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b dividend(is complex number to divide on it)
+     * @return the result of division(complex number)
+     */
+    public Complex divideOn(Complex b) throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+
+        double tempReal = b.re * this.re + b.im * this.im;
+        double tempImaginary = this.im * b.re - this.re * b.im;
+
+        this.re = tempReal / b.lengthSQ();
+        this.im = tempImaginary / b.lengthSQ();
+
         return this;
     }
 
