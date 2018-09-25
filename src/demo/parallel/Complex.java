@@ -84,6 +84,43 @@ public class Complex {
         im = imag;
         return this;
     }
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divisor
+     * @return
+     */
+    public Complex divideBy(Complex b) {
+        re = (re * b.re + im * b.im)/(b.re * b.re + b.im * b.im);
+        im = (im * b.re - re * b.im)/(b.re * b.re + b.im * b.im);
+        return this;
+    }
+
+    /**
+     * Get real.
+     * @return re
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Get im.
+     * @return im
+     */
+    public double getIm() {
+        return im;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
