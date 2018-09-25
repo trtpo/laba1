@@ -157,4 +157,17 @@ public class Complex {
     public double getIm(){
         return this.im;
     }
+
+    /**
+     * Check for equals between two complex numbers.
+     * @param b second complex number
+     * @return if numbers are equal
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        return false;
+    }
+
 }
