@@ -145,4 +145,12 @@ public class Complex {
     public double getIm() {
         return im;
     }
+
+    /**
+     * Check operation.
+     * @return result of existence of complex number object
+     * */
+    public boolean isNaN() {
+        return Double.isNaN(re) && Double.isNaN(im);
+    }
 }
