@@ -103,6 +103,15 @@ public class Complex {
 
     /**
      *
+     * @param b
+     * @return true if a = b
+     */
+    public boolean isEqual(Complex b) {
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+
+    /**
+     *
      * @return a new Complex object whose value is (1/this)
      */
     public Complex reciprocal() {
@@ -120,13 +129,6 @@ public class Complex {
         return a.times(b.reciprocal());
     }
 
-    /**
-     *
-     * @return a new Complex object whose value is the complex sine of this
-     */
-    public Complex sin() {
-        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
-    }
 
     /**
      *
@@ -134,15 +136,6 @@ public class Complex {
      */
     public Complex cos() {
         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
-    }
-
-
-    /**
-     *
-     * @return a new Complex object whose value is the complex tangent of this
-     */
-    public Complex tan() {
-        return sin().divides(cos());
     }
 
     /**

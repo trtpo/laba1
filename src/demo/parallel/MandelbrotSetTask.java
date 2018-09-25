@@ -273,13 +273,13 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
-    private int calc(Complex comp) {
+    private int calc(demo.parallel.Complex comp) {
         int count = 0;
-        Complex c = new Complex(0, 0);
-        Complex temp = new Complex(0,0);
+        demo.parallel.Complex c = new demo.parallel.Complex(0, 0);
+        demo.parallel.Complex temp = new demo.parallel.Complex(0,0);
         do {
             c = (c.times(c).times(c).plus(temp)).divides(comp).cos();
-            temp = temp.times(new Complex(0.03,0.2)).times(temp).plus(c);
+            temp = temp.times(new demo.parallel.Complex(0.03,0.2)).times(temp).plus(c);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -296,7 +296,7 @@ class MandelbrotSetTask extends Task<Long> {
     private Color calcPixel(double x, double y) {
         double re = (minR * (width - x) + x * maxR) / width;
         double im = (minI * (height - y) + y * maxI) / height;
-        Complex calPixel = new Complex(re, im);
+        demo.parallel.Complex calPixel = new demo.parallel.Complex(re, im);
         return getColor(calc(calPixel));
     }
 
