@@ -278,6 +278,7 @@ class MandelbrotSetTask extends Task<Long> {
         do {
             c.times(c).plus(comp).times(c).times(temp).times(c).times(temp).plus(comp);
             temp.times(temp).plus(c);
+            c.times(c).minus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
