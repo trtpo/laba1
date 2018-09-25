@@ -72,6 +72,19 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend(for subtraction from this number)
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        if (b != null) {
+            re -= b.re;
+            im -= b.im;
+        }
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,6 +99,25 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param b dividend(is complex number to divide on it)
+     * @return the result of division(complex number)
+     */
+    public Complex divideOn(Complex b) throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+
+        double tempReal = b.re * this.re + b.im * this.im;
+        double tempImaginary = this.im * b.re - this.re * b.im;
+
+        this.re = tempReal / b.lengthSQ();
+        this.im = tempImaginary / b.lengthSQ();
+
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
@@ -93,4 +125,49 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Set real part of complex number.
+     * @param re new real part
+     */
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    /**
+     * Get real part of complex number.
+     * @return real part of complex number
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * Set imaginary part of complex number.
+     * @param re new imaginary part
+     */
+    public void setIm(double im) {
+        this.im = im;
+    }
+
+    /**
+     * Get imaginary part of complex number.
+     * @return imaginary part of complex number
+     */
+    public double getIm(){
+        return this.im;
+    }
+
+    /**
+     * Check for equals between two complex numbers.
+     * @param b second complex number
+     * @return if numbers are equal
+     */
+    public boolean equals(Complex b) {
+        if (b != null) {
+            return (this.re == b.re && this.im == b.im);
+        }
+        return false;
+    }
+
 }

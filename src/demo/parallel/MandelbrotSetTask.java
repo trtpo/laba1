@@ -264,8 +264,8 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     * 
-     * This number is used to choose a color for this pixel for precalculated 
+     * <p>
+     * This number is used to choose a color for this pixel for precalculated
      * color tables.
      *
      * @param comp a complex number used for calculation
@@ -275,7 +275,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).minus(comp).plus(c.times(comp)).divideOn(comp).times(c).divideOn(new Complex(-2, 8));
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -351,20 +351,20 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(50, 50, 100),
+            Color.BLUE,
+            Color.YELLOW,
+            Color.BLUE,
+            Color.rgb(60, 100, 150),
+            Color.BLUE,
+            Color.rgb(150, 100, 120)
         };
         
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+            0, 0.15, 0.25, 0.40, 0.5, 0.80, 1,};
         
         /**
          * Color table population
