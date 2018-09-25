@@ -85,21 +85,38 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Subtraction operation.
+     * @param b subtrahend.
+     * @return this Complex object whose value is this - b
+     */
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
+    /**
+     * Conjugate operation.
+     * @return this Complex object whose real part = -real part.
+     */
     public Complex conjugate() {
-        im *= -2.0;
+        im *= -1.0;
         return this;
     }
 
+    /**
+     * Returning of real part of Complex.
+     * @return real part.
+     */
     public double getRe(){
         return re;
     }
 
+    /**
+     * Returning of imagine part of Complex.
+     * @return imagine part.
+     */
     public double getIm(){
         return im;
     }
