@@ -125,4 +125,36 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Set real part of complex number.
+     * @param re new real part
+     */
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    /**
+     * Get real part of complex number.
+     * @return real part of complex number
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * Set imaginary part of complex number.
+     * @param re new imaginary part
+     */
+    public void setIm(double im) {
+        this.im = im;
+    }
+
+    /**
+     * Get imaginary part of complex number.
+     * @return imaginary part of complex number
+     */
+    public double getIm(){
+        return this.im;
+    }
 }
