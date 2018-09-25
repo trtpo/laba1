@@ -127,13 +127,31 @@ public class Complex {
      */
     public Complex pow(int power) {
         Complex startValue = new Complex(re, im);
+        if (power == 0) {
+            return new Complex(1,0);
+        }
+
         if (power > 0 ) {
             for (int i = 1; i < power; i++)
                 times(startValue);
         } else {
-            for (int i = 0; i < Math.abs(power); i++)
+            for (int i = 0; i <= Math.abs(power); i++)
                 divide(startValue);
         }
         return this;
+    }
+    /**
+     * Get real operation.
+     * @return real part of this
+     */
+    public double getReal(){
+        return re;
+    }
+    /**
+     * Get imag operation.
+     * @return imaginary part of this
+     */
+    public  double getImag() {
+        return im;
     }
 }
