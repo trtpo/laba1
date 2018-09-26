@@ -52,7 +52,7 @@ public class Complex {
     /** 
      * create a new object with the given real and imaginary parts
      * 
-     * @param real a complex number real part
+     * @param real a complex number real part/
      * @param imag a complex number imaginary part 
      */
     public Complex(double real, double imag) {
