@@ -2,7 +2,6 @@ package demo.parallel;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class ComplexTest {
-    private static final double DELTA = 1e-15;
     @Test
     public void testAdd() {
         Complex a = new Complex(5, 33);

@@ -90,11 +90,8 @@ public class Complex {
      * @return this Complex object whose value is this - b
      */
     public Complex substraction(Complex b) {
-        Complex a = this;
-        double real = a.re - b.re;
-        double imag = a.im - b.im;
-        re = real;
-        im = imag;
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
