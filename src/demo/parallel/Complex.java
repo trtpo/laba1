@@ -60,6 +60,15 @@ public class Complex {
         im = imag;
     }
 
+    public double len() {
+        return re * re + im * im;
+    }
+    public Complex div(Complex b) {
+        double temp = re * b.re - im * b.im;
+        im = (im * b.re - re * b.im) / b.len();
+        re = temp/b.len();
+        return this;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +77,11 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
