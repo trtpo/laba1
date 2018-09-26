@@ -86,6 +86,17 @@ public class Complex {
     }
 
     /**
+     * Division operation
+     * @param b value of the object Complex
+     * @return this Complex object whose value is this / b
+     * */
+    public Complex division(Complex b) {
+        this.re = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
+        this.im = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
