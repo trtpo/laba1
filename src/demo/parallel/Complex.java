@@ -91,11 +91,17 @@ public class Complex {
      * @param b
      * @return double
      */
-    public double division(Complex b) {
-        double z1 = (re * b.re + im * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
-        double z2 = (b.re * im - re * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+    public Complex division(Complex complex) {
+        double den=Math.pow(complex.mod(),2);
+        return new Complex((re*complex.getRe()+im*complex.getIm())/den,(im*complex.getRe()-re*complex.getRe())/den);
+    }
 
-        return z1 / z2;
+    public double mod() {
+        if (re!=0 || im!=0) {
+            return Math.sqrt(re*re+im*im);
+        } else {
+            return 0d;
+        }
     }
 
     /**
