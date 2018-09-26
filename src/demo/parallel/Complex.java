@@ -64,8 +64,10 @@ public class Complex {
     }
     public Complex div(Complex b) {
         double temp = re * b.re - im * b.im;
-        im = (im * b.re - re * b.im) / b.len();
-        re = temp/b.len();
+        double imag = (im * b.re - re * b.im) / b.len();
+        double real = temp/b.len();
+        re = real;
+        im = imag;
         return this;
     }
     public Complex minus(Complex b) {
@@ -106,5 +108,11 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    public double getReal() {
+        return re;
+    }
+    public double getImg() {
+        return im;
     }
 }
