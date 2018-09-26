@@ -90,15 +90,6 @@ public class Complex {
         return this;
     }
     /**
-     * Subtruct real number operation.
-     * @param b subtrahend
-     * @return this Complex object whose value is (this - b)
-     */
-    public Complex minusReal(double b) {
-        re -= b;
-        return this;
-    }
-    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -117,6 +108,7 @@ public class Complex {
      * @return this Complex object whose value is (this / b)
      */
     public Complex division(Complex b) {
+        if(b.re == 0 && b.im == 0) return this;
         double real= ( this.re * b.re + this.im * b.im ) /(b.re * b.re + b.im * b.im);
         double imag =  (b.re * this.im - this.re * b.im)/(b.re * b.re + b.im * b.im);
         im = imag;
@@ -124,11 +116,11 @@ public class Complex {
         return this;
     }
     /**
-     * Multiply by constant operation.
+     * Multiply by real number operation.
      * @param  c multiplier
      * @return this Complex object whose value is this * c
      */
-    public Complex constMultiply(double c) {
+    public Complex realNumberMultiplication(double c) {
         this.re *= c;
         this.im *= c;
         return this;
@@ -148,5 +140,11 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    public  double getRealPart() {
+        return this.re;
+    }
+    public double getImaginaryPart() {
+        return this.im;
     }
 }
