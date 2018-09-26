@@ -63,9 +63,10 @@ public class Complex {
         return re * re + im * im;
     }
     public Complex div(Complex b) {
-        double temp = re * b.re - im * b.im;
-        double imag = (im * b.re - re * b.im) / b.len();
-        double real = temp/b.len();
+        Complex a = this;
+        if (b.re == 0 && b.im == 0) throw new java.lang.ArithmeticException("Division by zero!");
+        double real = (a.re*b.re+a.im*b.im) / (b.re*b.re + b.im*b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re*b.re + b.im*b.im);
         re = real;
         im = imag;
         return this;
