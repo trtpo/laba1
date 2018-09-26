@@ -115,4 +115,60 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public boolean equals(final Object object) {
+        final boolean result;
+        final Complex complex = (Complex) object;
+        if (object != null) {
+            if (this == object) {
+                result = true;
+            } else if (getClass() != object.getClass()) {
+                result = false;
+            } else {
+                result = (this.im == complex.im && this.re == complex.re);
+            }
+        } else {
+            result = false;
+        }
+        return result;
+    }
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public int hashCode() {
+        return (int) (this.re * this.im);
+    }
+    /**
+     * This method return value of the imag.
+     * @return value of the imag
+     * */
+    public double getIm() {
+        return im;
+    }
+    /**
+     * This method set new value of the imag.
+     * @param newIm new value of the newIm
+     * */
+    public void setIm(final double newIm) {
+        this.im = newIm;
+    }
+    /**
+     * This method return value of the real.
+     * @return value of the real part
+     * */
+    public double getRe() {
+        return this.re;
+    }
+    /**
+     * This method set new value of the real part.
+     * @param newRe new value of the real part
+     * */
+    public void setRe(final double newRe) {
+        this.re = newRe;
+    }
 }
