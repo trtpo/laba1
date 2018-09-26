@@ -1,7 +1,7 @@
 package demo.parallel;
 
 
-        import static org.junit.Assert.*;
+        import org.junit.Assert;
 
 public class ComplexTest {
 
@@ -17,6 +17,14 @@ public class ComplexTest {
         complex1 = new Complex(2, 4);
     }
 
+
+    @org.junit.Test
+    public void not_division() {
+
+
+        Assert.assertEquals(checkComplex2, complex2);
+
+    }
 
     public void initializeComplex() {
         complex2 = new Complex(4, 5.5);
