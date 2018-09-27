@@ -30,6 +30,8 @@
  */
 package demo.parallel;
 
+import java.security.InvalidParameterException;
+
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -58,6 +60,13 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    public double getRealPart(){
+        return re;
+    }
+    public double getImaginaryPart(){
+        return im;
     }
 
     /**
@@ -89,8 +98,10 @@ public class Complex {
      */
     public Complex div(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im*b.im);
-        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im*b.im);
+        if (b.im == 0 && b.re == 0)
+            throw new InvalidParameterException();
+        double real = (a.re*b.re + a.im*b.im)/(b.re*b.re + b.im*b.im);
+        double imag = (a.im*b.re - a.re*b.im)/(b.re*b.re + b.im*b.im);
         re = real;
         im = imag;
         return this;
