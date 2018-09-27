@@ -130,6 +130,8 @@ public class Complex {
         double d = a.re * b.re + a.im * b. im;
         double real = (a.re * b.re + a.im * b.im)/d;
         double imag = (b.re * a.im - a.re * b.im)/d;
+        re = real;
+        im = imag;
         return this;
     }
 
@@ -140,5 +142,9 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public boolean equalsTo(Complex b) {
+        return (re == b.re) && (im == b.im);
     }
 }
