@@ -60,6 +60,13 @@ public class Complex {
         im = imag;
     }
 
+    public double getRealPart(){
+        return re;
+    }
+    public double getImaginaryPart(){
+        return im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -92,8 +99,8 @@ public class Complex {
      */
     public Complex divide(Complex b){
         Complex a = this;
-        double real = (a.re * b.re + a.im * a.im) / (a.re * a.re + a.im * a.im);
-        double imag = (a.im * b.re - a.re * b.im) / (a.re * a.re + a.im * a.im);
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
