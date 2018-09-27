@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
-
+import java.lang.Math;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -70,6 +70,16 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Add operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -83,6 +93,33 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+    /**
+     * Division operation.
+     * @param b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+        double imag = (a.im * b.re - a.re * b.im) / (Math.pow(b.re, 2) + Math.pow(b.im, 2));
+        re = real;
+        im = imag;
+        return this;
+    }
+    /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+    /**
+     * Cosinus operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 
     /**
