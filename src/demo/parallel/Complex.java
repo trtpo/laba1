@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.math.BigDecimal;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -93,4 +95,6 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
 }
