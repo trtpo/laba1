@@ -124,6 +124,5 @@ public class Complex {
         im = imag;
         return this;
     }
-
-
+    
 }
