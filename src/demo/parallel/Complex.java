@@ -76,7 +76,7 @@ public class Complex {
      * @param b subtrahend
      * @return this Complex object whose value is (this - b)
      */
-    public Complex minus(Complex b){
+    public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
@@ -105,7 +105,7 @@ public class Complex {
         Complex a = this;
         double div = b.lengthSQ();
         double real = (a.re * b.re + a.im * b.im) / div;
-        double imag = (a.re * b.im - a.im * b.re) / div;
+        double imag = (a.im * b.re - a.re * b.im) / div;
         re = real;
         im = imag;
         return this;
