@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.security.InvalidParameterException;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -71,6 +73,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b){
+        re -=b.re;
+        im -=b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -82,6 +90,23 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real;
+        double imag;
+        if(b.im!=0 && b.re!=0) {
+            real = (a.re * b.re - a.im * b.im)/(b.re*b.re + b.im*b.im);
+            imag = (a.re * b.im + a.im * b.re)/(b.re*b.re + b.im*b.im);
+            re = real;
+            im = imag;
+        }
+        else
+        {
+            throw new InvalidParameterException();
+        }
         return this;
     }
 
