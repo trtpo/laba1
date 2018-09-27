@@ -85,6 +85,111 @@ public class Complex {
         return this;
     }
 
+    // return a new Complex object whose value is (this - b)
+
+    /**
+     * Substract operation
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Scale operation
+     * @param alpha
+     * @return a new object whose value is (this * alpha)
+     */
+    public Complex scale(double alpha) {
+        return new Complex(alpha * re, alpha * im);
+    }
+
+    /**
+     * Conjugate operation
+     * @return a new Complex object whose value is the conjugate of this
+     */
+    public Complex conjugate() {
+        return new Complex(re, -im);
+    }
+
+    /**
+     * Reciprocal operation
+     * @return a new Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        //Complex a = this;
+        //return a.times(b.reciprocal());
+        if ((b.re * b.re + b.im * b.im) != 0) {
+            Complex a = this;
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+            double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+            re = real;
+            im = imag;
+            return this;
+        }
+        else
+            return new Complex(0, 0);
+    }
+
+    public boolean equals(Complex b) {
+        if (re == b.re && im == b.im)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Exponent operation
+     * @return a new Complex object whose value is the complex exponential of this
+     */
+    public Complex exp() {
+        return new Complex(Math.exp(re) * Math.cos(im), Math.exp(re) * Math.sin(im));
+    }
+
+    /**
+     * Sine operation
+     * @return a new Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    /**
+     * Cosine operation
+     * @return a new Complex object whose value is the complex cosine of this
+     */
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    /**
+     * Real part operation.
+     * @return re Real part of complex object whose value is re
+     */
+    public double Re() {
+        return re;
+    }
+    /**
+     * Image part operation.
+     * @return im Image part of complex object whose value is im
+     */
+    public double Im() {
+        return im;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
