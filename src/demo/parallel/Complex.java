@@ -53,11 +53,11 @@ public class Complex {
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imaginary a complex number imaginary part
      */
-    public Complex(double real, double imag) {
+    public Complex(double real, double imaginary) {
         re = real;
-        im = imag;
+        im = imaginary;
     }
 
     /**
@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -79,10 +90,32 @@ public class Complex {
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double imaginary = a.re * b.im + a.im * b.re;
         re = real;
-        im = imag;
+        im = imaginary;
         return this;
+    }
+
+    /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this * b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(a.re, 2) + Math.pow(b.re, 2));
+        double imaginary = (a.re * b.im - a.im * b.re) / (Math.pow(a.re, 2) + Math.pow(b.re, 2));
+        re = real;
+        im = imaginary;
+        return this;
+    }
+
+    /**
+     * Absolute operation.
+     * @return absolute value of this Complex object
+     */
+    public double abs() {
+        return Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
     }
 
     /**
