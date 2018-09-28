@@ -34,6 +34,11 @@ class ComplexTest {
     }
 
     @Test
+    void divideException() {
+        assertThrows(ArithmeticException.class, () -> {complexA.divide(new Complex(0, 0));});
+    }
+
+    @Test
     void abs() {
         assertEquals(5, complexTest.abs(), delta);
     }

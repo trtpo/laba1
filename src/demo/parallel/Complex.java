@@ -117,8 +117,11 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex divide(Complex b) {
+    public Complex divide(Complex b) throws ArithmeticException {
         Complex a = this;
+
+        if(b.re == 0 && b.im == 0) throw new ArithmeticException("Division by zero");
+
         double real = (a.re * b.re + a.im * b.im) / (Math.pow(a.re, 2) + Math.pow(b.re, 2));
         double imaginary = (a.re * b.im - a.im * b.re) / (Math.pow(a.re, 2) + Math.pow(b.re, 2));
         re = real;
