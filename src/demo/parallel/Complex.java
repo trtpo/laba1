@@ -93,4 +93,32 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex sub(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex div(Complex b)
+    {
+        Complex a = this;
+        if(b.lengthSQ() == 0)
+        {
+            re = 0;
+            im = 0;
+        }
+        else
+        {
+            double fmult = a.re * b.re + a.im * b.im;
+            double smult = b.re * a.im - a.re * b.im;
+            double divisor = b.re * b.re + b.im * b.im;
+            re = fmult/divisor;
+            im = smult/divisor;
+        }
+        return this;
+    }
+
+
 }
