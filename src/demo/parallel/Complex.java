@@ -105,4 +105,8 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public boolean test (Complex b) {
+        return (re == b.re) && (im == b.im);
+    }
 }
