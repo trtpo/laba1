@@ -71,11 +71,6 @@ public class Complex {
         return this;
     }
 
-
-    public Complex conj() {
-        return new Complex(re, -im);
-    }
-
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -90,16 +85,24 @@ public class Complex {
         return this;
     }
 
-
     /**
      * Getting the reciprocal
      * @return this Complex object whose value is 1/this
      */
-
-    public Complex reciprocal()
-    {
+    public Complex reciprocal() {
         double scale = re*re + im*im;
         return new Complex(re / scale, -im / scale);
+    }
+
+    /**
+     * Equal check.
+     * @param  b number for check
+     * @return true or false
+     */
+    public boolean equals(Complex b) {
+        if(this.re == b.re && this.im == b.im)
+            return true;
+        else return false;
     }
 
     /**
@@ -108,8 +111,7 @@ public class Complex {
      * @return this Complex object whose value is this / b
      */
 
-    public Complex divides(Complex b)
-    {
+    public Complex divide(Complex b) {
         Complex a = this;
         return a.times(b.reciprocal());
     }
