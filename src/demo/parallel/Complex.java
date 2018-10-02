@@ -71,6 +71,11 @@ public class Complex {
         return this;
     }
 
+
+    public Complex conj() {
+        return new Complex(re, -im);
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +89,31 @@ public class Complex {
         im = imag;
         return this;
     }
+
+
+    /**
+     * Getting the reciprocal
+     * @return this Complex object whose value is 1/this
+     */
+
+    public Complex reciprocal()
+    {
+        double scale = re*re + im*im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+
+    public Complex divides(Complex b)
+    {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
