@@ -49,6 +49,7 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -70,7 +71,11 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex minus (Complex b) {
+        re += b.re;
+        im += b.im;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,7 +89,14 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    public Complex sin(Complex b) {
+        Complex a = this;
+        double real = Math.sin(re)*Math.cosh(re);
+        double imag = Math.cos(re)*Math.sinh(re);
+        re = real;
+        im = imag;
+        return new Complex(real, imag);
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
