@@ -92,7 +92,8 @@ public class Complex {
     }
 
     public Complex abs (Complex a){
-        Math.sqrt(a.re * a.re + a.im * a.im);
+        re=Math.sqrt(a.re * a.re + a.im * a.im);
+        im=0;
         return this;
     }
 
@@ -104,4 +105,13 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
 }
