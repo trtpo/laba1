@@ -85,6 +85,17 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex abs (Complex a){
+        Math.sqrt(a.re * a.re + a.im * a.im);
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
