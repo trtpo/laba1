@@ -45,13 +45,13 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -59,22 +59,13 @@ public class Complex {
         re = real;
         im = imag;
     }
-    public double len() {
-        return re * re + im * im;
+
+    public double GetRe() {
+        return re;
     }
-    public Complex div(Complex b) {
-        Complex a = this;
-        if (b.re == 0 && b.im == 0) throw new java.lang.ArithmeticException("Division by zero!");
-        double real = (a.re*b.re+a.im*b.im) / (b.re*b.re + b.im*b.im);
-        double imag = (b.re * a.im - a.re * b.im) / (b.re*b.re + b.im*b.im);
-        re = real;
-        im = imag;
-        return this;
-    }
-    public Complex minus(Complex b) {
-        re -= b.re;
-        im -= b.im;
-        return this;
+
+    public double GetIm() {
+        return im;
     }
 
     /**
@@ -88,12 +79,18 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex times(Complex b) {
+    public Complex times(Complex b) {   // умножение
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
@@ -102,18 +99,20 @@ public class Complex {
         return this;
     }
 
+    public Complex divide(Complex b) {  // деление
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
-    }
-    public double getReal() {
-        return re;
-    }
-    public double getImg() {
-        return im;
     }
 }

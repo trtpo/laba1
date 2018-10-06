@@ -1,3 +1,5 @@
+package demo.parallel;
+
 import demo.parallel.Complex;
 import junit.framework.TestCase;
 import org.junit.Test;
