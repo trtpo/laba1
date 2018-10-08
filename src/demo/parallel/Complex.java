@@ -112,6 +112,14 @@ public class Complex {
     }
 
     /**
+     * Getting real part of the complex number
+     * @return double number re which is the real part of complex number
+     */
+    public double getReal(){
+        return re;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
