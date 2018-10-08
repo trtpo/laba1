@@ -3,6 +3,10 @@ package demo.parallel;
 import demo.parallel.Complex;
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.function.Executable;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Tester extends TestCase {
 
@@ -33,12 +37,21 @@ public class Tester extends TestCase {
         assertEquals((double)10, a.GetIm());
     }
 
-    @Test
+    @Test()
     public void testDivide() {
         Complex a = new Complex(1,2);
         Complex b = new Complex(3,4);
         a.divide(b);
         assertEquals(0.44, a.GetRe());  // 11/25
         assertEquals(0.08, a.GetIm());  // 2/25
+        assertThrows(ArithmeticException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                Complex a = new Complex(0,0);
+                Complex b = new Complex(0,0);
+                a.divide(b);
+            }
+        });
     }
+
 }
