@@ -70,7 +70,48 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    
+    /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
+    
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (-a.re * b.im + a.im * b.re) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+    
+    /**
+     * Real part operation.
+     * @return Real part of complex number object whose value is this.re
+     */
+    public double getRe() {
+        return re;
+    }
+     /**
+     * Image part operation.
+     * @return Image part of complex number object whose value is this.im
+     */
+    public double getIm() {
+        return im;
+    }
+    
     /**
      * Multiply operation.
      * @param  b multiplier
