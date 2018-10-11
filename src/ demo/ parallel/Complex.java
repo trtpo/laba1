@@ -134,4 +134,12 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    
+    /**
+     * Check operation.
+     * @return result of existence of complex number object
+     * */
+    public boolean isNaN() {
+        return Double.isNaN(re) && Double.isNaN(im);
+    }
 }
