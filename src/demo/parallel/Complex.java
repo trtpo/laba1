@@ -97,38 +97,51 @@ public class Complex {
         return re * re + im * im;
     }
 
-    public Complex sub(Complex b) {
+    /**
+     * Subtract operation
+     * @param b subtract
+     * @return this Complex object whose is value (this - b)
+     */
+    public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
-    public Complex div(Complex b)
-    {
+    /**
+     * Division operation.
+     *
+     * @param b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
         Complex a = this;
-        if(b.lengthSQ() == 0)
-        {
+        if(b.lengthSQ() == 0) {
             re = 0;
             im = 0;
         }
-        else
-        {
-            double fmult = a.re * b.re + a.im * b.im;
-            double smult = b.re * a.im - a.re * b.im;
-            double divisor = b.re * b.re + b.im * b.im;
-            re = fmult/divisor;
-            im = smult/divisor;
+        else {
+            double real = a.re * b.re + a.im * b.im;
+            double image = b.re * a.im - a.re * b.im;
+            re = real / b.lengthSQ();
+            im = image / b.lengthSQ();
         }
         return this;
     }
 
-    public double getImagePart()
-    {
+    /**
+     * Get function
+     * @return im
+     */
+    public double getIm() {
         return im;
     }
 
-    public double getRealPart()
-    {
+    /**
+     * Get function
+     * @return re
+     */
+    public double getRe() {
         return re;
     }
 
