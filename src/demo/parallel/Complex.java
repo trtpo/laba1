@@ -112,6 +112,7 @@ public class Complex {
      */
     public Complex division(Complex b) {
         Complex a = this;
+
         double real= ( a.re * b.re + a.im * b.im ) /(a.re * b.re + a.im * b.im);
         double imag =  (b.re * a.im - a.re * b.im)/(a.re * b.re + a.im * b.im);
         im = imag;
@@ -127,5 +128,10 @@ public class Complex {
     public boolean equal(Complex b) {
         Complex a = this;
         return (a.re == b.re) && (a.im == b.im);
+    }
+
+    public boolean isNaN(){
+
+        return  Double.isNaN(re) && Double.isNaN(im);
     }
 }

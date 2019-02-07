@@ -3,13 +3,17 @@ package Test;
 import demo.parallel.Complex;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ErrorCollector;
 
-
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
-public class ComplexTest  {
 
+public class ComplexTest  {
+    @Rule
+    public ErrorCollector collector = new ErrorCollector();
 
     @Test
     public void minus() {
@@ -22,12 +26,28 @@ public class ComplexTest  {
         Complex subtrahend = new Complex(realB,imageB);
         Complex result = new Complex(realA - realB, imageA - imageB);
 
-        assertTrue("Test minus() is failed",result.equal(minuend.minus(subtrahend)));
+        minuend.minus(subtrahend);
 
+        collector.checkThat(
+                "Subtraction operation test. Wrong result.",
+                minuend.equal(result),
+                equalTo(true)
+        );
 
     }
 
 
+    @Test
+    public void isNaNTest(){
+
+        Complex a = new Complex(0,0);
+
+        collector.checkThat(
+                "Wrong result, expected no NaN",
+                a.isNaN(),
+                equalTo(false)
+        );
+    }
 
     @Test
     public void division() {
@@ -43,7 +63,30 @@ public class ComplexTest  {
         Complex result = new Complex((realA * realB + imageA * imageB)/(realA * realB + imageA * imageB),
                 (realB * imageA - realA * imageB)/(realA * realB + imageA * imageB));
 
-        assertTrue("Test division() is failed",result.equal( divider.division(dividend)));
+        divider.division(dividend);
 
+        collector.checkThat(
+                "Division operation test. Wrong result.",
+                divider.equal(result),
+                equalTo(true)
+        );
+    }
+
+
+
+
+    @Test
+    public void divideByZero() {
+
+
+        Complex divider = new Complex(7.8,-9.9);
+        Complex dividend = new Complex(0,0);
+        Complex result = divider.division(dividend);
+
+        collector.checkThat(
+                "Wrong result, expected Nan",
+                result.isNaN(),
+                equalTo(true)
+        );
     }
 }
