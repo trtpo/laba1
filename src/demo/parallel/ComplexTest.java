@@ -16,7 +16,6 @@ public class ComplexTest {
 
     @org.junit.Test
     public void modATest() {
-        System.out.println(a.mod());
         double modA = a.mod();
         assertTrue(FloatingComparator.checkIfEquals(1.4142136,modA,epsilon));
     }
