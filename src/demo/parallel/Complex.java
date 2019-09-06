@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +63,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -72,8 +74,19 @@ public class Complex {
     }
 
     /**
+     * The modulus, magnitude or the absolute value of current complex number.
+     *
+     * @return the magnitude or modulus of current complex number
+     */
+
+    public double mod() {
+        return Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
+    }
+
+    /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,10 +99,66 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * The complex conjugate of the current complex number.
+     *
+     * @return a <code>ComplexNumber</code> object which is the conjugate of the current complex number
+     */
+
+    public Complex conjugate() {
+        return new Complex(this.re, -this.im);
+    }
+
+    /**
+     * Divides one <code>ComplexNumber</code> by another.
+     *
+     * @param z1 the first <code>ComplexNumber</code>.
+     * @param z2 the second <code>ComplexNumber</code>.
+     * @return the resultant <code>ComplexNumber</code> (z1 / z2).
+     */
+    public static Complex divide(Complex z1, Complex z2) {
+        Complex output = z1.times(z2.conjugate());
+        double div = Math.pow(z2.mod(), 2);
+        return new Complex(output.re / div, output.im / div);
+    }
+
+    public static Complex sin(Complex z) {
+        double x = Math.exp(z.im);
+        double x_inv = 1 / x;
+        double r = Math.sin(z.re) * (x + x_inv) / 2;
+        double i = Math.cos(z.re) * (x - x_inv) / 2;
+        return new Complex(r, i);
+    }
+
+    /**
+     * Calculates the cosine of the <code>ComplexNumber</code>
+     *
+     * @param z the input complex number
+     * @return a <code>ComplexNumber</code> which is the cosine of z.
+     */
+    public static Complex cos(Complex z) {
+        double x = Math.exp(z.im);
+        double x_inv = 1 / x;
+        double r = Math.cos(z.re) * (x + x_inv) / 2;
+        double i = -Math.sin(z.re) * (x - x_inv) / 2;
+        return new Complex(r, i);
+    }
+
+    /**
+     * Calculates the tangent of the <code>ComplexNumber</code>
+     *
+     * @param z the input complex number
+     * @return a <code>ComplexNumber</code> which is the tangent of z.
+     */
+    public static Complex tan(Complex z) {
+        return divide(sin(z), cos(z));
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
