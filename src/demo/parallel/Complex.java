@@ -72,6 +72,18 @@ public class Complex {
     }
 
     /**
+     * sine operation on a complex number
+     */
+
+    public static Complex sin(Complex z) {
+        double x = Math.exp(z.im);
+        double x_inv = 1 / x;
+        double r = Math.sin(z.re) * (x + x_inv) / 2;
+        double i = Math.cos(z.re) * (x - x_inv) / 2;
+        return new Complex(r, i);
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
