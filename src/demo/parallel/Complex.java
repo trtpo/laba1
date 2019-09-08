@@ -72,7 +72,9 @@ public class Complex {
     }
 
     /**
-     * sine operation on a complex number
+     * return a new Complex object whose value is the complex sine of this
+     * @param z
+     * @return
      */
 
     public static Complex sin(Complex z) {
@@ -81,6 +83,28 @@ public class Complex {
         double r = Math.sin(z.re) * (x + x_inv) / 2;
         double i = Math.cos(z.re) * (x - x_inv) / 2;
         return new Complex(r, i);
+    }
+
+    /**
+     * return a new Complex object whose value is (this - b)
+     * @param b
+     * @return
+     */
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     *  return a new object whose value is (this * alpha)
+     * @param alpha
+     * @return
+     */
+
+    public Complex scale(double alpha) {
+        return new Complex(alpha * re, alpha * im);
     }
 
     /**
