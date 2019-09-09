@@ -2,7 +2,7 @@
 
 The initial task includes(every point is a single commit):
 
-● Changing the color of a fractal image  √
+● Changing the color of a fractal image  С  
 
 ● Changing the equation with the same primary operations  √
 
