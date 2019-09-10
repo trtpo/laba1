@@ -108,6 +108,30 @@ public class Complex {
     }
 
     /**
+     * Sine operation
+     * @param number complex argument
+     * @return Complex sine of number
+     */
+    public static Complex sin(Complex number) {
+        double resultReal = Math.sin(number.re) * Math.cosh(number.im);
+        double resultImaginary = Math.cos(number.re) * Math.sinh(number.im);
+
+        return new Complex(resultReal, resultImaginary);
+    }
+
+    /**
+     * Cosine operation
+     * @param number complex argument
+     * @return Complex cosine of number
+     */
+    public static Complex cos(Complex number) {
+        double resultReal = Math.cos(number.re) * Math.cosh(number.im);
+        double resultImaginary = (-Math.sin(number.re)) * Math.sinh(number.im);
+
+        return new Complex(resultReal, resultImaginary);
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
