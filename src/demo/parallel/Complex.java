@@ -123,4 +123,8 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Boolean equal(Complex b) {
+        return im == b.im && re == b.re;
+    }
 }
