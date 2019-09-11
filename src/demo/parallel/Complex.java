@@ -81,6 +81,15 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex number = (Complex) o;
+        return im == number.im &&
+                re == number.re;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
