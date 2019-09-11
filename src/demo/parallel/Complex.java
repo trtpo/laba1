@@ -49,9 +49,9 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
@@ -72,6 +72,47 @@ public class Complex {
     }
 
     /**
+     * Modulus operation.
+     * @return modulus of this Complex object
+     */
+    public double abs() {
+        return Math.hypot(re, im);
+    }
+
+    /**
+     * Reciprocal operation.
+     * @return a new Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        double scale =  re * re + im * im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    /**
+     * Sine operation.
+     * @return a new Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    /**
+     * Cosine operation.
+     * @return a new Complex object whose value is the complex cosine of this
+     */
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    /**
+     * Tangent operation.
+     * @return a new Complex object whose value is the complex tangent of this
+     */
+    public Complex tan() {
+        return sin().divides(cos());
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,10 +127,20 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param b divider
+     * @return a new Complex object whose value is a / b
+     */
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
