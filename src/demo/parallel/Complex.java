@@ -44,8 +44,11 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
+
 public class Complex {
-    
+
+    public final  double arithmeticPrecision = 1e-3;
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -103,8 +106,8 @@ public class Complex {
      */
     public Complex divideBy(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * a.im) / (Math.pow(b.re,2d)+ Math.pow(b.im, 2d));
-        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re,2d)+ Math.pow(b.im, 2d));
+        double real = (a.re * b.re + a.im * b.im) / ((Math.pow(b.re,2d))+ (Math.pow(b.im, 2d)));
+        double imag = (b.re * a.im - a.re * b.im) / ((Math.pow(b.re,2d))+ (Math.pow(b.im, 2d)));
         re = real;
         im = imag;
         return this;
@@ -118,4 +121,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Complex complex = (Complex) obj;
+        return Math.abs(complex.re - re) < arithmeticPrecision &&
+                Math.abs(complex.im - im) < arithmeticPrecision;
+    }
 }
+
