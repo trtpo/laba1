@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -143,5 +143,14 @@ public class Complex {
      */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Complex complex = (Complex)obj;
+        return re == complex.re &&
+                im == complex.im;
     }
 }
