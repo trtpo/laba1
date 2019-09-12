@@ -93,4 +93,24 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Subtraction operation
+     * @param b subtrahend
+     * @return this Complex object whose walue is (this - b)
+     */
+    public Complex subtract(Complex b) {
+        re -=b.re;
+        im -=b.im;
+        return this;
+    }
+
+    /**
+     * Conjugate operation
+     * @return this Complex object whose value is new Complex(re, - im)
+     */
+    public Complex conjugate() {
+        im = -im;
+        return this;
+    }
 }
