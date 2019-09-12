@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Substract operation.
+     * @param b
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +95,8 @@ public class Complex {
         im = imag;
         return this;
     }
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
