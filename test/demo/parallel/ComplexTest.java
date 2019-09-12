@@ -14,9 +14,16 @@ public class ComplexTest {
     }
 
     @Test
+    public void divisionException() {
+        try {
+            complexTest.division(new Complex(0,0));
+        }catch (ArithmeticException e) {assertEquals("Error",e.getMessage());}
+    }
+
+    @Test
     public void division() {
-        complexTest.division(new Complex(1,-1));
-        assertEquals("Error division", -0.5,complexTest.getRe(),0.001);
-        assertEquals("Error division", 1.5,complexTest.getIm(),0.001);
+        complexTest.division(new Complex(1,0));
+        assertEquals("Error division", 1,complexTest.getRe(),0.001);
+        assertEquals("Error division", 2,complexTest.getIm(),0.001);
     }
 }

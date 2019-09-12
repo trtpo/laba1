@@ -99,8 +99,10 @@ public class Complex {
      * @param b dividend
      * @return this Complex object whose value is this / b
      */
-    public Complex division(Complex b) {
+    public Complex division(Complex b) throws ArithmeticException {
         Complex a = this;
+        if((b.re * b.re + b.im * b.im) == 0)
+            throw new ArithmeticException("Error");
         double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
         double imag = (b.re * a.im - b.im * a.re) / (b.re * b.re + b.im * b.im);
         re = real;
