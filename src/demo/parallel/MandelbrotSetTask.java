@@ -31,18 +31,20 @@
 package demo.parallel;
 
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+import java.util.logging.*;
+
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See {@link
+ /* #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
+ * double, double, double, double, double, double, double, double, boolean)
+ * constructor} for parameters list. The task returns time in milliseconds as
  * its calculated value.
  * 
  * <p><i>
@@ -55,7 +57,9 @@ import javafx.scene.paint.Color;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
-    
+
+    private static Logger log = Logger.getLogger(Exception.class.getName());
+
     /**
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
@@ -281,7 +285,12 @@ class MandelbrotSetTask extends Task<Long> {
             Complex coefficient = new Complex(0,0);
             coefficientDivision=coefficientDivision.plus(c).minus(comp);
             coefficient=coefficient.plus(new Complex(1,0)).minus(c).times(comp);
-            c=c.times(c).times(c).minus(compCube).division(coefficientDivision).plus(comp).minus(coefficient);
+            try {
+                c = c.times(c).times(c).minus(compCube).division(coefficientDivision).plus(comp).minus(coefficient);
+            }
+            catch (ArithmeticException e){
+                log.log(Level.SEVERE, "Exception: ",e);
+            }
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;

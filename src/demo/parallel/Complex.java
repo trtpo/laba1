@@ -91,8 +91,11 @@ public class Complex {
         return this;
     }
 
-    public Complex division(Complex b){
+    public Complex division(Complex b) throws ArithmeticException{
         Complex a = this;
+        if((b.re*b.re+b.im*b.im)==0){
+            throw new ArithmeticException("Incorrect division");
+        }
         double real = (a.re*b.re+a.im*b.im)/(b.re*b.re+b.im*b.im);
         double im = (a.im*b.re-a.re*b.im)/(b.re*b.re+b.im*b.im);
         this.re=real;
