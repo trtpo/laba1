@@ -30,9 +30,6 @@
  */
 package demo.parallel;
 
-
-import java.util.function.Supplier;
-
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -92,7 +89,7 @@ public class Complex {
      * @param  b  divider
      * @return this Complex object whose value is this / b
      */
-    public Complex divide(Complex b) {
+    public Complex divide(Complex b)  {
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
         double imag = (a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im);
@@ -112,6 +109,19 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Exponention operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+//    public Complex exp(int n) throws Exception{
+//        Complex b = new Complex(this.re, this.im);
+//        while(n!=1){
+//           this.times(b);
+//           n -= 1;
+//        }
+//        return this;
+//    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
