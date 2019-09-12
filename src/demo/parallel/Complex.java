@@ -86,6 +86,26 @@ public class Complex {
     }
 
     /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Cosinus operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = -Math.sin(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
