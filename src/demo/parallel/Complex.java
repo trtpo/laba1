@@ -42,18 +42,27 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +71,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +83,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -85,11 +96,37 @@ public class Complex {
         return this;
     }
 
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
+
+    // return a new Complex object whose value is the complex cosine of this
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    public Complex divides(Complex c) {
+        Complex a = this;
+        return a.times(c.reciprocal());
+    }
+
+    public Complex reciprocal() {
+        double scale = re * re + im * im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    // return a new Complex object whose value is the complex tangent of this
+    public Complex tan() {
+        return sin().divides(cos());
+    }
+
+
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
