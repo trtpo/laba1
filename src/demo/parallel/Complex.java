@@ -61,6 +61,17 @@ public class Complex {
     }
 
     /**
+     * return the real or imaginary part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -83,6 +94,21 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * return a new Complex object whose value is the conjugate of this
+     */
+    public Complex conjugate() {
+        return new Complex(re, -im);
+    }
+
+    /**
+     * return a new Complex object whose value is the reciprocal of this
+     */
+    public Complex reciprocal() {
+        double scale = re * re + im * im;
+        return new Complex(re / scale, -im / scale);
     }
 
     /**
