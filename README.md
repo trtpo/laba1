@@ -8,8 +8,8 @@ The initial task includes(every point is a single commit):
 
 ● Adding new arithmetic operations on complex numbers and use them in a new formulae  ✔
 
-● Adding JUnit tests in order to validate the results of operations 
+● Adding JUnit tests in order to validate the results of operations ✔
 
 ● Push all changes to your remote repository ✔
 
-● Make a pull-request
+● Make a pull-request ✔
