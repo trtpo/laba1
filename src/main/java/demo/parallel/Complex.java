@@ -93,6 +93,21 @@ public class Complex {
      *
      */
     public double absoluteValue() {
+        double realSquare = re * re;
+        double imaginarySquare = im * im;
+
+        // handle NaN Infinity
+        boolean anyValueIsInfinite = Double.isInfinite(re) || Double.isInfinite(im);
+        if (Double.isInfinite(realSquare) || Double.isInfinite(imaginarySquare) || anyValueIsInfinite) {
+            return Double.POSITIVE_INFINITY;
+        }
+
+        // handle NaN
+        boolean anyValueIsNan = Double.isNaN(re) || Double.isNaN(im);
+        if (Double.isNaN(realSquare) || Double.isNaN(imaginarySquare) || anyValueIsNan) {
+            return Double.NaN;
+        }
+
         return sqrt(re * re + im * im);
     }
 
@@ -102,6 +117,10 @@ public class Complex {
      * @return this Complex object whose value is (this - b)
      */
     public Complex subtract(Complex b) {
+        if (b == null) {
+            throw new ComplexNullPointerException("b is null");
+        }
+
         re -= b.re;
         im -= b.im;
         return this;
@@ -113,6 +132,10 @@ public class Complex {
      * @return Complex sine of number
      */
     public static Complex sin(Complex number) {
+        if (number == null) {
+            throw new ComplexNullPointerException("number is null");
+        }
+
         double resultReal = Math.sin(number.re) * Math.cosh(number.im);
         double resultImaginary = Math.cos(number.re) * Math.sinh(number.im);
 
@@ -125,10 +148,28 @@ public class Complex {
      * @return Complex cosine of number
      */
     public static Complex cos(Complex number) {
+        if (number == null) {
+            throw new ComplexNullPointerException("number is null");
+        }
+
         double resultReal = Math.cos(number.re) * Math.cosh(number.im);
         double resultImaginary = (-Math.sin(number.re)) * Math.sinh(number.im);
 
         return new Complex(resultReal, resultImaginary);
+    }
+
+    /**
+     * Equal comparison operation
+     * @param number other complex number
+     * @return boolean if number is equal to other complex number
+     */
+    public boolean equals(Complex number) {
+        if (number == null) {
+            return false;
+        }
+        else {
+            return re == number.re && im == number.im;
+        }
     }
 
     /**
@@ -138,5 +179,12 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+}
+
+
+class ComplexNullPointerException extends NullPointerException {
+    public ComplexNullPointerException(String message) {
+        super(message);
     }
 }
