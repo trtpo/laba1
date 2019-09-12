@@ -218,7 +218,7 @@ class MandelbrotSetTask extends Task<Long> {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    pixelWriter.setColor(x, y, Color.TRANSPARENT);
+                    pixelWriter.setColor(x, y, Color.GOLD);
                 }
             }
         }
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return new Color(0.7,0.2,0.2,0.7);
         }
         return colors[count];
     }
@@ -351,13 +351,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
+            Color.rgb(40, 30, 20),
+            Color.ROSYBROWN,
+            Color.GREEN,
             Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(60, 70, 80),
+            Color.PURPLE,
+            Color.rgb(20, 10, 40)
         };
         
         /**
