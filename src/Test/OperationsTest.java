@@ -23,7 +23,7 @@ public class OperationsTest {
     }
     @Test
     public void testSubtract() throws Exception{
-        a.subtract(b);
+        a.minus(b);
         assertEquals(4, a.getRe(), 0.01, "Subtract operation isn't correct");
         assertEquals(8, a.getIm(), 0.01, "Subtract operation isn't correct");
     }
