@@ -3,53 +3,82 @@ package demo.parallel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ComplexTest {
 
+    private List<Double> listReal1 = Arrays.asList(4.0, 0.0, 7.0, 2.0, 2.56, 0.0);
+    private List<Double> listImag1 = Arrays.asList(2.0, 2.56, 0.0, 4.0, 0.0, 7.0);
+
+    private List<Double> listReal2 = Arrays.asList(0.0, 3.0, 6.0, 2.0, 0.0, 1.1);
+    private List<Double> listImag2 = Arrays.asList(2.0, 0.0, 1.1, 0.0, 3.0, 6.0);
+
+    private Complex a;
+    private Complex b;
+
+    private Iterator<Double> itReal1 = listReal1.iterator();
+    private Iterator<Double> itImag1 = listImag1.iterator();
+    private Iterator<Double> itReal2 = listReal2.iterator();
+    private Iterator<Double> itImag2 = listImag2.iterator();
+
     @Test
     public void division() {
-        Complex a = new Complex(5, 4);
-        Complex b = new Complex(5, 4);
-
-        Complex expected = a.division(b);
-
-        Complex rightResult = new Complex(1 ,0);
-        assertEquals(rightResult, expected);
+        while(itReal1.hasNext() && itImag1.hasNext() && itReal2.hasNext() && itImag2.hasNext())
+        {
+            a = new Complex(itReal1.next(),itImag1.next());
+            b = new Complex(itReal2.next(),itImag2.next());
+            Complex expected = a.division(b);
+            Complex actual = new Complex((a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+                    (a.re * b.im - a.im * b.re) / (b.re * b.re + b.im * b.im));
+            assertEquals(actual,expected);
+        }
     }
-
     @Test
     public void sin() {
-        Complex a = new Complex(5, 4);
-        Complex expected = a.sin();
-        Complex rightResult = new Complex(-26.18652736460921, 7.741117553247739);
-        assertEquals(rightResult, expected);
+        while(itReal1.hasNext() && itImag1.hasNext())
+        {
+            a = new Complex(itReal1.next(),itImag1.next());
+            Complex expected = a.sin();
+            Complex actual = new Complex(Math.sin(a.re) * Math.cosh(a.im), Math.cos(a.re) * Math.sinh(a.im));
+            assertEquals(actual,expected);
+        }
     }
 
     @Test
     public void cos() {
-        Complex a = new Complex(5, 4);
-        Complex expected = a.cos();
-
-        Complex rightResult = new Complex(7.7463130074030735 , 26.168964053872834);
-        assertEquals(rightResult, expected);
+        while(itReal1.hasNext() && itImag1.hasNext())
+        {
+            a = new Complex(itReal1.next(),itImag1.next());
+            Complex expected = a.cos();
+            Complex actual = new Complex(Math.cos(a.re) * Math.cosh(a.im), -(Math.sin(a.re) * Math.sinh(a.im)));
+            assertEquals(actual,expected);
+        }
     }
 
     @Test
     public void tg() {
-        Complex a = new Complex(5, 4);
-        Complex expected = a.tg();
-
-        Complex rightResult = new Complex(-3.6520305451135537E-4 , -1.0005630461157935);
-        assertEquals(rightResult, expected);
+        while(itReal1.hasNext() && itImag1.hasNext())
+        {
+            a = new Complex(itReal1.next(),itImag1.next());
+            Complex expected = a.tg();
+            Complex actual = a.sin().division(a.cos());
+            assertEquals(actual,expected);
+        }
     }
 
     @Test
     public void ctg() {
-        Complex a = new Complex(5, 4);
-        Complex expected = a.ctg();
-
-        Complex rightResult = new Complex(-3.647921006604113E-4 , 0.9994371375785175);
-        assertEquals(rightResult, expected);
+        while(itReal1.hasNext() && itImag1.hasNext())
+        {
+            a = new Complex(itReal1.next(),itImag1.next());
+            Complex expected = a.ctg();
+            Complex actual = a.cos().division(a.sin());
+            assertEquals(actual,expected);
+        }
     }
 }
