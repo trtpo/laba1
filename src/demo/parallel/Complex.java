@@ -47,8 +47,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+     public double re;   // the real part
+    public double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -60,6 +60,12 @@ public class Complex {
         re = real;
         im = imag;
     }
+
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
 
     /**
      * Add operation.
@@ -81,13 +87,18 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re - a.im * b.im) ;
-        double imag = (a.re * b.im + a.im * b.re) ;
+        double real = a.re * b.re - a.im * b.im ;
+        double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
         return this;
     }
 
+   /* public static Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+*/
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
