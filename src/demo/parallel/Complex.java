@@ -92,8 +92,8 @@ public class Complex {
      */
     public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
-        double imag = (a.re * b.re - a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double real = (a.re * b.re + a.im * b.im) / (Math.pow(b.re,2d)+ Math.pow(b.im, 2d));
+        double imag = (b.re * a.im - a.re * b.im) / (Math.pow(b.re,2d)+ Math.pow(b.im, 2d));
         re = real;
         im = imag;
         return this;
@@ -110,6 +110,19 @@ public class Complex {
         return this;
     }
 
+    /**
+     * @return  double value that represents Im part of complex number
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * @return  double value that represents Re part of complex number
+     */
+    public double getRe() {
+        return re;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
