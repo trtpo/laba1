@@ -72,23 +72,12 @@ public class Complex {
     }
 
     public Complex divide(Complex b) {
-        if(b.re==0 && b.im==0)
-        {
-            throw new ArithmeticException("Error! Delenie na 0");
-        }
-        if((b.re*b.re+b.im*b.im)!=0)
-        {
             Complex a=this;
             double real=(a.re*b.re+a.im*b.im)/(b.re*b.re+b.im*b.im);
             double imag=(b.re*a.im-a.re*b.im)/(b.re*b.re+b.im*b.im);
             a.re=real;
             a.im=imag;
-        }
-        else
-        {
-            throw new ArithmeticException("Error! Delenie na 0");
-        }
-        return this;
+            return this;
     }
 
     /**
@@ -112,5 +101,17 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImg() {
+        return im;
+    }
+
+    public void pr(){    // Вывод на экран
+        System.out.println(re + (im < 0.0 ? "" : "+") + im + "i");
     }
 }
