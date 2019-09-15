@@ -329,7 +329,7 @@ public class Main extends Application {
 
         /**
          * When user triggered scroll event, we zoom in/out windows by given
-         * direction. Here scroll down means zoom out, scroll up means zoom in
+             * direction. Here scroll down means zoom out, scroll up means zoom in
          */
         canvas.setOnScroll(t -> {
             if (disable.get()) {
