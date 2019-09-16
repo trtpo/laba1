@@ -100,6 +100,15 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
