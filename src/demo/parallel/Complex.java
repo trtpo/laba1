@@ -71,6 +71,21 @@ public class Complex {
         return this;
     }
 
+
+    public Complex div(Complex b) {
+        if ((b.re*b.re+b.im*b.im) != 0) {
+            re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+            im = (im * b.re + re * b.im) / (b.re * b.re + b.im * b.im);
+            return this;
+        }
+        else return this;
+    }
+
+    public Complex sin() {
+        re = Math.sin(re) * Math.cosh(im);
+        im = Math.cos(re) * Math.sinh(im);
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
