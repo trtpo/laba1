@@ -30,7 +30,6 @@
  */
 package demo.parallel;
 
-
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 import javafx.concurrent.Task;

@@ -82,8 +82,10 @@ public class Complex {
     }
 
     public Complex sin() {
-        re = Math.sin(re) * Math.cosh(im);
-        im = Math.cos(re) * Math.sinh(im);
+        double real = re;
+        double imag = im;
+        re = Math.sin(real) * Math.cosh(imag);
+        im = Math.cos(real) * Math.sinh(imag);
         return this;
     }
     /**
@@ -100,6 +102,11 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
