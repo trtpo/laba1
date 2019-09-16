@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 import static java.lang.Math.pow;
 
 /**
@@ -125,20 +127,21 @@ public class Complex {
      */
     public Complex sin()
     {
-        re=Math.sin(re)*Math.cosh(im);
-        im=Math.cos(re)*Math.sinh(im);
-        return this;
+
+       double real=Math.sin(re)*Math.cosh(im);
+       double  imag=Math.cos(re)*Math.sinh(im);
+        return new Complex(real,imag);
     }
 
     /**
      * Cosine operation.
-     * @return this Complex object whose value is sin(this)
+     * @return this Complex object whose value is cos(this)
      */
     public Complex cos()
     {
-        re=Math.cos(re)*Math.cosh(im);
-        im=-Math.sin(re)*Math.sinh(im);
-        return this;
+        double real=Math.cos(re)*Math.cosh(im);
+        double imag=-Math.sin(re)*Math.sinh(im);
+        return new Complex(real,imag);
     }
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -147,5 +150,35 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(re, im);
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
     }
 }
