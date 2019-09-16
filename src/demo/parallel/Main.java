@@ -84,7 +84,7 @@ public class Main extends Application {
      * Current position in fractal
      */
     private Position position;
-    
+
     /**
      * Position that shows the whole fractal
      */
