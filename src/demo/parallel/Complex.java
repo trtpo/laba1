@@ -61,22 +61,6 @@ public class Complex {
     }
 
     /**
-     * @return real part
-     */
-
-    double getRe(){
-        return this.re;
-    }
-
-    /**
-     * @return image part
-     */
-
-    double getIm(){
-        return this.im;
-    }
-
-    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -84,27 +68,6 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
-        return this;
-    }
-
-    /**
-     * Sub operation.
-     * @param b Subtract
-     * @return this Complex object whose value is (this - b)
-     */
-    public Complex minus(Complex b) {
-        re -= b.re;
-        im -= b.im;
-        return this;
-    }
-    /**
-     * Tangent operation.
-     * @param b Subtract
-     * @return this Complex object whose value is Tangent(this)
-     */
-    public Complex Tangent(Complex b) {
-        re = Math.sin(b.re)*Math.sinh(b.im)/Math.cos(b.re);
-        im = Math.cos(b.re)*Math.cosh(b.im)/Math.cos(b.re);
         return this;
     }
 
