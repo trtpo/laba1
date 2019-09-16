@@ -92,7 +92,9 @@ public class Complex {
         return this;
     }
 
-
+    public void pr(){ // Вывод на экран
+        System.out.println(re + (im < 0.0 ? "" : "+") + im + "i");
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
