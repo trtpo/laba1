@@ -31,6 +31,7 @@
 package demo.parallel;
 
 
+import java.awt.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 import javafx.concurrent.Task;
@@ -218,7 +219,7 @@ class MandelbrotSetTask extends Task<Long> {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    pixelWriter.setColor(x, y, Color.TRANSPARENT);
+                    pixelWriter.setColor(x, y, Color.cyan);
                 }
             }
         }
@@ -335,7 +336,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.MAGENTA;
         }
         return colors[count];
     }
@@ -351,13 +352,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
+            Color.rgb(40, 40, 40),
+            Color.LIGHT_GRAY,
+            Color.CYAN,
+            Color.BLACK,
+            Color.rgb(50, 10, 80),
             Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(10, 20, 30)
         };
         
         /**
