@@ -93,4 +93,67 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Substraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex division(Complex b) {
+        Complex a = this;
+        double divider = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (-a.re * b.im + a.im * b.re) / divider;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Complex sine operation.
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sine(){
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Complex cosine operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cosine(){
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = -Math.sin(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Real part operation.
+     * @return Real part of complex number whose value is this.re
+     */
+    public double Re() {
+        return re;
+    }
+
+    /**
+     * Image part operation.
+     * @return Image part of complex number whose value is this.im
+     */
+    public double Im() {
+        return im;
+    }
+
 }
