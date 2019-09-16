@@ -89,9 +89,13 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex divide(Complex b) {
-        re = ((re * b.re)+(im * b.im))/(b.re * b.re + b.im * b.im);
-        im = ((b.re* im) - (re * b.im))/(b.re * b.re + b.im * b.im);
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
         return this;
+
     }
 
     /**
@@ -115,5 +119,25 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+
+    /**
+     *
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(re, im);
     }
 }
