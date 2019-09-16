@@ -59,6 +59,27 @@ public class Complex {
         re = real;
         im = imag;
     }
+    /**
+     * Real part
+     *
+     * @param
+     * @return real part of complex number
+     * */
+
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Real part
+     *
+     * @param
+     * @return real part of complex number
+     * */
+
+    public double getImage() {
+        return im;
+    }
 
     /**
      * Add operation.
@@ -80,6 +101,40 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Cosine operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = -Math.sin(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Division operation.
+     * @param  b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
