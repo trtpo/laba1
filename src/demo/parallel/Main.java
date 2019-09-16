@@ -77,6 +77,7 @@ import javafx.scene.control.ProgressIndicator;
  * this sample code.</i>
  * 
  * @author Alexander Kouznetsov, Tristan Yan
+ * ofigo;skdfgsdkfgposkdfpogs
  */
 public class Main extends Application {
 
