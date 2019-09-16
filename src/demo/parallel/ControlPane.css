@@ -60,7 +60,7 @@
 }
 
 #open-close-toggle-button {
-    -fx-background-color: gray;
+    -fx-background-color: red;
     -fx-background-radius: 0;
     -fx-content-display: graphic-only;
     -fx-shape: "M 0,0 H 40 v 1 h -40 Z M 0,3 H 40 v 1 h -40 Z M 0,6 H40 v 1 h -40 Z";
@@ -75,10 +75,10 @@
 }
 
 .time .bar {
-    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 30%, yellow 60%, red);
+    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 10%, yellow 80%, red);
     -fx-background-radius: 0;
 }
 
 .time .track {
-    -fx-background-color: black;
+    -fx-background-color: purple;
 }
