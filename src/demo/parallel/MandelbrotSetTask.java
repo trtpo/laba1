@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2013, 2014, Oracle and/or its affiliates. All rights reserved.
  *
@@ -34,6 +33,7 @@ package demo.parallel;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
@@ -43,7 +43,7 @@ import javafx.scene.paint.Color;
  * Task to render Mandelbrot set using given parameters. See {@link
  * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
  * double, double, double, double, double, double, double, double, boolean)
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * constructor} for parameters list. The task returns time in milliseconds as
  * its calculated value.
  *
  * <p><i>
@@ -65,13 +65,13 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
-     * disk of radius 2 around the origin plus some area around, so 
+     * disk of radius 2 around the origin plus some area around, so
      * LENGTH_BOUNDARY is 6.
      */
     private static final double LENGTH_BOUNDARY = 6d;
 
     /**
-     * For antialiasing we break each pixel into 3x3 grid and interpolate 
+     * For antialiasing we break each pixel into 3x3 grid and interpolate
      * between values calculated on those grid positions
      */
     private static final int ANTIALIASING_BASE = 3;
@@ -133,19 +133,20 @@ class MandelbrotSetTask extends Task<Long> {
      * PixelWriter with given dimensions of the image, given real and imaginary
      * values range and given rectangular area to skip. Also there is a switch
      * that disables more computational-extensive antialiasing mode.
-     * @param parallel parallel vs. sequential switch
+     *
+     * @param parallel    parallel vs. sequential switch
      * @param pixelWriter target to write pixels to
-     * @param width width of the image area
-     * @param height height of the image area
-     * @param minR min real value of the area
-     * @param minI min imaginary value of the area
-     * @param maxR max real value of the area
-     * @param maxI max imaginary value of the area
-     * @param minX min x value of the rectangular area to skip
-     * @param minY min y value of the rectangular area to skip
-     * @param maxX max x value of the rectangular area to skip
-     * @param maxY max y value of the rectangular area to skip
-     * @param fast fast mode disables antialiasing
+     * @param width       width of the image area
+     * @param height      height of the image area
+     * @param minR        min real value of the area
+     * @param minI        min imaginary value of the area
+     * @param maxR        max real value of the area
+     * @param maxI        max imaginary value of the area
+     * @param minX        min x value of the rectangular area to skip
+     * @param minY        min y value of the rectangular area to skip
+     * @param maxX        max x value of the rectangular area to skip
+     * @param maxY        max y value of the rectangular area to skip
+     * @param fast        fast mode disables antialiasing
      */
     public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
         this.parallel = parallel;
@@ -165,7 +166,6 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     *
      * @return whether new pixels were written to the image
      */
     public boolean hasUpdates() {
@@ -196,8 +196,9 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * Returns current task execution time while task is running and total 
+     * Returns current task execution time while task is running and total
      * task time when task is finished
+     *
      * @return task time in milliseconds
      */
     public long getTime() {
@@ -215,8 +216,8 @@ class MandelbrotSetTask extends Task<Long> {
      */
     @Override
     protected Long call() throws Exception {
-        synchronized(pixelWriter) {
-            // Prepares an image 
+        synchronized (pixelWriter) {
+            // Prepares an image
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     pixelWriter.setColor(x, y, Color.GOLD);
@@ -251,7 +252,7 @@ class MandelbrotSetTask extends Task<Long> {
                 if (isCancelled()) {
                     return;
                 }
-                synchronized(pixelWriter) {
+                synchronized (pixelWriter) {
                     pixelWriter.setColor(x, y, c);
                 }
                 hasUpdates = true;
@@ -265,8 +266,8 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     *
-     * This number is used to choose a color for this pixel for precalculated 
+     * <p>
+     * This number is used to choose a color for this pixel for precalculated
      * color tables.
      *
      * @param comp a complex number used for calculation
@@ -276,15 +277,16 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).subtract(comp.conjugate());
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
 
     /**
-     * Calculates a color of a given pixel on the image using 
+     * Calculates a color of a given pixel on the image using
      * {@link #calc(demo.parallel.Complex) } method.
+     *
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -300,6 +302,7 @@ class MandelbrotSetTask extends Task<Long> {
      * Calculates antialised color of a given pixel on the image by dividing
      * real and imaginary value ranges of a pixel by {@link #ANTIALIASING_BASE}
      * and doing interpolation between calculated values
+     *
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -321,6 +324,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Clamps the value in 0..1 interval
+     *
      * @param val value to clamp
      * @return value in 0..1 interval
      */
@@ -330,13 +334,14 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Returns a color for a given iteration count.
-     * @param count number of iterations return by 
-     * {@link #calc(demo.parallel.Complex)} method
+     *
+     * @param count number of iterations return by
+     *              {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return new Color(0.7,0.2,0.2,0.7);
+            return new Color(0.7, 0.2, 0.2, 0.7);
         }
         return colors[count];
     }
