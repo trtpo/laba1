@@ -101,7 +101,7 @@ public class Complex {
         im = Math.cos(real) * Math.sinh(imag);
         return this;
     }
-    
+
     public Complex cos() {
         double real = re;
         double imag = im;
@@ -116,5 +116,10 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
+    }
 
 }
