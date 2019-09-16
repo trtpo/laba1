@@ -72,10 +72,32 @@ public class Complex {
     }
 
     /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * Subtraction operation
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
      */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Sinus operation.
+     */
+    public Complex sin() {
+        double real = re;
+        double imag = im;
+        re = Math.sin(real) * Math.cosh(imag);
+        im = Math.cos(real) * Math.sinh(imag);
+        return this;
+    }
+
+        /**
+         * Multiply operation.
+         * @param  b multiplier
+         * @return this Complex object whose value is this * b
+         */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
