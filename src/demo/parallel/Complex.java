@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
-
+import java.util.Objects;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -60,6 +60,15 @@ public class Complex {
         im = imag;
     }
 
+    //Just returns re
+    double getRe(){
+        return this.re;
+    }
+
+    //Just returns im
+    double getIm(){
+        return this.im;
+    }
     /**
      * Add operation.
      * @param b summand
