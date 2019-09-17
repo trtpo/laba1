@@ -112,6 +112,14 @@ public class Complex {
         return Objects.hash(re, im);
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     /**
      * Divide operation.
      * @param  b divider

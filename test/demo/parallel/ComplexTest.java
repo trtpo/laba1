@@ -14,14 +14,16 @@ class ComplexTest {
     @ArgumentsSource(ComplexForMinusArgumentsProvider.class)
     void minusTest(Complex a, Complex b, Complex expectedResult) {
         Complex actualResult = a.minus(b);
-        assertEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, actualResult,
+                "Expected result = " + expectedResult.getRe() + " + " + expectedResult.getIm() +
+                "i, Actual result = "+ actualResult.getRe() + " + " + actualResult.getIm() + "i");
     }
 
     static public class ComplexForMinusArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
-                    Arguments.of(new Complex(2, -1), new Complex(1, 1),
+                    Arguments.of(new Complex(-2, -1), new Complex(1, 1),
                             new Complex(1, -2)),
                     Arguments.of(new Complex(1, 2), new Complex(3, 4),
                             new Complex(-2, -2)),
@@ -35,7 +37,9 @@ class ComplexTest {
     @ArgumentsSource(ComplexForDivideArgumentsProvider.class)
     void divideTest(Complex a, Complex b, Complex expectedResult) {
         Complex actualResult = a.divide(b);
-        assertEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, actualResult,
+                "Expected result = " + expectedResult.getRe() + " + " + expectedResult.getIm() +
+                        "i, Actual result = "+ actualResult.getRe() + " + " + actualResult.getIm() + "i");
     }
 
     static public class ComplexForDivideArgumentsProvider implements ArgumentsProvider {
