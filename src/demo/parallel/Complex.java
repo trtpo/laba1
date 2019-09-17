@@ -140,4 +140,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Equal operation.
+     *
+     * @param b second comparable
+     * @return result of comparisons of two complex number objects
+     */
+    public boolean equals(Complex b) {
+        Complex a = this;
+        return a.getRe() == b.getRe() && a.getIm() == b.getIm();
+    }
 }
