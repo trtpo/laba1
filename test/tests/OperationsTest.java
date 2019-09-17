@@ -1,4 +1,4 @@
-package Test;
+package tests;
 
 import demo.parallel.Complex;
 import org.junit.jupiter.api.BeforeEach;
