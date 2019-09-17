@@ -83,6 +83,30 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+
+    } /**
+     * Substract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex devide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / b.lengthSQ();
+        double imag = (a.im * b.re - b.im * a.re) / b.lengthSQ();
+        re = real;
+        im = imag;
+        return this;
     }
 
     /**
