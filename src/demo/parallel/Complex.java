@@ -107,9 +107,7 @@ public class Complex {
         double imag = b.re * a.im - b.im * a.re;
         double coef = a.re * a.re + b.im * b.im;
         re = real / coef;
-        re += real % coef;
         im = imag / coef;
-        im += imag % coef;
         return this;
     }
 
@@ -121,4 +119,14 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
+    public double getRe(){
+        return this.re;
+    }
+
+    public double getIm(){
+        return this.im;
+    }
+
 }

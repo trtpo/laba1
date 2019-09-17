@@ -276,6 +276,7 @@ class MandelbrotSetTask extends Task<Long> {
         Complex c = new Complex(0, 0);
         do {
             c = c.times(c.times(c.times(c))).subtract(comp);
+            //c = c.times(c.times(c.times(c))).subtract(comp).plus(c.times(c).divide(comp)); //butterfly
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
