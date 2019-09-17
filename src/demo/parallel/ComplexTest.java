@@ -55,4 +55,40 @@ public class ComplexTest {
         );
     }
 
+    @Test
+    public void getImTestZero() {
+
+        Complex a = new Complex(0,0);
+
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                a.getIm(),
+                equalTo(0.0)
+        );
+    }
+
+    @Test
+    public void getImPositive() {
+
+        Complex b = new Complex(10, 10);
+
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                b.getIm(),
+                equalTo(10.0)
+        );
+    }
+
+    @Test
+    public void getImNegative() {
+
+        Complex c = new Complex(10, -10);
+
+        collector.checkThat(
+                "Getting imaginary part operation test. Wrong result.",
+                c.getIm(),
+                equalTo(-10.0)
+        );
+    }
+
 }
