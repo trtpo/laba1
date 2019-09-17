@@ -40,7 +40,8 @@ import javafx.scene.paint.Color;
 
 /**
  * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
+ * #
+ * MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
@@ -281,11 +282,11 @@ class MandelbrotSetTask extends Task<Long> {
             c = c.subtract(newC);
 
             if (c.absoluteValue() < 5) {
-                c = c.times(Complex.sin(c));
+                c = c.times(c.sin());
             }
 
             if (c.absoluteValue() < 10) {
-                c = c.times(Complex.cos(c));
+                c = c.times(c.cos());
             }
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);

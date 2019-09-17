@@ -62,6 +62,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getReal() {
+        return re;
+    }
+
+    public double getImage() {
+        return im;
+    }
+
     /**
      * Subtract operation
      * @param b complex number to subtract
@@ -87,35 +95,23 @@ public class Complex {
     }
 
     /**
-     * Sine operation
-     * @param number complex argument
-     * @return Complex sine of number
+     * Sin() operation.
+     * @return new complex sinus value
      */
-    public static Complex sin(Complex number) {
-        if (number == null) {
-            throw new ComplexNullPointerException("number is null");
-        }
-
-        double real = Math.sin(number.re) * Math.cosh(number.im);
-        double image = Math.cos(number.re) * Math.sinh(number.im);
-
-        return new Complex(real, image);
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, imag);
     }
 
     /**
-     * Cosine operation
-     * @param number complex argument
-     * @return Complex cosine of number
+     * Cos() operation.
+     * @return new complex cosinus value
      */
-    public static Complex cos(Complex number) {
-        if (number == null) {
-            throw new ComplexNullPointerException("number is null");
-        }
-
-        double real = Math.cos(number.re) * Math.cosh(number.im);
-        double image = (-Math.sin(number.re)) * Math.sinh(number.im);
-
-        return new Complex(real, image);
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = Math.sin(re) * Math.sinh(im);
+        return new Complex(real, -image);
     }
 
     /**
