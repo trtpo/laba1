@@ -76,10 +76,6 @@ public class Complex {
      * @return this Complex object whose value is (this - b)
      */
     public Complex subtract(Complex b) {
-        if (b == null) {
-            throw new ComplexNullPointerException("b is null");
-        }
-
         re -= b.re;
         im -= b.im;
         return this;
@@ -100,8 +96,8 @@ public class Complex {
      */
     public Complex sin() {
         double real = Math.sin(re) * Math.cosh(im);
-        double imag = Math.cos(re) * Math.sinh(im);
-        return new Complex(real, imag);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
     }
 
     /**
@@ -146,11 +142,5 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
-    }
-}
-
-class ComplexNullPointerException extends NullPointerException {
-    public ComplexNullPointerException(String message) {
-        super(message);
     }
 }
