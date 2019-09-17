@@ -84,6 +84,22 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex minus(Complex b){
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+    public Complex devide(Complex b){
+        Complex a =this;
+        double imag = (a.re*b.re + a.im*b.im) / (b.re*b.re +b.im * b.im);
+        double real = (b.re*a.im - a.re*b.im)/ (b.re*b.re+b.im *b.im);
+        re=real;
+        im = imag;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
