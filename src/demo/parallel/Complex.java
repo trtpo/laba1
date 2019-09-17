@@ -72,9 +72,9 @@ public class Complex {
     }
 
     /**
-     * Sub operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
      */
 
     public Complex minus(Complex b) {
@@ -84,9 +84,9 @@ public class Complex {
     }
 
     /**
-     * Divide operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
+     * Division operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
      */
     public Complex divide(Complex b) {
         Complex a = this;
