@@ -91,4 +91,29 @@ public class ComplexTest {
         );
     }
 
+    @Test
+    public void divideTest() {
+
+        Complex a = new Complex(12, -3);
+        Complex b = new Complex(3, 3);
+
+        a.divide(b);
+
+        collector.checkThat(
+                "Division operation test. Wrong real part result.",
+                a.getRe() != 1.5 && a.getIm() == -2.5,
+                equalTo(false)
+        );
+        collector.checkThat(
+                "Division operation test. Wrong imaginary part result.",
+                a.getRe() == 1.5 && a.getIm() != -2.5,
+                equalTo(false)
+        );
+        collector.checkThat(
+                "Division operation test. Wrong real and imaginary part result.",
+                a.getRe() != 1.5 && a.getIm() != -2.5,
+                equalTo(false)
+        );
+    }
+
 }
