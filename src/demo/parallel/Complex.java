@@ -124,6 +124,15 @@ public class Complex {
     }
 
     /**
+     * Image part operation.
+     *
+     * @return Image part of complex number object whose value is this.im
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
