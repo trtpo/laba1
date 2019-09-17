@@ -21,8 +21,10 @@ class ComplexTest {
         Complex a = new Complex(7, -4);
         Complex b = new Complex(3, 2);
         Complex c = new Complex(2, -1);
+        Complex d = new Complex(0,0);
 
         assertEquals(new Complex(1, -2),a.divide(b));
         assertEquals(new Complex(0.8, 1.4),b.divide(c));
+//        assertEquals(new Complex(1,10), a.divide(d));
     }
 }
