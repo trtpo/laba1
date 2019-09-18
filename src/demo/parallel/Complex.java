@@ -70,6 +70,12 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -93,4 +99,12 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    
+    /**
+     * Cosinus operation.
+     * @return Complex object whose value is cos(this)
+     */
+     public Complex cos() {
+         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+     }
 }
