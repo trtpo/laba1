@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +62,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +74,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -87,9 +89,10 @@ public class Complex {
 
     /**
      * Division operation
+     *
      * @param b value of the object Complex
      * @return this Complex object whose value is this / b
-     * */
+     */
     public Complex division(Complex b) {
         this.re = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
         this.im = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
@@ -98,9 +101,10 @@ public class Complex {
 
     /**
      * Subtraction operation
+     *
      * @param b value of the object Complex
      * @return this Complex object whose value is this - b
-     * */
+     */
     public Complex subtraction(Complex b) {
         this.re -= b.re;
         this.im -= b.im;
@@ -108,11 +112,77 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object object) {
+        final boolean result;
+        final Complex complex = (Complex) object;
+        if (object != null) {
+            if (this == object) {
+                result = true;
+            } else if (getClass() != object.getClass()) {
+                result = false;
+            } else {
+                result = (this.im == complex.im && this.re == complex.re);
+            }
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return (int) (this.re * this.im);
+    }
+
+    /**
+     * This method return value of the imag.
+     *
+     * @return value of the imag
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * This method set new value of the imag.
+     *
+     * @param newIm new value of the newIm
+     */
+    public void setIm(final double newIm) {
+        this.im = newIm;
+    }
+
+    /**
+     * This method return value of the real.
+     *
+     * @return value of the real part
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * This method set new value of the real part.
+     *
+     * @param newRe new value of the real part
+     */
+    public void setRe(final double newRe) {
+        this.re = newRe;
     }
 }
