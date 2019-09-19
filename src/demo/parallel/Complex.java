@@ -105,8 +105,16 @@ public class Complex {
     }
 
     public Complex sin() {
-        re = Math.sin(re) * Math.cosh(im);
+    	double real = re;
+    	double imag = im;
         im = Math.cos(re) * Math.sinh(im);
+        re = Math.sin(real) * Math.cosh(imag);
         return this;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Complex b = (Complex) obj;
+        return (this.re == b.re) && (this.im == b.im);
     }
 }
