@@ -29,6 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
+import java.math.*;
 
 
 /**
@@ -96,8 +97,33 @@ public class Complex {
         return this;
     }
 
-
-
+    /**
+     * Divide operation.
+     * @param  b
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double x = a.re * b.re + a.im * b.im;
+        double y = b.re * a.im - a.re * b.im;
+        double z = b.re * b.re + b.im * b.im;
+        double real = x/z;
+        double imag = y/z;
+        re = real;
+        im = imag;
+        return this;
+    }
+    /**
+     * Sin operation.
+     * param  nothing
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sinComp() {
+        Complex a = this;
+        re = Math.sin(a.re)*Math.cosh(a.im);
+        im = Math.cos(a.re)*Math.sinh(a.im);
+        return this;
+}
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
