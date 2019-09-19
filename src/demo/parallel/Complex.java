@@ -93,4 +93,20 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    
+	
+    public Complex div(Complex x) {
+        if ((x.re*x.re+x.im*x.im) != 0) {
+            re = (re * x.re + im * x.im) / (x.re * x.re + x.im * x.im);
+            im = (im * x.re + re * x.im) / (x.re * x.re + x.im * x.im);
+            return this;
+        }
+        else return this;
+    }
+
+    public Complex sin() {
+        re = Math.sin(re) * Math.cosh(im);
+        im = Math.cos(re) * Math.sinh(im);
+        return this;
+    }
 }
