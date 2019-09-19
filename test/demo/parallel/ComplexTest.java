@@ -13,7 +13,7 @@ public class ComplexTest {
 
         Complex expected = a.minus(b);
 
-        Complex rightResult = new Complex(1 ,1);
+        Complex rightResult = new Complex(1, 1);
         assertEquals(rightResult, expected);
     }
 
@@ -24,7 +24,7 @@ public class ComplexTest {
 
         Complex expected = a.divide(b);
 
-        Complex rightResult = new Complex(1 ,0);
+        Complex rightResult = new Complex(1, 0);
         assertEquals(rightResult, expected);
     }
 
@@ -41,7 +41,7 @@ public class ComplexTest {
         Complex a = new Complex(5, 4);
         Complex expected = a.cos();
 
-        Complex rightResult = new Complex(7.7463130074030735 , 26.168964053872834);
+        Complex rightResult = new Complex(7.7463130074030735, 26.168964053872834);
         assertEquals(rightResult, expected);
     }
 }
