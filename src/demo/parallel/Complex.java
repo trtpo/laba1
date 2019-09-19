@@ -59,6 +59,21 @@ public class Complex {
         re = real;
         im = imag;
     }
+    /**
+     * @return real part
+     */
+
+    public double getRe(){
+        return this.re;
+    }
+
+    /**
+     * @return image part
+     **/
+
+    public double getIm(){
+        return this.im;
+    }
 
     /**
      * Add operation.
@@ -100,6 +115,12 @@ public class Complex {
         return this;
     }
 
+
+    public Complex Tangent(Complex b) {
+        re = Math.sin(b.re) * Math.sinh(b.im) / Math.cos(b.re);
+        im = Math.cos(b.re) * Math.cosh(b.im) / Math.cos(b.re);
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
