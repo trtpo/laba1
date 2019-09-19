@@ -218,7 +218,7 @@ class MandelbrotSetTask extends Task<Long> {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    pixelWriter.setColor(x, y, Color.TRANSPARENT);
+                    pixelWriter.setColor(x, y, Color.DARKCYAN);
                 }
             }
         }
@@ -352,9 +352,9 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
+            Color.GHOSTWHITE,
+            Color.LIGHTGRAY,
+            Color.LIGHTGREEN,
             Color.rgb(100, 0, 0),
             Color.RED,
             Color.rgb(50, 0, 0)

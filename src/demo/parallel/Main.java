@@ -230,15 +230,19 @@ public class Main extends Application {
 
         Button loc0Button = new Button("0");
         loc0Button.setOnAction(t -> flyToPosition(0));
+        loc0Button.setStyle("-fx-background-color: white");
 
         Button loc1Button = new Button("1");
         loc1Button.setOnAction(t -> flyToPosition(1));
+        loc1Button.setStyle("-fx-background-color: yellow");
 
         Button loc2Button = new Button("2");
         loc2Button.setOnAction(t -> flyToPosition(2));
+        loc2Button.setStyle("-fx-background-color: orange");
 
         Button loc3Button = new Button("3");
         loc3Button.setOnAction(t -> flyToPosition(3));
+        loc3Button.setStyle("-fx-background-color: red");
 
         Button compareButton = new Button("Compare");
         compareButton.setId("compare-button");
