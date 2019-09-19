@@ -26,5 +26,15 @@ public class ComplexTest extends Assert {
         Complex comp = new Complex(5, -7);
         assertTrue(new Complex((0.8), (-2.6)).equal(comp.div(new Complex(3, 1))));
     }
+    @org.junit.Test
+    public void DivisionByZero(){
+        try {
+            Complex comp = new Complex(5, -7);
+            assertTrue(new Complex((0.8), (-2.6)).equal(comp.div(new Complex(0, 0))));
+        }catch (ArithmeticException e) {
+            assertEquals(e.getMessage(), "Error");
+        }
+
+    }
 
 }

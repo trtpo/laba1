@@ -93,7 +93,7 @@ public class Complex {
         Complex a = this;
         double div = b.lengthSQ();
         if (div == 0.0){
-            throw new ArithmeticException();
+            throw new ArithmeticException("Error");
         }
         double real = (a.re * b.re + a.im * b.im)/div;
         double imag = -(a.re * b.im - a.im * b.re)/div;
