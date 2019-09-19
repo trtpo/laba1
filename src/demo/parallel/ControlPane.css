@@ -37,14 +37,14 @@
     -fx-hgap: 1em;
     -fx-vgap: 0.2em;
     -fx-alignment: center;
-    -fx-background-color: black;
+    -fx-background-color: orange;
     -fx-background-radius: 0 0 2.5em 2.5em;
     -fx-padding: 0.5em 0.7em 0.5em 0.7em;
     -fx-opacity: 0.9;
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: blue;
 }
 
 .progress-indicator .percentage {
@@ -75,7 +75,7 @@
 }
 
 .time .bar {
-    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 30%, yellow 60%, red);
+    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, pink 40%, blueviolet 60%, blue);
     -fx-background-radius: 0;
 }
 
