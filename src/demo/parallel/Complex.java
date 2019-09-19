@@ -92,6 +92,20 @@ public class Complex {
     }
 
     /**
+     * Tangent operation.
+     * @param b Subtract
+     * @return this Complex object whose value is Tangent(this)
+     */
+
+    public Complex Tangent(Complex b) {
+        re = Math.sin(b.re)*Math.sinh(b.im)/Math.cos(b.re);
+        im = Math.cos(b.re)*Math.cosh(b.im)/Math.cos(b.re);
+
+        return this;
+
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
