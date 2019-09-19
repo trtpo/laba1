@@ -103,9 +103,29 @@ public class Complex {
      * @return this Complex object whose value is this / b
      * */
     public Complex division(Complex b) {
-        this.re = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
-        this.im = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
+        Complex a = this;
+        double real = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * this.im - b.im * this.re) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
         return this;
+    }
+
+    @Override public boolean equals(Object obj)
+    {
+        if(obj == this) return true;
+        if(obj == null) return false;
+        if(!(getClass() == obj.getClass()))
+            return false;
+        else
+        {
+            Complex check = (Complex)obj;
+            if(check.re == this.re && check.im == this.im)
+                return true;
+            else
+                return false;
+        }
+
     }
 
     /**
