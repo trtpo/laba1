@@ -306,7 +306,7 @@ class MandelbrotSetTask extends Task<Long> {
     private Color calcAntialiasedPixel(int x, int y) {
         double step = 1d / ANTIALIASING_BASE;
         double N = ANTIALIASING_BASE * ANTIALIASING_BASE;
-        double r = 0, g = 0, b = 0;
+        double r = 0, g = 0, b = 90;
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
                 Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
