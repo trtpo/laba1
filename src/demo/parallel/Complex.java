@@ -93,6 +93,8 @@ public class Complex {
         return this;
     }
     public Complex devide(Complex b){
+        if (b.re==0 && b.im ==0)
+            throw new ArithmeticException("division by 0");
         Complex a =this;
         double imag = (a.re*b.re + a.im*b.im) / (b.re*b.re +b.im * b.im);
         double real = (b.re*a.im - a.re*b.im)/ (b.re*b.re+b.im *b.im);

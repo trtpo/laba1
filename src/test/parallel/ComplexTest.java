@@ -1,4 +1,8 @@
-package demo.parallel;
+package test.parallel;
+
+import demo.parallel.Complex;
+import org.junit.Assert;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -23,5 +27,14 @@ public class ComplexTest {
         Complex a =new Complex(1,0);
         Complex b = new Complex(0,1);
         assertNotEquals(1, a.devide(b).lengthSQ());
+        Complex c = new Complex(0,0);
+        boolean wasThrown;
+        try {
+            a.devide(c);
+            wasThrown = false;
+        }catch (ArithmeticException e) {
+            wasThrown = true;
+        }
+        assertTrue(wasThrown);
     }
 }
