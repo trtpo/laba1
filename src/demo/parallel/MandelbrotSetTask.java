@@ -258,7 +258,6 @@ class MandelbrotSetTask extends Task<Long> {
         taskTime = getTime();
         return taskTime;
     }
-
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
@@ -273,7 +272,7 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c.times(comp)).plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
