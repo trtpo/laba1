@@ -96,26 +96,50 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Sinus operation.
+     *
+     * @return new Complex object with sinus calculation value
+     */
     public Complex sin() {
         return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
     }
 
-    // return a new Complex object whose value is the complex cosine of this
+    /**
+     * Cosinus operation.
+     *
+     * @return new Complex object with cosinus calculation value
+     */
     public Complex cos() {
         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 
+    /**
+     * Divide operation.
+     *
+     * @param c divider
+     * @return value after two complex number division
+     */
     public Complex divides(Complex c) {
         Complex a = this;
         return a.times(c.reciprocal());
     }
 
+    /**
+     * Reciprocal operation.
+     *
+     * @return new Complex object after reciprocal operation value
+     */
     public Complex reciprocal() {
         double scale = re * re + im * im;
         return new Complex(re / scale, -im / scale);
     }
 
-    // return a new Complex object whose value is the complex tangent of this
+    /**
+     * Tangens operation.
+     *
+     * @return tanges value of complex number
+     */
     public Complex tan() {
         return sin().divides(cos());
     }

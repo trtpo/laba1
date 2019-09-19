@@ -146,7 +146,7 @@ class MandelbrotSetTask extends Task<Long> {
      * @param maxY max y value of the rectangular area to skip
      * @param fast fast mode disables antialiasing
      */
-    public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
+    MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
         this.parallel = parallel;
         this.pixelWriter = pixelWriter;
         this.width = width;
@@ -167,7 +167,7 @@ class MandelbrotSetTask extends Task<Long> {
      * 
      * @return whether new pixels were written to the image
      */
-    public boolean hasUpdates() {
+    boolean hasUpdates() {
         return hasUpdates;
     }
 
@@ -181,7 +181,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Clears the updates flag
      */
-    public void clearHasUpdates() {
+    void clearHasUpdates() {
         hasUpdates = false;
     }
 
@@ -199,7 +199,7 @@ class MandelbrotSetTask extends Task<Long> {
      * task time when task is finished
      * @return task time in milliseconds
      */
-    public long getTime() {
+    long getTime() {
         if (taskTime != -1) {
             return taskTime;
         }
@@ -213,7 +213,7 @@ class MandelbrotSetTask extends Task<Long> {
      * {@inheritDoc}
      */
     @Override
-    protected Long call() throws Exception {
+    protected Long call()  {
         synchronized(pixelWriter) {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
@@ -366,7 +366,7 @@ class MandelbrotSetTask extends Task<Long> {
          */
         double[] cp = {
             0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
-        
+
         /**
          * Color table population
          */
