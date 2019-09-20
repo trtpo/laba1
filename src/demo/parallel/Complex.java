@@ -49,11 +49,29 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
+     * return real part of complex number
+     *
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * return imaginary part of complex number
+     *
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
