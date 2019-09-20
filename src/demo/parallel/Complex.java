@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import static java.lang.Math.atan;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -92,5 +94,32 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    /**
+     * @return complex number argument
+     */
+    public double arg() {
+        return atan(im / re);
+    }
+    /**get complex conjugates
+     *use of complex conjugates simplifies some operations
+     * @return complex conjugates number
+     */
+    public Complex сomplexСonjugate() {
+        im=-im;
+        return this;
+    }
+    /**
+     * Multiply operation.
+     * @param  b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re - a.im * b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (a.re * b.im + a.im * b.re)/(b.re*b.re+b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
     }
 }
