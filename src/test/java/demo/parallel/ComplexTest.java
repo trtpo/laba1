@@ -18,26 +18,7 @@ class ComplexTest {
             new Complex(1, 1).absoluteValue(),
             new Complex(1, -1).absoluteValue(),
             new Complex(-1, 1).absoluteValue(),
-            new Complex(-1, -1).absoluteValue()
-        };
-
-        final double ROOT_OF_TWO = Math.sqrt(2);
-        double[] correctResults = new double[] {
-            ROOT_OF_TWO,
-            ROOT_OF_TWO,
-            ROOT_OF_TWO,
-            ROOT_OF_TWO
-        };
-
-        assertArrayEquals(absoluteValues, correctResults, PRECISION);
-    }
-
-    /**
-     * Test if absolute value is correct with zero cases
-     */
-    @Test
-    void absoluteValueTestAnyZeroes() {
-        double[] absoluteValues = new double[] {
+            new Complex(-1, -1).absoluteValue(),
             new Complex(0, 0).absoluteValue(),
             new Complex(0, 1).absoluteValue(),
             new Complex(0, -1).absoluteValue(),
@@ -45,7 +26,12 @@ class ComplexTest {
             new Complex(-1, 0).absoluteValue()
         };
 
+        final double ROOT_OF_TWO = Math.sqrt(2);
         double[] correctResults = new double[] {
+            ROOT_OF_TWO,
+            ROOT_OF_TWO,
+            ROOT_OF_TWO,
+            ROOT_OF_TWO,
             0,
             1,
             1,
@@ -76,12 +62,6 @@ class ComplexTest {
             Double.POSITIVE_INFINITY
         };
 
-        assertEquals(
-                new Complex(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY).absoluteValue(),
-                Double.POSITIVE_INFINITY,
-                PRECISION
-        );
-
         assertArrayEquals(absoluteValuesTwoInfinities, correctResultsTwoInfinities, PRECISION);
 
         // check one infinity case
@@ -109,10 +89,18 @@ class ComplexTest {
             Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY
         };
 
-
         assertArrayEquals(absoluteValuesOneInfinity, correctResultsOneInfinity, PRECISION);
     }
 
+    /**
+     * Test if absoluteValue is correct with NaN cases
+     */
+    @Test
+    void absoluteValueTestNaN() {
+        Complex nanComplex = new Complex(Double.NaN, Double.NaN);
+
+        assertEquals(nanComplex.absoluteValue(), Double.NaN, PRECISION);
+    }
 
     /**
      * Test if sine is correct with default cases
@@ -170,6 +158,9 @@ class ComplexTest {
         assertEquals(Complex.sin(number), new Complex(Double.NaN, Double.NaN));
     }
 
+    /**
+     * Test if subtract is ok with null cases
+     */
     @Test
     void subtractTestNull() {
         Complex number = new Complex(1, 1);
@@ -177,6 +168,9 @@ class ComplexTest {
         assertThrows(ComplexNullPointerException.class, () -> number.subtract(null));
     }
 
+    /**
+     * Test if subtract is ok with default cases
+     */
     @Test
     void subtractTestDefault() {
         Complex[] firstNumbers = new Complex[] {
@@ -195,6 +189,44 @@ class ComplexTest {
             new Complex(0, 0),
             new Complex(-1, 0),
             new Complex(-2, 0),
+        };
+
+        for (int index = 0; index < 3; index++) {
+            assertEquals(firstNumbers[index].subtract(secondNumbers[index]), resultsNumbers[index]);
+        }
+    }
+
+
+    /**
+     * Test if subtract is correct with default cases
+     */
+    @Test
+    void subtractTestDefaultNaN() {
+        Complex[] firstNumbers = new Complex[] {
+            new Complex(Double.POSITIVE_INFINITY, 0),
+            new Complex(0, Double.NEGATIVE_INFINITY),
+            new Complex(0, -1),
+            new Complex(Double.POSITIVE_INFINITY, Double.NaN),
+            new Complex(0, Double.NEGATIVE_INFINITY),
+            new Complex(Double.NaN, Double.NaN)
+        };
+
+        Complex[] secondNumbers = new Complex[] {
+            new Complex(0, 0),
+            new Complex(1, 1),
+            new Complex(Double.POSITIVE_INFINITY, -1),
+            new Complex(0, 0),
+            new Complex(Double.NaN, 1),
+            new Complex(Double.POSITIVE_INFINITY, -1)
+        };
+
+        Complex[] resultsNumbers = new Complex[] {
+            new Complex(Double.POSITIVE_INFINITY, 0),
+            new Complex(-1, Double.NEGATIVE_INFINITY),
+            new Complex(Double.NEGATIVE_INFINITY, 0),
+            new Complex(Double.POSITIVE_INFINITY, Double.NaN),
+            new Complex(Double.NaN, Double.NEGATIVE_INFINITY),
+            new Complex(Double.NaN, Double.NaN)
         };
 
         for (int index = 0; index < 3; index++) {

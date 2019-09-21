@@ -99,12 +99,12 @@ public class Complex {
         double realSquare = re * re;
         double imaginarySquare = im * im;
 
-        // handle NaN Infinity
+        // Handle NaN infinity without exceptions (due to performance)
         if (Double.isInfinite(realSquare) || Double.isInfinite(imaginarySquare)) {
             return Double.POSITIVE_INFINITY;
         }
 
-        // handle NaN
+        // handle NaN due to performance
         if (Double.isNaN(realSquare) || Double.isNaN(imaginarySquare)) {
             return Double.NaN;
         }
@@ -137,6 +137,7 @@ public class Complex {
             throw new ComplexNullPointerException("number is null");
         }
 
+        // Handle nan without exceptions (due to performance)
         if (!Double.isFinite(number.re) || !Double.isFinite(number.im)) {
             return new Complex(Double.NaN, Double.NaN);
         }
@@ -158,6 +159,7 @@ public class Complex {
             throw new ComplexNullPointerException("number is null");
         }
 
+        // Handle nan without exceptions (due to performance)
         if (!Double.isFinite(number.re) || !Double.isFinite(number.im)) {
             return new Complex(Double.NaN, Double.NaN);
         }
@@ -189,7 +191,7 @@ public class Complex {
                                               || !Double.isFinite(complex.re);
             if (anyOfNumbersIsIncorrect) {
                 return (Double.compare(re, complex.re) == 0)
-                        || (Double.compare(im, complex.im) == 0);
+                        && (Double.compare(im, complex.im) == 0);
             }
             else {
                 // handle default (not NaN) cases
