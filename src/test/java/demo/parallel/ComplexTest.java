@@ -229,9 +229,10 @@ class ComplexTest {
             new Complex(Double.NaN, Double.NaN)
         };
 
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < 6; index++) {
             assertEquals(firstNumbers[index].subtract(secondNumbers[index]), resultsNumbers[index]);
         }
     }
+
 }
 
