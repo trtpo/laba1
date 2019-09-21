@@ -74,18 +74,11 @@ public class Complex {
     }
 
     public Complex divide(Complex b) {
-        if (b.re == 0 && b.im == 0) {
-            throw new ArithmeticException("Error! You can't divide by zero");
-        }
-        if ((b.re * b.re + b.im * b.im) != 0) {
-            Complex a = this;
-            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
-            double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
-            a.re = real;
-            a.im = imag;
-        } else {
-            throw new ArithmeticException("Error! You can't divide by zero");
-        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        a.re = real;
+        a.im = imag;
         return this;
     }
 
