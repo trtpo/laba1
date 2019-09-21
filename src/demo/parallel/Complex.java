@@ -106,4 +106,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getReal() {
+        return re;
+    }
+    public double getImg() {
+        return im;
+    }
+
+    public void print(){    // Вывод на экран
+        System.out.println(re + (im < 0.0 ? "" : "+") + im + "i");
+    }
 }
