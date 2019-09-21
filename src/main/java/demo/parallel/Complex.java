@@ -33,6 +33,7 @@ package demo.parallel;
 
 import static java.lang.Math.*;
 
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -57,7 +58,7 @@ public class Complex {
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -99,14 +100,12 @@ public class Complex {
         double imaginarySquare = im * im;
 
         // handle NaN Infinity
-        boolean anyValueIsInfinite = Double.isInfinite(re) || Double.isInfinite(im);
-        if (Double.isInfinite(realSquare) || Double.isInfinite(imaginarySquare) || anyValueIsInfinite) {
+        if (Double.isInfinite(realSquare) || Double.isInfinite(imaginarySquare)) {
             return Double.POSITIVE_INFINITY;
         }
 
         // handle NaN
-        boolean anyValueIsNan = Double.isNaN(re) || Double.isNaN(im);
-        if (Double.isNaN(realSquare) || Double.isNaN(imaginarySquare) || anyValueIsNan) {
+        if (Double.isNaN(realSquare) || Double.isNaN(imaginarySquare)) {
             return Double.NaN;
         }
 
@@ -138,17 +137,15 @@ public class Complex {
             throw new ComplexNullPointerException("number is null");
         }
 
-        boolean reIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
-        boolean imIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
-
-        if (reIsBad || imIsBad) {
+        if (!Double.isFinite(number.re) || !Double.isFinite(number.im)) {
             return new Complex(Double.NaN, Double.NaN);
         }
+        else {
+            double resultReal = Math.sin(number.re) * Math.cosh(number.im);
+            double resultImaginary = Math.cos(number.re) * Math.sinh(number.im);
 
-        double resultReal = Math.sin(number.re) * Math.cosh(number.im);
-        double resultImaginary = Math.cos(number.re) * Math.sinh(number.im);
-
-        return new Complex(resultReal, resultImaginary);
+            return new Complex(resultReal, resultImaginary);
+        }
     }
 
     /**
@@ -161,17 +158,15 @@ public class Complex {
             throw new ComplexNullPointerException("number is null");
         }
 
-        boolean reIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
-        boolean imIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
-
-        if (reIsBad || imIsBad) {
+        if (!Double.isFinite(number.re) || !Double.isFinite(number.im)) {
             return new Complex(Double.NaN, Double.NaN);
         }
+        else {
+            double resultReal = Math.cos(number.re) * Math.cosh(number.im);
+            double resultImaginary = (-Math.sin(number.re)) * Math.sinh(number.im);
 
-        double resultReal = Math.cos(number.re) * Math.cosh(number.im);
-        double resultImaginary = (-Math.sin(number.re)) * Math.sinh(number.im);
-
-        return new Complex(resultReal, resultImaginary);
+            return new Complex(resultReal, resultImaginary);
+        }
     }
 
     /**
@@ -179,24 +174,28 @@ public class Complex {
      * @param number other complex number
      * @return boolean if number is equal to other complex number
      */
-    public boolean equals(Complex number) {
-        if (number == null) {
+    @Override
+    public boolean equals(Object number) {
+        if (number == null || number.getClass() != this.getClass()) {
             return false;
         }
         else {
-            boolean reIsBad = Double.isNaN(re) || Double.isInfinite(re);
-            boolean imIsBad = Double.isNaN(im) || Double.isInfinite(im);
-            boolean numberReIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
-            boolean numberImIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
+            Complex complex = (Complex) number;
 
-            if (reIsBad || numberImIsBad) {
-
+            // handle NaN cases
+            boolean anyOfNumbersIsIncorrect = !Double.isFinite(re)
+                                              || !Double.isFinite(im)
+                                              || !Double.isFinite(complex.im)
+                                              || !Double.isFinite(complex.re);
+            if (anyOfNumbersIsIncorrect) {
+                return (Double.compare(re, complex.re) == 0)
+                        || (Double.compare(im, complex.im) == 0);
             }
-
-            if ()
-
-            return (Math.abs(this.re - number.re) < PRECISION)
-                    && (Math.abs(this.im - number.im) < PRECISION);
+            else {
+                // handle default (not NaN) cases
+                return (Math.abs(this.re - complex.re) < PRECISION)
+                        && (Math.abs(this.im - complex.im) < PRECISION);
+            }
         }
     }
 
