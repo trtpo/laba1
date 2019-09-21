@@ -46,6 +46,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
+    private static final double ARITHMETIC_PRECISION = 1e-3;
 
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -110,11 +111,20 @@ public class Complex {
     public double getReal() {
         return re;
     }
+
     public double getImg() {
         return im;
     }
 
-    public void print(){    // Вывод на экран
-        System.out.println(re + (im < 0.0 ? "" : "+") + im + "i");
+    public void print() {    // Вывод на экран
+        System.out.println(re + (im < 0.0 ? " " : " + ") + im + "i");
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Complex complex = (Complex) object;
+        return Math.abs(complex.re - re) < ARITHMETIC_PRECISION &&
+                Math.abs(complex.im - complex.im) < ARITHMETIC_PRECISION;
     }
 }
