@@ -47,7 +47,9 @@ import static java.lang.Math.*;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+    // precision of double comparison
+    private static final double PRECISION = 0.00001;
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -136,6 +138,13 @@ public class Complex {
             throw new ComplexNullPointerException("number is null");
         }
 
+        boolean reIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
+        boolean imIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
+
+        if (reIsBad || imIsBad) {
+            return new Complex(Double.NaN, Double.NaN);
+        }
+
         double resultReal = Math.sin(number.re) * Math.cosh(number.im);
         double resultImaginary = Math.cos(number.re) * Math.sinh(number.im);
 
@@ -150,6 +159,13 @@ public class Complex {
     public static Complex cos(Complex number) {
         if (number == null) {
             throw new ComplexNullPointerException("number is null");
+        }
+
+        boolean reIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
+        boolean imIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
+
+        if (reIsBad || imIsBad) {
+            return new Complex(Double.NaN, Double.NaN);
         }
 
         double resultReal = Math.cos(number.re) * Math.cosh(number.im);
@@ -168,8 +184,28 @@ public class Complex {
             return false;
         }
         else {
-            return re == number.re && im == number.im;
+            boolean reIsBad = Double.isNaN(re) || Double.isInfinite(re);
+            boolean imIsBad = Double.isNaN(im) || Double.isInfinite(im);
+            boolean numberReIsBad = Double.isNaN(number.re) || Double.isInfinite(number.re);
+            boolean numberImIsBad = Double.isNaN(number.im) || Double.isInfinite(number.im);
+
+            if (reIsBad || numberImIsBad) {
+
+            }
+
+            if ()
+
+            return (Math.abs(this.re - number.re) < PRECISION)
+                    && (Math.abs(this.im - number.im) < PRECISION);
         }
+    }
+
+    /**
+     * Support operation
+     * @return string representation
+     */
+    public String toString() {
+        return String.valueOf(re) + ", " + String.valueOf(im);
     }
 
     /**
