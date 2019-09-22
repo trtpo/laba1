@@ -209,7 +209,21 @@ public class Complex {
         return this;
     }
 
+    private final double EQUALS_PRECISION = 1e-4; // precision for comparing complex numbers. Floating point variables must be comparing with some precision
 
+    /**
+     * Equal method for comparing this object with other
+     * @param o other object
+     * @return true if objects are equal
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Math.abs(complex.re - re) < EQUALS_PRECISION &&
+                Math.abs(complex.im - im) < EQUALS_PRECISION;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
