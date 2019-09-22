@@ -30,6 +30,8 @@
  */
 package demo.parallel;
 
+import java.util.Objects;
+
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -72,11 +74,15 @@ public class Complex {
     }
 
     /**
-     * Substract operation.
+     * Subtract operation.
      * @param b subtrahend
      * @return this Complex object whose value is (this - b)
      */
-    public Complex substract(Complex b) {
+    public Complex subtract(Complex b) {
+        if (b == null) {
+            throw new NullPointerException("subtract: b is null");
+        }
+
         re -= b.re;
         im -= b.im;
         return this;
@@ -97,10 +103,17 @@ public class Complex {
     }
 
     /**
+     * create a new object with complex-conjugate number
+     *
      * @return complex-conjugate number
      */
     public Complex calcComplexСonjugate() {
         Complex a = this;
+
+        if (a == null) {
+            throw new NullPointerException("calcComplexСonjugate: a is null");
+        }
+
         double real = a.re;
         double imag = -a.im;
         re = real;
@@ -115,5 +128,34 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Equal comparison operation
+     * @param complexNumber other complex number
+     * @return boolean if number is equal to other complex number
+     */
+    @Override
+    public boolean equals(Object complexNumber) {
+        if (this == complexNumber)
+            return true;
+        if (complexNumber == null)
+            return false;
+        if (this.getClass() != complexNumber.getClass())
+            return false;
+        if (complexNumber instanceof Complex)
+        {
+            Complex other = (Complex) complexNumber;
+            if (this.re != other.re)
+                return false;
+            if (this.im != other.im)
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(re, im);
     }
 }
