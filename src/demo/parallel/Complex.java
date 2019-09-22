@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * Substract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex substract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -80,6 +91,18 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * @return complex-conjugate number
+     */
+    public Complex calcComplexСonjugate() {
+        Complex a = this;
+        double real = a.re;
+        double imag = -a.im;
         re = real;
         im = imag;
         return this;
