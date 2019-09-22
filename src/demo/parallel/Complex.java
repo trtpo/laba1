@@ -86,6 +86,132 @@ public class Complex {
     }
 
     /**
+     * Substraction operation.
+     * @param b substractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        // Division by 0
+        if (b.re == 0 && b.im == 0)
+            throw new ArithmeticException();
+
+        double commonDivider = (b.re * b.re + b.im * b.im);
+        double real = (this.re * b.re + this.im * b.im) / commonDivider;
+        double imag = (this.im * b.re - this.re * b.im) / commonDivider;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Exponent operation.
+     * @return this Complex object whose value is exp(this)
+     */
+    public Complex exp() {
+        double power = Math.exp(this.re);
+        re = power * Math.cos(this.im);
+        im = power * Math.sin(this.im);
+        return this;
+    }
+
+    /**
+     * Natural log operation.
+     * @return this Complex object whose value is log(this)
+     */
+    public Complex log() {
+        // Division by 0
+        if (re == 0 && im == 0)
+            throw new ArithmeticException();
+        double real = Math.log(Math.sqrt(this.lengthSQ()));
+        double imag = Math.atan2(this.im, this.re);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sine operation.
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex sqrt()
+    {
+        double abs = Math.sqrt(this.lengthSQ());
+        double real = Math.sqrt((abs + re) / 2);
+        double imag = Math.sqrt((abs - re) / 2) * Math.signum(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sine^-1 operation.
+     * @return this Complex object whose value is asin(this)
+     */
+    public Complex asin()
+    {
+        Complex z = new Complex(re, im);
+        z = z.times(z);
+        z = new Complex(1, 0).minus(z);
+        // Computing iz + sqrt(1 - z^2), where z = this
+        Complex result = new Complex(-im, re).plus(z.sqrt());
+        result = result.log();
+        re = result.im;
+        im = -result.re;
+        return this;
+    }
+
+
+    /**
+     * Cosine^-1 operation.
+     * @return this Complex object whose value is acos(this)
+     */
+    public Complex acos()
+    {
+        Complex z = new Complex(re, im);
+        z = z.times(z);
+        z = new Complex(1, 0).minus(z);
+        // Computing Ln(z + i * sqrt(1 - z^2)), where z = this
+        Complex result = new Complex(re, im).plus(z.sqrt().times(new Complex(0, 1)));
+        result = result.log();
+        re = result.im;
+        im = -result.re;
+        return this;
+    }
+
+
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
