@@ -94,4 +94,65 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * The modulus, magnitude or the absolute value of current complex number.
+     *
+     * @return the magnitude or modulus of current complex number
+     */
+    public double mod() {
+        return Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
+    }
+
+    /**
+     * The complex conjugate of the current complex number.
+     * @return a ComplexNumber object which is the conjugate of the current complex number
+     */
+    public Complex conjugate() {
+        return new Complex(this.re, -this.im);
+    }
+
+    /**
+     * Divides one ComplexNumber by another.
+     * @param z1 the first ComplexNumber.
+     * @param z2 the second ComplexNumber.
+     * @return the resultant ComplexNumber (z1 / z2).
+     */
+    public static Complex divide(Complex z1, Complex z2) {
+        Complex output = z1.times(z2.conjugate());
+        double div = Math.pow(z2.mod(), 2);
+        return new Complex(output.re / div, output.im / div);
+    }
+
+    public static Complex sin(Complex z) {
+        double x = Math.exp(z.im);
+        double x_inv = 1 / x;
+        double r = Math.sin(z.re) * (x + x_inv) / 2;
+        double i = Math.cos(z.re) * (x - x_inv) / 2;
+        return new Complex(r, i);
+    }
+
+    /**
+     * Calculates the cosine of the ComplexNumber
+     *
+     * @param z the input complex number
+     * @return a ComplexNumber which is the cosine of z.
+     */
+    public static Complex cos(Complex z) {
+        double x = Math.exp(z.im);
+        double x_inv = 1 / x;
+        double r = Math.cos(z.re) * (x + x_inv) / 2;
+        double i = -Math.sin(z.re) * (x - x_inv) / 2;
+        return new Complex(r, i);
+    }
+
+    /**
+     * Calculates the tangent of the ComplexNumber
+     *
+     * @param z the input complex number
+     * @return a ComplexNumber which is the tangent of z.
+     */
+    public static Complex tan(Complex z) {
+        return divide(sin(z), cos(z));
+    }
 }
