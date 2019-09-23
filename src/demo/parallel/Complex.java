@@ -79,6 +79,17 @@ public class Complex {
     }
 
     /**
+     * Equal operation.
+     *
+     * @param b second comparable
+     * @return result of comparisons of two complex number objects
+     */
+    public boolean equals(Complex b) {
+        Complex a = this;
+        return a.getRe() == b.getRe() && a.getIm() == b.getIm();
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
