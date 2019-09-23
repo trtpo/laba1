@@ -77,8 +77,8 @@ public class Complex {
     }
     public Complex Division(Complex b){
         Complex a = this;
-        double real = a.re / b.re - a.im / b.im;
-        double imag = a.re / b.re + a.im / b.im;
+        double real = (a.re / b.re - a.im / b.im)/lengthSQ();
+        double imag = (a.re / b.re + a.im / b.im)/lengthSQ();
         re = real;
         im = imag;
         return this;
