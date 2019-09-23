@@ -11,9 +11,8 @@ public class ComplexTest {
         double divImg=testNum1.getImg();
 
         if (divRe==0 || divImg==0)
-        {
             System.out.println("Cannot be divided by zero!");
-        }
-        else {System.out.println("so good");}
+        else
+            System.out.println("so good");
     }
 }
