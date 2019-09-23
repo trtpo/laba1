@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import com.sun.org.apache.xpath.internal.operations.Minus;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -68,6 +70,21 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    public Complex minus (Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex division (Complex b){
+        Complex a = this;
+        double real = a.re / Math.cos(b.re) - a.im + b.im;
+        double imag = a.re * Math.cos(b.im) + a.im * b.re;
+        re = real;
+        im = imag;
         return this;
     }
 
