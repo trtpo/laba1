@@ -70,7 +70,19 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return  this;
+    }
+    public Complex Division(Complex b){
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.re + a.im / b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
