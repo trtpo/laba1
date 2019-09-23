@@ -116,10 +116,18 @@ public class Complex {
      */
     public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re - a.im * b.im)/(b.re*b.re+b.im*b.im);
-        double imag = (a.re * b.im + a.im * b.re)/(b.re*b.re+b.im*b.im);
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (a.im * b.re - a.re * b.im)/(b.re*b.re+b.im*b.im);
         re = real;
         im = imag;
         return this;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
