@@ -61,6 +61,16 @@ public class Complex {
     }
 
     /**
+     * Real part operation.
+     *
+     * @return Real part of complex number object whose value is this.re
+     */
+    public double getRe() {
+        return re;
+    }
+
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
