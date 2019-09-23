@@ -69,6 +69,14 @@ public class Complex {
         return re;
     }
 
+    /**
+     * Image part operation.
+     *
+     * @return Image part of complex number object whose value is this.im
+     */
+    public double getIm() {
+        return im;
+    }
 
     /**
      * Add operation.
