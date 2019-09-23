@@ -71,6 +71,16 @@ public class Complex {
         return this;
     }
 
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
