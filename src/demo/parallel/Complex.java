@@ -155,4 +155,7 @@ public class Complex {
     public static Complex tan(Complex z) {
         return divide(sin(z), cos(z));
     }
+
+    public double getRe(){return re;}
+    public double getIm(){return im;}
 }
