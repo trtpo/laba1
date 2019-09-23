@@ -1,4 +1,4 @@
-package demo.Tests;
+package Tests;
 
 import demo.parallel.Complex;
 
