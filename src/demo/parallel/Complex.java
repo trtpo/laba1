@@ -61,6 +61,29 @@ public class Complex {
     }
 
     /**
+     * Make clone of the object
+     */
+    public Complex clone() {
+        return new Complex(re, im);
+    }
+
+    /**
+     * Return real part of complex number.
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Return imaginary part of complex number.
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
