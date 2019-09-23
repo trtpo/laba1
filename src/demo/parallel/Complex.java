@@ -61,6 +61,23 @@ public class Complex {
     }
 
     /**
+     * Comparison operation.
+     * @return true if numbers are equal
+     */
+    @Override
+    public boolean equals(Object b) {
+        return this.re == ((Complex)b).re && this.im == ((Complex)b).im;
+    }
+
+    /**
+     * @return hashcode
+     */
+    @Override
+    public int hashCode() {
+        return (int) (this.re * 10 + this.im * 250);
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
