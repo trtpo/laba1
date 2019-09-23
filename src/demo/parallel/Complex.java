@@ -61,6 +61,50 @@ public class Complex {
     }
 
     /**
+     * compare two complex numbers
+     */
+    @Override
+    public boolean equals(Object b) {
+        if (this == b)
+            return true;
+        if (b == null)
+            return false;
+        if (this.getClass() != b.getClass())
+            return false;
+        if (b instanceof Complex) {
+            Complex other = (Complex) b;
+            return Double.compare(other.re, this.re) == 0 &&
+                    Double.compare(other.im, this.im) == 0;
+        }
+        return false;
+    }
+
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex division(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.lengthSQ());
+        double imag = (-a.re * b.im + a.im * b.re) / (b.lengthSQ());
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
