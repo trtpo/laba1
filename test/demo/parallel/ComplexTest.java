@@ -4,12 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ComplexTest {
-    private static final double delta = 0.000001;
-    private void assertComplexEquals(Complex a, Complex b) {
-        assertEquals(a.getRe(), b.getRe(), this.delta);
-        assertEquals(a.getIm(), b.getIm(), this.delta);
-    }
-
     @Test
     public void minus() {
         Complex a = new Complex(13, -10);
@@ -18,7 +12,7 @@ public class ComplexTest {
         Complex result = a.minus(b);
         Complex expected = new Complex(8, -22);
 
-        this.assertComplexEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -29,7 +23,7 @@ public class ComplexTest {
         Complex result = a.divide(b);
         Complex expected = new Complex(2, 0);
 
-        this.assertComplexEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -44,7 +38,7 @@ public class ComplexTest {
         double sinIm = Math.cos(re) * Math.sinh(im);
         Complex expected = new Complex(sinRe, sinIm);
 
-        this.assertComplexEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -59,6 +53,6 @@ public class ComplexTest {
         double cosIm = -Math.sin(re) * Math.sinh(im);
         Complex expected = new Complex(cosRe, cosIm);
 
-        this.assertComplexEquals(result, expected);
+        assertEquals(expected, result);
     }
 }
