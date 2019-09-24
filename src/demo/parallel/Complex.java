@@ -44,7 +44,7 @@ package demo.parallel;
  * this sample code.</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
-public class Complex {
+class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -55,7 +55,7 @@ public class Complex {
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
-    public Complex(double real, double imag) {
+    Complex(double real, double imag) {
         re = real;
         im = imag;
     }
@@ -65,7 +65,7 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
-    public Complex plus(Complex b) {
+     Complex plus(Complex b) {
         re += b.re;
         im += b.im;
         return this;
@@ -76,7 +76,7 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex times(Complex b) {
+    Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
@@ -85,13 +85,13 @@ public class Complex {
         return this;
     }
 
-    public Complex minus(Complex b) {
+     Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
         return this;
     }
 
-    public Complex divide(Complex b) {
+    Complex divide(Complex b) {
         Complex a = this;
         double real = (a.re * b.re - a.im * b.im)/b.im;
         double imag = (a.re * b.im + a.im * b.re)/b.re;
@@ -106,18 +106,16 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
-    public double lengthSQ() {
+    double lengthSQ() {
         return re * re + im * im;
     }
 
-    public Double getReal() {
+    Double getReal() {
         return re;
     }
 
-    public Double getImg() {
+    Double getImg() {
         return im;
     }
-
-
 
 }

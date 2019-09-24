@@ -40,7 +40,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
+ * #MandelbrotSetTask(boolean, javafx.scene.image.PixelWriter, int, int,
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
@@ -146,7 +146,7 @@ class MandelbrotSetTask extends Task<Long> {
      * @param maxY max y value of the rectangular area to skip
      * @param fast fast mode disables antialiasing
      */
-    public MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
+    MandelbrotSetTask(boolean parallel, PixelWriter pixelWriter, int width, int height, double minR, double minI, double maxR, double maxI, double minX, double minY, double maxX, double maxY, boolean fast) {
         this.parallel = parallel;
         this.pixelWriter = pixelWriter;
         this.width = width;
@@ -167,21 +167,14 @@ class MandelbrotSetTask extends Task<Long> {
      * 
      * @return whether new pixels were written to the image
      */
-    public boolean hasUpdates() {
+    boolean hasUpdates() {
         return hasUpdates;
-    }
-
-    /**
-     * @return true if task is parallel
-     */
-    public boolean isParallel() {
-        return parallel;
     }
 
     /**
      * Clears the updates flag
      */
-    public void clearHasUpdates() {
+    void clearHasUpdates() {
         hasUpdates = false;
     }
 
@@ -199,7 +192,7 @@ class MandelbrotSetTask extends Task<Long> {
      * task time when task is finished
      * @return task time in milliseconds
      */
-    public long getTime() {
+    long getTime() {
         if (taskTime != -1) {
             return taskTime;
         }
@@ -213,7 +206,7 @@ class MandelbrotSetTask extends Task<Long> {
      * {@inheritDoc}
      */
     @Override
-    protected Long call() throws Exception {
+    protected Long call() {
         synchronized(pixelWriter) {
             // Prepares an image 
             for (int x = 0; x < width; x++) {
@@ -346,10 +339,7 @@ class MandelbrotSetTask extends Task<Long> {
     static final Color[] colors = new Color[256];
 
     static {
-        
-        /**
-         * Color stops for colors table: color values
-         */
+
         Color[] cc = {
             Color.rgb(40, 0, 0),
             Color.OLIVE,
@@ -359,16 +349,12 @@ class MandelbrotSetTask extends Task<Long> {
             Color.GREEN,
             Color.rgb(50, 0, 0)
         };
-        
-        /**
-         * Color stops for colors table: relative position in the table
-         */
+
+
         double[] cp = {
             0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
         
-        /**
-         * Color table population
-         */
+
         int j = 0;
         for (int i = 0; i < colors.length; i++) {
             double p = (double) i / (colors.length - 1);
