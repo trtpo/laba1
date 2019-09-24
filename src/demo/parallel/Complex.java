@@ -59,7 +59,7 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
-        arg = Math.atan(im / re);
+        arg = re == 0 ? Math.PI / 2 : Math.atan(im / re);
     }
 
     /**
