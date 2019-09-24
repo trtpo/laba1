@@ -109,4 +109,15 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Double getReal() {
+        return re;
+    }
+
+    public Double getImg() {
+        return im;
+    }
+
+
+
 }
