@@ -61,6 +61,21 @@ public class Complex {
     }
 
     /**
+     * Checks if this and o equal.
+     *
+     * @param o object to compare
+     * @return boolean Objects equality
+     */
+    public boolean equals(Object o) {
+        if (!(o instanceof Complex)) {
+            return false;
+        }
+
+        Complex other = (Complex) o;
+        return this.re == other.re && this.im == other.im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
