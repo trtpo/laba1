@@ -61,6 +61,16 @@ public class Complex {
     }
 
     /**
+     * create a copy of the object
+     *
+     * @param orig object for copy
+     */
+    public Complex(Complex orig) {
+        re = orig.re;
+        im = orig.im;
+    }
+
+    /**
      * Checks if this and o equal.
      *
      * @param o object to compare
