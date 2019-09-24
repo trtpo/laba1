@@ -66,7 +66,8 @@ public class Complex {
      */
     @Override
     public boolean equals(Object b) {
-        return this.re == ((Complex)b).re && this.im == ((Complex)b).im;
+        return Math.abs(this.re - ((Complex)b).re) <= 0.01
+                && Math.abs(this.im - ((Complex)b).im) <= 0.01;
     }
 
     /**
@@ -114,24 +115,30 @@ public class Complex {
     }
 
     /**
-     * Divide operation.
-     * @param  b divider
-     * @return this Complex object whose value is this / b
+     * Sin operation.
+     * @return this Complex object whose value is sin(this)
      */
-    public Complex by(Complex b) {
-        Complex a = this;
-        if (b.im == 0 && b.re == 0)  {
-            re = 1;
-            im = 1;
-        }
-        else {
-            double real = (a.re * b.re + a.im * b.im) / b.lengthSQ();
-            double imag = (a.im * b.re - a.re * b.im) / b.lengthSQ();
-            re = real;
-            im = imag;
-        }
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
         return this;
     }
+
+    /**
+     * Cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 

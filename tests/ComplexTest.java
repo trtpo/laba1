@@ -1,5 +1,6 @@
 import demo.parallel.Complex;
 
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,35 +8,40 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComplexTest {
 
-    private Complex[] minuend;
-    private Complex[] subtrahend;
-    private Complex[] dividend;
-    private Complex[] divider;
-    private Complex[] residual;
-    private Complex[] quotient;
+    private Complex[] arrayA;
+    private Complex[] arrayB;
+    private Complex[] minusResults;
+    private Complex[] sinResults;
+    private Complex[] cosResults;
 
     @BeforeEach
     void setUpInput() {
-        minuend = new Complex[]{new Complex(0,0),new Complex(-2,1),new Complex(5,-4),new Complex(345,743), new Complex(4,-7).plus(new Complex(-3, 6))};
-        subtrahend = new Complex[]{new Complex(0,0),new Complex(6,70),new Complex(32,1),new Complex(345,743), new Complex(-3,6)};
-        residual = new Complex[]{new Complex(0,0),new Complex(-8, -69),new Complex(-27,- 5),new Complex(0,0), new Complex(4, -7)};
+        arrayA = new Complex[]{new Complex(0,0),new Complex(-2,1),new Complex(5,-4)};
+        arrayB = new Complex[]{new Complex(0,0),new Complex(6,70),new Complex(32,1)};
 
-        dividend = new Complex[]{new Complex(0,0),new Complex(1,1),new Complex(-320,-55),new Complex(210,-75)};
-        divider = new Complex[]{new Complex(1,0),new Complex(1,1),new Complex(2,1),new Complex(1,-2)};
-        quotient = new Complex[]{new Complex(0,0),new Complex(1,0),new Complex(-139,42),new Complex(73,69)};
-    }
+        minusResults = new Complex[]{new Complex(0,0),new Complex(-8, -69),new Complex(-27,- 5)};
+        sinResults = new Complex[]{new Complex(0,0),new Complex(-1.403, -0.489),new Complex(-26.186,- 7.741)};
+        cosResults = new Complex[]{new Complex(1,0),new Complex(-0.642, +1.069),new Complex(7.746,- 26.169)};
+        }
 
     @Test
     void minusTest() {
-        for (int i = 0; i < minuend.length; i++) {
-            assertEquals(minuend[i].minus(subtrahend[i]), residual[i]);
+        for (int i = 0; i < arrayA.length; i++) {
+            assertEquals(arrayA[i].minus(arrayB[i]), minusResults[i]);
         }
     }
 
     @Test
-    void divideTest() {
-        for (int i = 0; i < dividend.length; i++) {
-            assertEquals(dividend[i].by(divider[i]), quotient[i]);
+    void sinTest() {
+        for (int i = 0; i < arrayA.length; i++) {
+            assertEquals(arrayA[i].sin(), sinResults[i]);
+        }
+    }
+
+    @Test
+    void cosTest() {
+        for (int i = 0; i < arrayA.length; i++) {
+            assertEquals(arrayA[i].cos(), cosResults[i]);
         }
     }
 }
