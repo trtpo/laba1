@@ -47,7 +47,7 @@ import com.sun.org.apache.xpath.internal.operations.Minus;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+    public final double arithmeticPrecision = 1e-3;
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -111,5 +111,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    public boolean equals(Object obj)
+    {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Complex complex = (Complex) obj;
+        return Math.abs(complex.re - re) < arithmeticPrecision &&
+                Math.abs(complex.im - im) < arithmeticPrecision;
     }
 }
