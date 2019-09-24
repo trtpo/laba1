@@ -46,7 +46,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    private static final double ARITHMETIC_PRECISION = 1e-3;
+    private static final double ARITHMETIC_PRECISION = 1e-2;
 
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -74,12 +74,34 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Division operation.
+     *
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
     public Complex divide(Complex b) {
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
-        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
-        a.re = real;
-        a.im = imag;
+        if (b.getReal() == 0 && b.getImg() == 0) {
+            throw new ArithmeticException("You can't divide on Zero");
+        } else {
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+            double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+            a.re = real;
+            a.im = imag;
+        }
+        return this;
+    }
+
+    /**
+     * Minus operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
