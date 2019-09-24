@@ -96,11 +96,11 @@ public class Complex {
      * @return this Complex object whose value is this * b
      */
     public Complex multiply(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
+        double newAbs = Math.sqrt(this.lengthSQ() * b.lengthSQ());
+        double newArg = arg + b.getArgument();
+        re = newAbs * Math.cos(newArg);
+        im = newAbs * Math.sin(newArg);
+        arg = newArg;
         return this;
     }
 

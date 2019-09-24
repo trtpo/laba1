@@ -43,5 +43,17 @@ public class ComplexTest {
         assertEquals(number2.getImaginary(), 5);
     }
 
+    @Test
+    public void multiplication() {
+        Complex number1 = new Complex(3, 4),
+                number2 = new Complex(5, 12);
+        double arg1 = number1.getArgument(),
+                arg2 = number2.getArgument();
+        number2.multiply(number1);
+        assertEquals(number2.getImaginary(), 13. * 5. * Math.sin(arg2 + arg1), 0.0001);
+        assertEquals(number2.getReal(), 13. * 5. * Math.cos(arg2 + arg1), 0.0001);
+        assertEquals(number2.getArgument(), arg2 + arg1);
+    }
+
 
 }
