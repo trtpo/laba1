@@ -128,6 +128,16 @@ class MandelbrotSetTask extends Task<Long> {
     private final AtomicInteger progress = new AtomicInteger(0);
 
     /**
+     * Power of c variable in calc method
+     */
+    private final int C_POWER = 3;
+
+    /**
+     * Multiplier for comp argument
+     */
+    private final Complex COMP_MULTIPLIER = new Complex(1.05, 0);
+
+    /**
      * Creates a task to render a MandelBrot set into an image using given
      * PixelWriter with given dimensions of the image, given real and imaginary
      * values range and given rectangular area to skip. Also there is a switch
@@ -275,7 +285,10 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            for (int i = 0; i < C_POWER; i++) {
+                c.times(c);
+            }
+            c.plus(comp.times(COMP_MULTIPLIER));
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
