@@ -1,4 +1,6 @@
-package demo.parallel;
+package demo.parallel.Test;
+
+import demo.parallel.Complex;
 
 import static org.junit.Assert.*;
 

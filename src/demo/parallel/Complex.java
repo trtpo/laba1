@@ -45,15 +45,15 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+    public final double arithmeticPrecision = 1e-3;
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -98,12 +98,22 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Complex complex = (Complex) obj;
+        return Math.abs(complex.re - re) < arithmeticPrecision &&
+                Math.abs(complex.im - im) < arithmeticPrecision;
     }
 
     public double getReal() {
