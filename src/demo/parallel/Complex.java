@@ -48,6 +48,7 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
+    private double arg;
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -58,6 +59,7 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+        arg = Math.atan(im / re);
     }
 
     /**
@@ -68,6 +70,23 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        arg = Math.atan(im / re);
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        arg = Math.atan(im / re);
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        double newAbs = Math.sqrt(this.lengthSQ() / b.lengthSQ());
+        double newArg = arg - b.getArgument();
+        re = newAbs * Math.cos(newArg);
+        im = newAbs * Math.sin(newArg);
+        arg = newArg;
         return this;
     }
 
@@ -76,7 +95,7 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex times(Complex b) {
+    public Complex multiply(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
@@ -93,4 +112,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImaginary() {
+        return im;
+    }
+
+    public double getArgument() {
+        return arg;
+    }
+
 }
