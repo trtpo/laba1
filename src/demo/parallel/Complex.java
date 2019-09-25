@@ -147,10 +147,6 @@ public class Complex {
      * @return the complex number whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
-    @Deprecated
-    public Complex times(double alpha) {
-        return new Complex(alpha * re, alpha * im);
-    }
 
     /**
      * Returns the complex conjugate of this complex number.
@@ -170,25 +166,6 @@ public class Complex {
         double scale = re*re + im*im;
         return new Complex(re / scale, -im / scale);
     }
-
-    /**
-     * Returns the real part of this complex number.
-     *
-     * @return the real part of this complex number
-     */
-    public double re() {
-        return re;
-    }
-
-    /**
-     * Returns the imaginary part of this complex number.
-     *
-     * @return the imaginary part of this complex number
-     */
-    public double im() {
-        return im;
-    }
-
     /**
      * Returns the result of dividing the specified complex number into
      * this complex number.
