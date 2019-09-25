@@ -4,3 +4,4 @@ out/
 .idea/
 *.swp
 nbproject/
+/src/module-info.java

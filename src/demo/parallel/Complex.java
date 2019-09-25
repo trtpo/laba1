@@ -112,8 +112,16 @@ public class Complex {
      */
     public Complex division(Complex b) {
         Complex a = this;
-        re = (a.re * b.re + a.im * b.im) / (b.lengthSQ());
-        im = (-a.re * b.im + a.im * b.re) / (b.lengthSQ());
+        re = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
+        im = (a.im * b.re - a.re * b.im)/(b.re*b.re + b.im*b.im);
         return this;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }

@@ -3,7 +3,7 @@ module javafx {
     requires javafx.fxml;
     requires javafx.controls;
     requires javafx.graphics;
-    //requires junit;
+    requires junit;
 
     opens demo.parallel;
 }
