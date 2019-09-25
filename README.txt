@@ -1,0 +1,1 @@
+Project for git's commands tranning.
