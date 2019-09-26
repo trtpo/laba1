@@ -48,6 +48,7 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
+    public final double arithmeticPrecision = 1e-3;
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -113,5 +114,24 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImg() {
+        return im;
+    }
+
+    public void print() {    // Вывод на экран
+        System.out.println(re + (im < 0.0 ? "" : "+") + im + "i");
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Complex compl = (Complex) object;
+        return Math.abs(compl.re - re) < arithmeticPrecision && Math.abs(compl.im - compl.im) < arithmeticPrecision;
     }
 }
