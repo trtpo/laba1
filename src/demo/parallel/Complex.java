@@ -72,6 +72,27 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        if (b.re == 0 && b.im == 0) {
+            throw new ArithmeticException("Error! Delenie na 0");
+        }
+        if ((b.re * b.re + b.im * b.im) != 0) {
+            Complex a = this;
+            double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+            double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+            a.re = real;
+            a.im = imag;
+        } else {
+            throw new ArithmeticException("Error! Delenie na 0");
+        }
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
