@@ -30,6 +30,7 @@
  */
 package demo.parallel;
 
+import org.junit.Test;
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -65,6 +66,7 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
+
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
@@ -76,12 +78,25 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
+
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    public Complex division(Complex b) {
+        Complex a = this;
+
+        double real = (a.re * b.re + a.im + b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+
+        this.re = real;
+        this.im = imag;
+
         return this;
     }
 
