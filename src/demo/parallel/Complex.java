@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -101,7 +103,7 @@ public class Complex {
      * @param b divider
      * @return this Complex object whose value is this / b
      */
-    public Complex devide(Complex b){
+    public Complex divide(Complex b){
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
         double imag = (a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im);
@@ -115,6 +117,15 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
     public double lengthSQ() {
         return re * re + im * im;
     }
