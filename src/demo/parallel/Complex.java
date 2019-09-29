@@ -90,7 +90,7 @@ public class Complex {
      * @param b subtrahend
      * @return this Complex object whose value is this - b
      */
-    public Complex divider(Complex b){
+    public Complex minus(Complex b){
         re -= b.re;
         im -= b.im;
         return this;
