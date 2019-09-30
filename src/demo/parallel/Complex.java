@@ -72,9 +72,18 @@ public class Complex {
     }
     
     public Complex minus(Complex b) {
-        re -= b.re;
-        im -= b.im;
+        this.re = this.re - b.re;
+        this.im = this.im - b.im;
         return this;
+    }
+
+    public Complex div(Complex b) {
+        if ((b.re*b.re+b.im*b.im) != 0) {
+            re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+            im = (im * b.re + re * b.im) / (b.re * b.re + b.im * b.im);
+            return this;
+        }
+        else return this;
     }
 
     /**
@@ -89,6 +98,15 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
     }
 
     /**
