@@ -1,34 +1,37 @@
 package demo.parallel;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Assert;
 
-
-class ComplexTest {
-
-
+public class ComplexTest {
     @Test
-    void ComplexNoDivZero()
-    {
-
-        Complex testNum2 = new Complex(0, 0);
-        double divRe=testNum2.getReal();
-        double divImg=testNum2.getImg();
-        if (divRe==0 || divImg==0)
-            System.out.println("Cannot be divided by zero!");
-        else {System.out.println("so good");}
-    }
-    @Test
-    void testMinus() {
-
-        Complex a = new Complex(2, 6);
-        Complex b = new Complex(1, 9);
-        a.minus(b);
-        assertEquals(a.getReal(), 0.01, "Minus test failed!");
-        assertEquals(a.getImg(), 0.01, "Minus test failed!");
-
+    public void div() {
+        Complex a = new Complex(1,2);
+        Complex b = new Complex(3,4);
+        Complex c = new Complex(0.45, 0.08);
+        a = a.divide(b);
+        Assert.assertTrue(c.getRe() == a.getRe());
+        Assert.assertTrue(c.getIm() == a.getIm());
     }
 
-    private void assertEquals(Double real, double v, String s) {
+    @Test
+    public void minusNegative() {
+        Complex a = new Complex(1,2);
+        Complex b = new Complex(3,4);
+        Complex c = new Complex(-2, -2);
+        a = a.minus(b);
+        Assert.assertTrue(c.getRe() == a.getRe());
+        Assert.assertTrue(c.getIm() == a.getIm());
+    }
+
+    @Test
+    public void minusPositive() {
+        Complex a = new Complex(5,5);
+        Complex b = new Complex(2,2);
+        Complex c = new Complex(3, 3);
+        a = a.minus(b);
+        Assert.assertTrue(c.getRe() != a.getRe());
+        Assert.assertTrue(c.getIm() != a.getIm());
     }
 }
 

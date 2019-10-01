@@ -91,12 +91,15 @@ class Complex {
         return this;
     }
 
-    Complex divide(Complex b) {
+    public Complex divide(Complex b) throws ArithmeticException{
         Complex a = this;
-        double real = (a.re * b.re - a.im * b.im)/b.im;
-        double imag = (a.re * b.im + a.im * b.re)/b.re;
-        re = real;
-        im = imag;
+        if((b.re*b.re+b.im*b.im)==0){
+            throw new ArithmeticException("Incorrect division");
+        }
+        double real = (a.re*b.re+a.im*b.im)/(b.re*b.re+b.im*b.im);
+        double im = (a.im*b.re-a.re*b.im)/(b.re*b.re+b.im*b.im);
+        this.re=real;
+        this.im=im;
         return this;
     }
 
@@ -110,11 +113,11 @@ class Complex {
         return re * re + im * im;
     }
 
-    Double getReal() {
+    Double getRe() {
         return re;
     }
 
-    Double getImg() {
+    Double getIm() {
         return im;
     }
 
