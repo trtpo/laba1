@@ -354,7 +354,7 @@ class MandelbrotSetTask extends Task<Long> {
             Color.rgb(40, 20, 0),
             Color.BLUE,
             Color.ORANGE,
-            Color.RED,
+            Color.BLACK,
             Color.rgb(10, 20, 0),
             Color.GREEN,
             Color.rgb(50, 0, 0)
