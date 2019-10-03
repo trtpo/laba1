@@ -73,7 +73,16 @@ public class Complex {
 
     /**
      * Multiply operation.
+     * 
      * @param  b multiplier
+     *  * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -83,6 +92,41 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+     * @param  b dividend
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double imag = Math.cos(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return new Complex(real, imag);
+    }
+
+    /**
+     * Cosine operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = -Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return new Complex(real, imag);
     }
 
     /**
