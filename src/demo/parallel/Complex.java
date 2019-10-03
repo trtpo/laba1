@@ -50,6 +50,21 @@ public class Complex {
     private double im;   // the imaginary part
 
     /** 
+       /**
+     * Complex number real part getter
+     * @return this.re
+     */
+    public double getRe() {
+        return this.re;
+    }
+
+    /**
+     * Complex number imaginary part getter
+     * @return this.im
+     */
+    public double getIm() {
+        return this.im;
+    }
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
@@ -136,5 +151,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    /**
+     * Equals method
+     * @param o
+     * @return equals result
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
     }
 }
