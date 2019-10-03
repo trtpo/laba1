@@ -52,9 +52,26 @@ public class Complex {
     /**
      * create a new object with the given real and imaginary parts
      *
-     * @param real a complex number real part
-     * @param imag a complex number imaginary part
+  //   * @param real a complex number real part
+  //   * @param imag a complex number imaginary part
      */
+
+    @Override
+    public boolean equals(Object b) {
+        if (this == b)
+            return true;
+        if (b == null)
+            return false;
+        if (this.getClass() != b.getClass())
+            return false;
+        if (b instanceof Complex) {
+            Complex other = (Complex) b;
+            return Double.compare(other.re, this.re) == 0 &&
+                    Double.compare(other.im, this.im) == 0;
+        }
+        return false;
+    }
+
     public Complex(double real, double imag) {
         re = real;
         im = imag;
