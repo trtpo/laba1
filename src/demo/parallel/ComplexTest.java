@@ -21,7 +21,8 @@ class ComplexTest {
 
     @Test
     void divisionByZero() {
-        Complex testNumber = new Complex(1,1);
+        Complex testNumber1 = new Complex(1,1);
+        Complex testNumber = testNumber1.division(new Complex(0,0));
         double divRe=testNumber.getRe();
         double divImg=testNumber.getIm();
         if (divRe==0 || divImg==0)
@@ -37,10 +38,10 @@ class ComplexTest {
         Complex result = new Complex(10, 2).division(new Complex(10, 2));
         Assert.assertEquals((int) result.getRe(), 0);
         Assert.assertEquals((int) result.getIm(), 0);
-        if (result.getRe() == 0 && result.getIm() == 0) {
-            System.out.println("successfully");
-        } else {
+        if (result.getRe() ==0 && result.getIm() == 0) {
             System.out.println("wrong");
+        } else {
+            System.out.println("successfully");
         }
 
     }
