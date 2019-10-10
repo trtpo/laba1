@@ -60,6 +60,11 @@ public class Complex {
         im = imag;
     }
 
+    public Complex divide(Complex b) {
+        this.re /= b.re;
+        this.im /= b.im;
+        return this;
+    }
     /**
      * Add operation.
      * @param b summand
