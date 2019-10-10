@@ -70,6 +70,16 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Subtraction operation.
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -82,6 +92,30 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+    /**
+     * Division operation.
+     * @param b divisor
+     * @return this Complex object whose value is this \ b
+     */
+    public Complex division(Complex b) throws Exception{
+        if (b.re==0 && b.im == 0) throw new ArithmeticException("dev 0");
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
+        double imag = (b.re * a.im - a.im * b.re)/(b.re*b.re + b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Module operation.
+     * @return this Complex object whose value is module of real plus module of imagine part
+     */
+    public Complex mod() {
+        if (re<0) re=-re;
+        if (im<0) im=-im;
         return this;
     }
 
