@@ -29,6 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package demo.parallel;
+import java.lang.Math;
 
 
 /**
@@ -69,6 +70,10 @@ public class Complex {
         re += b.re;
         im += b.im;
         return this;
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re)*Math.cosh(im), -Math.sin(re)*Math.sinh(im));
     }
 
     /**
