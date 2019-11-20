@@ -70,7 +70,16 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    /**
+     * Substract operation.
+     * @param b
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,7 +93,17 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    /**
+     * Sin operation.
+     * param  nothing
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sinComp() {
+        Complex a = this;
+        re = Math.sin(a.re)*Math.cosh(a.im);
+        im = Math.cos(a.re)*Math.sinh(a.im);
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
