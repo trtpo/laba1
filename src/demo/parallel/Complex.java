@@ -98,7 +98,7 @@ public class Complex {
      * @param b divisor
      * @return this Complex object whose value is this \ b
      */
-    public Complex division(Complex b) throws Exception{
+    public Complex division(Complex b) throws ArithmeticException{
         if (b.re==0 && b.im == 0) throw new ArithmeticException("dev 0");
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
@@ -116,6 +116,13 @@ public class Complex {
         if (re<0) re=-re;
         if (im<0) im=-im;
         return this;
+    }
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm(){
+        return im;
     }
     /**
      * Square of Complex object's length, we're using square of length to 
