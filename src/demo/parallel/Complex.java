@@ -86,6 +86,31 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b Sub
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * div operation.
+     * @param  b div
+     * @return this Complex object whose value is this * b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
