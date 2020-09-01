@@ -49,11 +49,11 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -69,6 +69,29 @@ public class Complex {
         re += b.re;
         im += b.im;
         return this;
+    }
+
+    /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return sin(b)
+     */
+    public Complex Sin(Complex b)
+    {
+        b.re = Math.sin(b.re)*Math.cosh(b.im);
+        b.im = Math.cos(b.re)*Math.sinh(b.im);
+        return b;
+    }
+    /**
+     * Multiply operation.
+     * @param  b multiplier
+     * @return tang(b)
+     */
+    public Complex Tang(Complex b)
+    {
+        b.re = Math.sin(2*b.re) / (Math.cos(2*b.re) + Math.cosh(2*b.im));
+        b.im = Math.sinh(2*b.im)/(Math.cos(2*b.re)+Math.cosh(2*b.im));
+        return b;
     }
 
     /**
