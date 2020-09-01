@@ -91,6 +91,6 @@ public class Complex {
      * @return square of length
     */
     public double lengthSQ() {
-        return re * re + im * im;
+        return re * re + im * im ;
     }
 }
