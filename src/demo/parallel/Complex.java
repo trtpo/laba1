@@ -72,6 +72,17 @@ public class Complex {
     }
 
     /**
+     * sub operation.
+     * @param b sub
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex min(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -80,6 +91,20 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * div operation.
+     * @param  b div
+     * @return this Complex object whose value is this / b
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
         re = real;
         im = imag;
         return this;
