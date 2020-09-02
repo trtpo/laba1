@@ -271,8 +271,10 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+        Complex c2 = new Complex(-0.7, 0.7);
+        Complex c3 = new Complex(-0.8, -0.1);
         do {
-            c = c.times(c).times(c).times(c).plus(comp);
+            c = c.times(c).times(c).times(c).division(c2).plus(comp).minus(c3);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
