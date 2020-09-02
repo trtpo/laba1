@@ -351,13 +351,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(60, 0, 0),
+            Color.BLUE,
             Color.WHITE,
             Color.RED,
-            Color.rgb(100, 0, 0),
+            Color.rgb(123, 44, 101),
             Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.rgb(60, 0, 0)
         };
         
         /**
