@@ -93,4 +93,11 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex div(Complex b, Complex a)
+    {
+        b.re = (a.re*b.re+b.im*a.im)/(a.re*a.re+a.im*a.im);
+        b.im = (a.re*b.im+b.re*a.im)/(a.re*a.re+a.im*a.im);
+        return b;
+    }
 }
