@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    public double re;   // the real part
+    public double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
