@@ -31,6 +31,9 @@
 package demo.parallel;
 
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -76,6 +79,12 @@ public class Complex {
         im-=b.im;
         return this;
     }
+    public Complex tg(){
+
+        re = Math.sin(2*re)/(Math.cos(2*re)+Math.cosh(2*im));
+        im = Math.sinh(2*im)/(Math.cos(2*im)+Math.cosh(2*im));
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -98,5 +107,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
     }
 }
