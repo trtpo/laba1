@@ -103,8 +103,9 @@ public class Complex {
      */
     public Complex cos()
     {
-        re = Math.cos(re) * Math.cosh(im);
-        im = Math.sin(re) * Math.sinh(im);
+        double re = Math.cos(this.re) * Math.cosh(im);
+        im = -Math.sin(this.re) * Math.sinh(im);
+        this.re = re;
         return this;
     }
 
