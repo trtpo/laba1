@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    public double re;   // the real part
+    public double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -96,6 +96,9 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+
+    public double re(){return this.re;}
+    public double im(){return this.im;}
     public double lengthSQ() {
         return re * re + im * im;
     }
