@@ -309,7 +309,7 @@ class MandelbrotSetTask extends Task<Long> {
         double r = 0, g = 0, b = 0;
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
-                Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
+                Color c = calcPixel(x + step * step *(i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5 + 4);
                 r += c.getRed() / N;
                 g += c.getGreen() / N;
                 b += c.getBlue() / N;
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.RED;
         }
         return colors[count];
     }
@@ -351,13 +351,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(40, 1, 1),
             Color.WHITE,
             Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.BLUE,
+            Color.rgb(100, 1, 1),
+            Color.WHITE,
+            Color.rgb(50, 1, 1)
         };
         
         /**
