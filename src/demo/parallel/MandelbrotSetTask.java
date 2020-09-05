@@ -54,6 +54,7 @@ import javafx.scene.paint.Color;
  * 
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 class MandelbrotSetTask extends Task<Long> {
     
     /**

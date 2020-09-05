@@ -39,6 +39,24 @@ public class Test {
             assertTrue(num.equals(result));
         }
     }
+    @org.junit.Test
+    public void coss() throws Exception {
+        for (double re = -1, im = -1; re <= 1; re += 0.3, im += 0.4) {
+            Complex result = new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+            Complex num = (new Complex(re, im)).cos();
+            assertTrue(num.equals(result));
+        }
+        for (double re = 1, im = -1; im <= 1; re--, im += 0.2353433343) {
+            Complex result = new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+            Complex num = (new Complex(re, im)).cos();
+            assertTrue(num.equals(result));
+        }
+        for (double re = -1, im = 1; re <= 1; re += 0.534444334, im--) {
+            Complex result = new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+            Complex num = (new Complex(re, im)).cos();
+            assertTrue(num.equals(result));
+        }
+    }
 
     @org.junit.Test
     public void minus() throws Exception {
