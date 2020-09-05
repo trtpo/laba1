@@ -309,7 +309,7 @@ class MandelbrotSetTask extends Task<Long> {
         double r = 0, g = 0, b = 0;
         for (int i = 0; i < ANTIALIASING_BASE; i++) {
             for (int j = 0; j < ANTIALIASING_BASE; j++) {
-                Color c = calcPixel(x + step * (i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5);
+                Color c = calcPixel(x + step * step *(i + 0.5) - 0.5, y + step * (j + 0.5) - 0.5 + 4);
                 r += c.getRed() / N;
                 g += c.getGreen() / N;
                 b += c.getBlue() / N;
