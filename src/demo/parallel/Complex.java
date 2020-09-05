@@ -77,6 +77,17 @@ public class Complex {
         return this;
     }
 
+    /*
+    *  a.re = 2 | a.im = 3
+    *  b.re = 1 | b.im = 4
+    * */
+    public Unit_test(Complex a, Complex b) {
+        a.minus(b);
+
+        if (a.re == 1 && a.im == -1) return True;
+        else False;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
