@@ -54,6 +54,7 @@ import javafx.scene.paint.Color;
  * 
  * @author Alexander Kouznetsov, Tristan Yan
  */
+
 class MandelbrotSetTask extends Task<Long> {
     
     /**
@@ -275,7 +276,8 @@ class MandelbrotSetTask extends Task<Long> {
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).plus(comp).plus(c.times(c));
+            c = c.times(c).sin().cos().plus(comp);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -352,11 +354,11 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
+            Color.GREEN,
+            Color.BLACK,
+            Color.YELLOW,
             Color.rgb(100, 0, 0),
-            Color.RED,
+            Color.BLUE,
             Color.rgb(50, 0, 0)
         };
         
