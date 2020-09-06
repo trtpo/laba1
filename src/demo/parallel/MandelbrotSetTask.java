@@ -39,10 +39,7 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See  for parameters list. The task returns time in milliseconds as
  * its calculated value.
  * 
  * <p><i>
@@ -274,8 +271,10 @@ class MandelbrotSetTask extends Task<Long> {
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
+        Complex c2 = new Complex(-0.7, 0.7);
+        Complex c3 = new Complex(-0.8, -0.1);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).times(c).times(c).division(c2).plus(comp).minus(c3);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
@@ -351,13 +350,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+                Color.rgb(255, 0, 0),
+                Color.rgb(0, 255, 0),
+                Color.rgb(0, 0, 255),
+                Color.rgb(255, 255, 0),
+                Color.rgb(255, 0, 255),
+                Color.rgb(0, 255, 255),
+                Color.rgb(255, 255, 255),
         };
         
         /**
