@@ -85,6 +85,24 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
+
+    public Complex by(Complex b) {
+
+        this.times(new Complex(b.re, -b.im));
+
+        double denominator = b.re * b.re + b.im * b.im;
+
+        this.re /= denominator;
+        this.re /= denominator;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
