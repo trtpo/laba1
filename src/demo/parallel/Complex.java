@@ -86,6 +86,30 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos()
+    {
+        double re = Math.cos(this.re) * Math.cosh(im);
+        im = -Math.sin(this.re) * Math.sinh(im);
+        this.re = re;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
@@ -93,4 +117,7 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double re(){return this.re;}
+    public double im(){return this.im;}
 }
