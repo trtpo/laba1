@@ -70,6 +70,12 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex cos(Complex b) {
+        b.re = Math.cos(b.re)*Math.cosh(b.im);
+        b.im = Math.sin(b.re)*Math.sinh(b.im);
+
+        return b;
+    }
 
     /**
      * Multiply operation.
