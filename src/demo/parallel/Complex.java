@@ -85,7 +85,7 @@ public class Complex {
     /**
      * Divide operation.
      * @param b divider
-     * @return this Complex object whose value is (this - b)
+     * @return this Complex object whose value is (this / b)
      */
     public Complex divide(Complex b) {
         re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
@@ -105,6 +105,20 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    /**
+     * @return a complex number real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return a complex number imaginary part
+     */
+    public double getIm() {
+        return im;
     }
 
     /**
