@@ -93,4 +93,29 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Subtract operation
+     * @param b subtrahend
+     * @return subtraction of this & b (this - b)
+     */
+     public Complex subtract(Complex b) {
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+     }
+
+    /**
+     * Division operation
+     * @param b divider
+     * @return division of this & b (this / b)
+     */
+     public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        this.re = real;
+        this.im = imag;
+        return this;
+     }
 }
