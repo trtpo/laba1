@@ -91,7 +91,6 @@ public class Complex {
         Complex conjugateNumber = getConjugateNumber(b);
         Complex numeratorOfTheFraction = this.times(conjugateNumber);
         Complex denominatorOfTheFraction = b.times(conjugateNumber);
-        System.out.println(numeratorOfTheFraction.re/denominatorOfTheFraction.re+" "+numeratorOfTheFraction.im/denominatorOfTheFraction.re+" "+(double)797/3028+" "+(double)305/3028);
         return new Complex(numeratorOfTheFraction.re/denominatorOfTheFraction.re,numeratorOfTheFraction.im/denominatorOfTheFraction.re);
     }
 
@@ -147,5 +146,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        Complex c = (Complex)o;
+        if((float)c.re==(float)this.re && (float)c.im==(float)this.im)
+            return true;
+        else return  false;
     }
 }
