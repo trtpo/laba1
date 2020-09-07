@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -99,7 +99,7 @@ public class Complex {
         double denominator = b.re * b.re + b.im * b.im;
 
         this.re /= denominator;
-        this.re /= denominator;
+        this.im /= denominator;
         return this;
     }
 
@@ -110,5 +110,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
