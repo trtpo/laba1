@@ -83,6 +83,29 @@ public class Complex {
     }
 
     /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this/b
+     */
+    public Complex divide(Complex b){
+        Complex conjugateNumber = getConjugateNumber(b);
+        Complex numeratorOfTheFraction = this.times(conjugateNumber);
+        Complex denominatorOfTheFraction = b.times(conjugateNumber);
+        System.out.println(numeratorOfTheFraction.re/denominatorOfTheFraction.re+" "+numeratorOfTheFraction.im/denominatorOfTheFraction.re+" "+(double)797/3028+" "+(double)305/3028);
+        return new Complex(numeratorOfTheFraction.re/denominatorOfTheFraction.re,numeratorOfTheFraction.im/denominatorOfTheFraction.re);
+    }
+
+    /**
+     * Get conjugate number
+     * @param number
+     * @return number with other im
+     */
+    public Complex getConjugateNumber(Complex number){
+        return new Complex(number.re,-number.im);
+    }
+
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
