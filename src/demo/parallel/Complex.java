@@ -70,7 +70,11 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex tan(Complex b)   {
+        b.re=Math.tan(b.re)*Math.tanh(b.im);
+        b.im=(1/Math.tan(b.re))* (1/Math.tanh(b.im));
+        return b;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
