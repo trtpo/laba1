@@ -120,6 +120,14 @@ public class Complex {
     }
 
     /**
+     * Cos(z) operation.
+     * @return cos(z)
+     */
+    public Complex getCos(){
+        return new Complex(Math.cos(this.re)*Math.cosh(this.im), -Math.sin(this.re)*Math.sinh(this.im));
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
