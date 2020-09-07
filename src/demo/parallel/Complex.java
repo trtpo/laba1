@@ -115,4 +115,18 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * @return a complex number real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return a complex number imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
 }
