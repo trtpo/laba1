@@ -126,16 +126,30 @@ public class Complex {
         return new Complex(Math.cos(this.re)*Math.cosh(this.im), -Math.sin(this.re)*Math.sinh(this.im));
     }
 
-    /**My Math.pow for complex number
+    /**
+     * My Math.pow for complex number
      * @param degree for pow complex number
+     * @throws ArithmeticException if will be division by 0
      * @return complex number in this degree
      */
     public Complex pow(int degree){
-        if(degree==0) return new Complex(1,0);
+        
         double module = Math.sqrt(lengthSQ());
-        double cornerFi = Math.atan(im/re);
-        this.re = Math.pow(module,degree)*Math.cos(degree*cornerFi);
-        this.im = Math.pow(module,degree)*Math.sin(degree*cornerFi);
+        double cornerFi;
+        try{
+            cornerFi = Math.atan(im / re);
+        }
+        catch (ArithmeticException a){
+            throw new ArithmeticException("Error");
+        }
+
+        if(im<0 && re<0)
+            cornerFi-= Math.PI;
+        if(re<0 && im>0)
+            cornerFi+=Math.PI;
+
+        this.re = Math.abs(Math.pow(module,degree))*Math.cos(degree*cornerFi);
+        this.im = Math.abs(Math.pow(module,degree))*Math.sin(degree*cornerFi);
         return this;
     }
 
