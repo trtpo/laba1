@@ -1,8 +1,13 @@
 import demo.parallel.Complex;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComplexTest {
+
+    @Rule
+ public  ExpectedException thrown = ExpectedException.none();
 
     @org.junit.jupiter.api.Test
     void minus() {
@@ -30,9 +35,17 @@ class ComplexTest {
 
     @org.junit.jupiter.api.Test
     void pow() {
-        assertTrue(new Complex(2.3,-1.6).pow(4).equals(new Complex(-46.7167,-40.1856)), "Test for degree 4.");
-        assertTrue(new Complex(3.1,-4.2).pow(5).equals(new Complex(-145.71209,3873.55038)),"Test for degree 5.");
-        assertTrue(new Complex(7,-11).pow(0).equals(new Complex(1,0)), "Test for degree 0.");
-        assertTrue(new Complex(7.2,-11.6).pow(1).equals(new Complex(7.2,-11.6)), "Test for degree 1.");
+        final Complex numberToTest_1 = new Complex(5.6,12.4);
+        final Complex numberToTest_2 = new Complex(-5.6,-12.4);
+        final Complex numberToTest_3 = new Complex(5.6,-12.4);
+        final Complex numberToTest_4 = new Complex(0,0);
+
+        assertTrue(numberToTest_1.pow(4).equals(new Complex(-4305.8944,-33997.8240)), "Test for degree 4.");
+        assertTrue(numberToTest_2.pow(3).equals(new Complex(2407.552,740.032)),"Test for degree 3.");
+        assertTrue(numberToTest_3.pow(0).equals(new Complex(1,0)), "Test for degree 0.");
+
+        thrown.expect(ArithmeticException.class);
+        thrown.expectMessage("Error");
+        numberToTest_4.pow(1);
     }
 }
