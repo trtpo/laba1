@@ -127,6 +127,19 @@ public class Complex {
         return new Complex(Math.cos(this.re)*Math.cosh(this.im), -Math.sin(this.re)*Math.sinh(this.im));
     }
 
+    /**My Math.pow for complex number
+     * @param degree for pow complex number
+     * @return complex number in this degree
+     */
+    public Complex pow(int degree){
+        if(degree==0) return new Complex(1,0);
+        double module = Math.sqrt(lengthSQ());
+        double cornerFi = Math.atan(im/re);
+        this.re = Math.pow(module,degree)*Math.cos(degree*cornerFi);
+        this.im = Math.pow(module,degree)*Math.sin(degree*cornerFi);
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
