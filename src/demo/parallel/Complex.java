@@ -91,7 +91,15 @@ public class Complex {
         Complex conjugateNumber = getConjugateNumber(b);
         Complex numeratorOfTheFraction = this.times(conjugateNumber);
         Complex denominatorOfTheFraction = b.times(conjugateNumber);
-        return new Complex(numeratorOfTheFraction.re/denominatorOfTheFraction.re,numeratorOfTheFraction.im/denominatorOfTheFraction.re);
+
+       try {
+            return new Complex(numeratorOfTheFraction.re / denominatorOfTheFraction.re,
+                    numeratorOfTheFraction.im / denominatorOfTheFraction.re);
+        }
+
+        catch (ArithmeticException a){
+             throw new ArithmeticException("Error!Division by 0.");
+        }
     }
 
     /**
@@ -133,7 +141,7 @@ public class Complex {
      * @return complex number in this degree
      */
     public Complex pow(int degree){
-        
+
         double module = Math.sqrt(lengthSQ());
         double cornerFi;
         try{
@@ -168,5 +176,10 @@ public class Complex {
         if((float)c.re==(float)this.re && (float)c.im==(float)this.im)
             return true;
         else return  false;
+    }
+
+    @Override
+    public Complex clone(){
+        return new Complex(this.re, this.im);
     }
 }
