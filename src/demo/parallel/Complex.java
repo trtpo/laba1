@@ -70,6 +70,11 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex tan(Complex b)   {
+        b.re=Math.tan(b.re)*Math.tanh(b.im);
+        b.im=(Math.cos(b.re)/Math.sin(b.re))* (Math.cosh(b.re)/Math.sinh(b.im));
+        return b;
+    }
 
     /**
      * Multiply operation.
@@ -84,7 +89,57 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex divides(Complex b) {
 
+        Complex a = this;
+
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
+
+        double imag = (b.re*a.im - b.im*a.re)/(b.re*b.re + b.im*b.im);
+
+        re = real;
+
+        im = imag;
+
+        return this;
+
+    }
+
+
+
+    /**
+
+     * Cosine operation.
+
+     * @return this Complex object whose value is cos(this)
+
+     */
+
+
+
+    /** @param b
+
+     * @return true if a = b
+
+     */
+
+    public boolean isEqual(Complex b) {
+
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+
+    }
+
+
+
+    /**
+
+     * Square of Complex object's length, we're using square of length to
+
+     * eliminate the computation of square root
+
+     * @return square of length
+
+     */
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +147,22 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    public double getRe() {
+
+        return re;
+
+    }
+
+
+
+    public double getIm() {
+
+        return im;
+
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 }
