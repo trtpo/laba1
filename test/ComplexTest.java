@@ -21,5 +21,9 @@ class ComplexTest {
 
     @org.junit.jupiter.api.Test
     void pow() {
+        assertTrue(new Complex(2.3,-1.6).pow(4).equals(new Complex(-46.7167,-40.1856)), "Test for degree 4.");
+        assertTrue(new Complex(3.1,-4.2).pow(5).equals(new Complex(-145.71209,3873.55038)),"Test for degree 5.");
+        assertTrue(new Complex(7,-11).pow(0).equals(new Complex(1,0)), "Test for degree 0.");
+        assertTrue(new Complex(7.2,-11.6).pow(1).equals(new Complex(7.2,-11.6)), "Test for degree 1.");
     }
 }
