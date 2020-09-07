@@ -86,11 +86,47 @@ public class Complex {
     }
 
     /**
+     * Minus operation.
+     * @param b subtractor
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Divide operation.
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        im = (im * b.re - re * b.im) / (b.re * b.re + b.im * b.im);
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * @return a complex number real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * @return a complex number imaginary part
+     */
+    public double getIm() {
+        return im;
     }
 }
