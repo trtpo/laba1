@@ -118,4 +118,12 @@ public class Complex {
         this.im = imag;
         return this;
      }
+
+     public double getRealPart(){
+        return this.re;
+     }
+
+     public double getImagPart(){
+        return this.im;
+     }
 }
