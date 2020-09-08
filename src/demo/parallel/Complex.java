@@ -71,6 +71,21 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b){
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b){
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/b.lengthSQ();
+        double imag = (a.im * b.re - a.re * b.im)/b.lengthSQ();
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +99,8 @@ public class Complex {
         im = imag;
         return this;
     }
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
