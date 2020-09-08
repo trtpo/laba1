@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.rgb(0,240,200);
+            return Color.rgb(0,230,200);
         }
         return colors[count];
     }
