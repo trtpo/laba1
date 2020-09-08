@@ -86,6 +86,10 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    public Complex cos(Complex b) {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
