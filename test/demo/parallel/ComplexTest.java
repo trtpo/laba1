@@ -36,11 +36,8 @@ public class ComplexTest extends TestCase {
     @Test
     public void testLengthSQ() {
        double actualFirst = firstComplexNum.lengthSQ();
-       double actualSecond = secondComplexNum.lengthSQ();
        double expectedFirst = 41;
-       double expectedSecond = 113;
        assertEquals(expectedFirst,actualFirst);
-       assertEquals(expectedSecond,actualSecond);
     }
     @Test
     public void testDivison() {
