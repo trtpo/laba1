@@ -168,4 +168,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    @Override
+    public boolean equals(Object o){
+        Complex c = (Complex)o;
+        if((float)c.re==(float)this.re && (float)c.im==(float)this.im)
+            return true;
+        else return  false;
+    }
+
+    @Override
+    public Complex clone(){
+        return new Complex(this.re, this.im);
+    }
 }
