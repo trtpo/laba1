@@ -70,6 +70,17 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -84,6 +95,20 @@ public class Complex {
         im = imag;
         return this;
     }
+    
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -92,5 +117,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    
+    /**
+     * Equals method
+     * @param o
+     * @return this Complex object is equal to o
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
     }
 }
