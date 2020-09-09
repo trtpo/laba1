@@ -92,7 +92,7 @@ public class Complex {
         return this;
     }
 
-    public Complex by(Complex b) {
+    public Complex divideBy(Complex b) {
 
         this.times(new Complex(b.re, -b.im));
 
