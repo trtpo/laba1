@@ -95,6 +95,20 @@ public class Complex {
         im = imag;
         return this;
     }
+    
+    /**
+     * Divide operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
