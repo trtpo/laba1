@@ -45,7 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -85,6 +85,24 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
+
+    public Complex divideBy(Complex b) {
+
+        this.times(new Complex(b.re, -b.im));
+
+        double denominator = b.re * b.re + b.im * b.im;
+
+        this.re /= denominator;
+        this.im /= denominator;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +110,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
