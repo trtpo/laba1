@@ -90,13 +90,11 @@ public class Complex {
      */
     public Complex division(Complex b){
         Complex a = this;
-        double denominator = Math.pow(b.re, 2) + Math.pow(b.im, 2);
-        double real,image;
+
+        double denominator = Math.pow(b.re,2) + Math.pow(b.im,2);
         if (denominator != 0) {
-            real = (a.re * b.re + a.im * b.im) / denominator;
-            image = (b.re * a.im - a.re * b.im) / denominator;
-            re = real;
-            im = image;
+            re = (a.re * b.re + a.im * b.im) / denominator;
+            im = (b.re * a.im - a.re * b.im) / denominator;
         }
         return this;
     }
@@ -137,5 +135,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * @return real part of complex value
+     */
+    public double re() {
+        return re ;
+    }
+    /**
+     * @return image part of complex value
+     */
+    public double im() {
+        return im ;
     }
 }
