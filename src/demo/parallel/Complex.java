@@ -31,6 +31,7 @@
 package demo.parallel;
 
 
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -123,5 +124,21 @@ public class Complex {
         re = Math.cos(re) * Math.cosh(im);
         im = Math.sin(re) * Math.sinh(im);
         return this;
+    }
+
+    public double getRe() {return re;}
+    public double getIm() {return im;}
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Complex)) return false;
+        Complex complex = (Complex)o;
+        return complex.getRe() == re && complex.getIm() == im;
+    }
+
+    @Override
+    public int hashCode() {
+        return Double.valueOf(re + im).hashCode();
     }
 }
