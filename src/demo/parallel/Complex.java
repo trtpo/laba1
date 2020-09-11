@@ -59,7 +59,13 @@ public class Complex {
         re = real;
         im = imag;
     }
-
+	
+	public double getReal() {
+    	return re;
+    }
+    public double getImage() {
+    	return im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -82,6 +88,11 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+	public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
