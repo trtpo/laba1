@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getReal() {
+        return this.re;
+    }
+
+    public double getImag() {
+        return this.im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -91,7 +99,6 @@ public class Complex {
         return new Complex(re, -im);
     }
 
-
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -114,4 +121,6 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
 }
