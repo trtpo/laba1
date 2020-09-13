@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Get real part operation.
+     * @return a complex number real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Get imaginary part operation.
+     * @return a complex number imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
