@@ -94,6 +94,13 @@ public class Complex {
         return this;
     }
 
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        re = re / scale;
+        im = -im / scale;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
