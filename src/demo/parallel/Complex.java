@@ -45,9 +45,17 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -91,30 +99,19 @@ public class Complex {
         return this;
     }
 
-    public Complex reciprocal() {
-        double scale = re*re + im*im;
-        return new Complex(re / scale, -im / scale);
-    }
-
-    public Complex divides(Complex b) {
-        Complex a = this;
-        return a.times(b.reciprocal());
-    }
-
     public Complex cos(Complex b) {
         re = Math.cos(b.re) * Math.cosh(b.im);
         im = -Math.sin(b.re) * Math.sinh(b.im);
         return this;
     }
 
-    public Complex scale(double alpha) {
-        re = alpha * re;
-        im = alpha * im;
+    public Complex minus(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        re = real;
+        im = imag;
         return this;
-    }
-
-    public Complex tan(Complex b) {
-        return sin(b).divides(cos(b));
     }
 
     /**
