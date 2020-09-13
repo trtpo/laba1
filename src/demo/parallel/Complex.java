@@ -46,6 +46,14 @@ package demo.parallel;
  */
 public class Complex {
     
+	 public double getRe() {
+	        return re;
+	    }
+
+	    public double getIm() {
+	        return im;
+	    }
+	
     private double re;   // the real part
     private double im;   // the imaginary part
 
@@ -70,11 +78,33 @@ public class Complex {
         im += b.im;
         return this;
     }
+    
+    /**
+     * Subtract operation.
+     * @param b subtracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Scale operation.
+     * @param value scale
+     * @return this Complex object whose value is (this * value)
+     */
+    public Complex increase(double value) {
+        re *= value;
+        im *= value;
+        return this;
+    }
 
     /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
     public Complex times(Complex b) {
         Complex a = this;
