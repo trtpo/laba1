@@ -94,6 +94,26 @@ public class Complex {
         return this;
     }
 
+    public Complex substract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex increase(double value) {
+        re *= value;
+        im *= value;
+        return this;
+    }
+    
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+    
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
