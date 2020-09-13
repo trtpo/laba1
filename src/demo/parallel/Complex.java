@@ -86,6 +86,61 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex minus(Complex b) {
+        double real = re - b.re;
+        double imag = im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Square operation
+     * @return this Complex object whose value is this * this
+     */
+    public Complex square() {
+        double real = Math.pow(re, 2) - Math.pow(im, 2);
+        double imag = 2 * im * re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Division operation
+     * @param b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        double den = Math.pow(b.re, 2) + Math.pow(b.im, 2);
+        double real = re * b.re + im * b.im;
+        double imag = im * b.re - re * b.im;
+        re = real / den;
+        im = imag / den;
+        return this;
+    }
+
+    /**
+     * Getter for real part
+     * @return real part value of this Complex object
+     */
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Getter for imaginary part
+     * @return imaginary part value of this Complex object
+     */
+    public double getImaginary() {
+        return im;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
