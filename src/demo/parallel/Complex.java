@@ -93,4 +93,13 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Scale operation.
+     * @param alpha coefficient
+     * @return a new object whose value is (this * alpha)
+     */
+    public Complex scale(double alpha) {
+        return new Complex(alpha * re, alpha * im);
+    }
 }
