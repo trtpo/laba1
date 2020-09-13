@@ -85,6 +85,38 @@ public class Complex {
         return this;
     }
 
+    public Complex sin(Complex b) {
+        re = Math.sin(b.re) * Math.cosh(b.im);
+        im = Math.cos(b.re) * Math.sinh(b.im);
+        return this;
+    }
+
+    public Complex reciprocal() {
+        double scale = re*re + im*im;
+        return new Complex(re / scale, -im / scale);
+    }
+
+    public Complex divides(Complex b) {
+        Complex a = this;
+        return a.times(b.reciprocal());
+    }
+
+    public Complex cos(Complex b) {
+        re = Math.cos(b.re) * Math.cosh(b.im);
+        im = -Math.sin(b.re) * Math.sinh(b.im);
+        return this;
+    }
+
+    public Complex scale(double alpha) {
+        re = alpha * re;
+        im = alpha * im;
+        return this;
+    }
+
+    public Complex tan(Complex b) {
+        return sin(b).divides(cos(b));
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
