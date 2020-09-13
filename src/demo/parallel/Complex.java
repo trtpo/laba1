@@ -110,4 +110,12 @@ public class Complex {
     public Complex exp() {
         return new Complex(Math.exp(re) * Math.cos(im), Math.exp(re) * Math.sin(im));
     }
+
+    /**
+     * Sinus operation.
+     * @return a new Complex object whose value is the complex sine of this
+     */
+    public Complex sin() {
+        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
+    }
 }
