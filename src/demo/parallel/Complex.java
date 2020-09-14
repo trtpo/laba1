@@ -49,6 +49,13 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -92,5 +99,15 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public Complex div(Complex b)
+    {
+        Complex a = this;
+        double real = (a.re*b.re+b.im*a.im)/(a.re*a.re+a.im*a.im);
+        double imag = (a.re*b.im-b.re*a.im)/(a.re*a.re+a.im*a.im);
+        re = real;
+        im = imag;
+        return this;
     }
 }
