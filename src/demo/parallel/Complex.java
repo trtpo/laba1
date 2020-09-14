@@ -45,19 +45,39 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    /**
+     * equals operation.
+     * @param b equal
+     * @return this Complex object whose value is true if a=b
+     */
+    public void equals(Complex b) {
+        if(this.re==b.re && this.im==b.im)    System.out.println("\nOperation is success\n");
+        else    System.out.println("\nOperation is failed\n");
+    }
+
+    public double getRe()
+    {
+        return this.re;
+    }
+
+    public double getIm()
+    {
+        return this.im;
     }
 
     /**
@@ -68,6 +88,17 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     * Substract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex subtract(Complex b) {
+        re =re - b.re;
+        im =im - b.im;
         return this;
     }
 
@@ -86,10 +117,50 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re*b.re+b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * sin operation
+     * @return this Complex object whose value is sin(this)
+     */
+    public Complex sinus() {
+        Complex a = this;
+        double real = Math.sin(a.re) * Math.cosh(a.im);
+        double imag = Math.cos(a.re) * Math.sinh(a.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cosinus() {
+        Complex a = this;
+        double real = Math.cos(a.re) * Math.cosh(a.im);
+        double imag = -(Math.sin(a.re) * Math.sinh(a.im));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
