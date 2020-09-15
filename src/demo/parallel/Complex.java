@@ -90,6 +90,27 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+    public Complex divides(Complex b)
+    {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
+        double imag = (b.re*a.im - b.im*a.re)/(b.re*b.re + b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+    public Complex Sin(Complex b)
+    {
+        b.re = Math.sin(b.re)*Math.cosh(b.im);
+        b.im = Math.cos(b.re)*Math.sinh(b.im);
+        return b;
+    }
+    public Complex Tang(Complex b)
+    {
+        b.re = Math.sin(2*b.re) / (Math.cos(2*b.re) + Math.cosh(2*b.im));
+        b.im = Math.sinh(2*b.im)/(Math.cos(2*b.re)+Math.cosh(2*b.im));
+        return b;
+    }
     public double lengthSQ() {
         return re * re + im * im;
     }
