@@ -71,6 +71,28 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex division(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (a.re * a.re + b.re + b.re);
+        double imag = (a.im * b.re - a.re * b.im) / (a.re * a.re + b.re * b.re);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex sin(Complex b) {
+        double real = Math.sin(b.re) * Math.cosh(b.im);
+        double imag = Math.cos(b.re) * Math.sinh(b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
