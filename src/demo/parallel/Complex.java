@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    public double re;   // the real part
+    public double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -59,6 +59,7 @@ public class Complex {
         re = real;
         im = imag;
     }
+
 
     /**
      * Add operation.
@@ -89,11 +90,16 @@ public class Complex {
      */
     public Complex div(Complex b) {
         Complex a = this;
-        double real = a.re / b.re - a.im / b.im;
-        double imag = a.re / b.im + a.im / b.re;
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re)/(b.re * b.re + b.im * b.im);
         re = real;
         im = imag;
         return this;
+    }
+
+    public double abs(Complex b) {
+        double abs = Math.sqrt(b.re*b.re + b.im*b.im);
+        return abs;
     }
 
     /**
