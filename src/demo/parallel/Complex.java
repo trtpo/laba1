@@ -130,14 +130,7 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is cos(b)
      */
-    public Complex cos(Complex b) {
 
-        double real = Math.cos(b.re)*Math.cosh(b.im);
-        double imag = Math.sin(b.re)*Math.sinh(b.im);
-        re = real;
-        im = imag;
-        return b;
-    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -146,5 +139,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+    public boolean isEqual(Complex b) {
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 }
