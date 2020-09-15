@@ -66,6 +66,10 @@ public class Complex {
         return this;
     }
 
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
     public Complex div(Complex b) {
         Complex a = this;
         double real = a.re / b.re - a.im / b.im;
@@ -90,6 +94,19 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
+    public double getIm() {
+        return im;
+    }
+
+    public  double getRe() {
+        return re;
+    }
+
+    public boolean isEqual(Complex b) {
+
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+
     public Complex cos(Complex b) {
         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
