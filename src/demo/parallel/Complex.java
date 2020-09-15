@@ -59,7 +59,25 @@ public class Complex {
         re = real;
         im = imag;
     }
+    public Complex minus(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -76,6 +94,23 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
+    public double getIm() {
+        return im;
+    }
+
+    public  double getRe() {
+        return re;
+    }
+
+    public boolean isEqual(Complex b) {
+
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+
+    public Complex cos(Complex b) {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
+
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
