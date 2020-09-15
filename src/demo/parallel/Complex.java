@@ -86,6 +86,13 @@ public class Complex {
         im = imag;
         return this;
     }
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
 
     public Complex cos(Complex b) {
         return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
