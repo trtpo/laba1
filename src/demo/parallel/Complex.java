@@ -45,9 +45,10 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
-    private double re;   // the real part
-    private double im;   // the imaginary part
+
+    public double re;
+    public double im;
+
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -71,6 +72,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -83,6 +90,19 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public Complex divides(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re + b.im*b.im);
+        double imag = (b.re*a.im - b.im*a.re)/(b.re*b.re + b.im*b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 
     /**
