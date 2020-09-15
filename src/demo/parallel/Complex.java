@@ -99,8 +99,21 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    public double getIm() {
+        return im;
 
-    public Complex cos (){
-        return new Complex(Math.cos(re)*Math.cos(im),-Math.sin(re)*Math.sinh(im));
+    }
+
+    public  double getRe() {
+        return re;
+    }
+
+    public boolean isEqual(Complex b) {
+
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+
+    }
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
     }
 }
