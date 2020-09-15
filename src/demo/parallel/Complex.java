@@ -72,6 +72,18 @@ public class Complex {
     }
 
     /**
+     * Sub operation.
+     * @param b summand
+     * @return this Complex object whose value is (this - b)
+     */
+
+//    public Complex minus(Complex b) {
+//        re -= b.re;
+//        im -= b.im;
+//        return this;
+//    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +96,48 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Div operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this / b
+     */
+//    public Complex div(Complex b) {
+//        Complex a = this;
+//        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+//        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+//        re = real;
+//        im = imag;
+//        return this;
+//    }
+
+    /**
+     * Sinus operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is sin(b)
+     */
+//    public Complex sin(Complex b) {
+//
+//        double real = Math.sin(b.re)*Math.cosh(b.im);
+//        double imag = Math.cos(b.re)*Math.sinh(b.im);
+//        re = real;
+//        im = imag;
+//        return b;
+//    }
+
+    /**
+     * Cosinus operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is cos(b)
+     */
+//    public Complex cos(Complex b) {
+//
+//        double real = Math.cos(b.re)*Math.cosh(b.im);
+//        double imag = Math.sin(b.re)*Math.sinh(b.im);
+//        re = real;
+//        im = imag;
+//        return b;
+//    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
