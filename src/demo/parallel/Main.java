@@ -158,12 +158,12 @@ public class Main extends Application {
     /**
      * Image view to present canvas snapshot on screen
      */
-    private ImageView ivCanvasSnapshot = new ImageView();
+    private final ImageView ivCanvasSnapshot = new ImageView();
     
     /**
      * Image view to present whole fractal snapshot during fly animation
      */
-    private ImageView ivGlobalSnapshot = new ImageView();
+    private final ImageView ivGlobalSnapshot = new ImageView();
 
     /**
      * Old rootPane origin coordinates
@@ -641,7 +641,7 @@ public class Main extends Application {
     /**
      * Renders the whole image except for a rectangular area 
      * for the current position in parallel mode
-     * 
+     *
      * @param onDone Runnable to execute when task is finished
      * @param minX min x coordinate of a rectangular area to be skipped
      * @param minY min y coordinate of a rectangular area to be skipped
@@ -942,17 +942,14 @@ public class Main extends Application {
             if (Double.doubleToLongBits(this.img) != Double.doubleToLongBits(other.img)) {
                 return false;
             }
-            if (Double.doubleToLongBits(this.scale) != Double.doubleToLongBits(other.scale)) {
-                return false;
-            }
-            return true;
+            return Double.doubleToLongBits(this.scale) == Double.doubleToLongBits(other.scale);
         }
     }
 
     /**
      * Binding for long value in milliseconds to nice textual format
      */
-    private class TimeToStringBinding extends StringBinding {
+    private static class TimeToStringBinding extends StringBinding {
 
         private final LongProperty timeValue;
 
@@ -1054,9 +1051,7 @@ public class Main extends Application {
             solveXfromY(position.scale);
             position.real = real;
             position.img = img;
-            renderFast(() -> {
-                canvas.setOpacity(1);
-            });
+            renderFast(() -> canvas.setOpacity(1));
         }
 
         @Override
