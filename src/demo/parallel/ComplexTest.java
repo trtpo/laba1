@@ -12,7 +12,7 @@ class ComplexTest {
                 Complex A = new Complex(10, 5);
                 Complex B = new Complex(3, 3);
                 Complex S = new Complex(13, 8);
-                A = A.times(B);
+                A = A.plus(B);
                 Assert.assertEquals(A.getRe(), S.getRe(), 0);
                 Assert.assertEquals(A.getIm(), S.getIm(),0);
 
