@@ -93,4 +93,65 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Subtraction operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     *
+     * @param b devider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double bLengthSQ = b.lengthSQ();
+        double real = (a.re * b.re + a.im * b.im) / bLengthSQ;
+        double imag = (a.im * b.re - a.re * b.im) / bLengthSQ;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Exponentiation operation.
+     *
+     * @param power exponent
+     * @return this Complex object whose value is (this ^ power)
+     */
+    public Complex pow(int power) {
+        switch (power){
+            case -1:
+                Complex temp = new Complex(1, 0).divide(this);
+                re = temp.re;
+                im = temp.im;
+                return this;
+            case 0:
+                re = 1;
+                im = 0;
+                return this;
+            case 1:
+                return this;
+        }
+        var a = this;
+        for (int i = 1; i < Math.abs(power); i++) {
+            a.times(a);
+        }
+        if (power < 0) {
+            Complex one = new Complex(1, 0);
+            a = one.divide(a);
+        }
+        re = a.re;
+        im = a.im;
+        return a;
+    }
 }
