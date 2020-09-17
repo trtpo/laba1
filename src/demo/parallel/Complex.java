@@ -84,6 +84,38 @@ public class Complex {
         im = imag;
         return this;
     }
+    
+    
+    /**
+     * Custom complex division operation
+     * @param divisor
+     * @return this Complex object whose value is this / b. Will return +-INFs if |b| = 0
+     */
+    public Complex divide(Complex divisor) {
+    	Complex a = this;
+    	Complex b = divisor;
+    	
+    	double coeff = b.re*b.re + b.im*b.im;
+    	double real = (a.re*b.re + a.im*b.im)/coeff;
+    	double imag = (a.im*b.re + a.re*b.im)/coeff;
+    	re = real;
+    	im = imag;
+    	
+    	return this;
+    }
+    
+    /**
+     * Custom complex natural log function. Doesn't bother with infinite answers, returns 0th one!
+     * @return this Complex object whose value is (ln(abs) + i*(arg + 0*2Pi))
+     */
+    public Complex ln() {
+    	double real = Math.log(lengthSQ()) / 2;
+    	double imag = Math.atan2(im, re);
+    	re = real;
+    	im = imag;
+    	
+    	return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
