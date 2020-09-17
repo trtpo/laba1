@@ -89,6 +89,12 @@ public class Complex {
     }
     public Complex times(Complex b) {
         Complex a = this;
+        if(b.re == 0 && b.im == 0)
+        {
+            re = 0;
+            im = 0;
+            return this;
+        }
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
         re = real;
