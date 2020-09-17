@@ -70,6 +70,25 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/b.lengthSQ();
+        double imag = (a.im * b.re - a.re * b.im)/b.lengthSQ();
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    // return a new Complex object whose value is the conjugate of this
+    public Complex conjugate() {
+        return new Complex(re, -im);
+    }
 
     /**
      * Multiply operation.
