@@ -4,3 +4,5 @@ out/
 .idea/
 *.swp
 nbproject/
+src/.classpath
+src/.project
