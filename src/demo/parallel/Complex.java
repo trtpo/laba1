@@ -72,8 +72,18 @@ public class Complex {
     }
 
     /**
+     * add Integer number
+     * @param n summand
+     * @return this Complex object whose value is (this + b)
+     */
+    public Complex plus(int n) {
+        re += n;
+        return this;
+    }
+
+    /**
      * Multiply operation.
-     * @param  b multiplier
+     * @param  b complex multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -84,6 +94,19 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /**
+     * Multiply operation.
+     * @param n - integer multiplier
+     * @return this Complex object whose value is this * b
+     */
+
+    public Complex times(int n) {
+        re *= n;
+        im *= n;
+        return this;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
