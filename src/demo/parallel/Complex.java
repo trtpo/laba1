@@ -87,6 +87,7 @@ public class Complex {
         im = Math.cos(b.re)*Math.cosh(b.im)/Math.cos(b.re);
         return this;
     }
+
     public Complex times(Complex b) {
         Complex a = this;
         if(b.re == 0 && b.im == 0)
