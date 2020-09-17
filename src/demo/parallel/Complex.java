@@ -46,8 +46,8 @@ package demo.parallel;
  */
 public class Complex {
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    double re;   // the real part
+    double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -97,7 +97,7 @@ public class Complex {
     	
     	double coeff = b.re*b.re + b.im*b.im;
     	double real = (a.re*b.re + a.im*b.im)/coeff;
-    	double imag = (a.im*b.re + a.re*b.im)/coeff;
+    	double imag = (a.im*b.re - a.re*b.im)/coeff;
     	re = real;
     	im = imag;
     	
