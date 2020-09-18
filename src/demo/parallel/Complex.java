@@ -30,7 +30,6 @@
  */
 package demo.parallel;
 
-
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -48,7 +47,9 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
-
+    
+    private static final double PI_DIV_BY_TWO = Math.PI * 0.5; // 90 degrees in radians
+    
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -92,5 +93,43 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    
+    /**
+     * Calculate the argument of complex number
+     * @return argument in radians
+     */
+    public double argument() {
+    	if (re != 0) {
+    		double arg = Math.atan(im / re);
+    		if (re > 0 || arg == 0) {
+    			return arg;
+    		} 
+    		if (im > 0) {
+    			return arg + Math.PI;
+    		}
+    		return arg - Math.PI;
+    	}
+    	
+    	if (im > 0) {
+			return PI_DIV_BY_TWO;
+		} 
+		if (im < 0) {
+			return -PI_DIV_BY_TWO;
+		}
+		return 0.0;
+    }
+    
+    /**
+     * Exponentiation operation 
+     * @param p power
+     * @return this Complex object raised to the power of p
+     */
+    public Complex pow(int p) {
+    	double argTimesPower = this.argument() * p;
+    	double z = Math.pow(Math.sqrt(this.lengthSQ()), p);
+    	re = Math.cos(argTimesPower) * z;
+    	im = Math.sin(argTimesPower) * z;
+    	return this;
     }
 }
