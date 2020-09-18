@@ -72,6 +72,30 @@ public class Complex {
     }
 
     /**
+     * exponentation operation.
+     * @param  b power
+     * @return this Complex object whose value is this ^ b
+     */
+    public Complex pow(int b) {
+    	if(b>0) {
+    		for(int i=1;i<b;i++)
+    			this.times(this);
+    	}
+    	if(b==0){
+    		this.im=0;
+    		this.re=1;
+    	}
+    	if(b<0) {
+    		for(int i=0;i>b;i--){
+    			double denominator=this.re*this.re+this.im*this.im;
+    			this.re=this.re/denominator;
+    			this.im=-this.im/denominator;
+    		}
+    	}
+        return this;
+    }
+    
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
