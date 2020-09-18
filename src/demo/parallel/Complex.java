@@ -76,8 +76,26 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex Tangent(Complex b) {
+        re = Math.sin(b.re)*Math.sinh(b.im)/Math.cos(b.re);
+        im = Math.cos(b.re)*Math.cosh(b.im)/Math.cos(b.re);
+        return this;
+    }
+
     public Complex times(Complex b) {
         Complex a = this;
+        if(b.re == 0 && b.im == 0)
+        {
+            re = 0;
+            im = 0;
+            return this;
+        }
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
         re = real;
