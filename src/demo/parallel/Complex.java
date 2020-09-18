@@ -85,6 +85,15 @@ public class Complex {
         return this;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            return (((Complex)obj).im == this.im && ((Complex)obj).re == this.re);
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
