@@ -60,6 +60,21 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
     /**
      * Add operation.
      * @param b summand
@@ -92,5 +107,38 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Sinus operation
+     * @return Complex object which value is sin
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Sub operation.
+     * @param b Subtract
+     * @return Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 && Double.compare(complex.im, im) == 0;
     }
 }
