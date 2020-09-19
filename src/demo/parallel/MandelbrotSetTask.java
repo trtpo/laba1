@@ -1,34 +1,5 @@
-/*
- * Copyright (c) 2013, 2014, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 package demo.parallel;
+
 
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -39,23 +10,23 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See {@link
+ * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
+ * double, double, double, double, double, double, double, double, boolean)
+ * constructor} for parameters list. The task returns time in milliseconds as
  * its calculated value.
- * 
+ *
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
- * 
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
-    
+
     /**
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
@@ -64,64 +35,64 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * This is the square of max radius, Mandelbrot set contained in the closed
-     * disk of radius 2 around the origin plus some area around, so 
+     * disk of radius 2 around the origin plus some area around, so
      * LENGTH_BOUNDARY is 6.
      */
     private static final double LENGTH_BOUNDARY = 6d;
 
     /**
-     * For antialiasing we break each pixel into 3x3 grid and interpolate 
+     * For antialiasing we break each pixel into 3x3 grid and interpolate
      * between values calculated on those grid positions
      */
     private static final int ANTIALIASING_BASE = 3;
-    
+
     /**
      * Sequential vs. parallel calculation mode
      */
     private final boolean parallel;
-    
+
     /**
      * Antialiased mode flag
      */
     private final boolean antialiased;
-    
+
     /**
      * Dimension of the area
      */
     private final int width, height;
-    
+
     /**
      * Rectangle range to exclude from calculations. Used to skip calculations
      * for parts of MandelbrotSet that are already calculated.
      */
     private final double minX, minY, maxX, maxY;
-    
+
     /**
      * Real and imaginary part of min and max number in the set we need
      * calculate
      */
     private final double minR, minI, maxR, maxI;
-    
+
     /**
      * Pixel writer to use for writing calculated pixels
      */
     private final PixelWriter pixelWriter;
-    
+
     /**
      * Flag indicating that some new pixels were calculated
      */
     private volatile boolean hasUpdates;
-    
+
     /**
      * Start time of the task in milliseconds
      */
     private volatile long startTime = -1;
-    
+
     /**
      * Total time of the task in milliseconds
      */
     private volatile long taskTime = -1;
-    
+
     /**
      * Progress of the task
      */
@@ -164,7 +135,7 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * 
+     *
      * @return whether new pixels were written to the image
      */
     public boolean hasUpdates() {
@@ -195,7 +166,7 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * Returns current task execution time while task is running and total 
+     * Returns current task execution time while task is running and total
      * task time when task is finished
      * @return task time in milliseconds
      */
@@ -215,7 +186,7 @@ class MandelbrotSetTask extends Task<Long> {
     @Override
     protected Long call() throws Exception {
         synchronized(pixelWriter) {
-            // Prepares an image 
+            // Prepares an image
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     pixelWriter.setColor(x, y, Color.TRANSPARENT);
@@ -223,7 +194,7 @@ class MandelbrotSetTask extends Task<Long> {
             }
         }
         startTime = System.currentTimeMillis();
-        
+
         // We do horizontal lines in parallel when asked
         IntStream yStream = IntStream.range(0, height);
         if (parallel) {
@@ -233,10 +204,10 @@ class MandelbrotSetTask extends Task<Long> {
         }
         updateProgress(0, height);
         yStream.forEach((int y) -> {
-            
+
             // We do pixels in horizontal lines always sequentially
             for (int x = 0; x < width; x++) {
-                
+
                 // Skip excluded rectangular area
                 if (!(x >= maxX || x < minX || y >= maxY || y < minY)) {
                     continue;
@@ -264,8 +235,8 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     * 
-     * This number is used to choose a color for this pixel for precalculated 
+     *
+     * This number is used to choose a color for this pixel for precalculated
      * color tables.
      *
      * @param comp a complex number used for calculation
@@ -282,16 +253,21 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * Calculates a color of a given pixel on the image using 
+     * Calculates a color of a given pixel on the image using
      * {@link #calc(demo.parallel.Complex) } method.
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
      */
+
     private Color calcPixel(double x, double y) {
-        double re = (minR * (width - x) + x * maxR) / width;
-        double im = (minI * (height - y) + y * maxI) / height;
+        double re = (x-width/2)/(width/4);//(minR * (width - x) + x * maxR) /width;
+        double im = (y-height/2)/(height/4);//(minI * (height - y) + y * maxI) /height;
+
         Complex calPixel = new Complex(re, im);
+
+        calPixel=calPixel.power(3).minus(new Complex(0, 1).division(calPixel.multiply(4)));
+
         return getColor(calc(calPixel));
     }
 
@@ -329,43 +305,43 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Returns a color for a given iteration count.
-     * @param count number of iterations return by 
+     * @param count number of iterations return by
      * {@link #calc(demo.parallel.Complex)} method
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.WHITE;
         }
         return colors[count];
     }
-    
+
     /**
      * Pre-calculated colors table
      */
     static final Color[] colors = new Color[256];
 
     static {
-        
+
         /**
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+                Color.rgb(0, 0, 40),
+                Color.BLUE,
+                Color.BLACK,
+                Color.BLUE,
+                Color.rgb(0, 0, 100),
+                Color.BLUE,
+                Color.rgb(0, 0, 50)
         };
-        
+
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
-        
+                0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+
         /**
          * Color table population
          */
