@@ -84,20 +84,21 @@ public class Complex {
      * @return this Complex object whose value is this ^ b
      */
     public Complex pow(int b) {
+        Complex prevValue= new Complex(this.re,this.im);
     	if(b>0) {
     		for(int i=1;i<b;i++)
-    			this.times(this);
+    			this.times(prevValue);
     	}
     	if(b==0){
     		this.im=0;
     		this.re=1;
     	}
     	if(b<0) {
-    		for(int i=0;i>b;i--){
-    			double denominator=this.re*this.re+this.im*this.im;
-    			this.re=this.re/denominator;
-    			this.im=-this.im/denominator;
-    		}
+            for(int i=1;i<-b;i++)
+                this.times(prevValue);
+            double denominator=this.re*this.re+this.im*this.im;
+            this.re=this.re/denominator;
+            this.im=-this.im/denominator;
     	}
         return this;
     }

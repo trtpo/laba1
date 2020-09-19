@@ -1,7 +1,9 @@
 package demo.parallel;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.Assert.*;
+
 
 public class ComplexTest {
 
@@ -9,15 +11,15 @@ public class ComplexTest {
     public void powFunctionTest() {
         Complex tester = new Complex(45,3); // MyClass is tested
         tester.pow(0);
-        assertEquals(tester.getIm(),0, "Im((45+i3)^0) must be 0");
-        assertEquals(tester.getRe(),1, "Re((45+i3)^0) must be 1");
+        assertEquals(tester.getIm(),0,0.00000001);
+        assertEquals(tester.getRe(),1,0.00000001);
         tester = new Complex(3.5, -9.3);
         tester.pow(3);
-        assertEquals(tester.getIm(),462.582, "Im((3.5-i9.3)^3) must be 462.582");
-        assertEquals(tester.getRe(),-865.27, "Re((3.5-i9.3)^3) must be -865.27");
+        assertEquals(tester.getIm(),462.582,0.00000001);
+        assertEquals(tester.getRe(),-865.27,0.00000001);
         tester = new Complex(-2, 6);
         tester.pow(-2);
-        assertEquals(tester.getIm(),0.015, "Im((-2+i6)^-2) must be 0.015");
-        assertEquals(tester.getRe(),-0.02, "Re((-2+i6)^-2) must be -0.02");
+        assertEquals(tester.getIm(),0.015,0.00000001);
+        assertEquals(tester.getRe(),-0.02,0.00000001);
     }
 }
