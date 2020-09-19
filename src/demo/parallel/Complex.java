@@ -113,7 +113,7 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this * b
      */
-    public Complex multiply(int b) {
+    public Complex multiply(double b) {
         re *= b;
         im *= b;
         return this;
@@ -124,7 +124,15 @@ public class Complex {
      * @param  b multiplier
      * @return this Complex object whose value is this / b
      */
-    public Complex divide(int b) {
+    public Complex divide(double b) {
         return this.multiply(1/b);
+    }
+
+    public double getImaginaryPart() {
+        return im;
+    }
+
+    public double getRealPart() {
+        return re;
     }
 }
