@@ -39,23 +39,23 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
+ * Task to render Mandelbrot set using given parameters. See {@link
+ * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
+ * double, double, double, double, double, double, double, double, boolean)
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
- * 
+ *
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
- * 
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
-    
+
     /**
      * Calculation times, deliberately choose it as 256 because we will use the
      * count to calculate Color
@@ -74,54 +74,54 @@ class MandelbrotSetTask extends Task<Long> {
      * between values calculated on those grid positions
      */
     private static final int ANTIALIASING_BASE = 3;
-    
+
     /**
      * Sequential vs. parallel calculation mode
      */
     private final boolean parallel;
-    
+
     /**
      * Antialiased mode flag
      */
     private final boolean antialiased;
-    
+
     /**
      * Dimension of the area
      */
     private final int width, height;
-    
+
     /**
      * Rectangle range to exclude from calculations. Used to skip calculations
      * for parts of MandelbrotSet that are already calculated.
      */
     private final double minX, minY, maxX, maxY;
-    
+
     /**
      * Real and imaginary part of min and max number in the set we need
      * calculate
      */
     private final double minR, minI, maxR, maxI;
-    
+
     /**
      * Pixel writer to use for writing calculated pixels
      */
     private final PixelWriter pixelWriter;
-    
+
     /**
      * Flag indicating that some new pixels were calculated
      */
     private volatile boolean hasUpdates;
-    
+
     /**
      * Start time of the task in milliseconds
      */
     private volatile long startTime = -1;
-    
+
     /**
      * Total time of the task in milliseconds
      */
     private volatile long taskTime = -1;
-    
+
     /**
      * Progress of the task
      */
@@ -164,7 +164,7 @@ class MandelbrotSetTask extends Task<Long> {
     }
 
     /**
-     * 
+     *
      * @return whether new pixels were written to the image
      */
     public boolean hasUpdates() {
@@ -223,7 +223,7 @@ class MandelbrotSetTask extends Task<Long> {
             }
         }
         startTime = System.currentTimeMillis();
-        
+
         // We do horizontal lines in parallel when asked
         IntStream yStream = IntStream.range(0, height);
         if (parallel) {
@@ -233,10 +233,10 @@ class MandelbrotSetTask extends Task<Long> {
         }
         updateProgress(0, height);
         yStream.forEach((int y) -> {
-            
+
             // We do pixels in horizontal lines always sequentially
             for (int x = 0; x < width; x++) {
-                
+
                 // Skip excluded rectangular area
                 if (!(x >= maxX || x < minX || y >= maxY || y < minY)) {
                     continue;
@@ -264,7 +264,7 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Calculates number of iterations a complex quadratic polynomials
      * stays within a disk of some finite radius for a given complex number.
-     * 
+     *
      * This number is used to choose a color for this pixel for precalculated 
      * color tables.
      *
@@ -339,33 +339,33 @@ class MandelbrotSetTask extends Task<Long> {
         }
         return colors[count];
     }
-    
+
     /**
      * Pre-calculated colors table
      */
     static final Color[] colors = new Color[256];
 
     static {
-        
+
         /**
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+                Color.web("#d9ecf2"),
+                Color.web("#1aa6b7"),
+                Color.WHITE,
+                Color.web("#1aa6b7"),
+                Color.web("#f56a79"),
+                Color.web("#1aa6b7"),
+                Color.web("#ff414d")
         };
-        
+
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
-        
+                0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+
         /**
          * Color table population
          */
