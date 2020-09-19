@@ -1,4 +1,4 @@
-package sample;
+package demo.parallel;
 
 
 
@@ -259,10 +259,15 @@ class MandelbrotSetTask extends Task<Long> {
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
      */
+
     private Color calcPixel(double x, double y) {
-        double re = (minR * (width - x) + x * maxR) / width;
-        double im = (minI * (height - y) + y * maxI) / height;
+        double re = (x-width/2)/(width/4);//(minR * (width - x) + x * maxR) /width;
+        double im = (y-height/2)/(height/4);//(minI * (height - y) + y * maxI) /height;
+
         Complex calPixel = new Complex(re, im);
+
+        calPixel=calPixel.power(3).minus(new Complex(0, 1).division(calPixel.multiply(4)));
+
         return getColor(calc(calPixel));
     }
 
@@ -322,13 +327,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-                Color.rgb(40, 0, 0),
+                Color.rgb(0, 0, 40),
                 Color.BLUE,
-                Color.WHITE,
+                Color.BLACK,
                 Color.BLUE,
-                Color.rgb(100, 0, 0),
+                Color.rgb(0, 0, 100),
                 Color.BLUE,
-                Color.rgb(50, 0, 0)
+                Color.rgb(0, 0, 50)
         };
 
         /**
