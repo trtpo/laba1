@@ -653,8 +653,8 @@ public class Main extends Application {
     }
     
     /**
-     * Renders a MandelbrotSet image using provided parameters. See {@link 
-     * MandelbrotSetTask} for more information.
+     * Renders a MandelbrotSet image using provided parameters. See {@linkMandelbrotSetTask}
+     * for more information.
      * 
      * @param compareMode true if in comparison mode
      * @param parallel true for parallel, false for sequential
