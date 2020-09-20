@@ -72,6 +72,31 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        re = Math.cos(re) * Math.cosh(im);
+        im = Math.sin(re) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+
+
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
