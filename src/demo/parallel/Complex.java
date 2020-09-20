@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Getter for real part
+     * @return real part value of this Complex object
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Getter for imaginary part
+     * @return imaginary part value of this Complex object
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -68,6 +84,19 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+
+    /**
+     * Subtraction operation
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex substract(Complex b) {
+        double real = re - b.re;
+        double imag = im - b.im;
+        re = real;
+        im = imag;
         return this;
     }
 
@@ -80,6 +109,52 @@ public class Complex {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
         double imag = a.re * b.im + a.im * b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divisor
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Sinus operation
+     * @return Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Cosines operation
+     * @return Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double image = -Math.sin(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    /**
+     * Square operation
+     * @return this Complex object whose value is this * this
+     */
+    public Complex square() {
+        double real = Math.pow(re, 2) - Math.pow(im, 2);
+        double imag = 2 * im * re;
         re = real;
         im = imag;
         return this;
