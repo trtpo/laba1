@@ -104,4 +104,21 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Complex)) return false;
+        Complex complex = (Complex)o;
+        return complex.getRe() == re && complex.getIm() == im;
+    }
+
 }
