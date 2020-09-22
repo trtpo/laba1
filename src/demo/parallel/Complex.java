@@ -85,6 +85,24 @@ public class Complex {
         return this;
     }
 
+    public Complex pow(int n) {
+        if (n <= 0)
+            throw new IllegalArgumentException("Power must be >= 1");
+
+        Complex copy = new Complex(this.re, this.im);
+
+        for (int i = 1; i < n; ++i)
+            times(copy);
+
+        return this;
+    }
+
+    public Complex rotate(double angle) {
+        times(new Complex(Math.cos(angle), Math.sin(angle)));
+
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
