@@ -138,6 +138,20 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
+    }
+
+    public boolean isEqual(Complex b) {
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
