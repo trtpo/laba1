@@ -70,7 +70,60 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Subtract operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
+   
+
+    /**
+     * Division operation.
+     * @param  b devider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im)/(b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Cosine computation operation.
+     * @param  b cos argument
+     * @return this Complex object whose value is cos(b)
+     */
+    public Complex cos(Complex b) {
+
+        double real = Math.cos(b.re)*Math.cosh(b.im);
+        double imag = Math.sin(b.re)*Math.sinh(b.im);
+        re = real;
+        im = imag;
+        return b;
+    }
+
+    /**
+     * Sinus computation operation.
+     * @param  b sin argument
+     * @return this Complex object whose value is sin(b)
+     */
+    public Complex sin(Complex b) {
+
+        double real = Math.sin(b.re)*Math.cosh(b.im);
+        double imag = Math.cos(b.re)*Math.sinh(b.im);
+        re = real;
+        im = imag;
+        return b;
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -85,6 +138,20 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
+    }
+
+    public boolean isEqual(Complex b) {
+        return (this.getIm() == b.getIm() && this.getRe() == b.getRe());
+    }
+
+    public Complex cos() {
+        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
