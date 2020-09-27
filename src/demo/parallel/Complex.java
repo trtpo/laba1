@@ -117,7 +117,7 @@ public class Complex {
         }
         Complex a = this;
         re = (a.re * b.re + a.im * b.im) / denominator;
-        im = (b.re * a.im - a.re * b.im) / denominator;
+        im = (b.re * a.im - a.re * b.im);
         return this;
     }
 
