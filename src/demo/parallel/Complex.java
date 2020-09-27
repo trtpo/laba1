@@ -96,6 +96,8 @@ public class Complex {
     }
 
 
+    public double re(){return this.re;}
+    public double im(){return this.im;}
     /**
      * Calculate the argument of complex number
      * @return argument in radians
@@ -119,6 +121,12 @@ public class Complex {
             return -PI_DIV_BY_TWO;
         }
         return 0.0;
+    }
+
+    public Complex Minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
     }
 
     /**
@@ -150,5 +158,26 @@ public class Complex {
      */
     public double getReal() {
         return re;
+    }
+
+    public Complex cos() {
+        double real = Math.cos(re) * Math.cosh(im);
+        double imag = Math.sin(re) * Math.sinh(im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex sub(Complex subtrahend) {
+        return new Complex(this.re - subtrahend.re, this.im - subtrahend.im);
+    }
+
+    public void div(Complex divider) throws ArithmeticException {
+        if (divider.equals(new Complex(0, 0)))
+            throw new ArithmeticException();
+    }
+
+    public Complex getConjugateComplexNum() {
+        return new Complex(this.re, (-1)*this.im);
     }
 }
