@@ -61,6 +61,22 @@ public class Complex {
     }
 
     /**
+     * Get real part of complex number
+     * @return real part of complex number
+     */
+    public double getReal() {
+        return re;
+    }
+
+    /**
+     * Get imaginary part of complex number
+     * @return imaginary part of complex number
+     */
+    public double getImaginary() {
+        return im;
+    }
+
+    /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -82,6 +98,36 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is this - b
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param b divisor
+     * @return this Complex object whose value is this / b
+     * @return this Complex object if denominator == 0
+     */
+    public Complex divide(Complex b){
+        Complex a = this;
+        double denominator = Math.pow(b.re, 2) + Math.pow(b.im, 2);
+        double real,imagen;
+        if (denominator != 0) {
+            real = (a.re * b.re + a.im * b.im) / denominator;
+            imagen = (b.re * a.im - a.re * b.im) / denominator;
+            re = real;
+            im = imagen;
+        }
         return this;
     }
 
