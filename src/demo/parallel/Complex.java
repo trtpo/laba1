@@ -49,7 +49,23 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+
+    /**
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
@@ -82,6 +98,26 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    public Complex times(double value) {
+        re *= value;
+        im *= value;
+        return this;
+    }
+
+    public Complex divide(Complex b){
+        if (b == null) {
+            throw new NullPointerException();
+        }
+        double denominator = Math.pow(b.re, 2) + Math.pow(b.im, 2);
+        if (denominator == 0) {
+            throw new IllegalArgumentException();
+        }
+        Complex a = this;
+        re = (a.re * b.re + a.im * b.im) / denominator;
+        im = (b.re * a.im - a.re * b.im);
         return this;
     }
 
