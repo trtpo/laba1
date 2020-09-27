@@ -127,6 +127,13 @@ public class Complex {
         im = imag;
         return this;
     }
+    public double im() {
+        return im;
+    }
+
+    public double re() {
+        return re;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -135,4 +142,6 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+
 }
