@@ -85,6 +85,44 @@ public class Complex {
         return this;
     }
 
+    public Complex pow(int power) {
+        if(power == 0){
+            this.re = 1;
+            this.im = 0;
+        }
+        else if(power > 0){
+            for(int i = 1; i < power; i++) {
+                this.times(this);
+            }
+        }
+        else{
+            for(int i = 1; i < -power; i++){
+                this.times(this);
+            }
+            Complex res = this;
+            res.re = this.re / (this.re*this.re + this.im*this.im);
+            res.im = this.im / (this.re*this.re + this.im*this.im);
+            return res;
+        }
+        return this;
+    }
+
+    public Complex minus(Complex c){
+        this.re = this.re - c.re;
+        this.im = this.im - c.im;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        try{
+            return ((Complex) obj).re == this.re && ((Complex) obj).im == this.im;
+        }
+        catch (Exception ex){
+            return false;
+        }
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -94,3 +132,4 @@ public class Complex {
         return re * re + im * im;
     }
 }
+
