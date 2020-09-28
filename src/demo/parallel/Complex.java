@@ -112,7 +112,7 @@ public class Complex {
         this.im = this.im - c.im;
         return this;
     }
-    
+
     @Override
     public boolean equals(Object obj){
         try{
