@@ -60,6 +60,24 @@ public class Complex {
         im = imag;
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+
+        if (!(o instanceof Complex)) {
+            return false;
+        }
+
+        Complex c = (Complex) o;
+
+        return Double.compare(re, c.re) == 0
+                && Double.compare(im, c.im) == 0;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -85,6 +103,31 @@ public class Complex {
         return this;
     }
 
+    public Complex division(Complex b)
+    {
+        double real = (this.re*b.re + this.im*b.im)/(b.re*b.re+b.im*b.im);
+        double imag = (this.im*b.re-this.re*b.im)/(b.re*b.re+b.im*b.im);
+        this.re = real;
+        this.im =imag;
+        return this;
+    }
+
+
+    public Complex difference(Complex b)
+    {
+        this.re -= b.re;
+        this.im -= b.im;
+        return this;
+    }
+
+    public Complex cube()
+    {
+        double real = this.re*this.re*this.re -3*this.re*this.im*this.im;
+        double imag = 3*this.re*this.re*this.im-this.im*this.im*this.im;
+        this.re = real;
+        this.im =imag;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
