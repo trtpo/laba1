@@ -60,6 +60,24 @@ public class Complex {
         im = imag;
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+
+        if (!(o instanceof Complex)) {
+            return false;
+        }
+
+        Complex c = (Complex) o;
+
+        return Double.compare(re, c.re) == 0
+                && Double.compare(im, c.im) == 0;
+    }
+
     /**
      * Add operation.
      * @param b summand
