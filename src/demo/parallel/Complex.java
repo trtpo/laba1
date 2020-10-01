@@ -60,6 +60,38 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+
+    public Complex minus(Complex b) {
+        double real = re - b.re;
+        double imag = im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex sin() {
+        double real = Math.sin(re) * Math.cosh(im);
+        double image = Math.cos(re) * Math.sinh(im);
+        return new Complex(real, image);
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+        return this;
+    }
+
     /**
      * Add operation.
      * @param b summand
