@@ -70,6 +70,44 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Subtraction operation.
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**	    /**
+     * Multiply operation.	     * Multiply operation.
+     * @param  b multiplier	     * @param  b multiplier
+     @@ -93,4 +104,24 @@ public Complex times(Complex b) {
+     public double lengthSQ() {	    public double lengthSQ() {
+     return re * re + im * im;	        return re * re + im * im;
+     }	    }
+     /**
+      * sin operation.
+      * @return this Complex object whose value is sin(this)
+     */
+    public Complex sin() {
+        double temp = re;
+        re = Math.sin(re) * Math.cosh(im);
+        im = Math.cos(temp) * Math.sinh(im);
+        return this;
+    }
+
+    /**
+     * cos operation.
+     * @return this Complex object whose value is cos(this)
+     */
+    public Complex cos() {
+        re = Math.cos(re) * Math.cosh(im);
+        im = Math.sin(re) * Math.sinh(im);
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -90,6 +128,16 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+    public double getRe() {return re;}
+    public double getIm() {return im;}
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Complex)) return false;
+        Complex complex = (Complex)o;
+        return complex.getRe() == re && complex.getIm() == im;
+    }
     public double lengthSQ() {
         return re * re + im * im;
     }
