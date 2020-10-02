@@ -93,8 +93,9 @@ public class Complex {
       * @return this Complex object whose value is sin(this)
      */
     public Complex sin() {
+        double temp = re;
         re = Math.sin(re) * Math.cosh(im);
-        im = Math.cos(re) * Math.sinh(im);
+        im = Math.cos(temp) * Math.sinh(im);
         return this;
     }
 
@@ -127,6 +128,16 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+    public double getRe() {return re;}
+    public double getIm() {return im;}
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Complex)) return false;
+        Complex complex = (Complex)o;
+        return complex.getRe() == re && complex.getIm() == im;
+    }
     public double lengthSQ() {
         return re * re + im * im;
     }
