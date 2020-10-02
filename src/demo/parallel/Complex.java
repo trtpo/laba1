@@ -60,6 +60,25 @@ public class Complex {
         im = imag;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex multiply(int b) {
+        re *= b;
+        im *= b;
+        return this;
+    }
+
+
+    public Complex division(int b) {
+        re /= b;
+        im /= b;
+        return this;
+    }
+
     /**
      * Add operation.
      * @param b summand
