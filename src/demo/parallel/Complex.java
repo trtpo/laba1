@@ -112,4 +112,13 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getRealPart() {
+        return this.re;
+    }
+
+
+    public double getImaginaryPart() {
+        return this.im;
+    }
 }
