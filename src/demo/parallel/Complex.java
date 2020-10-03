@@ -108,4 +108,12 @@ public class Complex {
         im=imag;
         return this;
     }
+
+    public Object getIm() {
+        return this.im;
+    }
+
+    public Object getRe() {
+        return this.re;
+    }
 }
