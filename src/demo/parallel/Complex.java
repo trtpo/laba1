@@ -128,9 +128,29 @@ public class Complex {
      * @return this Complex object raised to the power of p
      */
     public Complex pow(int p) {
+	if (p == 1) {
+    		return this;
+    	}
+
     	double argTimesPower = this.argument() * p;
     	double z = Math.pow(Math.sqrt(this.lengthSQ()), p);
     	re = Math.cos(argTimesPower) * z;
     	im = Math.sin(argTimesPower) * z;
     	return this;
     }
+
+    /**
+     * Complex number imaginary part getter
+     * @return imaginary part of complex number
+     */
+    public double getIm() {
+    	return im;
+    }
+
+    /**
+     * Complex number real part getter
+     * @return real part of complex number
+     */
+   public double getReal() {
+	   return re;
+   }
