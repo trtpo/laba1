@@ -72,6 +72,28 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Scale operation.
+     * @param value scale
+     * @return this Complex object whose value is (this * value)
+     */
+    public Complex increase(double value) {
+        re *= value;
+        im *= value;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
