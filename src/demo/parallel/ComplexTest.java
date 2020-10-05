@@ -3,7 +3,7 @@ package demo.parallel;
 
 import static org.junit.Assert.*;
 
-public class UnitTestComplex {
+public class ComplexTest {
     Complex complex;
     Complex complexTest;
     double deltaValue = 0;
