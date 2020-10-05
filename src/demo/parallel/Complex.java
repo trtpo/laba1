@@ -45,15 +45,23 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -72,9 +80,31 @@ public class Complex {
     }
 
     /**
+     * Subtract operation.
+     * @param b subtracted
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Scale operation.
+     * @param value scale
+     * @return this Complex object whose value is (this * value)
+     */
+    public Complex increase(double value) {
+        re *= value;
+        im *= value;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * @return this Complex object whose value is (this * b)
      */
     public Complex times(Complex b) {
         Complex a = this;
@@ -89,7 +119,7 @@ public class Complex {
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
