@@ -1,0 +1,119 @@
+[1mdiff --git a/src/demo/parallel/Complex.java b/src/demo/parallel/Complex.java[m
+[1mindex 134a379..9572afb 100644[m
+[1m--- a/src/demo/parallel/Complex.java[m
+[1m+++ b/src/demo/parallel/Complex.java[m
+[36m@@ -28,7 +28,6 @@[m
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS[m
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.[m
+  */[m
+[31m-package demo.parallel;[m
+ [m
+ [m
+ /**[m
+[1mdiff --git a/src/demo/parallel/Main.java b/src/demo/parallel/Main.java[m
+[1mindex 7741c46..d90720c 100644[m
+[1m--- a/src/demo/parallel/Main.java[m
+[1m+++ b/src/demo/parallel/Main.java[m
+[36m@@ -28,28 +28,20 @@[m
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS[m
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.[m
+  */[m
+[31m-package demo.parallel;[m
+ [m
+ [m
+[31m-import java.util.List;[m
+[31m-import java.util.Locale;[m
+ import javafx.animation.AnimationTimer;[m
+ import javafx.application.Application;[m
+ import javafx.beans.binding.StringBinding;[m
+[31m-import javafx.beans.property.DoubleProperty;[m
+[31m-import javafx.beans.property.LongProperty;[m
+[31m-import javafx.beans.property.SimpleLongProperty;[m
+[31m-import javafx.beans.property.StringProperty;[m
+[32m+[m[32mimport javafx.beans.property.*;[m
+[32m+[m[32mimport javafx.concurrent.Worker;[m
+ import javafx.geometry.HPos;[m
+ import javafx.geometry.Point2D;[m
+ import javafx.scene.Parent;[m
+ import javafx.scene.Scene;[m
+ import javafx.scene.SnapshotParameters;[m
+ import javafx.scene.canvas.Canvas;[m
+[31m-import javafx.scene.control.Button;[m
+[31m-import javafx.scene.control.Label;[m
+[31m-import javafx.scene.control.ProgressBar;[m
+[31m-import javafx.scene.control.ToggleButton;[m
+[32m+[m[32mimport javafx.scene.control.*;[m
+ import javafx.scene.image.ImageView;[m
+ import javafx.scene.image.WritableImage;[m
+ import javafx.scene.input.KeyCode;[m
+[36m@@ -60,10 +52,12 @@[m [mimport javafx.scene.layout.Region;[m
+ import javafx.scene.paint.Color;[m
+ import javafx.scene.transform.Translate;[m
+ import javafx.stage.Stage;[m
+[31m-import static java.lang.Math.*;[m
+[31m-import javafx.beans.property.BooleanProperty;[m
+[31m-import javafx.concurrent.Worker;[m
+[31m-import javafx.scene.control.ProgressIndicator;[m
+[32m+[m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m[32mimport java.util.Locale;[m
+[32m+[m
+[32m+[m[32mimport static java.lang.Math.log;[m
+[32m+[m[32mimport static java.lang.Math.sqrt;[m
+ [m
+ [m
+ /**[m
+[1mdiff --git a/src/demo/parallel/MandelbrotSetTask.java b/src/demo/parallel/MandelbrotSetTask.java[m
+[1mindex adbb217..8129eb3 100644[m
+[1m--- a/src/demo/parallel/MandelbrotSetTask.java[m
+[1m+++ b/src/demo/parallel/MandelbrotSetTask.java[m
+[36m@@ -28,7 +28,6 @@[m
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS[m
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.[m
+  */[m
+[31m-package demo.parallel;[m
+ [m
+ [m
+ import java.util.concurrent.atomic.AtomicInteger;[m
+[36m@@ -39,9 +38,9 @@[m [mimport javafx.scene.paint.Color;[m
+ [m
+ [m
+ /**[m
+[31m- * Task to render Mandelbrot set using given parameters. See {@link [m
+[31m- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, [m
+[31m- * double, double, double, double, double, double, double, double, boolean) [m
+[32m+[m[32m * Task to render Mandelbrot set using given parameters. See {@link[m
+[32m+[m[32m * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,[m
+[32m+[m[32m * double, double, double, double, double, double, double, double, boolean)[m
+  * constructor} for parameters list. The task returns time in milliseconds as [m
+  * its calculated value.[m
+  * [m
+[36m@@ -351,12 +350,12 @@[m [mclass MandelbrotSetTask extends Task<Long> {[m
+          * Color stops for colors table: color values[m
+          */[m
+         Color[] cc = {[m
+[31m-            Color.rgb(40, 0, 0),[m
+[31m-            Color.RED,[m
+[32m+[m[32m            Color.rgb(0,20,0),[m
+[32m+[m[32m            Color.GREEN,[m
+             Color.WHITE,[m
+[31m-            Color.RED,[m
+[32m+[m[32m            Color.YELLOW,[m
+             Color.rgb(100, 0, 0),[m
+[31m-            Color.RED,[m
+[32m+[m[32m            Color.BLUE,[m
+             Color.rgb(50, 0, 0)[m
+         };[m
+         [m
+[1mdiff --git a/src/demo/parallel/OffscreenImage.java b/src/demo/parallel/OffscreenImage.java[m
+[1mindex 1c4fa71..808f04c 100644[m
+[1m--- a/src/demo/parallel/OffscreenImage.java[m
+[1m+++ b/src/demo/parallel/OffscreenImage.java[m
+[36m@@ -28,7 +28,6 @@[m
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS[m
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.[m
+  */[m
+[31m-package demo.parallel;[m
+ [m
+ /**[m
+  * Offscreen image produced by multi-threaded rendering engine.[m
