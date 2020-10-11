@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import org.junit.jupiter.api.parallel.Execution;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -105,5 +107,17 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        try {
+            return ((Complex)obj).re == this.re && ((Complex)obj).im == this.im;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 }
