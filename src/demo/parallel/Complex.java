@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import org.junit.jupiter.api.parallel.Execution;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -71,6 +73,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b)  {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -85,6 +93,13 @@ public class Complex {
         return this;
     }
 
+    public Complex times(double b)
+    {
+        re *= b;
+        im *= b;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +107,17 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        try {
+            return ((Complex)obj).re == this.re && ((Complex)obj).im == this.im;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 }
