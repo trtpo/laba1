@@ -107,4 +107,16 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public boolean equal(Complex b) {
+        return im == b.im && re == b.re;
+    }
+
+    public double getReal() {
+        return re;
+    }
+
+    public double getImg() {
+        return im;
+    }
 }
