@@ -65,7 +65,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.concurrent.Worker;
 import javafx.scene.control.ProgressIndicator;
 
-
+//hello
 /**
  * UI main class for MandelbrotSet demo.
  * 
