@@ -77,9 +77,9 @@ public class Complex {
         return this;
     }
 
-    public Complex div (Complex b)
+    public Complex div(Complex b)
     {
-        double real = ( re * b.re + im * b.im)/( b.re * b.re + b.im * b.im);
+        double real = ( re * b.re + b.im * im)/( b.re * b.re + b.im * b.im);
         double imag = ( im * b.re - b.im * re)/( b.re * b.re + b.im * b.im);
         re=real;
         im=imag;
