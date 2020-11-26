@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 
 class ComplexTest {
     private Complex complex;
-
+    
     @BeforeEach
     void init() {
         complex = new Complex(1.0, 1.0);
