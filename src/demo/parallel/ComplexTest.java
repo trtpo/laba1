@@ -5,7 +5,7 @@ import org.junit.Test;
 
 
 public class ComplexTest extends Assert {
-    /*@Test
+    @Test
     public void minusTest(){
         Complex a = new Complex(10.2, 5.5);
         Complex b = new Complex(-16.7, 3.1);
@@ -23,6 +23,6 @@ public class ComplexTest extends Assert {
         Complex a = new Complex(10.2, 5.5);
         Complex b = new Complex(-16.7, 3.1);
         assertNotNull(a.special(b));
-    }*/
+    }
 
 }
