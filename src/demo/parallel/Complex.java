@@ -93,4 +93,32 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    /**
+     * Getter of real part
+     * @return real part
+     */
+    public double getRe() {
+        return re;
+    }
+
+    /**
+     * Getter of imaginary part
+     * @return imaginary part
+     */
+    public double getIm() {
+        return im;
+    }
+
+    /**
+     * Equals operation for two complex numbers
+     * @return true if two numbers are equal
+     */
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Complex)) return false;
+        Complex complex = (Complex)o;
+        return complex.getRe() == re && complex.getIm() == im;
+    }
 }
