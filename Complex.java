@@ -59,6 +59,13 @@ public class Complex {
         re = real;
         im = imag;
     }
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
 
     /**
      * Add operation.
@@ -92,11 +99,6 @@ public class Complex {
         return b;
     }
 
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
