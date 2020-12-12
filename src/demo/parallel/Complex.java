@@ -59,6 +59,7 @@ public class Complex {
         re = real;
         im = imag;
     }
+    
 
     /**
      * Add operation.
@@ -70,12 +71,28 @@ public class Complex {
         im += b.im;
         return this;
     }
+    /**
+     * Cos(x) operation.
+     * @param b is argument of cos
+     * @return this Complex object whose value is (cos(x)ch(y)-i*sin(x)sh(y))
+     */
+    public Complex cos(Complex b){
+        b.re = Math.cos(b.re)*Math.cosh(b.im);
+        b.im = Math.sin(b.re)*Math.sinh(b.im)*(-1);
+        return b;
+    }
 
     /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
+     * Sin(x) operation.
+     * @param b is argument of cos
+     * @return this Complex object whose value is (sin(x)ch(y)+i*cos(x)sh(y))
      */
+    public Complex sin(Complex b){
+        b.re = Math.sin(b.re)*Math.cosh(b.im);
+        b.im = Math.cos(b.re)*Math.sinh(b.im);
+        return b;
+    }
+
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
