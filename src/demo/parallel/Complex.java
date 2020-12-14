@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -83,6 +91,18 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex cos(Complex b){
+        b.re = Math.cos(b.re)*Math.cosh(b.im);
+        b.im = Math.sin(b.re)*Math.sinh(b.im)*(-1);
+        return b;
     }
 
     /**
