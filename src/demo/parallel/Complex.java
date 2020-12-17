@@ -85,6 +85,14 @@ public class Complex {
         return this;
     }
 
+    public Complex sqr(){
+        Complex a = this;
+        double real = a.re * a.re - a.im * a.im;
+        double imag = a.re * a.im + a.im * a.re;
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
