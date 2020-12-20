@@ -31,6 +31,8 @@
 package demo.parallel;
 
 
+import java.util.Objects;
+
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -42,18 +44,43 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 && Double.compare(complex.im, im) == 0;
+    }
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +89,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +101,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,11 +115,73 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Subtraction operation.
+     *
+     * @param b subtrahend
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     *
+     * @param b devider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double bLengthSQ = b.lengthSQ();
+        double real = (a.re * b.re + a.im * b.im) / bLengthSQ;
+        double imag = (a.im * b.re - a.re * b.im) / bLengthSQ;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Exponentiation operation.
+     *
+     * @param power exponent
+     * @return this Complex object whose value is (this ^ power)
+     */
+    public Complex pow(int power) {
+        switch (power) {
+            case -1:
+                Complex a = new Complex(1, 0).divide(this);
+                re = a.re;
+                im = a.im;
+                return this;
+            case 0:
+                re = 1;
+                im = 0;
+                return this;
+            case 1:
+                return this;
+        }
+        Complex a = this;
+        for (int i = 1; i < Math.abs(power); i++) {
+            a.times(a);
+        }
+        if (power < 0) {
+            Complex one = new Complex(1, 0);
+            a = one.divide(a);
+        }
+        re = a.re;
+        im = a.im;
+        return this;
     }
 }
