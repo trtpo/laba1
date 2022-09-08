@@ -47,6 +47,15 @@ package demo.parallel;
 public class Complex {
     
     private double re;   // the real part
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
     private double im;   // the imaginary part
 
     /** 
