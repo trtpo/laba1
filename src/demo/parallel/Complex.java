@@ -65,6 +65,10 @@ public class Complex {
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
+    public double getRe() {return re;}
+
+    public double getIm() {return im;}
+
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
