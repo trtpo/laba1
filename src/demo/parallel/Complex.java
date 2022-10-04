@@ -47,7 +47,16 @@ package demo.parallel;
 public class Complex {
     
     private double re;   // the real part
+
+    public double getRe() {
+        return re;
+    }
+
     private double im;   // the imaginary part
+
+    public double getIm() {
+        return im;
+    }
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -82,6 +91,27 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    /**
+     * Minus operation
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Multi operation.
+     * @param b summand
+     * @return this Complex object whose value is (this * b)
+     */
+    public Complex mux(Complex b) {
+        re *= b.re;
+        im *= b.im;
         return this;
     }
 
