@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 600px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    /* border: 2px solid black; */
+    border-radius: 9px;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    color: #293462;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.age-gender-section {
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* border: 1px solid black;0 */
+    background-color: #9BA3EB;
+    border-radius: 9px;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.age input {
+    width: 60px;
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+
+.body-fat input {
+    width: 60px;
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+.gender {
+    text-align: center;
+}
+
+.gender form {
+    width: auto;
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+.gender input {
+    margin-left: 10px;
+}
+
+.height-weight-section {
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    background-color: #9BA3EB;
+    border-radius: 9px;
+}
+
+.height input {
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+.weight input {
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+span {
+    margin-left: 5px;
+}
+
+.activity-fornula-section {
+    margin: 10px auto;
+    padding: 20px;
+    /* border: 1px solid black; */
+    
+    background-color: #9BA3EB;
+    border-radius: 9px;
+}
+
+
+.activity select {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+
+.formula-section {
+    margin-top: 10px;
+}
+.formula-section select {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    background-color: #DBDFFD;
+    padding: 5px;
+}
+.calculate {
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+.calculate button {
+    font-weight: 600;
+    border: 1px solid black;
+}
+
+.calculate button:hover {
+    background-color: #293462;
+    color: #41dfff;
+}
+
+.ans {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    font-size: 1rem;
+    color: #41dfff;
+    border-radius: 9px;
+    background-color: #293462;
+    /* border: 1px solid black; */
+}
