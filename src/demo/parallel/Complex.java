@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (c) 2013, 2014, Oracle and/or its affiliates. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,6 +49,14 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     /** 
      * create a new object with the given real and imaginary parts
      * 
@@ -71,6 +79,20 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+
+    public Complex dividedBy(Complex c) {
+        double denom = c.re * c.re + c.im * c.im;
+        if (denom == 0)
+            return new Complex(Double.NaN, Double.NaN);
+        else
+            return new Complex((re * c.re + im * c.im) / denom, (im * c.re - re * c.im) / denom);
+    }
     /**
      * Multiply operation.
      * @param  b multiplier
