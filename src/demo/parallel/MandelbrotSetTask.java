@@ -30,12 +30,14 @@
  */
 package demo.parallel;
 
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
+
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
+
 
 
 /**
@@ -44,14 +46,12 @@ import javafx.scene.paint.Color;
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
- * 
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
- * this sample code.</i>
- * 
+ * this sample code..</i>
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
@@ -335,7 +335,7 @@ class MandelbrotSetTask extends Task<Long> {
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.ORANGERED;
         }
         return colors[count];
     }
@@ -351,13 +351,13 @@ class MandelbrotSetTask extends Task<Long> {
          * Color stops for colors table: color values
          */
         Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
+            Color.rgb(85, 91, 222),
+            Color.LIME,
             Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+            Color.LIME,
+            Color.rgb(184, 197, 232),
+            Color.LIME,
+            Color.rgb(4, 7, 75)
         };
         
         /**
