@@ -60,6 +60,7 @@ public class Complex {
         im = imag;
     }
 
+
     /**
      * Add operation.
      * @param b summand
@@ -70,6 +71,18 @@ public class Complex {
         im += b.im;
         return this;
     }
+
+    /**
+     * Subtraction operation (sub).
+     * @param b deductible
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
 
     /**
      * Multiply operation.
@@ -86,11 +99,36 @@ public class Complex {
     }
 
     /**
+     * Division operation.
+     * @param  b divider
+     * @return this Complex object whose value is this / b
+     */
+    public Complex div(Complex b)throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Error! Division by zero");
+        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re);
+        re = real / b.lengthSQ() ;
+        im = imag / b.lengthSQ() ;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
