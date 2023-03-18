@@ -105,7 +105,7 @@ public class Complex {
      */
     public Complex div(Complex b)throws ArithmeticException {
         if (b.lengthSQ() == 0) {
-            throw new ArithmeticException("Division by zero");
+            throw new ArithmeticException("Error! Division by zero");
         }
         Complex a = this;
         double real = (a.re * b.re + a.im * b.im);
@@ -122,5 +122,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
