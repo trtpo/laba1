@@ -93,10 +93,13 @@ public class Complex {
     }
 
     //divide operation
-    public Complex div(Complex b) {
+    public Complex div(Complex b) throws ArithmeticException {
+        if(b.lengthSQ()==0){
+            throw new ArithmeticException("Деление на ноль");
+        }
         Complex a = this;
-        double real = (a.re * b.re + a.im * b.im)/(b.re*b.re+b.im*b.im);
-        double imag = (a.re * b.im - a.re * b.im)/(b.re*b.re+b.im*b.im);
+        double real = (a.re * b.re + a.im * b.im)/b.lengthSQ();
+        double imag = (b.re * a.im - b.im * a.re)/b.lengthSQ();
         re = real;
         im = imag;
         return this;
@@ -109,5 +112,12 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
     }
 }
