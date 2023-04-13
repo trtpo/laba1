@@ -71,6 +71,13 @@ public class Complex {
         return this;
     }
 
+    //Subtraction operation.
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -85,6 +92,19 @@ public class Complex {
         return this;
     }
 
+    //divide operation
+    public Complex div(Complex b) throws ArithmeticException {
+        if(b.lengthSQ()==0){
+            throw new ArithmeticException("Деление на ноль");
+        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im)/b.lengthSQ();
+        double imag = (b.re * a.im - b.im * a.re)/b.lengthSQ();
+        re = real;
+        im = imag;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +112,12 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+    public double getIm() {
+        return im;
     }
 }
