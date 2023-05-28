@@ -84,6 +84,17 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex div(Complex b)throws ArithmeticException {
+        if (b.lengthSQ() == 0) {
+            throw new ArithmeticException("Error! Division by zero");
+        }
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im);
+        double imag = (b.re * a.im - b.im * a.re);
+        re = real / b.lengthSQ() ;
+        im = imag / b.lengthSQ() ;
+        return this;
+    }
     public Complex sub(Complex b) {
         re -= b.re;
         im -= b.im;
