@@ -60,6 +60,12 @@ public class Complex {
         im = imag;
     }
 
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Add operation.
      * @param b summand
