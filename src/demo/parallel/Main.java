@@ -219,7 +219,7 @@ public class Main extends Application {
      * Instance of current flying animation
      */
     private FlyingAnimation flyingAnimation;
-
+// дм
     /**
      * Creates control pane controls on top
      */
