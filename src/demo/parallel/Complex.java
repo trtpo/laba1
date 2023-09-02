@@ -70,7 +70,18 @@ public class Complex {
         im += b.im;
         return this;
     }
-
+    public Complex minus(Complex other) {
+        return new Complex(this.re - other.re, this.im- other.im);
+    }
+    public Complex divide(Complex other) {
+        double denominator = other.re * other.re + other.im * other.im;
+        if (denominator == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        double newReal = (this.re * other.re + this.im * other.im) / denominator;
+        double newImaginary = (this.im * other.re - this.re * other.im) / denominator;
+        return new Complex(newReal, newImaginary);
+    }
     /**
      * Multiply operation.
      * @param  b multiplier

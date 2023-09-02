@@ -598,8 +598,8 @@ public class Main extends Application {
     }
 
     /**
-     * Stops (cancels) the current task.
-     * @return true if there was unfinished task running
+     * Останавливает (отменяет) текущую задачу.
+     * @return true, если выполнялась незавершенная задача
      */
     private boolean stopTask() {
         if (task != null) {
@@ -612,8 +612,8 @@ public class Main extends Application {
     }
 
     /**
-     * Renders the whole image for the current position in parallel mode.
-     * @param onDone Runnable to execute when task finishes
+     * Рендерит все изображение для текущей позиции в параллельном режиме.
+     * @param onDone Runnable для выполнения после завершения задачи
      */
     private void render(Runnable onDone) {
         render(false, true, onDone, 0, 0, 0, 0, false);
@@ -630,23 +630,23 @@ public class Main extends Application {
     }
 
     /**
-     * Renders the whole image for the current position in fast mode (not 
-     * antialiased)
-     * @param onDone Runnable to execute when task is finished
+     * Рендерит все изображение для текущей позиции в быстром режиме (не
+     * сглаживание)
+     * @param onDone Runnable для выполнения после завершения задачи
      */
     private void renderFast(Runnable onDone) {
         render(false, true, onDone, 0, 0, 0, 0, true);
     }
 
     /**
-     * Renders the whole image except for a rectangular area 
-     * for the current position in parallel mode
-     * 
-     * @param onDone Runnable to execute when task is finished
-     * @param minX min x coordinate of a rectangular area to be skipped
-     * @param minY min y coordinate of a rectangular area to be skipped
-     * @param maxX max x coordinate of a rectangular area to be skipped
-     * @param maxY max y coordinate of a rectangular area to be skipped
+     * Рендерит все изображение, за исключением прямоугольной области.
+     * для текущей позиции в параллельном режиме
+     *
+     * @param onDone Runnable для выполнения после завершения задачи
+     * @param minX min x координата прямоугольной области, которую нужно пропустить
+     * @param minY координата min y прямоугольной области, которую нужно пропустить
+     * @param maxX max x координата прямоугольной области, которую нужно пропустить
+     * @param maxY max y координата прямоугольной области, которую нужно пропустить
      */
     private void render(Runnable onDone, double minX, double minY, double maxX, double maxY) {
         render(false, true, onDone, minX, minY, maxX, maxY, false);
