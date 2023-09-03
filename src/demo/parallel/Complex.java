@@ -72,6 +72,29 @@ public class Complex {
     }
 
     /**
+     * Minus operation
+     * @param b deductible
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Divide operation
+     * @param b divider
+     * @return this Complex object whose value is (this / b)
+     */
+    public Complex divide(Complex b)
+    {
+        double real = (this.re * b.re + this.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (this.im * b.re - this.re * b.im) / (b.re * b.re + b.im * b.im);
+        return new Complex(real, imag);
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -92,5 +115,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return this.re;
+    }
+
+    public double getIm() {
+        return this.im;
     }
 }
