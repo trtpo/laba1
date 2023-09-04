@@ -60,6 +60,22 @@ public class Complex {
         im = imag;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -68,6 +84,11 @@ public class Complex {
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
+        return this;
+    }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
         return this;
     }
 
@@ -83,6 +104,24 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (a.im * b.re - a.re * b.im) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
     }
 
     /**

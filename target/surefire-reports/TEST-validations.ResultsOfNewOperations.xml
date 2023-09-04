@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="validations.ResultsOfNewOperations" time="0.335" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="15"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="B:\_1studying\5_semester\trtpo\labs\laba1\target\test-classes;B:\_1studying\5_semester\trtpo\labs\laba1\target\classes;C:\Users\user\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-controls\15\javafx-controls-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-controls\15\javafx-controls-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-graphics\15\javafx-graphics-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-graphics\15\javafx-graphics-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-base\15\javafx-base-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-base\15\javafx-base-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-fxml\15\javafx-fxml-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-fxml\15\javafx-fxml-15-win.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Moscow"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="15"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\JDK\bin"/>
+    <property name="sun.java.command" value="C:\Users\user\AppData\Local\Temp\surefire13265531647653205153\surefirebooter10226928347703784208.jar C:\Users\user\AppData\Local\Temp\surefire13265531647653205153 2023-09-04T06-07-11_445-jvmRun1 surefire3854923737936340990tmp surefire_0390182283512489464tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="B:\_1studying\5_semester\trtpo\labs\laba1\target\test-classes;B:\_1studying\5_semester\trtpo\labs\laba1\target\classes;C:\Users\user\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-controls\15\javafx-controls-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-controls\15\javafx-controls-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-graphics\15\javafx-graphics-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-graphics\15\javafx-graphics-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-base\15\javafx-base-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-base\15\javafx-base-15-win.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-fxml\15\javafx-fxml-15.jar;C:\Users\user\.m2\repository\org\openjfx\javafx-fxml\15\javafx-fxml-15-win.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\user"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2020-10-20"/>
+    <property name="java.home" value="C:\JDK"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="B:\_1studying\5_semester\trtpo\labs\laba1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\user\AppData\Local\Temp\surefire13265531647653205153\surefirebooter10226928347703784208.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="15.0.1+9-18"/>
+    <property name="user.name" value="user"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1251"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\user\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\user\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.2.2"/>
+    <property name="java.version" value="15.0.1"/>
+    <property name="user.dir" value="B:\_1studying\5_semester\trtpo\labs\laba1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\JDK\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;%M2_HOME%\bin;%JAVA_HOME%\bin;C:\Git\cmd;%GIT%\bin;%WGET%\;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\.dotnet\tools;C:\JDK\bin;C:\maven\apache-maven-3.9.0\bin;C:\Brackets\;C:\Users\user\AppData\Local\Coursier\data\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="15.0.1+9-18"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="59.0"/>
+  </properties>
+  <testcase name="testMultiplication" classname="validations.ResultsOfNewOperations" time="0.01"/>
+  <testcase name="testAddition" classname="validations.ResultsOfNewOperations" time="0"/>
+  <testcase name="testDivision" classname="validations.ResultsOfNewOperations" time="0.001"/>
+  <testcase name="testSubtraction" classname="validations.ResultsOfNewOperations" time="0"/>
+</testsuite>
