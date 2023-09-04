@@ -85,6 +85,21 @@ public class Complex {
         return this;
     }
 
+    public Complex special(Complex b){
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) * 20 * (Math.pow(b.re,2) + Math.pow(b.im,2));
+        double imag = (a.im * b.re - a.re * b.im) * (Math.pow(b.re,2) + Math.pow(b.im,2));
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex subtraction(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
