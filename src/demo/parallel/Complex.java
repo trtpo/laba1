@@ -114,10 +114,9 @@ public class Complex {
      * @return this Complex object whose value is transposed
      */
     public Complex transpose() {
-        double real = re;
-        double imag = im;
-        im = re;
-        re = real;
+        double temp = re;
+        re = im;
+        im = temp;
         return this;
     }
 
@@ -128,5 +127,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public boolean equals(Object obj, float delta) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Complex other = (Complex) obj;
+
+        return Math.abs(other.re- re) <= delta && Math.abs(other.im - im) <= delta;
     }
 }
