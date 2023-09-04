@@ -84,6 +84,41 @@ public class Complex {
         im = imag;
         return this;
     }
+    /**
+     * Division operation.
+     * @param  b multiplier
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Add operation.
+     * @param b summand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Transpose operation.
+     * @return this Complex object whose value is transposed
+     */
+    public Complex transpose() {
+        double temp = re;
+        re = im;
+        im = temp;
+        return this;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
@@ -92,5 +127,19 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public boolean equals(Object obj, float delta) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Complex other = (Complex) obj;
+
+        return Math.abs(other.re- re) <= delta && Math.abs(other.im - im) <= delta;
     }
 }
