@@ -44,15 +44,15 @@
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: #000dff;
 }
 
 .progress-indicator .percentage {
-    -fx-fill: white;
+    -fx-fill: #c99233;
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
 }
 
 #spacer {
@@ -60,7 +60,7 @@
 }
 
 #open-close-toggle-button {
-    -fx-background-color: gray;
+    -fx-background-color: #888888;
     -fx-background-radius: 0;
     -fx-content-display: graphic-only;
     -fx-shape: "M 0,0 H 40 v 1 h -40 Z M 0,3 H 40 v 1 h -40 Z M 0,6 H40 v 1 h -40 Z";
@@ -75,7 +75,7 @@
 }
 
 .time .bar {
-    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, green 30%, yellow 60%, red);
+    -fx-background-color: linear-gradient(from 0em 0em to 8em 0em, #2e672e 30%, #a2a240 60%, #882e2e);
     -fx-background-radius: 0;
 }
 
