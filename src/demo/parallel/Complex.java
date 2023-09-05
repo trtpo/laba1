@@ -86,11 +86,43 @@ public class Complex {
     }
 
     /**
+     * Subtraction operation.
+     * @param  b deducted
+     * @return this Complex object which value is subtracted by b
+     */
+    public Complex subtract(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Division operation.
+     * @param  b divisor
+     * @return this Complex object which value is divided by b
+     */
+    public Complex divide(Complex b) {
+        double temp_re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double temp_im = (im * b.re - re * b.im) / (b.re * b.re + b.im * b.im);
+        re = temp_re;
+        im = temp_im;
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public boolean equals(Object obj, double epsilon) {
+        return this == obj ||
+                obj != null &&
+                        getClass() == obj.getClass() &&
+                        Math.abs(((Complex) obj).re - re) <= epsilon &&
+                        Math.abs(((Complex) obj).im - im) <= epsilon;
     }
 }
