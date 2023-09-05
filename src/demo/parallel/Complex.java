@@ -45,6 +45,7 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
+
     
     private double re;   // the real part
     private double im;   // the imaginary part
@@ -69,6 +70,14 @@ public class Complex {
         re += b.re;
         im += b.im;
         return this;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 
     /**
