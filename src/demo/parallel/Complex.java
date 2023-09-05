@@ -85,6 +85,11 @@ public class Complex {
         return this;
     }
 
+    public Complex operation()
+    {
+        return this.plus(new Complex(40, 0));
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
