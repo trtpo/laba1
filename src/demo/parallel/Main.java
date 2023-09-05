@@ -93,12 +93,12 @@ public class Main extends Application {
     /**
      * Window width
      */
-    private double winWidth = 800;
+    private double winWidth = 1200;
 
     /**
      * Window height
      */
-    private double winHeight = 600;
+    private double winHeight = 800;
 
     /**
      * Horizontal position of Drag-and-Pressed gesture start point
