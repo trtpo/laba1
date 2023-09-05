@@ -66,8 +66,8 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
+        re +=b.re;
+        im +=b.im;
         return this;
     }
 
@@ -85,6 +85,12 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        re -=b.re;
+        im -=b.im;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +98,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
