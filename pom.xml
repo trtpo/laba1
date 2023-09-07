@@ -41,12 +41,6 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${project.basedir}/src/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/resources</directory>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

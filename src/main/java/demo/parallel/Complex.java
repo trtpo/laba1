@@ -113,10 +113,10 @@ public class Complex {
             im = 0;
         }
         else {
-            Complex rez = this;
+            Complex rez = new Complex(re, im);
 
             while(--n > 0){
-                rez = rez.times(this);
+                rez.times(this);
             }
 
             re = rez.re;
@@ -133,5 +133,21 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Compares Complex number with another
+     * @return result of comparison
+     */
+    public boolean equals(Complex b){
+        return re == b.re && im == b.im;
+    }
+
+    public double getRe(){
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
