@@ -142,12 +142,4 @@ public class Complex {
     public boolean equals(Complex b){
         return re == b.re && im == b.im;
     }
-
-    public double getRe(){
-        return re;
-    }
-
-    public double getIm() {
-        return im;
-    }
 }
