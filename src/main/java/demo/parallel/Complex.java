@@ -86,11 +86,60 @@ public class Complex {
     }
 
     /**
+     * Multiplication by real number.
+     * @param k multiplier
+     * @return this Complex object whose value is this * k
+     */
+    public Complex times(double k) {
+        re *= k;
+        im *= k;
+        return this;
+    }
+
+    /**
+     * Lazy power operation.
+     * <p>
+     * This operation performs raising a complex number to a non-negative integer power using lazy loop-multiply method
+     * @param n non-negative integer power
+     * @return this Complex object whose value is power of n
+     * @throws IllegalArgumentException throws when provided argument is negative
+     */
+    public Complex lazyPower(long n) throws IllegalArgumentException {
+        if(n < 0){
+            throw new IllegalArgumentException("power should be a non-negative");
+        }
+        else if(n == 0){
+            re = 1;
+            im = 0;
+        }
+        else {
+            Complex rez = new Complex(re, im);
+
+            while(--n > 0){
+                rez.times(this);
+            }
+
+            re = rez.re;
+            im = rez.im;
+        }
+
+        return this;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Compares Complex number with another
+     * @return result of comparison
+     */
+    public boolean equals(Complex b){
+        return re == b.re && im == b.im;
     }
 }
