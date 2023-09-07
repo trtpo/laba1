@@ -55,6 +55,8 @@ import javafx.scene.paint.Color;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 class MandelbrotSetTask extends Task<Long> {
+    //second commit
+    private String variable;
     
     /**
      * Calculation times, deliberately choose it as 256 because we will use the
