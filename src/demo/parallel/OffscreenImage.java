@@ -43,6 +43,8 @@ package demo.parallel;
 public class OffscreenImage {
     private final int width;
     private final int height;
+    //third commit
+    private final int weight;
 
     public OffscreenImage(int width, int height) {
         this.width = width;
