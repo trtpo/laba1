@@ -93,7 +93,7 @@ public class Complex {
     public Complex div(Complex b){
 
         double m = b.re * b.re + b.im * b.im; return new Complex(
-                (re * b.re - im * b.im) / m, (im * b.re - re * b.im) / m);
+                (re * b.re + im * b.im) / m, (im * b.re - re * b.im) / m);
     }
 
     /**
@@ -114,5 +114,20 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    /**
+     * Compares Complex number with another
+     * @return result of comparison
+     */
+    public boolean equals(Complex b){
+        return re == b.re && im == b.im;
+    }
+
+    public double getRe(){
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
