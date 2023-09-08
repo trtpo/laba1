@@ -44,7 +44,7 @@
 }
 
 .progress-indicator {
-    -fx-progress-color: red;    
+    -fx-progress-color: red;
 }
 
 .progress-indicator .percentage {
@@ -80,5 +80,5 @@
 }
 
 .time .track {
-    -fx-background-color: green;
+    -fx-background-color: black;
 }
