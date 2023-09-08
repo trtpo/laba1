@@ -55,6 +55,13 @@ public class Complex {
      * @param real a complex number real part
      * @param imag a complex number imaginary part 
      */
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
     public Complex(double real, double imag) {
         re = real;
         im = imag;
