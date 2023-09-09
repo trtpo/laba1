@@ -42,18 +42,19 @@ package demo.parallel;
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
+ *
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
+
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    /**
      * create a new object with the given real and imaginary parts
-     * 
+     *
      * @param real a complex number real part
-     * @param imag a complex number imaginary part 
+     * @param imag a complex number imaginary part
      */
     public Complex(double real, double imag) {
         re = real;
@@ -62,6 +63,7 @@ public class Complex {
 
     /**
      * Add operation.
+     *
      * @param b summand
      * @return this Complex object whose value is (this + b)
      */
@@ -73,7 +75,8 @@ public class Complex {
 
     /**
      * Multiply operation.
-     * @param  b multiplier
+     *
+     * @param b multiplier
      * @return this Complex object whose value is this * b
      */
     public Complex times(Complex b) {
@@ -86,11 +89,62 @@ public class Complex {
     }
 
     /**
-     * Square of Complex object's length, we're using square of length to 
+     * Division operation.
+     *
+     * @param b divisor
+     * @return this Complex object which value is divided by b
+     */
+    public Complex div(Complex b) {
+
+        double m = b.re * b.re + b.im * b.im;
+        return new Complex(
+                (re * b.re + im * b.im) / m, (im * b.re - re * b.im) / m);
+    }
+
+    /**
+     * Subtraction operation.
+     *
+     * @param b deducted
+     * @return this Complex object which value is subtracted by b
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
+     * Square of Complex object's length, we're using square of length to
      * eliminate the computation of square root
+     *
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    /**
+     * Compares Complex number with another
+     *
+     * @return result of comparison
+     */
+    public boolean equals(Complex b) {
+        return re == b.re && im == b.im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public boolean equals(Object obj, double epsilon) {
+        return this == obj ||
+                obj != null &&
+                        getClass() == obj.getClass() &&
+                        Math.abs(((Complex) obj).re - re) <= epsilon &&
+                        Math.abs(((Complex) obj).im - im) <= epsilon;
     }
 }
