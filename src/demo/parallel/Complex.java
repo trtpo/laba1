@@ -70,6 +70,23 @@ public class Complex {
         im += b.im;
         return this;
     }
+<<<<<<< HEAD
+=======
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double del = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / del;
+        double imag = (a.im * b.re - a.re * b.im) / del;
+        re = real;
+        im = imag;
+        return this;
+    }
+>>>>>>> 00ef19c (new features)
 
     /**
      * Multiply operation.
