@@ -1147,7 +1147,7 @@ public class Main extends Application {
 
         private void solveXfromY(double y) {
             // Solving for t
-            double t1 = (w + sqrt(v + y * u)) / u;
+            double t1 = (w - sqrt(v + y * u)) / u;
             double t2 = (w - sqrt(v + y * u)) / u;
             double t = phase == 0 ? t1 : t2;
             double x = 2 * t * (1 - t) * p1x + t * t * p2x;
