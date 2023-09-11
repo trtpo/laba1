@@ -72,6 +72,24 @@ public class Complex {
     }
 
     /**
+     * Exponentiation operation.
+     * @param z base
+     * @param n exponent
+     * @return this Complex object whose value is (z ^ n)
+     */
+    public Complex pow(Complex z, int n) {
+        if (n <= 0) {
+            return new Complex(1, 0);
+        } else if (n == 1) {
+            return z;
+        } else if (n % 2 == 0) {
+            return pow(z.times(z), n / 2);
+        } else {
+            return z.times(pow(z.times(z), (n - 1) / 2));
+        }
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
