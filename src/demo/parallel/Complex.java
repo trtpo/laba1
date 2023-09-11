@@ -84,7 +84,6 @@ public class Complex {
         im = imag;
         return this;
     }
-
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +91,22 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    /**
+     * Returns the absolute value of this complex number.
+     * This quantity is also known as the <em>modulus</em> or <em>magnitude</em>.
+     * @return the absolute value of this complex number
+     */
+    public double abs() {
+        return Math.hypot(re, im);
+    }
+
+    /**
+     * Returns the phase of this complex number.
+     * This quantity is also known as the <em>angle</em> or <em>argument</em>.
+     * @return the phase of this complex number, a real number between -pi and pi
+     */
+    public double phase() {
+        return Math.atan2(im, re);
     }
 }
