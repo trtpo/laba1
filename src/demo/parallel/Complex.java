@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getReal() {
+        return this.re;
+    }
+
+    public double getImaginary() {
+        return this.im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -82,6 +90,19 @@ public class Complex {
         double imag = a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
+        return this;
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex offset(double offsetNumber) {
+        re += offsetNumber;
+        im += offsetNumber;
+
         return this;
     }
 
