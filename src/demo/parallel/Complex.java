@@ -111,4 +111,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    @Override
+    public String toString() {
+        return "Complex{" +
+                "re=" + re +
+                ", im=" + im +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.toString().equals(obj.toString());
+    }
 }
