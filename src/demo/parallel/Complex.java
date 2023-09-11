@@ -60,6 +60,14 @@ public class Complex {
         im = imag;
     }
 
+    public double getReal() {
+        return this.re;
+    }
+
+    public double getImaginary() {
+        return this.im;
+    }
+
     /**
      * Add operation.
      * @param b summand
@@ -91,7 +99,7 @@ public class Complex {
         return this;
     }
 
-    public Complex offset(Integer offsetNumber) {
+    public Complex offset(double offsetNumber) {
         re += offsetNumber;
         im += offsetNumber;
 
