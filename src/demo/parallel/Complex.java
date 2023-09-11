@@ -72,6 +72,19 @@ public class Complex {
     }
 
     /**
+     * Minus operator
+     * @param b deductible
+     * @return this Complex object whose value is (this - b)
+     */
+
+    public Complex minus(Complex b){
+        re -=b.re;
+        im -=b.im;
+        return this;
+    }
+
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -84,6 +97,23 @@ public class Complex {
         im = imag;
         return this;
     }
+
+    /** Division operation
+     * @param b divider
+     * @return this Complex object whose value is (this/b)
+     */
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (a.im * b.re - a.re * b.im) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
