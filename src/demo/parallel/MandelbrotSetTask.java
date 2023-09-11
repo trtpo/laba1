@@ -354,7 +354,7 @@ class MandelbrotSetTask extends Task<Long> {
             Color.BLACK,
             Color.DARKGRAY,
             Color.WHITE,
-            Color.GRAY,
+            Color.DARKGRAY,
             Color.GHOSTWHITE,
             Color.DARKGRAY,
             Color.BLACK
