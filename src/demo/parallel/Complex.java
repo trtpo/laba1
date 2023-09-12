@@ -48,6 +48,7 @@ public class Complex {
     
     private double re;   // the real part
     private double im;   // the imaginary part
+    private double real;
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -122,5 +123,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
