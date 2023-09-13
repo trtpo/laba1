@@ -110,4 +110,28 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+    /**
+     * Compares Complex number with another
+     *
+     * @return result of comparison
+     */
+    public boolean equals(Complex b) {
+        return re == b.re && im == b.im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public boolean equals(Object obj, double epsilon) {
+        return this == obj ||
+                obj != null &&
+                        getClass() == obj.getClass() &&
+                        Math.abs(((Complex) obj).re - re) <= epsilon &&
+                        Math.abs(((Complex) obj).im - im) <= epsilon;
+    }
 }
