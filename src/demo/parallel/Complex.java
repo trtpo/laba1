@@ -85,6 +85,11 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Minus operation.
+     * @param b minuend
+     * @return this Complex object whose value is (this - b)
+     */
     public Complex minus(Complex b){
         re -= b.re;
         im -= b.im;
@@ -99,4 +104,13 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
 }
