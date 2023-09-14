@@ -84,13 +84,31 @@ public class Complex {
         im = imag;
         return this;
     }
-
+    /**
+     * Subtraction operation.
+     *
+     * @param b deducted
+     * @return this Complex object which value is subtracted by b
+     */
+    public Complex sub(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
     */
+
     public double lengthSQ() {
         return re * re + im * im;
+    }
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
