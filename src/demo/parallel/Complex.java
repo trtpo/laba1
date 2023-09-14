@@ -88,7 +88,7 @@ public class Complex {
     //division operation
     public Complex division(Complex b){
         double res = b.re * b.re + b.im * b.im; return new Complex(
-            (re * b.re - im * b.im) / res, (im * b.re - re * b.im) / res);
+            (re * b.re + im * b.im) / res, (im * b.re - re * b.im) / res);
     }
 
     //substraction operation
