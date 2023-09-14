@@ -78,8 +78,8 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double real = b.re - a.im * b.im;
+        double imag = a.re - a.im * b.re + a.im * b.re;
         re = real;
         im = imag;
         return this;
@@ -91,6 +91,6 @@ public class Complex {
      * @return square of length
     */
     public double lengthSQ() {
-        return re * re + im * im;
+        return re * re + im * im * im;
     }
 }
