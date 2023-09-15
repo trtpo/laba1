@@ -30,19 +30,18 @@
  */
 package demo.parallel;
 
+//335?
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 import javafx.concurrent.Task;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
 
 /**
- * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
- * double, double, double, double, double, double, double, double, boolean) 
- * constructor} for parameters list. The task returns time in milliseconds as 
+ * Task to render Mandelbrot set using given parameters. See  for parameters list. The task returns time in milliseconds as
  * its calculated value.
  * 
  * <p><i>
@@ -352,9 +351,9 @@ class MandelbrotSetTask extends Task<Long> {
          */
         Color[] cc = {
             Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
+            Color.YELLOW,
+            Color.GREEN,
+            Color.BLUE,
             Color.rgb(100, 0, 0),
             Color.RED,
             Color.rgb(50, 0, 0)
