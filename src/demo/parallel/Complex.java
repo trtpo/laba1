@@ -30,6 +30,7 @@
  */
 package demo.parallel;
 
+//89
 
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
@@ -85,6 +86,7 @@ public class Complex {
         return this;
     }
 
+
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
@@ -97,6 +99,6 @@ public class Complex {
      * @return square of length
     */
     public double lengthSQ() {
-        return re * re + im * im;
+        return re * re + im * im * im;
     }
 }
