@@ -70,6 +70,11 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex minus(Complex b) {
+        re -=b.re;
+        im -=b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -92,5 +97,13 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 }
