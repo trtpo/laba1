@@ -94,7 +94,7 @@ public class Complex {
         return re * re + im * im;
     }
 
-    public Complex substract(Complex b){
+    public Complex subtract(Complex b){
         re -= b.re;
         im -=b.im;
         return this;
