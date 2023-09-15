@@ -93,4 +93,27 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    public Complex subtract(Complex b){
+        re -= b.re;
+        im -=b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        double temp_re = (re * b.re + im * b.im) / (b.re * b.re + b.im * b.im);
+        double temp_im = (im * b.re - re * b.im) / (b.re * b.re +b.im * b.im);
+        re = temp_re;
+        im = temp_im;
+        return this;
+    }
+
+    public boolean equals(Object obj, double epsilon) {
+        return this == obj ||
+                obj != null &&
+                        getClass() == obj.getClass() &&
+                        Math.abs(((Complex) obj).re - re) <= epsilon &&
+                        Math.abs(((Complex) obj).im - im) <= epsilon;
+    }
+
 }
