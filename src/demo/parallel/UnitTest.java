@@ -12,8 +12,8 @@ public class UnitTest {
         @Test
         @DisplayName("Return test")
         void returnTest() {
-            Complex number = new Complex(1, 2);
-            Complex result = number.times(new Complex(3, 4));
+            Complex number = new Complex(5, 10);
+            Complex result = number.times(new Complex(15, 20));
             Assertions.assertEquals(number, result);
         }
         @Nested
