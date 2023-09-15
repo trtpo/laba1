@@ -1,5 +1,6 @@
 module trtpo.lab {
     exports demo.parallel;
+    exports demo.test;
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
@@ -8,4 +9,5 @@ module trtpo.lab {
     requires javafx.swing;
     requires javafx.web;
     requires javafx.swt;
+    requires junit;
 }
