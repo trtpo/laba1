@@ -28,69 +28,35 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
-
+package com.example.demo;
 
 /**
- * A complex number is a number that can be expressed in the form a + b * i, where
- * a and b are real numbers and i is the imaginary unit, which satisfies the
- * equation i ^ 2 = -1. a is the real part and b is the imaginary part of the
- * complex number.
+ * Offscreen image produced by multi-threaded rendering engine.
  * <p><i>
  * This source code is provided to illustrate the usage of a given feature
  * or technique and has been deliberately simplified. Additional steps
  * required for a production-quality application, such as security checks,
  * input validation and proper error handling, might not be present in
  * this sample code.</i>
- * @author Alexander Kouznetsov, Tristan Yan
+ * @author akouznet
  */
-public class Complex {
+public class OffscreenImage {
+    private final int width;
+    private final int height;
+
+    public OffscreenImage(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
     
-    private double re;   // the real part
-    private double im;   // the imaginary part
-
-    /** 
-     * create a new object with the given real and imaginary parts
-     * 
-     * @param real a complex number real part
-     * @param imag a complex number imaginary part 
-     */
-    public Complex(double real, double imag) {
-        re = real;
-        im = imag;
-    }
-
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
-     */
-    public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
-        return this;
-    }
-
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
-    public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
-        return this;
-    }
-
-    /**
-     * Square of Complex object's length, we're using square of length to 
-     * eliminate the computation of square root
-     * @return square of length
-    */
-    public double lengthSQ() {
-        return re * re + im * im;
-    }
+    
+    
 }
