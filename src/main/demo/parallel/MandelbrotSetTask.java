@@ -28,7 +28,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
+package main.demo.parallel;
 
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -40,7 +40,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Task to render Mandelbrot set using given parameters. See {@link 
- * #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int, 
+ //* #MandelbrotRendererTask(boolean, javafx.scene.image.PixelWriter, int, int,
  * double, double, double, double, double, double, double, double, boolean) 
  * constructor} for parameters list. The task returns time in milliseconds as 
  * its calculated value.
@@ -271,6 +271,7 @@ class MandelbrotSetTask extends Task<Long> {
      * @param comp a complex number used for calculation
      * @return number of iterations a value stayed within a given disk.
      */
+
     private int calc(Complex comp) {
         int count = 0;
         Complex c = new Complex(0, 0);
@@ -283,7 +284,7 @@ class MandelbrotSetTask extends Task<Long> {
 
     /**
      * Calculates a color of a given pixel on the image using 
-     * {@link #calc(demo.parallel.Complex) } method.
+     * {@link #calc(Complex) } method.
      * @param x x coordinate of the pixel in the image
      * @param y y coordinate of the pixel in the image
      * @return calculated color of the pixel
@@ -330,12 +331,12 @@ class MandelbrotSetTask extends Task<Long> {
     /**
      * Returns a color for a given iteration count.
      * @param count number of iterations return by 
-     * {@link #calc(demo.parallel.Complex)} method
+     * {@link #calc(Complex)} method
      * @return color from pre-calculated table
      */
     private Color getColor(int count) {
         if (count >= colors.length) {
-            return Color.BLACK;
+            return Color.ALICEBLUE; // update
         }
         return colors[count];
     }
@@ -350,21 +351,21 @@ class MandelbrotSetTask extends Task<Long> {
         /**
          * Color stops for colors table: color values
          */
-        Color[] cc = {
-            Color.rgb(40, 0, 0),
-            Color.RED,
-            Color.WHITE,
-            Color.RED,
-            Color.rgb(100, 0, 0),
-            Color.RED,
-            Color.rgb(50, 0, 0)
+        Color[] cc = { // update
+            Color.rgb(0, 40, 40),
+            Color.BLUE,
+            Color.FUCHSIA,
+            Color.LIGHTCORAL,
+            Color.rgb(30, 200, 180),
+            Color.LIGHTCORAL,
+            Color.rgb(0, 70, 70)
         };
         
         /**
          * Color stops for colors table: relative position in the table
          */
         double[] cp = {
-            0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
+                0, 0.17, 0.25, 0.30, 0.5, 0.75, 1,};
         
         /**
          * Color table population

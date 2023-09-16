@@ -28,11 +28,12 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package demo.parallel;
+package main.demo.parallel;
 
 
 import java.util.List;
 import java.util.Locale;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
@@ -294,7 +295,7 @@ public class Main extends Application {
         grid.add(openCloseButton, colIndex, rowIndex, totalColumns, 1);
         GridPane.setHalignment(openCloseButton, HPos.CENTER);
         grid.setId("grid");
-        grid.getStylesheets().add("/demo/parallel/ControlPane.css");
+        grid.getStylesheets().add("/main/demo/parallel/ControlPane.css");
 
         sequentialTime.translateXProperty().bind(
                 sequentialTimeBar.add(-1.1).multiply(sequentialProgressBar.widthProperty()));
@@ -364,7 +365,7 @@ public class Main extends Application {
         antiTranslate.xProperty().bind(canvas.translateXProperty().negate());
         antiTranslate.yProperty().bind(canvas.translateYProperty().negate());
         snapshotParameters.setTransform(antiTranslate);
-        snapshotParameters.setFill(Color.BLACK);
+        snapshotParameters.setFill(Color.GOLD); // update
 
         //Fetch position when Mouse released
         canvas.setOnMouseReleased(e -> {
