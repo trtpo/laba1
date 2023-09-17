@@ -85,6 +85,22 @@ public class Complex {
         return this;
     }
 
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (re * b.re + im * b.im) / denominator;
+        double imag = (im * b.re - re * b.im) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
@@ -92,5 +108,18 @@ public class Complex {
     */
     public double lengthSQ() {
         return re * re + im * im;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Complex c = (Complex) obj;
+
+        return Double.compare(c.re, re) == 0 && Double.compare(c.im, im) == 0;
+
+
     }
 }
