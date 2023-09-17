@@ -78,8 +78,8 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double real = 0.1 * a.re * b.re - a.im * b.im;
+        double imag = 0.2 * a.re * b.im + a.im * b.re;
         re = real;
         im = imag;
         return this;
