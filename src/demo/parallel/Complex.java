@@ -109,4 +109,17 @@ public class Complex {
     public double lengthSQ() {
         return re * re + im * im;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Complex c = (Complex) obj;
+
+        return Double.compare(c.re, re) == 0 && Double.compare(c.im, im) == 0;
+
+
+    }
 }
