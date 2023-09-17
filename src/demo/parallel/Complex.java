@@ -139,7 +139,5 @@ public class Complex {
         Complex c = (Complex) obj;
 
         return Double.compare(c.re, re) == 0 && Double.compare(c.im, im) == 0;
-
-
     }
 }
