@@ -66,8 +66,8 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
+        re += 2 * b.re;
+        im += b.im / 10;
         return this;
     }
 
