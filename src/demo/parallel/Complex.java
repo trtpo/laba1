@@ -63,6 +63,33 @@ public class Complex {
     /**
      * Add operation.
      * @param b summand
+     * @return this Complex object whose value is (this - b)
+     */
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double divider = (b.re * b.re + b.im * b.im);
+
+        if(divider == 0){
+            throw new ArithmeticException("Divider is 0");
+        }
+
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (a.im * b.re - a.re * b.im) / divider;
+
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    /**
+     * Add operation.
+     * @param b summand
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
