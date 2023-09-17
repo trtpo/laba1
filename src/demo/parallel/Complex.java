@@ -49,7 +49,15 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
-    /** 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    /**
      * create a new object with the given real and imaginary parts
      * 
      * @param real a complex number real part
@@ -97,7 +105,7 @@ public class Complex {
     public Complex subtraction(Complex b) {
         Complex a = this;
         double real = a.re - b.re;
-        double imag = a.re - b.im;
+        double imag = a.im - b.im;
         re = real;
         im = imag;
         return this;
