@@ -28,7 +28,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package main.demo.parallel;
+package demo.parallel;
 
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -272,15 +272,16 @@ class MandelbrotSetTask extends Task<Long> {
      * @return number of iterations a value stayed within a given disk.
      */
 
-    private int calc(Complex comp) {
+    private int calc(Complex comp) { // update
         int count = 0;
         Complex c = new Complex(0, 0);
         do {
-            c = c.times(c).plus(comp);
+            c = c.times(c).plus(comp).minus(new Complex(0.5, 0.5)).timesReal(2.0);
             count++;
         } while (count < CAL_MAX_COUNT && c.lengthSQ() < LENGTH_BOUNDARY);
         return count;
     }
+
 
     /**
      * Calculates a color of a given pixel on the image using 
