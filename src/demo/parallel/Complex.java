@@ -85,6 +85,24 @@ public class Complex {
         return this;
     }
 
+    public Complex multiplyByNumber(int b) {
+        Complex a = this;
+        double real = a.re * b;
+        double imag = a.im * b;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex subtraction(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.re - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
