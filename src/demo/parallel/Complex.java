@@ -60,22 +60,31 @@ public class Complex {
         im = imag;
     }
 
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
-     */
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     public Complex plus(Complex b) {
         re += b.re;
         im += b.im;
         return this;
     }
 
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
+    public Complex pow(Complex z, int n) {
+        if (n <= 0) {
+            return new Complex(1, 0);
+        } else if (n == 1) {
+            return z;
+        } else if (n % 2 == 0) {
+            return pow(z.times(z), n / 2);
+        } else {
+            return z.times(pow(z.times(z), (n - 1) / 2));
+        }
+    }
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
@@ -85,6 +94,23 @@ public class Complex {
         return this;
     }
 
+    public Complex subtract(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex division(Complex b)
+    {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (a.im * b.re - a.re * b.im) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
