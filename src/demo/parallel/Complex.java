@@ -60,11 +60,14 @@ public class Complex {
         im = imag;
     }
 
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this - b)
-     */
+
+    @Override
+    public boolean equals(Object b){
+        if(this == b) return true;
+        if(b == null || getClass() != b.getClass()) return false;
+        return (this.im == ((Complex) b).im) && (this.re == ((Complex) b).re);
+    }
+
     public Complex minus(Complex b) {
         re -= b.re;
         im -= b.im;
@@ -82,8 +85,8 @@ public class Complex {
         double real = (a.re * b.re + a.im * b.im) / divider;
         double imag = (a.im * b.re - a.re * b.im) / divider;
 
-        re = real;
-        im = imag;
+        this.re = real;
+        this.im = imag;
         return this;
     }
 
