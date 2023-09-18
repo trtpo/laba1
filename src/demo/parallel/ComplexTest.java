@@ -3,11 +3,10 @@ package demo.parallel;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-
-class ComplexTest {
+public class ComplexTest {
 
     @Test
-    void subTest() {
+    public void subTest() {
         Complex a = new Complex(8.8, 1.2);
         Complex b = new Complex(16.9, 10.0);
 
@@ -18,7 +17,7 @@ class ComplexTest {
     }
 
     @Test
-    void divTest() {
+    public void divTest() {
         Complex a = new Complex(5, 6);
         Complex b = new Complex(7, 8);
 
