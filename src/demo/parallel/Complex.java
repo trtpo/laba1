@@ -60,6 +60,36 @@ public class Complex {
         im = imag;
     }
 
+
+    @Override
+    public boolean equals(Object b){
+        if(this == b) return true;
+        if(b == null || getClass() != b.getClass()) return false;
+        return (this.im == ((Complex) b).im) && (this.re == ((Complex) b).re);
+    }
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex divide(Complex b) {
+        Complex a = this;
+        double divider = (b.re * b.re + b.im * b.im);
+
+        if(divider == 0){
+            throw new ArithmeticException("Divider is 0");
+        }
+
+        double real = (a.re * b.re + a.im * b.im) / divider;
+        double imag = (a.im * b.re - a.re * b.im) / divider;
+
+        this.re = real;
+        this.im = imag;
+        return this;
+    }
+
     /**
      * Add operation.
      * @param b summand
