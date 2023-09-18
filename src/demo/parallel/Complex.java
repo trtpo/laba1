@@ -71,11 +71,17 @@ public class Complex {
         return this;
     }
 
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
+    public Complex pow(Complex z, int n) {
+        if (n <= 0) {
+            return new Complex(1, 0);
+        } else if (n == 1) {
+            return z;
+        } else if (n % 2 == 0) {
+            return pow(z.times(z), n / 2);
+        } else {
+            return z.times(pow(z.times(z), (n - 1) / 2));
+        }
+    }
     public Complex times(Complex b) {
         Complex a = this;
         double real = a.re * b.re - a.im * b.im;
