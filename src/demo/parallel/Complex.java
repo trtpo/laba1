@@ -30,7 +30,6 @@
  */
 package demo.parallel;
 
-
 /**
  * A complex number is a number that can be expressed in the form a + b * i, where
  * a and b are real numbers and i is the imaginary unit, which satisfies the
@@ -71,6 +70,21 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im += b.im;
+        return this;
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
@@ -84,6 +98,15 @@ public class Complex {
         im = imag;
         return this;
     }
+    public Complex div(Complex b) {
+        Complex a = this;
+        double real = a.re / b.re - a.im / b.im;
+        double imag = a.re / b.im + a.im / b.re;
+        re = real;
+        im = imag;
+        return this;
+    }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
