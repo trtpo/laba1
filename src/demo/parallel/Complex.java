@@ -85,6 +85,26 @@ public class Complex {
         return this;
     }
 
+    public Complex raising(double n) {
+        Complex a = this;
+        double r = Math.sqrt(a.re * a.re + a.im * a.im);
+        double theta = Math.atan2(a.im, a.re);
+        double newR = Math.pow(r, n);
+        double newTheta = n * theta;
+        double real = newR * Math.cos(newTheta);
+        double imag = newR * Math.sin(newTheta);
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object b){
+        if(this == b) return true;
+        if(b == null || getClass() != b.getClass()) return false;
+        return (this.im == ((Complex) b).im) && (this.re == ((Complex) b).re);
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
