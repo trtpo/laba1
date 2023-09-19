@@ -4,3 +4,6 @@ out/
 .idea/
 *.swp
 nbproject/
+/.metadata/        
+src/.metadata/                                                                                                                                                                                                        
+src/.project 
