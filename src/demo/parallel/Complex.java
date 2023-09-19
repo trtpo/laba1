@@ -72,6 +72,18 @@ public class Complex {
     }
 
     /**
+     * Minus operation.
+     * @param  b number to subtract
+     * @return this Complex object whose value is this (this - b)
+     */
+    public Complex minus(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    /**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
@@ -86,10 +98,34 @@ public class Complex {
     }
 
     /**
+     * Divide operation.
+     * @param  b number to divide by
+     * @return this Complex object whose value is this / b
+     */
+    public Complex divide(Complex b)
+    {
+        Complex a = this;
+        double real = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+        double imag = (b.re * a.im - a.re * b.im) / (b.re * b.re + b.im * b.im);
+        re = real;
+        im = imag;
+
+        return this;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
+    public double getRe() {
+        return re;
+    }
+
+    /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
      * @return square of length
-    */
+     */
     public double lengthSQ() {
         return re * re + im * im;
     }
