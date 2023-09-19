@@ -85,6 +85,27 @@ public class Complex {
         return this;
     }
 
+    public Complex minus(Complex b) {
+        Complex a = this;
+        double real = a.re - b.re;
+        double imag = a.im - b.im;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object b)    {
+        if(this == b)
+        {
+            return true;
+        }
+        if(b == null || getClass() != b.getClass())
+        {
+            return  false;
+        }
+        return (this.im == ((Complex)b).im) && (this.re == ((Complex)b).re);
+    }
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
