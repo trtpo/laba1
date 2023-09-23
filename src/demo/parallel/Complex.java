@@ -81,7 +81,6 @@ public class Complex {
         return this;
     }
 
-    public Complex 
     /**
      * Multiply operation.
      * @param  b multiplier
