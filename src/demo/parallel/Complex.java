@@ -70,6 +70,23 @@ public class Complex {
         im += b.im;
         return this;
     }
+    public Complex division(Complex b)
+    {
+        Complex a = this;
+        double denominator = b.re * b.re + b.im * b.im;
+        double real = (a.re * b.re + a.im * b.im) / denominator;
+        double imag = (a.im * b.re - a.re * b.im) / denominator;
+        re = real;
+        im = imag;
+        return this;
+    }
+
+    public Complex substract(Complex b)
+    {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
 
     /**
      * Multiply operation.
@@ -83,6 +100,13 @@ public class Complex {
         re = real;
         im = imag;
         return this;
+    }
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
     }
 
     /**
