@@ -101,6 +101,13 @@ public class Complex {
         im = imag;
         return this;
     }
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
 
     /**
      * Square of Complex object's length, we're using square of length to 
