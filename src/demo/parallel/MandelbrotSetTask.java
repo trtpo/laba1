@@ -375,7 +375,7 @@ class MandelbrotSetTask extends Task<Long> {
             if (p > cp[j + 1]) {
                 j++;
             }
-            double val = (p - cp[j]) / (cp[j + 1] - cp[j]);
+            double val = (p - cp[j]);
             colors[i] = cc[j].interpolate(cc[j + 1], val);
         }
     }

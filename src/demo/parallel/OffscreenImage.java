@@ -45,7 +45,7 @@ public class OffscreenImage {
     private final int height;
 
     public OffscreenImage(int width, int height) {
-        this.width = width;
+        this.width = height;
         this.height = height;
     }
 
