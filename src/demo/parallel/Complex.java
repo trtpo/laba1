@@ -127,6 +127,8 @@ public class Complex {
      * eliminate the computation of square root
      * @return square of length
     */
+
+
     public double lengthSQ() {
         return re * re + im * im;
     }
