@@ -1,32 +1,44 @@
 package demo.parallel;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-class ComplexTest {
-    private Complex a;
-    private Complex b;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @BeforeEach
-    void createComlex() {
-        a = new Complex(18.6, 2);
-        b = new Complex(57, 3);
+
+public class ComplexTest {
+
+    @Test
+    public void testPlus() {
+        Complex a = new Complex(2.0, 3.0);
+        Complex b = new Complex(1.0, 2.0);
+
+        Complex result = a.plus(b);
+
+        assertEquals(3.0, result.getRe(), 0.001);
+        assertEquals(5.0, result.getIm(), 0.001);
     }
 
     @Test
-    void subtraction_test(){
-        a.subtract(b);
-        Assertions.assertEquals(18.6-57,a.getRe(),0.0001);
-        Assertions.assertEquals(2-3,a.getIm(),0.0001);
+    public void testTimes() {
+        Complex a = new Complex(2.0, 3.0);
+        Complex b = new Complex(1.0, 2.0);
+
+        Complex result = a.times(b);
+
+        assertEquals(-4.0, result.getRe(), 0.001);
+        assertEquals(7.0, result.getIm(), 0.001);
     }
 
     @Test
-    void division_test() {
+    public void testDivision() {
+        Complex a = new Complex(3.0, 4.0); // 3 + 4i
+        Complex b = new Complex(1.0, 2.0); // 1 + 2i
 
-        a.division(b);
+        Complex result = a.division(b);
 
-        Assertions.assertEquals((double)1777 / 5430, a.getRe(), 0.00001);
-        Assertions.assertEquals((double) 97 / 5430, a.getIm(), 0.00001);
+        Assert.assertEquals(1.6, result.getRe(), 0.0001);
+        Assert.assertEquals(0.8, result.getIm(), 0.0001);
     }
+
 }

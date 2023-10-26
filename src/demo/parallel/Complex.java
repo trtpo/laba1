@@ -84,35 +84,12 @@ public class Complex {
         im = imag;
         return this;
     }
-    }public Complex division(Complex b) {
-        Complex a = this;
-        double d = b.re * b.re + b.im * b.im;
-        double real = (a.re * b.re + a.im * b.im)/d;
-        double imag = (a.re * b.im - a.im * b.re)/d;
-        re = real;
-        im = imag;
-        return this;
+    public double getRe() {
+        return re;
     }
 
-    public Complex subtract(Complex b)
-    {
-        re -= b.re;
-        im -= b.im;
-        return this;
-    }
-    public Complex minus(Complex b) { //вычитание и деление
-        re -= b.re;
-        im -= b.im;
-        return this;
-    }
-    public Complex divide(Complex b) { //деление
-        Complex a = this;
-        double denominator = b.re * b.re + b.im * b.im;
-        double real = (a.re * b.re + a.im * b.im) / denominator;
-        double imag = (a.im * b.re - a.re * b.im) / denominator;
-        re = real;
-        im = imag;
-        return this;
+    public double getIm() {
+        return im;
     }
     public double getRe() {
         return re;
