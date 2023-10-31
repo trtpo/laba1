@@ -31,19 +31,27 @@
 package demo.parallel;
 
 
-/**
- * A complex number is a number that can be expressed in the form a + b * i, where
- * a and b are real numbers and i is the imaginary unit, which satisfies the
- * equation i ^ 2 = -1. a is the real part and b is the imaginary part of the
- * complex number.
- * <p><i>
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.</i>
- * @author Alexander Kouznetsov, Tristan Yan
- */
+package test;
+
+import demo.parallel.Complex;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ComplexTest {
+    @Test
+    public void minusTest(){
+        Complex a = new Complex(6.7, 6.6);
+        Complex b = new Complex(-11.4, 4.4);
+
+        Complex result = a.minus(b);
+
+        assertEquals(6.7 - (-11.4), result.getRe(), 0.0001);
+        assertEquals(6.6 - 4.4, result.getIm(), 0.0001);
+    }
+
+}
+
 public class Complex {
     
     private double re;   // the real part
