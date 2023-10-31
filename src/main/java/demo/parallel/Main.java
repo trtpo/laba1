@@ -30,7 +30,7 @@
  */
 package demo.parallel;
 
-
+import java.net.URL;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
@@ -289,7 +289,15 @@ public class Main extends Application {
         grid.add(openCloseButton, colIndex, rowIndex, totalColumns, 1);
         GridPane.setHalignment(openCloseButton, HPos.CENTER);
         grid.setId("grid");
-        grid.getStylesheets().add("/demo/parallel/ControlPane.css");
+
+        URL css = Main.class.getResource("ControlPane.css");
+
+        if(css == null){
+            System.err.println("Couldn't load css resource");
+        }
+        else {
+            grid.getStylesheets().add(css.toExternalForm());
+        }
 
         sequentialTime.translateXProperty().bind(
                 sequentialTimeBar.add(-1.1).multiply(sequentialProgressBar.widthProperty()));
