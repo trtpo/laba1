@@ -30,26 +30,19 @@
  */
 package demo.parallel;
 
-
-import java.util.List;
-import java.util.Locale;
+import java.net.URL;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.concurrent.Worker;
 import javafx.geometry.HPos;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -60,10 +53,12 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
-import static java.lang.Math.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.concurrent.Worker;
-import javafx.scene.control.ProgressIndicator;
+
+import java.util.List;
+import java.util.Locale;
+
+import static java.lang.Math.log;
+import static java.lang.Math.sqrt;
 
 
 /**
@@ -294,7 +289,15 @@ public class Main extends Application {
         grid.add(openCloseButton, colIndex, rowIndex, totalColumns, 1);
         GridPane.setHalignment(openCloseButton, HPos.CENTER);
         grid.setId("grid");
-        grid.getStylesheets().add("/demo/parallel/ControlPane.css");
+
+        URL css = Main.class.getResource("ControlPane.css");
+
+        if(css == null){
+            System.err.println("Couldn't load css resource");
+        }
+        else {
+            grid.getStylesheets().add(css.toExternalForm());
+        }
 
         sequentialTime.translateXProperty().bind(
                 sequentialTimeBar.add(-1.1).multiply(sequentialProgressBar.widthProperty()));
@@ -803,7 +806,7 @@ public class Main extends Application {
 
     /**
      * {@inheritDoc }
-     * @throws java.lang.Exception
+     * @throws Exception
      */
     @Override public void stop() throws Exception {
         super.stop();
