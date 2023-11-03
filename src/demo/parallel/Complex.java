@@ -96,6 +96,14 @@ public class Complex {
         return this;
     }
 
+    public double getRe() {
+        return re;
+    }
+
+    public double getIm() {
+        return im;
+    }
+
     public Complex subtract(Complex b)
     {
         re -= b.re;
