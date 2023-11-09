@@ -44,7 +44,7 @@
 }
 
 .progress-indicator {
-    -fx-progress-color: green;
+    -fx-progress-color: blue;
 }
 
 .progress-indicator .percentage {
