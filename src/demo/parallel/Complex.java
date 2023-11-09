@@ -60,7 +60,15 @@ public class Complex {
         im = imag;
     }
 
-    /**
+    public double getRe()
+    {
+        return this.re;
+    }
+
+    public double getIm()
+    {
+        return this.im;
+    } /**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
@@ -71,7 +79,17 @@ public class Complex {
         return this;
     }
 
-    /**
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex offset(double b) {
+        re +=b;
+        im +=b;
+        return this;
+    }/**
      * Multiply operation.
      * @param  b multiplier
      * @return this Complex object whose value is this * b
