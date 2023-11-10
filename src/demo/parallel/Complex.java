@@ -68,7 +68,18 @@ public class Complex {
     public double getIm()
     {
         return this.im;
-    } /**
+    }
+    public Complex minus(Complex b) {
+        re -= b.re;
+        im -= b.im;
+        return this;
+    }
+
+    public Complex mul(Integer b) {
+        re *=b;
+        im *=b;
+        return this;
+    }/**
      * Add operation.
      * @param b summand
      * @return this Complex object whose value is (this + b)
